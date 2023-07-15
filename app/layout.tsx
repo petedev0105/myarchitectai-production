@@ -36,11 +36,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-[#17181C] text-white">
-        {children}
-        <Analytics />
-      </body>
-    </html>
+      <html lang="en">
+        <body className="bg-[#17181C] text-white">
+          {children}
+          <Analytics />
+        </body>
+      </html>
   );
 }

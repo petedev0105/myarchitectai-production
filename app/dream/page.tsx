@@ -14,7 +14,20 @@ import Toggle from "../../components/Toggle";
 import appendNewToName from "../../utils/appendNewToName";
 import downloadPhoto from "../../utils/downloadPhoto";
 import DropDown from "../../components/DropDown";
-import { roomType, rooms, themeType, themes } from "../../utils/dropdownTypes";
+import {
+  roomType,
+  rooms,
+  themeType,
+  themes,
+  locations,
+  houseStyles,
+  materials,
+  seasons,
+  houseStyleType,
+  materialType,
+  locationType,
+  seasonType,
+} from "../../utils/dropdownTypes";
 
 // Configuration for the uploader
 const uploader = Uploader({
@@ -55,6 +68,14 @@ export default function DreamPage() {
   const [theme, setTheme] = useState<themeType>("Modern");
   const [room, setRoom] = useState<roomType>("Living Room");
 
+  const [houseStyle, setHouseStyle] = useState<houseStyleType>("Modern");
+  const [season, setSeason] = useState<seasonType>("Autumn");
+  const [material, setMaterial] = useState<materialType>("Wooden");
+  const [location, setLocation] = useState<locationType>("Cliff");
+
+  const [edit, setEdit] = useState(true);
+  const [uploaded, setUploaded] = useState(false);
+
   const UploadDropZone = () => (
     <UploadDropzone
       uploader={uploader}
@@ -63,7 +84,8 @@ export default function DreamPage() {
         if (file.length !== 0) {
           setPhotoName(file[0].originalFile.originalFileName);
           setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
-          generatePhoto(file[0].fileUrl.replace("raw", "thumbnail"));
+
+          // generatePhoto(file[0].fileUrl.replace("raw", "thumbnail"));
         }
       }}
       width="670px"
@@ -73,13 +95,22 @@ export default function DreamPage() {
 
   async function generatePhoto(fileUrl: string) {
     await new Promise((resolve) => setTimeout(resolve, 200));
+    setEdit(false);
     setLoading(true);
     const res = await fetch("/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ imageUrl: fileUrl, theme, room }),
+      body: JSON.stringify({
+        imageUrl: fileUrl,
+        theme,
+        room,
+        location,
+        season,
+        houseStyle,
+        material,
+      }),
     });
 
     let newPhoto = await res.json();
@@ -97,22 +128,16 @@ export default function DreamPage() {
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
-        <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-6xl mb-5">
-          Generate your <span className="text-blue-600">dream</span> room
+        <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-5xl mb-5">
+          Generate your <span className="text-blue-600">dream</span> house
         </h1>
         <ResizablePanel>
           <AnimatePresence mode="wait">
             <motion.div className="flex justify-between items-center w-full flex-col mt-4">
-              {!restoredImage && (
+              {edit == true ? (
                 <>
-                  <div className="space-y-4 w-full max-w-sm">
+                  {/* <div className="space-y-4 w-full max-w-sm">
                     <div className="flex mt-3 items-center space-x-3">
-                      <Image
-                        src="/number-1-white.svg"
-                        width={30}
-                        height={30}
-                        alt="1 icon"
-                      />
                       <p className="text-left font-medium">
                         Choose your room theme.
                       </p>
@@ -124,15 +149,9 @@ export default function DreamPage() {
                       }
                       themes={themes}
                     />
-                  </div>
-                  <div className="space-y-4 w-full max-w-sm">
+                  </div> */}
+                  {/* <div className="space-y-4 w-full max-w-sm">
                     <div className="flex mt-10 items-center space-x-3">
-                      <Image
-                        src="/number-2-white.svg"
-                        width={30}
-                        height={30}
-                        alt="1 icon"
-                      />
                       <p className="text-left font-medium">
                         Choose your room type.
                       </p>
@@ -142,26 +161,79 @@ export default function DreamPage() {
                       setTheme={(newRoom) => setRoom(newRoom as typeof room)}
                       themes={rooms}
                     />
+                  </div> */}
+
+                  <div className="space-y-4 w-full max-w-sm">
+                    <div className="flex mt-10 items-center space-x-3">
+                      <p className="text-left font-medium">
+                        Choose your house style
+                      </p>
+                    </div>
+                    <DropDown
+                      theme={houseStyle}
+                      setTheme={(newHouseStyle) =>
+                        setHouseStyle(newHouseStyle as typeof houseStyle)
+                      }
+                      themes={houseStyles}
+                    />
                   </div>
+
+                  <div className="space-y-4 w-full max-w-sm">
+                    <div className="flex mt-10 items-center space-x-3">
+                      <p className="text-left font-medium">
+                        Choose your location
+                      </p>
+                    </div>
+                    <DropDown
+                      theme={location}
+                      setTheme={(newLocation) =>
+                        setLocation(newLocation as typeof location)
+                      }
+                      themes={locations}
+                    />
+                  </div>
+
+                  <div className="space-y-4 w-full max-w-sm">
+                    <div className="flex mt-10 items-center space-x-3">
+                      <p className="text-left font-medium">
+                        Choose your house material
+                      </p>
+                    </div>
+                    <DropDown
+                      theme={material}
+                      setTheme={(newMaterial) =>
+                        setMaterial(newMaterial as typeof material)
+                      }
+                      themes={materials}
+                    />
+                  </div>
+
+                  <div className="space-y-4 w-full max-w-sm">
+                    <div className="flex mt-10 items-center space-x-3">
+                      <p className="text-left font-medium">Choose the season</p>
+                    </div>
+                    <DropDown
+                      theme={season}
+                      setTheme={(newSeason) =>
+                        setSeason(newSeason as typeof season)
+                      }
+                      themes={seasons}
+                    />
+                  </div>
+
                   <div className="mt-4 w-full max-w-sm">
                     <div className="flex mt-6 w-96 items-center space-x-3">
-                      <Image
-                        src="/number-3-white.svg"
-                        width={30}
-                        height={30}
-                        alt="1 icon"
-                      />
                       <p className="text-left font-medium">
-                        Upload a picture of your room.
+                        Upload a picture of your sketch
                       </p>
                     </div>
                   </div>
                 </>
-              )}
+              ) : null}
               {restoredImage && (
                 <div>
-                  Here's your remodeled <b>{room.toLowerCase()}</b> in the{" "}
-                  <b>{theme.toLowerCase()}</b> theme!{" "}
+                  Here's your {houseStyle} {material} {location} house in{" "}
+                  {season}.
                 </div>
               )}
               <div
@@ -182,6 +254,7 @@ export default function DreamPage() {
                 />
               )}
               {!originalPhoto && <UploadDropZone />}
+
               {originalPhoto && !restoredImage && (
                 <Image
                   alt="original photo"
@@ -191,6 +264,7 @@ export default function DreamPage() {
                   height={475}
                 />
               )}
+
               {restoredImage && originalPhoto && !sideBySide && (
                 <div className="flex sm:space-x-4 sm:flex-row flex-col">
                   <div>
@@ -218,6 +292,18 @@ export default function DreamPage() {
                   </div>
                 </div>
               )}
+              {!restoredImage ? (
+                <button
+                  onClick={() => {
+                    originalPhoto
+                      ? generatePhoto(originalPhoto)
+                      : console.log("no photo");
+                  }}
+                  className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
+                >
+                  Generate my house
+                </button>
+              ) : null}
               {loading && (
                 <button
                   disabled
@@ -237,18 +323,35 @@ export default function DreamPage() {
                 </div>
               )}
               <div className="flex space-x-2 justify-center">
-                {originalPhoto && !loading && (
-                  <button
-                    onClick={() => {
-                      setOriginalPhoto(null);
-                      setRestoredImage(null);
-                      setRestoredLoaded(false);
-                      setError(null);
-                    }}
-                    className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
-                  >
-                    Generate New Room
-                  </button>
+                {restoredImage && !loading && (
+                  <div className="space-x-2">
+                    <button
+                      onClick={() => setEdit(!edit)}
+                      className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
+                    >
+                      Edit options
+                    </button>
+                    <button
+                      onClick={() => {originalPhoto ? 
+                        generatePhoto(originalPhoto) : null
+                      }}
+                      className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
+                    >
+                      Regenerate
+                    </button>
+                    <button
+                      onClick={() => {
+                        setOriginalPhoto(null);
+                        setRestoredImage(null);
+                        setRestoredLoaded(false);
+                        setEdit(true);
+                        setError(null);
+                      }}
+                      className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
+                    >
+                      New house
+                    </button>
+                  </div>
                 )}
                 {restoredLoaded && (
                   <button

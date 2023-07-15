@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     }
   }
 
-  const { imageUrl, theme, room } = await request.json();
+  const { imageUrl, theme, room, location, season, material, houseStyle } = await request.json();
 
   // POST request to Replicate to start the image restoration generation process
   let startResponse = await fetch("https://api.replicate.com/v1/predictions", {
@@ -48,14 +48,11 @@ export async function POST(request: Request) {
         "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
       input: {
         image: imageUrl,
-        prompt:
-          room === "Gaming Room"
-            ? "a room for gaming with gaming computers, gaming consoles, and gaming chairs"
-            : `a ${theme.toLowerCase()} ${room.toLowerCase()}`,
+        prompt: `Editorial photo from Dwell of a ${houseStyle} house, the season is ${season}, the house's location is${location}, the main material of the house is ${material}, with sunlight reflecting off the surface, brilliant architecture, Set your professional camera to manual mode, f/16, ISO 200, and use a wide-angle lens to capture the grandeur of the surroundings`,
         a_prompt:
-          "best quality, extremely detailed, photo from Pinterest, interior, cinematic photo, ultra-detailed, ultra-realistic, award-winning",
+          "ultrarealistic",
         n_prompt:
-          "longbody, lowres, bad anatomy, bad hands, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality",
+          "blurry, details are low, overlapping, grainy, multiple angles, deformed structures, weird colors, unnatural, unrealistic, humans, unrealistic sky, people, animals, cartoon, anime, painting, drawing, sketch",
       },
     }),
   });

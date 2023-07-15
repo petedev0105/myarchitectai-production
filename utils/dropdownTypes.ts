@@ -13,6 +13,43 @@ export type roomType =
   | "Office"
   | "Gaming Room";
 
+export type locationType = "Coastal" | "Cliff" | "Forest" | "Mountain";
+
+export type houseStyleType =
+  | "Modern"
+  | "Farm House"
+  | "Cottage"
+  | "Mid-Century Modern"
+  | "Contemporary"
+  | "Mediterranean";
+
+export type seasonType = "Spring" | "Summer" | "Autumn" | "Winter";
+
+export type materialType = "Wooden" | "Steel" | "Concrete" | "Marble" | "Brick";
+
+export const locations: locationType[] = [
+  "Coastal",
+  "Cliff",
+  "Forest",
+  "Mountain",
+];
+export const houseStyles: houseStyleType[] = [
+  "Modern",
+  "Farm House",
+  "Cottage",
+  "Mid-Century Modern",
+  "Contemporary",
+  "Mediterranean",
+];
+export const seasons: seasonType[] = ["Spring", "Summer", "Autumn", "Winter"];
+export const materials: materialType[] = [
+  "Wooden",
+  "Steel",
+  "Concrete",
+  "Marble",
+  "Brick",
+];
+
 export const themes: themeType[] = [
   "Modern",
   "Minimalist",
