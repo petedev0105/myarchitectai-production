@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@auth/supabase-adapter": "^0.1.2",
     "@headlessui/react": "^1.7.7",
     "@headlessui/tailwindcss": "^0.1.2",
     "@heroicons/react": "^2.0.16",
@@ -17,6 +18,7 @@
     "@vercel/analytics": "^0.1.11",
     "framer-motion": "^8.2.4",
     "next": "^13.4.4",
+    "next-auth": "^4.22.1",
     "react": "^18.2.0",
     "react-compare-slider": "^2.2.0",
     "react-countup": "^6.4.0",

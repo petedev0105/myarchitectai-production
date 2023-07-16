@@ -1,15 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import SignInButton from "./SignInButton";
 
 export default function Header() {
   return (
-    <header className=" xs:flex-row items-center w-full mt-5 pb-7 sm:px-4 px-2 border-gray-500 gap-2 flex justify-center">
+    <header className=" xs:flex-row items-center w-full mt-5 pb-7 sm:px-4 px-2 border-gray-500 gap-2 flex justify-between space-x-10">
       <div>
         <Link href="/" className="flex space-x-2">
-          <h1 className="sm:text-3xl text-xl font-bold ml-2 tracking-tight">
-            ArchitechAI
+          <h1 className="text-xl font-bold ml-2 tracking-tight">
+            MyArchitectAI
           </h1>
         </Link>
+      </div>
+      <div>
+        <SignInButton />
       </div>
     </header>
   );

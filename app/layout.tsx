@@ -1,6 +1,7 @@
 import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
 import "../styles/globals.css";
+import Providers from "../components/Providers";
 
 let title = "Dream Room Generator";
 let description = "Generate your dream room in seconds.";
@@ -38,7 +39,10 @@ export default function RootLayout({
   return (
       <html lang="en">
         <body className="bg-[#17181C] text-white">
-          {children}
+          <Providers>
+            {children}
+          </Providers>
+          
           <Analytics />
         </body>
       </html>
