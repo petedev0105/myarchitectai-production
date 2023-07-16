@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import img from "next/image";
 import Link from "next/link";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -11,57 +11,340 @@ export default function HomePage() {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Header />
-      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20 background-gradient">
-        <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-gray-300 sm:text-7xl">
-          Generating dream homes{" "}
-          <span className="relative whitespace-nowrap text-blue-600">
-            <SquigglyLines />
-            <span className="relative">using AI</span>
-          </span>{" "}
-          for everyone.
-        </h1>
-        <h2 className="mx-auto mt-12 max-w-xl text-lg sm:text-gray-400  text-gray-500 leading-7">
-          Upload a sketch or a picture of your home and see how it looks in
-          different styles - build your dream home today.
-        </h2>
-        {session && session.user ? (
-          <Link
-            className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-blue-500 transition"
-            href={"/dream"}
-          >
-            Generate your dream home
-          </Link>
-        ) : (
-          <button
-            className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-blue-500 transition"
-            onClick={() => signIn()}
-          >
-            Generate your dream home
-          </button>
-        )}
+      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20">
+        <div className="lg:flex justify-between items-center w-full space-x-24">
+          <div className="lg:w-1/2 text-left space-y-5">
+            <div>
+              <span className="font-bold text-4xl">
+                Visualize your architectural sketches in seconds
+              </span>
+            </div>
+            <div>
+              <span className="text-xl">
+                Take your hand-drawn sketches of buildings and instantly
+                transform them into breathtaking, photorealistic masterpieces.
+              </span>
+            </div>
+            <div>
+              {session && session.user ? (
+                <Link
+                  className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-blue-500 transition"
+                  href={"/dream"}
+                >
+                  Build your dream home for free →
+                </Link>
+              ) : (
+                <button
+                  className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-blue-500 transition"
+                  onClick={() => signIn()}
+                >
+                  Build your dream home for free →
+                </button>
+              )}
+            </div>
+          </div>
+          <div className="lg:w-1/2">
+            <img src="/img/hero.webp" />
+          </div>
+        </div>
 
-        <div className="flex justify-between items-center w-full flex-col sm:mt-10 mt-6">
-          <div className="flex flex-col space-y-10 mt-4 mb-16">
-            <div className="flex sm:space-x-8 sm:flex-row flex-col">
-              <div className="space-y-5">
-                <h3 className="mb-1 font-medium text-lg">Original</h3>
-                <Image
-                  alt="Original photo of a room with roomGPT.io"
-                  src="/original-pic.jpg"
-                  className="w-full object-cover h-96 rounded-2xl"
-                  width={400}
-                  height={400}
-                />
+        <div className="flex justify-cetner items-center pt-48">
+          <div className="space-y-5">
+            <div>
+              <span className="font-bold text-4xl">
+                10x your architecture design output
+              </span>
+            </div>
+            <div>
+              <span>
+                Our platform goes beyond mere visualization, breathing life into
+                your designs and eliciting powerful emotions. Present your
+                photorealistic visuals to clients and stakeholders, and watch as
+                they become fully immersed in your vision.
+              </span>
+            </div>
+            <div>
+              <img src="/img/mid.webp" />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex justify-center items-center pt-48">
+          <div className="space-y-5">
+            <div>
+              <span className="font-bold text-4xl">
+                Explore what others have built
+              </span>
+            </div>
+            <div>
+              <span>
+                Find inspiration from buildings built by creative architects and
+                home lovers all across the globe using MyArchitectAI.
+              </span>
+            </div>
+            <div>
+              <img src="/img/others.webp" />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex justify-center items-center pt-48 space-x-7">
+          <div className="shadow-xl border rounded-xl p-12 space-y-10">
+            <div className="space-y-12">
+              <div className="">
+                <span className="text-indigo-700 font-bold">
+                  Pro
+                </span>
               </div>
-              <div className="sm:mt-0 mt-8 space-y-5">
-                <h3 className="mb-1 font-medium text-lg">Generated</h3>
-                <Image
-                  alt="Generated photo of a room with roomGPT.io"
-                  width={400}
-                  height={400}
-                  src="/generated-pic-2.jpg"
-                  className="w-full object-cover h-96 rounded-2xl sm:mt-0 mt-2"
-                />
+              <div className="flex space-x-5 items-center justify-between">
+                
+                <div>
+                  <span className="text-3xl font-bold text-indigo-800">
+                    <span className="text-6xl ">19.</span>00
+                  </span><span className="font-bold text-indigo-400">
+                    /hour
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-10">
+              <div className="flex justify-center">
+                <Link href="/signin">
+                  <button
+                    // onClick={() => {
+                    //   Paddle.Checkout.open({
+                    //     product: 47418,
+                    //   });
+                    // }}
+                    className="px-5 py-2 rounded-md border-2 border-indigo-700 font-bold text-indigo-700 text-center"
+                  >
+                    First lesson on us
+                  </button>
+                </Link>
+              </div>
+
+              <div className="space-y-3 text-xs">
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">1-on-1 Tutoring Lessons</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Access to beginner subjects (10+)</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">
+                      Native / Bilingual English Speakers.
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">
+                      Tutors with Excellent Results (6+, A)*
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">First lesson on us. (30 minutes)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="shadow-xl border rounded-xl p-12 space-y-10">
+            <div className="space-y-12">
+              <div className="text-center">
+                <span className="text-3xl text-indigo-700 font-bold">
+                  Navigator
+                </span>
+              </div>
+              <div className="flex space-x-5 items-center justify-between">
+                <div>
+                  <span className="font-bold text-indigo-400">USD</span>
+                </div>
+                <div>
+                  <span className="text-3xl font-bold text-indigo-800">
+                    <span className="text-6xl ">19.</span>00
+                  </span>
+                </div>
+                <div>
+                  <span className="font-bold text-indigo-400">
+                    /hour
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-10">
+              <div className="flex justify-center">
+                <Link href="/signin">
+                  <button
+                    // onClick={() => {
+                    //   Paddle.Checkout.open({
+                    //     product: 47418,
+                    //   });
+                    // }}
+                    className="px-5 py-2 rounded-md border-2 border-indigo-700 font-bold text-indigo-700 text-center"
+                  >
+                    First lesson on us
+                  </button>
+                </Link>
+              </div>
+
+              <div className="space-y-3 text-xs">
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">1-on-1 Tutoring Lessons</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Access to beginner subjects (10+)</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">
+                      Native / Bilingual English Speakers.
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">
+                      Tutors with Excellent Results (6+, A)*
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">First lesson on us. (30 minutes)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="shadow-xl border rounded-xl p-12 space-y-10">
+            <div className="space-y-12">
+              <div className="text-center">
+                <span className="text-3xl text-indigo-700 font-bold">
+                  Navigator
+                </span>
+              </div>
+              <div className="flex space-x-5 items-center justify-between">
+                <div>
+                  <span className="font-bold text-indigo-400">USD</span>
+                </div>
+                <div>
+                  <span className="text-3xl font-bold text-indigo-800">
+                    <span className="text-6xl ">19.</span>00
+                  </span>
+                </div>
+                <div>
+                  <span className="font-bold text-indigo-400">
+                    /hour
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-10">
+              <div className="flex justify-center">
+                <Link href="/signin">
+                  <button
+                    // onClick={() => {
+                    //   Paddle.Checkout.open({
+                    //     product: 47418,
+                    //   });
+                    // }}
+                    className="px-5 py-2 rounded-md border-2 border-indigo-700 font-bold text-indigo-700 text-center"
+                  >
+                    First lesson on us
+                  </button>
+                </Link>
+              </div>
+
+              <div className="space-y-3 text-xs">
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">1-on-1 Tutoring Lessons</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Access to beginner subjects (10+)</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">
+                      Native / Bilingual English Speakers.
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">
+                      Tutors with Excellent Results (6+, A)*
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">First lesson on us. (30 minutes)</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

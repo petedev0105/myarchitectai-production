@@ -16,7 +16,7 @@ export const CompareSlider = ({
       itemTwo={<ReactCompareSliderImage src={restored} alt="generated photo" />}
       
       className="flex mt-5"
-      style={{height: 600, width: 850}}
+      style={{height: "auto", width: 850}}
     />
   );
 };

@@ -1,7 +1,6 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
 import { useState } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
@@ -40,21 +39,21 @@ const options = {
   maxFileCount: 1,
   mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
   editor: { images: { crop: false } },
-  styles: {
-    colors: {
-      primary: "#2563EB", // Primary buttons & links
-      error: "#d23f4d", // Error messages
-      shade100: "#fff", // Standard text
-      shade200: "#fffe", // Secondary button text
-      shade300: "#fffd", // Secondary button text (hover)
-      shade400: "#fffc", // Welcome text
-      shade500: "#fff9", // Modal close button
-      shade600: "#fff7", // Border
-      shade700: "#fff2", // Progress indicator background
-      shade800: "#fff1", // File item background
-      shade900: "#ffff", // Various (draggable crop buttons, etc.)
-    },
-  },
+  // styles: {
+  //   colors: {
+  //     primary: "#2563EB", // Primary buttons & links
+  //     error: "#d23f4d", // Error messages
+  //     shade100: "#fff", // Standard text
+  //     shade200: "#fffe", // Secondary button text
+  //     shade300: "#fffd", // Secondary button text (hover)
+  //     shade400: "#fffc", // Welcome text
+  //     shade500: "#fff9", // Modal close button
+  //     shade600: "#fff7", // Border
+  //     shade700: "#fff2", // Progress indicator background
+  //     shade800: "#fff1", // File item background
+  //     shade900: "#ffff", // Various (draggable crop buttons, etc.)
+  //   },
+  // },
 };
 
 export default function DreamPage() {
@@ -88,14 +87,14 @@ export default function DreamPage() {
           // generatePhoto(file[0].fileUrl.replace("raw", "thumbnail"));
         }
       }}
-      width="670px"
+      width="700px"
       height="250px"
     />
   );
 
   async function generatePhoto(fileUrl: string) {
     await new Promise((resolve) => setTimeout(resolve, 200));
-    setEdit(false);
+    // setEdit(false);
     setLoading(true);
     const res = await fetch("/generate", {
       method: "POST",
@@ -125,18 +124,14 @@ export default function DreamPage() {
   }
 
   return (
-    <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
+    <div className="flex max-w-6xl mx-auto flex-col items-center justify-between py-2 ">
       <Header />
-      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
-        <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-100 sm:text-5xl mb-5">
-          Generate your <span className="text-blue-600">dream</span> house
-        </h1>
-        <ResizablePanel>
-          <AnimatePresence mode="wait">
-            <motion.div className="flex justify-between items-center w-full flex-col mt-4">
-              {edit == true ? (
-                <>
-                  {/* <div className="space-y-4 w-full max-w-sm">
+
+      <div className="flex justify-between w-full">
+        <div className="lg:w-1/3">
+          {edit == true ? (
+            <>
+              {/* <div className="space-y-4 w-full max-w-sm">
                     <div className="flex mt-3 items-center space-x-3">
                       <p className="text-left font-medium">
                         Choose your room theme.
@@ -150,7 +145,7 @@ export default function DreamPage() {
                       themes={themes}
                     />
                   </div> */}
-                  {/* <div className="space-y-4 w-full max-w-sm">
+              {/* <div className="space-y-4 w-full max-w-sm">
                     <div className="flex mt-10 items-center space-x-3">
                       <p className="text-left font-medium">
                         Choose your room type.
@@ -163,215 +158,224 @@ export default function DreamPage() {
                     />
                   </div> */}
 
-                  <div className="space-y-4 w-full max-w-sm">
-                    <div className="flex mt-10 items-center space-x-3">
-                      <p className="text-left font-medium">
-                        Choose your house style
-                      </p>
-                    </div>
-                    <DropDown
-                      theme={houseStyle}
-                      setTheme={(newHouseStyle) =>
-                        setHouseStyle(newHouseStyle as typeof houseStyle)
-                      }
-                      themes={houseStyles}
-                    />
-                  </div>
+              <div className="space-y-4 w-full max-w-sm">
+                <div className="flex mt-10 items-center space-x-3">
+                  <p className="text-left font-medium">
+                    Choose your house style
+                  </p>
+                </div>
+                <DropDown
+                  theme={houseStyle}
+                  setTheme={(newHouseStyle) =>
+                    setHouseStyle(newHouseStyle as typeof houseStyle)
+                  }
+                  themes={houseStyles}
+                />
+              </div>
 
-                  <div className="space-y-4 w-full max-w-sm">
-                    <div className="flex mt-10 items-center space-x-3">
-                      <p className="text-left font-medium">
-                        Choose your location
-                      </p>
-                    </div>
-                    <DropDown
-                      theme={location}
-                      setTheme={(newLocation) =>
-                        setLocation(newLocation as typeof location)
-                      }
-                      themes={locations}
-                    />
-                  </div>
+              <div className="space-y-4 w-full max-w-sm">
+                <div className="flex mt-10 items-center space-x-3">
+                  <p className="text-left font-medium">Choose your location</p>
+                </div>
+                <DropDown
+                  theme={location}
+                  setTheme={(newLocation) =>
+                    setLocation(newLocation as typeof location)
+                  }
+                  themes={locations}
+                />
+              </div>
 
-                  <div className="space-y-4 w-full max-w-sm">
-                    <div className="flex mt-10 items-center space-x-3">
-                      <p className="text-left font-medium">
-                        Choose your house material
-                      </p>
-                    </div>
-                    <DropDown
-                      theme={material}
-                      setTheme={(newMaterial) =>
-                        setMaterial(newMaterial as typeof material)
-                      }
-                      themes={materials}
-                    />
-                  </div>
+              <div className="space-y-4 w-full max-w-sm">
+                <div className="flex mt-10 items-center space-x-3">
+                  <p className="text-left font-medium">
+                    Choose your house material
+                  </p>
+                </div>
+                <DropDown
+                  theme={material}
+                  setTheme={(newMaterial) =>
+                    setMaterial(newMaterial as typeof material)
+                  }
+                  themes={materials}
+                />
+              </div>
 
-                  <div className="space-y-4 w-full max-w-sm">
-                    <div className="flex mt-10 items-center space-x-3">
-                      <p className="text-left font-medium">Choose the season</p>
-                    </div>
-                    <DropDown
-                      theme={season}
-                      setTheme={(newSeason) =>
-                        setSeason(newSeason as typeof season)
-                      }
-                      themes={seasons}
-                    />
-                  </div>
+              <div className="space-y-4 w-full max-w-sm">
+                <div className="flex mt-10 items-center space-x-3">
+                  <p className="text-left font-medium">Choose the season</p>
+                </div>
+                <DropDown
+                  theme={season}
+                  setTheme={(newSeason) =>
+                    setSeason(newSeason as typeof season)
+                  }
+                  themes={seasons}
+                />
+              </div>
 
-                  <div className="mt-4 w-full max-w-sm">
+              {/* <div className="mt-4 w-full max-w-sm">
                     <div className="flex mt-6 w-96 items-center space-x-3">
                       <p className="text-left font-medium">
                         Upload a picture of your sketch
                       </p>
                     </div>
-                  </div>
-                </>
-              ) : null}
-              {restoredImage && (
+                  </div> */}
+            </>
+          ) : null}
+          {/* {restoredImage && (
                 <div>
                   Here's your {houseStyle} {material} {location} house in{" "}
                   {season}.
                 </div>
-              )}
-              <div
-                className={`${
-                  restoredLoaded ? "visible mt-6 -ml-8" : "invisible"
-                }`}
-              >
-                <Toggle
-                  className={`${restoredLoaded ? "visible mb-6" : "invisible"}`}
-                  sideBySide={sideBySide}
-                  setSideBySide={(newVal) => setSideBySide(newVal)}
-                />
-              </div>
-              {restoredLoaded && sideBySide && (
-                <CompareSlider
-                  original={originalPhoto!}
-                  restored={restoredImage!}
-                />
-              )}
-              {!originalPhoto && <UploadDropZone />}
+              )} */}
+          <div
+            className={`${restoredLoaded ? "visible mt-6 -ml-8" : "invisible"}`}
+          >
+            <Toggle
+              className={`${restoredLoaded ? "visible mb-6" : "invisible"}`}
+              sideBySide={sideBySide}
+              setSideBySide={(newVal) => setSideBySide(newVal)}
+            />
+          </div>
+          {restoredLoaded && sideBySide && (
+            <CompareSlider
+              original={originalPhoto!}
+              restored={restoredImage!}
+            />
+          )}
+          {!originalPhoto && <UploadDropZone />}
 
-              {originalPhoto && !restoredImage && (
-                <Image
-                  alt="original photo"
-                  src={originalPhoto}
-                  className="rounded-2xl h-96"
-                  width={475}
-                  height={475}
-                />
-              )}
-
-              {restoredImage && originalPhoto && !sideBySide && (
-                <div className="flex sm:space-x-4 sm:flex-row flex-col">
-                  <div>
-                    <h2 className="mb-1 font-medium text-lg">Original Room</h2>
-                    <Image
-                      alt="original photo"
-                      src={originalPhoto}
-                      className="rounded-2xl relative w-full h-96"
-                      width={475}
-                      height={475}
-                    />
-                  </div>
-                  <div className="sm:mt-0 mt-8">
-                    <h2 className="mb-1 font-medium text-lg">Generated Room</h2>
-                    <a href={restoredImage} target="_blank" rel="noreferrer">
-                      <Image
-                        alt="restored photo"
-                        src={restoredImage}
-                        className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in w-full h-96"
+          {originalPhoto && !restoredImage && (
+            <img
+              alt="original photo"
+              src={originalPhoto}
+              className="rounded-2xl "
+              width={475}
+              // height={475}
+            />
+          )}
+          {!restoredImage ? (
+            <button
+              onClick={() => {
+                originalPhoto
+                  ? generatePhoto(originalPhoto)
+                  : console.log("no photo");
+              }}
+              className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition w-full"
+            >
+              Generate my house
+            </button>
+          ) : null}
+        </div>
+        <div className="lg:w-2/3">
+          {" "}
+          <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
+            {/* <ResizablePanel> */}
+            <AnimatePresence mode="wait">
+              <motion.div className="flex justify-between items-center w-full flex-col mt-4">
+                {restoredImage && originalPhoto && !sideBySide && (
+                  <div className="flex sm:space-x-4 sm:flex-row flex-col">
+                    <div>
+                      <h2 className="mb-1 font-medium text-lg">
+                        Original Room
+                      </h2>
+                      <img
+                        alt="original photo"
+                        src={originalPhoto}
+                        className="rounded-2xl relative w-full "
                         width={475}
-                        height={475}
-                        onLoadingComplete={() => setRestoredLoaded(true)}
+                        // height={475}
                       />
-                    </a>
-                  </div>
-                </div>
-              )}
-              {!restoredImage ? (
-                <button
-                  onClick={() => {
-                    originalPhoto
-                      ? generatePhoto(originalPhoto)
-                      : console.log("no photo");
-                  }}
-                  className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
-                >
-                  Generate my house
-                </button>
-              ) : null}
-              {loading && (
-                <button
-                  disabled
-                  className="bg-blue-500 rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 w-40"
-                >
-                  <span className="pt-4">
-                    <LoadingDots color="white" style="large" />
-                  </span>
-                </button>
-              )}
-              {error && (
-                <div
-                  className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mt-8"
-                  role="alert"
-                >
-                  <span className="block sm:inline">{error}</span>
-                </div>
-              )}
-              <div className="flex space-x-2 justify-center">
-                {restoredImage && !loading && (
-                  <div className="space-x-2">
-                    <button
-                      onClick={() => setEdit(!edit)}
-                      className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
-                    >
-                      Edit options
-                    </button>
-                    <button
-                      onClick={() => {originalPhoto ? 
-                        generatePhoto(originalPhoto) : null
-                      }}
-                      className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
-                    >
-                      Regenerate
-                    </button>
-                    <button
-                      onClick={() => {
-                        setOriginalPhoto(null);
-                        setRestoredImage(null);
-                        setRestoredLoaded(false);
-                        setEdit(true);
-                        setError(null);
-                      }}
-                      className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
-                    >
-                      New house
-                    </button>
+                    </div>
+                    <div className="sm:mt-0 mt-8">
+                      <h2 className="mb-1 font-medium text-lg">
+                        Generated Room
+                      </h2>
+                      <a href={restoredImage} target="_blank" rel="noreferrer">
+                        <img
+                          alt="restored photo"
+                          src={restoredImage}
+                          className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in w-full "
+                          width={475}
+                          // height={475}
+                          onLoad={() => setRestoredLoaded(true)}
+                        />
+                      </a>
+                    </div>
                   </div>
                 )}
-                {restoredLoaded && (
+                {loading && (
                   <button
-                    onClick={() => {
-                      downloadPhoto(
-                        restoredImage!,
-                        appendNewToName(photoName!)
-                      );
-                    }}
-                    className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
+                    disabled
+                    className="bg-blue-500 rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 w-40"
                   >
-                    Download Generated Room
+                    <span className="pt-4">
+                      <LoadingDots color="white" style="large" />
+                    </span>
                   </button>
                 )}
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </ResizablePanel>
-      </main>
-      <Footer />
+                {error && (
+                  <div
+                    className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mt-8"
+                    role="alert"
+                  >
+                    <span className="block sm:inline">{error}</span>
+                  </div>
+                )}
+                <div className="flex space-x-2 justify-center">
+                  {restoredImage && !loading && (
+                    <div className="space-x-2">
+                      <button
+                        onClick={() => setEdit(!edit)}
+                        className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
+                      >
+                        Edit options
+                      </button>
+                      <button
+                        onClick={() => {
+                          originalPhoto ? generatePhoto(originalPhoto) : null;
+                        }}
+                        className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
+                      >
+                        Regenerate
+                      </button>
+                      <button
+                        onClick={() => {
+                          setOriginalPhoto(null);
+                          setRestoredImage(null);
+                          setRestoredLoaded(false);
+                          setEdit(true);
+                          setError(null);
+                        }}
+                        className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
+                      >
+                        Upload New Image
+                      </button>
+                    </div>
+                  )}
+                  {restoredLoaded && (
+                    <button
+                      onClick={() => {
+                        downloadPhoto(
+                          restoredImage!,
+                          appendNewToName(photoName!)
+                        );
+                      }}
+                      className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
+                    >
+                      Download Generated Image
+                    </button>
+                  )}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+            {/* </ResizablePanel> */}
+          </main>
+        </div>
+      </div>
+
+      {/* <Footer /> */}
     </div>
   );
 }
