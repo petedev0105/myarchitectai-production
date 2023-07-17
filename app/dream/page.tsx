@@ -130,8 +130,10 @@ function page() {
       <Header />
 
       <div className="border-t lg:flex">
-        <div className="lg:w-1/3 border-r p-7">
-          <div className="flex justify-between w-full">
+        <div className="lg:w-1/3 border-r p-7 space-y-5">
+        <span className="font-bold text-2xl">Exterior Architecture Design Studio</span>
+          <div className="flex justify-between w-full pb-5">
+         
             <span className="font-bold">Upload Image</span>
             {!originalPhoto ? null : (
               <div className="cursor-pointer" onClick={() => newImage()}>
@@ -211,7 +213,7 @@ function page() {
             Generate my house
           </button>
         </div>
-        <div className="lg:w-2/3 p-7">
+        <div className="lg:w-2/3 p-7 space-y-5">
           <div>
             <span className="font-bold">Generated Image</span>
           </div>
@@ -234,7 +236,7 @@ function page() {
                     //   alt="restored photo"
                       src={restoredImage}
                     //   className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in w-full "
-                      width={475}
+                      width={600}
                       onLoad={() => setRestoredLoaded(true)}
                     />
                   </a>
