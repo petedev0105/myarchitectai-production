@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     }
   }
 
-  const { imageUrl } = await request.json();
+  const { imageUrl, lighting, interiorStyle } = await request.json();
 
   // POST request to Replicate to start the image restoration generation process
   let startResponse = await fetch("https://api.replicate.com/v1/predictions", {
@@ -48,7 +48,7 @@ export async function POST(request: Request) {
         "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
       input: {
         image: imageUrl,
-        prompt: `midcentury modern interior design, natural lighting, beautiful, exclusive, expensive, breathtaking, 8K, ultrarealistic`,
+        prompt: `${interiorStyle} interior design, ${lighting}, beautiful, exclusive, expensive, breathtaking, 8K, ultrarealistic`,
         a_prompt:
           "ultrarealistic",
         n_prompt:

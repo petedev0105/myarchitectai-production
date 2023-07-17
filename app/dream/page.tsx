@@ -131,10 +131,19 @@ function page() {
 
       <div className="border-t lg:flex">
         <div className="lg:w-1/3 border-r p-7 space-y-5">
-        <span className="font-bold text-2xl">Exterior Architecture Design Studio</span>
+          <span className="font-bold text-2xl underline">
+            Exterior Architecture Design Studio
+          </span>
+          <div>
+            <span className="text-stone-600 text-sm">
+              Our AI-powered app automates the process of remodeling and
+              revisualizing scenes. Simply upload your sketches or photos, and
+              watch as the app transforms them into stunning designs in various
+              styles and preferences.
+            </span>
+          </div>
           <div className="flex justify-between w-full pb-5">
-         
-            <span className="font-bold">Upload Image</span>
+            <span className="font-bold text-stone-600">Upload Image</span>
             {!originalPhoto ? null : (
               <div className="cursor-pointer" onClick={() => newImage()}>
                 <span className="underline">New image</span>
@@ -143,17 +152,17 @@ function page() {
           </div>
           {!originalPhoto && <UploadDropZone />}
           {originalPhoto && (
-            <img
+            <Image
               alt="original photo"
               src={originalPhoto}
-              className="rounded-2xl "
+              //   className="rounded-2xl "
               // height={475}
             />
           )}
 
           <div className="space-y-4 w-full ">
             <div className="flex mt-10 items-center space-x-3">
-              <p className="text-left font-bold font-bold">
+              <p className="text-left font-bold font-bold text-stone-600">
                 Choose your house style
               </p>
             </div>
@@ -167,7 +176,7 @@ function page() {
           </div>
 
           <div className="space-y-4 w-full ">
-            <div className="flex mt-10 items-center space-x-3">
+            <div className="flex mt-10 items-center space-x-3 text-stone-600">
               <p className="text-left font-bold">Choose your location</p>
             </div>
             <DropDown
@@ -180,7 +189,7 @@ function page() {
           </div>
 
           <div className="space-y-4 w-full ">
-            <div className="flex mt-10 items-center space-x-3">
+            <div className="flex mt-10 items-center space-x-3 text-stone-600">
               <p className="text-left font-bold">Choose your house material</p>
             </div>
             <DropDown
@@ -193,7 +202,7 @@ function page() {
           </div>
 
           <div className="space-y-4 w-full">
-            <div className="flex mt-10 items-center space-x-3">
+            <div className="flex mt-10 items-center space-x-3 text-stone-600">
               <p className="text-left font-bold">Choose the season</p>
             </div>
             <DropDown
@@ -218,24 +227,24 @@ function page() {
             <span className="font-bold">Generated Image</span>
           </div>
           {loading && (
-                  <button
-                    disabled
-                    className="bg-blue-500 rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 w-40"
-                  >
-                    <span className="pt-4">
-                      <LoadingDots color="white" style="large" />
-                    </span>
-                  </button>
-                )}
+            <button
+              disabled
+              className="bg-blue-500 rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 w-40"
+            >
+              <span className="pt-4">
+                <LoadingDots color="white" style="large" />
+              </span>
+            </button>
+          )}
           <div>
             {restoredImage && originalPhoto && !sideBySide && (
               <div className="flex sm:space-x-4 sm:flex-row flex-col">
                 <div className="sm:mt-0 mt-8">
-                  <a >
+                  <a>
                     <Image
-                    //   alt="restored photo"
+                      //   alt="restored photo"
                       src={restoredImage}
-                    //   className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in w-full "
+                      //   className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in w-full "
                       width={600}
                       onLoad={() => setRestoredLoaded(true)}
                     />

@@ -17,7 +17,7 @@ export default function HomePage() {
           <div className="lg:w-1/2 lg:text-left space-y-7">
             <div>
               <span className="font-bold text-4xl">
-                Visualize your architectural sketches in seconds
+                Visualize your architectural sketches in <span className="underline">seconds</span>
               </span>
             </div>
             <div>

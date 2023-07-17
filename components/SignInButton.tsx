@@ -2,6 +2,7 @@
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { Menu } from "@headlessui/react";
 
 function SignInButton() {
   const { data: session } = useSession();
@@ -14,21 +15,23 @@ function SignInButton() {
     return (
       <div className="space-x-5 flex items-center">
         <div>
-            <Link href={'/dream-interior'}><span className="">Interior</span></Link>
+            <Link href={'/dream-interior'}><span className="font-bold text-stone-600">Interior</span></Link>
           
         </div>
         <div>
-            <Link href={'/dream'}><span className="">Exterior</span></Link>
+            <Link href={'/dream'}><span className="font-bold text-stone-600">Exterior</span></Link>
           
         </div>
-        <button className="text-red-500" onClick={() => signOut()}>
+        {/* <button className="text-red-500" onClick={() => signOut()}>
           Sign out
-        </button>
-        <span>{session.user.name}</span>
+        </button> */}
+        {/* <span>{session.user.name}</span> */}
         <img
           src={session.user.image ?? ""}
           className="rounded-full h-10 w-10"
         />
+
+        
       </div>
     );
   }
@@ -40,6 +43,7 @@ function SignInButton() {
       >
         Sign in
       </button>
+      
     </div>
   );
 }

@@ -8,7 +8,7 @@ export default function Header() {
       <div>
         <Link href="/" className="flex space-x-2">
           <h1 className="text-xl font-bold ml-2 tracking-tight">
-            MyArchitectAI
+          🏠 MyArchitectAI
           </h1>
         </Link>
       </div>

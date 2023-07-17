@@ -26,6 +26,10 @@ import {
   materialType,
   locationType,
   seasonType,
+  lightingType,
+  lightings,
+  interiorStyleType,
+  interiorStyles,
 } from "../../utils/dropdownTypes";
 
 const uploader = Uploader({
@@ -71,6 +75,10 @@ function page() {
   const [material, setMaterial] = useState<materialType>("Wooden");
   const [location, setLocation] = useState<locationType>("Cliff");
 
+  const [interiorStyle, setInteriorStyle] =
+    useState<interiorStyleType>("Minimalist Haven");
+  const [lighting, setLighting] = useState<lightingType>("Natural");
+
   const [edit, setEdit] = useState(true);
   const [uploaded, setUploaded] = useState(false);
 
@@ -99,31 +107,31 @@ function page() {
     await new Promise((resolve) => setTimeout(resolve, 200));
     // setEdit(false);
     setLoading(true);
-    const res = await fetch("/generate-interior", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        imageUrl: fileUrl,
-        theme,
-        room,
-        location,
-        season,
-        houseStyle,
-        material,
-      }),
-    });
-
-    let newPhoto = await res.json();
-    if (res.status !== 200) {
-      setError(newPhoto);
-    } else {
-      setRestoredImage(newPhoto[1]);
+    try {
+      const res = await fetch("/generate-interior", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          imageUrl: fileUrl,
+          lighting,
+          interiorStyle,
+        }),
+      });
+      let newPhoto = await res.json();
+      if (res.status !== 200) {
+        setError(newPhoto);
+      } else {
+        setRestoredImage(newPhoto[1]);
+      }
+      setTimeout(() => {
+        setLoading(false);
+      }, 1300);
+    } catch (error) {
+        alert(error)
+        
     }
-    setTimeout(() => {
-      setLoading(false);
-    }, 1300);
   }
   return (
     <div className="px-10 m-auto">
@@ -131,11 +139,19 @@ function page() {
 
       <div className="border-t lg:flex">
         <div className="lg:w-1/3 border-r p-7 space-y-5">
-          <span className="font-bold text-2xl">
+          <span className="font-bold text-2xl underline">
             Interior Architecture Design Studio
           </span>
+          <div>
+            <span className="text-stone-600 text-sm">
+              Our AI-powered app automates the process of remodeling and
+              revisualizing scenes. Simply upload your sketches or photos, and
+              watch as the app transforms them into stunning designs in various
+              styles and preferences.
+            </span>
+          </div>
           <div className="flex justify-between w-full pb-5">
-            <span className="font-bold">Upload Image</span>
+            <span className="font-bold text-stone-600">Upload Image</span>
             {!originalPhoto ? null : (
               <div className="cursor-pointer" onClick={() => newImage()}>
                 <span className="underline">New image</span>
@@ -144,15 +160,40 @@ function page() {
           </div>
           {!originalPhoto && <UploadDropZone />}
           {originalPhoto && (
-            <img
+            <Image
               alt="original photo"
               src={originalPhoto}
-              className="rounded-2xl "
+              //   className="rounded-2xl "
               // height={475}
             />
           )}
 
-          
+          <div className="space-y-4 w-full ">
+            <div className="flex mt-10 items-center space-x-3 text-stone-600">
+              <p className="text-left font-bold">Choose your style</p>
+            </div>
+            <DropDown
+              theme={interiorStyle}
+              setTheme={(newInteriorStyle) =>
+                setInteriorStyle(newInteriorStyle as typeof interiorStyle)
+              }
+              themes={interiorStyles}
+            />
+          </div>
+
+          <div className="space-y-4 w-full ">
+            <div className="flex mt-10 items-center space-x-3 text-stone-600">
+              <p className="text-left font-bold">Choose your lighting</p>
+            </div>
+            <DropDown
+              theme={lighting}
+              setTheme={(newLighting) =>
+                setLighting(newLighting as typeof lighting)
+              }
+              themes={lightings}
+            />
+          </div>
+
           <button
             onClick={() => {
               originalPhoto
@@ -187,7 +228,7 @@ function page() {
                       //   alt="restored photo"
                       src={restoredImage}
                       //   className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in w-full "
-                      width={475}
+                      width={600}
                       onLoad={() => setRestoredLoaded(true)}
                     />
                   </a>

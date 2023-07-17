@@ -12,6 +12,8 @@ import {
   materialType,
   seasonType,
   locationType,
+  interiorStyleType,
+  lightingType,
 } from "../utils/dropdownTypes";
 
 function classNames(...classes: string[]) {
@@ -25,7 +27,9 @@ interface DropDownProps {
     | houseStyleType
     | materialType
     | seasonType
-    | locationType;
+    | interiorStyleType
+    | locationType
+    | lightingType;
   setTheme: (
     theme:
       | themeType
@@ -33,6 +37,8 @@ interface DropDownProps {
       | houseStyleType
       | materialType
       | seasonType
+      | interiorStyleType
+      | lightingType
       | locationType
   ) => void;
   themes:
@@ -41,6 +47,8 @@ interface DropDownProps {
     | houseStyleType[]
     | materialType[]
     | seasonType[]
+    | lightingType[]
+    | interiorStyleType[]
     | locationType[];
 }
 
@@ -72,10 +80,10 @@ export default function DropDown({ theme, setTheme, themes }: DropDownProps) {
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items
-          className="absolute left-0 z-10 mt-2 w-full origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none overflow-hidden"
+          className="absolute left-0 z-10 mt-2 w-full origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none overflow-hidden "
           key={theme}
         >
-          <div className="">
+          <div className="max-h-[250px] overflow-auto">
             {themes.map((themeItem) => (
               <Menu.Item key={themeItem}>
                 {({ active }) => (
