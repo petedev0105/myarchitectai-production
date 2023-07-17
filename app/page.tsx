@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SquigglyLines from "../components/SquigglyLines";
 import { useSession, signIn } from "next-auth/react";
+import QnA from "../components/QnA";
 
 export default function HomePage() {
   const { data: session } = useSession();
@@ -13,14 +14,14 @@ export default function HomePage() {
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20">
         <div className="lg:flex justify-between items-center w-full space-x-24">
-          <div className="lg:w-1/2 text-left space-y-5">
+          <div className="lg:w-1/2 lg:text-left space-y-7">
             <div>
               <span className="font-bold text-4xl">
                 Visualize your architectural sketches in seconds
               </span>
             </div>
             <div>
-              <span className="text-xl">
+              <span className="">
                 Take your hand-drawn sketches of buildings and instantly
                 transform them into breathtaking, photorealistic masterpieces.
               </span>
@@ -28,22 +29,33 @@ export default function HomePage() {
             <div>
               {session && session.user ? (
                 <Link
-                  className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-blue-500 transition"
+                  className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
                   href={"/dream"}
                 >
                   Build your dream home for free →
                 </Link>
               ) : (
                 <button
-                  className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-blue-500 transition"
+                  className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
                   onClick={() => signIn()}
                 >
                   Build your dream home for free →
                 </button>
               )}
             </div>
+
+            <div className="flex space-x-3 w-full items-center">
+              <div>
+                <img src="/img/star.png" width={70} />
+              </div>
+              
+              <div>
+                <span className="text-sm">Join 100+ happy home lovers</span>
+              </div>
+              
+            </div>
           </div>
-          <div className="lg:w-1/2">
+          <div className="lg:w-1/2 lg:pt-0 pt-10">
             <img src="/img/hero.webp" />
           </div>
         </div>
@@ -64,7 +76,161 @@ export default function HomePage() {
               </span>
             </div>
             <div>
-              <img src="/img/mid.webp" />
+              <img src="/img/mid.png" />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex justify-center items-center pt-48 w-full">
+          <div className="space-y-7">
+            <div>
+              <span className="font-bold text-4xl">
+                One platform for every need
+              </span>
+            </div>
+            <div>
+              <span>
+                MyArchitectureAI is a versatile platform that benefits
+                architects, interior designers, real estate agents, and home
+                lovers alike.
+              </span>
+            </div>
+            <div className="w-full">
+              <div className="lg:grid grid-cols-2 gap-10">
+                <div className="rounded-xl space-y-3 ">
+                  <div className="">
+                    <img
+                      className="h-48 bg-indigo-700 cover rounded-xl w-full object-cover"
+                      src={"/img/architects.jpg"}
+                      height={300}
+                      width={400}
+                    />
+                  </div>
+                  <div className="rounded-b-xl">
+                    <div className="py-3 space-y-2">
+                      <div>
+                        <span className="text-sm"></span>
+                      </div>
+                      <div className="flex space-x-3 items-center">
+                        <span className="font-bold text-2xl line-clamp-2 hover:underline">
+                          Architects
+                        </span>
+                      </div>
+                      <div className="flex space-x-3 items-center">
+                        <span className=" text-sm line-clamp-5 text-left">
+                          Design Exploration: MyArchitectureAI enables
+                          architects to visualize sketches in various styles,
+                          fostering quick iteration and experimentation for
+                          finding the ideal design solution. Time Efficiency:
+                          The platform automates remodeling, saving architects
+                          significant time while effortlessly generating
+                          multiple design options.
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>{" "}
+                <div className="rounded-xl space-y-3 ">
+                  <div className="">
+                    <img
+                      className="h-48 bg-indigo-700 cover rounded-xl w-full object-cover"
+                      src={"/img/interior-designers.jpg"}
+                      height={300}
+                      width={400}
+                    />
+                  </div>
+                  <div className="rounded-b-xl">
+                    <div className="py-3 space-y-2">
+                      <div>
+                        <span className="text-sm"></span>
+                      </div>
+                      <div className="flex space-x-3 items-center">
+                        <span className="font-bold text-2xl line-clamp-2 hover:underline">
+                          Interior Designers
+                        </span>
+                      </div>
+                      <div className="flex space-x-3 items-center">
+                        <span className=" text-sm line-clamp-5 text-left">
+                          Style Exploration: By uploading images, designers can
+                          quickly explore different styles, facilitating
+                          creative exploration for unique and personalized
+                          designs. Client Presentation: AI-generated visuals
+                          enable designers to present multiple options to
+                          clients, aiding their decision-making process.
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>{" "}
+                <div className="rounded-xl space-y-3 ">
+                  <div className="">
+                    <img
+                      className="h-48 bg-indigo-700 cover rounded-xl w-full object-cover"
+                      src={"/img/real-estate-agents.jpg"}
+                      height={300}
+                      width={400}
+                    />
+                  </div>
+                  <div className="rounded-b-xl">
+                    <div className="py-3 space-y-2">
+                      <div>
+                        <span className="text-sm"></span>
+                      </div>
+                      <div className="flex space-x-3 items-center">
+                        <span className="font-bold text-2xl line-clamp-2 hover:underline">
+                          Real Estate Agents
+                        </span>
+                      </div>
+                      <div className="flex space-x-3 items-center">
+                        <span className=" text-sm line-clamp-5 text-left">
+                          Property Enhancement: MyArchitectureAI revitalizes
+                          property listings by remodeling scenes in various
+                          styles, attracting buyers with diverse preferences.
+                          Faster Sales: Visually appealing design options
+                          accelerate the sales process, allowing agents to
+                          present properties effectively and reduce physical
+                          visits.
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>{" "}
+                <div className="rounded-xl space-y-3 ">
+                  <div className="">
+                    <img
+                      className="h-48 bg-indigo-700 cover rounded-xl w-full object-cover"
+                      src={"/img/home-lovers.jpg"}
+                      height={300}
+                      width={400}
+                    />
+                  </div>
+                  <div className="rounded-b-xl">
+                    <div className="py-3 space-y-2">
+                      <div>
+                        <span className="text-sm"></span>
+                      </div>
+                      <div className="flex space-x-3 items-center">
+                        <span className="font-bold text-2xl line-clamp-2 hover:underline">
+                          Home Lovers
+                        </span>
+                      </div>
+                      <div className="flex space-x-3 items-center">
+                        <span className=" text-sm line-clamp-5 text-left">
+                          Design Inspiration: MyArchitectureAI sparks
+                          inspiration by showcasing different styles, helping
+                          users discover new design directions for their spaces.
+                          Personalization: Users can visualize their spaces in
+                          various styles, creating a unique living environment
+                          that reflects their preferences. Cost Savings: By
+                          virtually remodeling spaces, MyArchitectureAI helps
+                          users avoid costly design mistakes, saving time and
+                          money in the renovation process.
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>{" "}
+              </div>
             </div>
           </div>
         </div>
@@ -88,27 +254,78 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="flex justify-center items-center pt-48 space-x-7">
+        <div className="flex justify-center items-center pt-48">
+          <div className="space-y-5">
+            <div>
+              <span className="font-bold text-4xl">
+                Unlimited designs, for your unlimited imagination
+              </span>
+            </div>
+            <div>
+              <span>
+                Take your hand-drawn sketches of buildings and instantly
+                transform them into breathtaking, photorealistic masterpieces.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="lg:flex items-center pt-12 lg:space-x-7 lg:space-y-0 space-y-10">
           <div className="shadow-xl border rounded-xl p-12 space-y-10">
             <div className="space-y-12">
               <div className="">
-                <span className="text-indigo-700 font-bold">
-                  Pro
-                </span>
+                <span className=" font-bold">Hobby</span>
               </div>
-              <div className="flex space-x-5 items-center justify-between">
-                
+              <div className="flex space-x-5 items-center justify-center">
                 <div>
-                  <span className="text-3xl font-bold text-indigo-800">
-                    <span className="text-6xl ">19.</span>00
-                  </span><span className="font-bold text-indigo-400">
-                    /hour
-                  </span>
+                  <span className="text-4xl font-bold ">Free</span>
                 </div>
               </div>
             </div>
 
             <div className="space-y-10">
+              <div className="space-y-3 ">
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">3 images every month</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Access to all future updates</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Request new features</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Customer support</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Watermarked</span>
+                  </div>
+                </div>
+              </div>
               <div className="flex justify-center">
                 <Link href="/signin">
                   <button
@@ -117,86 +334,75 @@ export default function HomePage() {
                     //     product: 47418,
                     //   });
                     // }}
-                    className="px-5 py-2 rounded-md border-2 border-indigo-700 font-bold text-indigo-700 text-center"
+                    className="px-5 py-2 rounded-md  font-bold  text-center bg-black text-white"
                   >
-                    First lesson on us
+                    Start for free
                   </button>
                 </Link>
-              </div>
-
-              <div className="space-y-3 text-xs">
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">1-on-1 Tutoring Lessons</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">Access to beginner subjects (10+)</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">
-                      Native / Bilingual English Speakers.
-                    </span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">
-                      Tutors with Excellent Results (6+, A)*
-                    </span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">First lesson on us. (30 minutes)</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
           <div className="shadow-xl border rounded-xl p-12 space-y-10">
             <div className="space-y-12">
-              <div className="text-center">
-                <span className="text-3xl text-indigo-700 font-bold">
-                  Navigator
-                </span>
+              <div className="">
+                <span className=" font-bold">Pro</span>
               </div>
-              <div className="flex space-x-5 items-center justify-between">
+              <div className="flex space-x-5 items-center justify-center">
                 <div>
-                  <span className="font-bold text-indigo-400">USD</span>
-                </div>
-                <div>
-                  <span className="text-3xl font-bold text-indigo-800">
-                    <span className="text-6xl ">19.</span>00
+                  <span className="font-bold ">
+                    <span className="text-4xl">19.99</span>
                   </span>
-                </div>
-                <div>
-                  <span className="font-bold text-indigo-400">
-                    /hour
-                  </span>
+                  <span className="">/month</span>
                 </div>
               </div>
             </div>
 
             <div className="space-y-10">
+              <div className="space-y-3 ">
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">
+                      <span className="font-bold underline">200</span> images
+                      every month
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Access to all future updates</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Request new features</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Customer support</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">No watermark</span>
+                  </div>
+                </div>
+              </div>
               <div className="flex justify-center">
                 <Link href="/signin">
                   <button
@@ -205,86 +411,75 @@ export default function HomePage() {
                     //     product: 47418,
                     //   });
                     // }}
-                    className="px-5 py-2 rounded-md border-2 border-indigo-700 font-bold text-indigo-700 text-center"
+                    className="px-5 py-2 rounded-md  font-bold  text-center bg-black text-white"
                   >
-                    First lesson on us
+                    Build your dream
                   </button>
                 </Link>
-              </div>
-
-              <div className="space-y-3 text-xs">
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">1-on-1 Tutoring Lessons</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">Access to beginner subjects (10+)</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">
-                      Native / Bilingual English Speakers.
-                    </span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">
-                      Tutors with Excellent Results (6+, A)*
-                    </span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">First lesson on us. (30 minutes)</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
           <div className="shadow-xl border rounded-xl p-12 space-y-10">
             <div className="space-y-12">
-              <div className="text-center">
-                <span className="text-3xl text-indigo-700 font-bold">
-                  Navigator
-                </span>
+              <div className="">
+                <span className=" font-bold">Business</span>
               </div>
-              <div className="flex space-x-5 items-center justify-between">
+              <div className="flex space-x-5 items-center justify-center">
                 <div>
-                  <span className="font-bold text-indigo-400">USD</span>
-                </div>
-                <div>
-                  <span className="text-3xl font-bold text-indigo-800">
-                    <span className="text-6xl ">19.</span>00
+                  <span className="font-bold ">
+                    <span className="text-4xl">29.99</span>
                   </span>
-                </div>
-                <div>
-                  <span className="font-bold text-indigo-400">
-                    /hour
-                  </span>
+                  <span className="">/month</span>
                 </div>
               </div>
             </div>
 
             <div className="space-y-10">
+              <div className="space-y-3 ">
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">
+                      <span className="font-bold underline">Unlimited</span>{" "}
+                      images every month
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Access to all future updates</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Request new features</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Customer support</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">No watermark</span>
+                  </div>
+                </div>
+              </div>
               <div className="flex justify-center">
                 <Link href="/signin">
                   <button
@@ -293,61 +488,32 @@ export default function HomePage() {
                     //     product: 47418,
                     //   });
                     // }}
-                    className="px-5 py-2 rounded-md border-2 border-indigo-700 font-bold text-indigo-700 text-center"
+                    className="px-5 py-2 rounded-md  font-bold  text-center bg-black text-white"
                   >
-                    First lesson on us
+                    Build your dream
                   </button>
                 </Link>
               </div>
-
-              <div className="space-y-3 text-xs">
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">1-on-1 Tutoring Lessons</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">Access to beginner subjects (10+)</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">
-                      Native / Bilingual English Speakers.
-                    </span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">
-                      Tutors with Excellent Results (6+, A)*
-                    </span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">First lesson on us. (30 minutes)</span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
+        </div>
+
+        <div className="lg:flex justify-between items-center py-24 w-full lg:space-x-12">
+          <div className="lg:w-1/2 space-y-5">
+            <div className="text-left">
+              <span className="text-3xl font-bold">
+                Frequently asked questions
+              </span>
+            </div>
+            <div className="text-left">
+              <span>
+                Answers to common questions about MyArchitectureAI's services
+                for architects, interior desginers, real estate agents and home
+                lovers.
+              </span>
+            </div>
+          </div>
+          <QnA />
         </div>
       </main>
       <Footer />

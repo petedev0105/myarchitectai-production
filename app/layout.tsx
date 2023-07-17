@@ -2,11 +2,14 @@ import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
 import "../styles/globals.css";
 import Providers from "../components/Providers";
+import {Inter_Tight} from 'next/font/google'
 
 let title = "Dream Room Generator";
 let description = "Generate your dream room in seconds.";
 let ogimage = "https://roomgpt-demo.vercel.app/og-image.png";
 let sitename = "roomGPT.io";
+
+const inter = Inter_Tight({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title,
@@ -38,7 +41,7 @@ export default function RootLayout({
 }) {
   return (
       <html lang="en">
-        <body className="">
+        <body className={inter.className}>
           <Providers>
             {children}
           </Providers>

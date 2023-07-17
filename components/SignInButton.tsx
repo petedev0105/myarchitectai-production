@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 
 function SignInButton() {
   const { data: session } = useSession();
@@ -12,10 +13,15 @@ function SignInButton() {
   if (session && session.user) {
     return (
       <div className="space-x-5 flex items-center">
-        <button
-          className="text-red-500"
-          onClick={() => signOut()}
-        >
+        <div>
+            <Link href={'/dream-interior'}><span className="">Interior</span></Link>
+          
+        </div>
+        <div>
+            <Link href={'/dream'}><span className="">Exterior</span></Link>
+          
+        </div>
+        <button className="text-red-500" onClick={() => signOut()}>
           Sign out
         </button>
         <span>{session.user.name}</span>
