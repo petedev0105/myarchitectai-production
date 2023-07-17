@@ -1,6 +1,6 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef, ChangeEvent } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
 import { CompareSlider } from "../../components/CompareSlider";
@@ -13,6 +13,7 @@ import appendNewToName from "../../utils/appendNewToName";
 import downloadPhoto from "../../utils/downloadPhoto";
 import DropDown from "../../components/DropDown";
 import { Image } from "antd";
+import ImageUploading from "react-images-uploading";
 import {
   roomType,
   rooms,
@@ -74,6 +75,33 @@ function page() {
   const [edit, setEdit] = useState(true);
   const [uploaded, setUploaded] = useState(false);
 
+  const [imageURL, setImageURL] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleImageUpload = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    const reader = new FileReader();
+
+    reader.onloadstart = () => {
+      setIsLoading(true);
+    };
+
+    reader.onload = () => {
+      setImageURL(reader.result as string);
+      setOriginalPhoto(reader.result as string);
+      setIsLoading(false);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+
   function newImage() {
     setOriginalPhoto("");
   }
@@ -116,6 +144,8 @@ function page() {
     });
 
     let newPhoto = await res.json();
+
+    console.log(newPhoto);
     if (res.status !== 200) {
       setError(newPhoto);
     } else {
@@ -150,14 +180,27 @@ function page() {
               </div>
             )}
           </div>
-          {!originalPhoto && <UploadDropZone />}
-          {originalPhoto && (
-            <Image
-              alt="original photo"
-              src={originalPhoto}
-              //   className="rounded-2xl "
-              // height={475}
-            />
+          {/* {!originalPhoto && <UploadDropZone />} */}
+          {/* Image uploader */}
+
+          {originalPhoto ? (
+            <Image src={originalPhoto} />
+          ) : (
+            <div
+              className="flex justicy-center p-10 w-full border-2 border-dashed rounded-md text-center cursor-pointer"
+              onClick={handleImageUpload}
+            >
+              <div className="text-center">
+                <span>Click or drag and drop to upload an image</span>
+              </div>
+              <input
+                type="file"
+                accept="image/*"
+                ref={fileInputRef}
+                onChange={handleFileChange}
+                style={{ display: "none" }}
+              />
+            </div>
           )}
 
           <div className="space-y-4 w-full ">

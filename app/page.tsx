@@ -558,7 +558,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="lg:flex justify-between py-24 w-full lg:space-x-12">
+        <div className="lg:flex justify-between py-24 w-full lg:space-x-12 pt-48">
           <div className="lg:w-1/2 space-y-5">
             <div className="text-left">
               <span className="text-3xl font-bold">
