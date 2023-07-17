@@ -101,7 +101,13 @@ function page() {
 
     reader.onload = () => {
       setImageURL(reader.result as string);
-      setOriginalPhoto(reader.result as string);
+      const re = reader.result;
+      if (typeof reader.result === "string") {
+        setOriginalPhoto(reader.result.replace("raw", "thumbnail"));
+      } else {
+        // Handle the case when reader.result is not a string
+      }
+
       setIsLoading(false);
     };
 
@@ -135,6 +141,7 @@ function page() {
     await new Promise((resolve) => setTimeout(resolve, 200));
     // setEdit(false);
     setLoading(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
     try {
       const res = await fetch("/generate-interior", {
         method: "POST",
@@ -157,8 +164,7 @@ function page() {
         setLoading(false);
       }, 1300);
     } catch (error) {
-        alert(error)
-        
+      alert(error);
     }
   }
   return (
@@ -198,7 +204,7 @@ function page() {
               </div>
               <input
                 type="file"
-                accept="image/*"
+                accept="image/jpeg, image/png"
                 ref={fileInputRef}
                 onChange={handleFileChange}
                 style={{ display: "none" }}
@@ -258,7 +264,7 @@ function page() {
             </button>
           )}
           <div>
-            {restoredImage && originalPhoto && !sideBySide && (
+            {restoredImage && originalPhoto && !sideBySide && !loading && (
               <div className="flex sm:space-x-4 sm:flex-row flex-col">
                 <div className="sm:mt-0 mt-8">
                   <a>

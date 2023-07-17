@@ -78,6 +78,38 @@ function page() {
   const [imageURL, setImageURL] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [highlight, setHighlight] = useState(false);
+
+  const handleDragEnter = (event: any) => {
+    event.preventDefault();
+    setHighlight(true);
+  };
+
+  const handleDragOver = (event: any) => {
+    event.preventDefault();
+  };
+
+  const handleDragLeave = () => {
+    setHighlight(false);
+  };
+
+  const handleDrop = (event: any) => {
+    event.preventDefault();
+    setHighlight(false);
+
+    const files = event.dataTransfer.files;
+
+    // Handle the dropped files
+    for (const file of files) {
+      // Perform further processing (e.g., display the image)
+      // displayImage(file);
+      // setOriginalPhoto(file);
+      const reader = new FileReader();
+      reader.onload = function (event: any) {
+        alert(reader.readAsDataURL(file));
+      };
+    }
+  };
 
   const handleImageUpload = () => {
     fileInputRef.current?.click();
@@ -145,11 +177,16 @@ function page() {
 
     let newPhoto = await res.json();
 
+    // let responseText = await res.text();
+    // console.log(responseText);
+    // let newPhoto = JSON.parse(responseText);
+
     console.log(newPhoto);
     if (res.status !== 200) {
       setError(newPhoto);
     } else {
       setRestoredImage(newPhoto[1]);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     setTimeout(() => {
       setLoading(false);
@@ -187,15 +224,22 @@ function page() {
             <Image src={originalPhoto} />
           ) : (
             <div
-              className="flex justicy-center p-10 w-full border-2 border-dashed rounded-md text-center cursor-pointer"
+              // className={`flex justicy-center p-10 w-full border-2 border-dashed rounded-md text-center cursor-pointer `}
+              className={`border-2 border-dashed p-10 cursor-pointer mt-4 ${
+                highlight ? "bg-blue-100" : ""
+              }`}
               onClick={handleImageUpload}
+              onDragEnter={handleDragEnter}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
             >
               <div className="text-center">
                 <span>Click or drag and drop to upload an image</span>
               </div>
               <input
                 type="file"
-                accept="image/*"
+                accept="image/jpeg, image/png"
                 ref={fileInputRef}
                 onChange={handleFileChange}
                 style={{ display: "none" }}
@@ -280,7 +324,7 @@ function page() {
             </button>
           )}
           <div>
-            {restoredImage && originalPhoto && !sideBySide && (
+            {restoredImage && originalPhoto && !sideBySide && !loading && (
               <div className="flex sm:space-x-4 sm:flex-row flex-col">
                 <div className="sm:mt-0 mt-8">
                   <a>

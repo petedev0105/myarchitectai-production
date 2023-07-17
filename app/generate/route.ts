@@ -4,13 +4,13 @@ import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 
 // Create a new ratelimiter, that allows 5 requests per 24 hours
-const ratelimit = redis
-  ? new Ratelimit({
-      redis: redis,
-      limiter: Ratelimit.fixedWindow(5, "1440 m"),
-      analytics: true,
-    })
-  : undefined;
+// const ratelimit = redis
+//   ? new Ratelimit({
+//       redis: redis,
+//       limiter: Ratelimit.fixedWindow(5, "1440 m"),
+//       analytics: true,
+//     })
+//   : undefined;
 
 export async function POST(request: Request) {
   // Rate Limiter Code
@@ -34,7 +34,8 @@ export async function POST(request: Request) {
   //   }
   // }
 
-  const { imageUrl, theme, room, location, season, material, houseStyle } = await request.json();
+  const { imageUrl, theme, room, location, season, material, houseStyle } =
+    await request.json();
 
   // POST request to Replicate to start the image restoration generation process
   let startResponse = await fetch("https://api.replicate.com/v1/predictions", {
@@ -49,8 +50,7 @@ export async function POST(request: Request) {
       input: {
         image: imageUrl,
         prompt: `Editorial photo from Dwell of a ${houseStyle} house, the season is ${season}, the house's location is${location}, the main material of the house is ${material}, with sunlight reflecting off the surface, brilliant architecture, Set your professional camera to manual mode, f/16, ISO 200, and use a wide-angle lens to capture the grandeur of the surroundings`,
-        a_prompt:
-          "ultrarealistic",
+        a_prompt: "ultrarealistic",
         n_prompt:
           "blurry, details are low, overlapping, grainy, multiple angles, deformed structures, weird colors, unnatural, unrealistic, humans, unrealistic sky, people, animals, cartoon, anime, painting, drawing, sketch",
       },

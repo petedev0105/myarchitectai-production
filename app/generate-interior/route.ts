@@ -48,11 +48,11 @@ export async function POST(request: Request) {
         "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
       input: {
         image: imageUrl,
-        prompt: `${interiorStyle} interior design, ${lighting}, beautiful, exclusive, expensive, breathtaking, 8K, ultrarealistic`,
+        prompt: `${interiorStyle} interior design, ${lighting} lighting, beautiful, exclusive, expensive, breathtaking, 8K, ultrarealistic`,
         a_prompt:
           "ultrarealistic",
         n_prompt:
-          "blurry, details are low, overlapping, grainy, multiple angles, deformed structures, weird colors, unnatural, unrealistic, humans,people, animals, cartoon, anime, painting, drawing, sketch",
+          "blurry, details are low, overlapping, grainy, multiple angles, deformed structures, unnatural, unrealistic, humans, people, animals, cartoon, anime, painting, drawing, sketch, text, logo",
       },
     }),
   });

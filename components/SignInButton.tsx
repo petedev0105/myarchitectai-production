@@ -7,10 +7,6 @@ import { Menu } from "@headlessui/react";
 function SignInButton() {
   const { data: session } = useSession();
 
-  if (session) {
-    console.log(session);
-  }
-
   if (session && session.user) {
     return (
       <div className="space-x-5 flex items-center">
