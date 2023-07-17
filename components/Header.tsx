@@ -4,7 +4,7 @@ import SignInButton from "./SignInButton";
 
 export default function Header() {
   return (
-    <header className=" xs:flex-row items-center w-full mt-5 pb-7 lg:px-0 px-5 border-gray-500 gap-2 flex justify-between space-x-10">
+    <header className=" xs:flex-row items-center w-full mt-5 pb-7 lg:px-0 px-5 gap-2 flex justify-between space-x-10">
       <div>
         <Link href="/" className="flex space-x-2">
           <h1 className="text-xl font-bold ml-2 tracking-tight">

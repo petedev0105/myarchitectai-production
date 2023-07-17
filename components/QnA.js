@@ -4,7 +4,7 @@ import { ChevronUpIcon } from "@heroicons/react/20/solid";
 export default function QnA() {
   return (
     <div className="w-full px-4">
-      <div className="mx-auto w-full rounded-2xl bg-white p-2 space-y-5">
+      <div className="mx-auto w-full rounded-2xl bg-white space-y-5">
         <Disclosure>
           {({ open }) => (
             <>

@@ -29,14 +29,14 @@ export default function HomePage() {
             <div>
               {session && session.user ? (
                 <Link
-                  className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
+                  className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
                   href={"/dream"}
                 >
                   Build your dream home for free →
                 </Link>
               ) : (
                 <button
-                  className="bg-blue-600 rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
+                  className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
                   onClick={() => signIn()}
                 >
                   Build your dream home for free →
@@ -48,11 +48,10 @@ export default function HomePage() {
               <div>
                 <img src="/img/star.png" width={70} />
               </div>
-              
+
               <div>
                 <span className="text-sm">Join 100+ happy home lovers</span>
               </div>
-              
             </div>
           </div>
           <div className="lg:w-1/2 lg:pt-0 pt-10">
@@ -63,7 +62,7 @@ export default function HomePage() {
         <div className="flex justify-cetner items-center pt-48">
           <div className="space-y-5">
             <div>
-              <span className="font-bold text-4xl">
+              <span className="font-bold text-3xl">
                 10x your architecture design output
               </span>
             </div>
@@ -78,13 +77,21 @@ export default function HomePage() {
             <div>
               <img src="/img/mid.png" />
             </div>
+            <div className="pt-12">
+              <Link
+                className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
+                href={"/dream"}
+              >
+                Build your dream home for free →
+              </Link>
+            </div>
           </div>
         </div>
 
         <div className="flex justify-center items-center pt-48 w-full">
-          <div className="space-y-7">
+          <div className="space-y-5">
             <div>
-              <span className="font-bold text-4xl">
+              <span className="font-bold text-3xl">
                 One platform for every need
               </span>
             </div>
@@ -235,10 +242,19 @@ export default function HomePage() {
           </div>
         </div>
 
+        <div className="pt-12">
+          <Link
+            className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
+            href={"/dream"}
+          >
+            Build your dream home for free →
+          </Link>
+        </div>
+
         <div className="flex justify-center items-center pt-48">
           <div className="space-y-5">
             <div>
-              <span className="font-bold text-4xl">
+              <span className="font-bold text-3xl">
                 Explore what others have built
               </span>
             </div>
@@ -253,11 +269,18 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
+        <div className="mt-12">
+          <Link
+            className="bg-black rounded-xl text-white font-medium px-4 py-3 hover:bg-blue-500 transition"
+            href={"/dream"}
+          >
+            Build your dream home for free →
+          </Link>
+        </div>
         <div className="flex justify-center items-center pt-48">
           <div className="space-y-5">
             <div>
-              <span className="font-bold text-4xl">
+              <span className="font-bold text-3xl">
                 Unlimited designs, for your unlimited imagination
               </span>
             </div>
@@ -272,7 +295,7 @@ export default function HomePage() {
 
         <div className="lg:flex items-center pt-12 lg:space-x-7 lg:space-y-0 space-y-10">
           <div className="shadow-xl border rounded-xl p-12 space-y-10">
-            <div className="space-y-12">
+            <div className="space-y-7">
               <div className="">
                 <span className=" font-bold">Hobby</span>
               </div>
@@ -322,12 +345,23 @@ export default function HomePage() {
                     <img src="/img/tick-tutor.png" height={20} width={20} />
                   </div>
                   <div>
+                    <span className="">Interior designs only</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
                     <span className="">Watermarked</span>
                   </div>
                 </div>
               </div>
               <div className="flex justify-center">
-                <Link href="/signin">
+                <Link
+                  href="https://myarchitectai.lemonsqueezy.com/checkout/buy/d7810a4c-988c-418b-838f-4a10ce0494ef"
+                  target="_blank"
+                >
                   <button
                     // onClick={() => {
                     //   Paddle.Checkout.open({
@@ -336,14 +370,14 @@ export default function HomePage() {
                     // }}
                     className="px-5 py-2 rounded-md  font-bold  text-center bg-black text-white"
                   >
-                    Start for free
+                    Start for free →
                   </button>
                 </Link>
               </div>
             </div>
           </div>
           <div className="shadow-xl border rounded-xl p-12 space-y-10">
-            <div className="space-y-12">
+            <div className="space-y-7">
               <div className="">
                 <span className=" font-bold">Pro</span>
               </div>
@@ -399,12 +433,25 @@ export default function HomePage() {
                     <img src="/img/tick-tutor.png" height={20} width={20} />
                   </div>
                   <div>
+                    <span className="">
+                      Interior designs + Exterior designs
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
                     <span className="">No watermark</span>
                   </div>
                 </div>
               </div>
               <div className="flex justify-center">
-                <Link href="/signin">
+                <Link
+                  href="https://myarchitectai.lemonsqueezy.com/checkout/buy/d7810a4c-988c-418b-838f-4a10ce0494ef"
+                  target="_blank"
+                >
                   <button
                     // onClick={() => {
                     //   Paddle.Checkout.open({
@@ -413,14 +460,14 @@ export default function HomePage() {
                     // }}
                     className="px-5 py-2 rounded-md  font-bold  text-center bg-black text-white"
                   >
-                    Build your dream
+                    Build your dream home →
                   </button>
                 </Link>
               </div>
             </div>
           </div>
           <div className="shadow-xl border rounded-xl p-12 space-y-10">
-            <div className="space-y-12">
+            <div className="space-y-7">
               <div className="">
                 <span className=" font-bold">Business</span>
               </div>
@@ -476,12 +523,25 @@ export default function HomePage() {
                     <img src="/img/tick-tutor.png" height={20} width={20} />
                   </div>
                   <div>
+                    <span className="">
+                      Interior designs + Exterior designs
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
                     <span className="">No watermark</span>
                   </div>
                 </div>
               </div>
               <div className="flex justify-center">
-                <Link href="/signin">
+                <Link
+                  href="https://myarchitectai.lemonsqueezy.com/checkout/buy/717a45d0-4fad-4990-a153-49bf6544683b"
+                  target="_blank"
+                >
                   <button
                     // onClick={() => {
                     //   Paddle.Checkout.open({
@@ -490,7 +550,7 @@ export default function HomePage() {
                     // }}
                     className="px-5 py-2 rounded-md  font-bold  text-center bg-black text-white"
                   >
-                    Build your dream
+                    Build your dream home →
                   </button>
                 </Link>
               </div>
@@ -498,7 +558,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="lg:flex justify-between items-center py-24 w-full lg:space-x-12">
+        <div className="lg:flex justify-between py-24 w-full lg:space-x-12">
           <div className="lg:w-1/2 space-y-5">
             <div className="text-left">
               <span className="text-3xl font-bold">
