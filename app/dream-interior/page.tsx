@@ -173,7 +173,7 @@ function page() {
       await new Promise((resolve) => setTimeout(resolve, 200));
       setLoading(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
-  
+
       const response = await fetch("/generate-interior", {
         method: "POST",
         headers: {
@@ -185,14 +185,18 @@ function page() {
           interiorStyle,
         }),
       });
-  
+
       if (!response.ok) {
         throw new Error("Failed to generate photo");
       }
-  
+
       const newPhoto = await response.json();
       console.log(newPhoto);
       setRestoredImage(newPhoto[1]);
+
+      setTimeout(() => {
+        setLoading(false);
+      }, 1300);
     } catch (error: any) {
       setError((error as Error).message);
     } finally {

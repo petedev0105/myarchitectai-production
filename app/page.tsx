@@ -384,7 +384,7 @@ export default function HomePage() {
               <div className="flex space-x-5 items-center justify-center">
                 <div>
                   <span className="font-bold ">
-                    <span className="text-4xl">19.99</span>
+                    <span className="text-4xl">$19.99</span>
                   </span>
                   <span className="">/month</span>
                 </div>
@@ -474,7 +474,7 @@ export default function HomePage() {
               <div className="flex space-x-5 items-center justify-center">
                 <div>
                   <span className="font-bold ">
-                    <span className="text-4xl">29.99</span>
+                    <span className="text-4xl">$29.99</span>
                   </span>
                   <span className="">/month</span>
                 </div>

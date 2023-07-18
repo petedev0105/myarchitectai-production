@@ -14,7 +14,7 @@ import downloadPhoto from "../../utils/downloadPhoto";
 import DropDown from "../../components/DropDown";
 import { Image } from "antd";
 import ImageUploading from "react-images-uploading";
-import axios from "axios"
+import axios from "axios";
 import {
   roomType,
   rooms,
@@ -196,7 +196,7 @@ function page() {
       await new Promise((resolve) => setTimeout(resolve, 200));
       setLoading(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
-  
+
       const response = await fetch("/generate", {
         method: "POST",
         headers: {
@@ -212,21 +212,25 @@ function page() {
           material,
         }),
       });
-  
+
       if (!response.ok) {
         throw new Error("Failed to generate photo");
       }
-  
+
       const newPhoto = await response.json();
       console.log(newPhoto);
       setRestoredImage(newPhoto[1]);
+
+      setTimeout(() => {
+        setLoading(false);
+      }, 1300);
     } catch (error: any) {
       setError((error as Error).message);
     } finally {
       setLoading(false);
     }
   }
-  
+
   return (
     <div className="px-10 m-auto">
       <Header />
