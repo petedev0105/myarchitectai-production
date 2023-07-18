@@ -2,38 +2,38 @@ import { Ratelimit } from "@upstash/ratelimit";
 import redis from "../../utils/redis";
 import { NextResponse } from "next/server";
 import { headers } from "next/headers";
-import axios from "axios";
 
-// Create a new ratelimiter, that allows 5 requests per 24 hours
-// const ratelimit = redis
-//   ? new Ratelimit({
-//       redis: redis,
-//       limiter: Ratelimit.fixedWindow(5, "1440 m"),
-//       analytics: true,
-//     })
-//   : undefined;
+// Create a new ratelimiter, that allows 3 requests per 24 hours
+const ratelimit = redis
+  ? new Ratelimit({
+      redis: redis,
+      limiter: Ratelimit.fixedWindow(3, "1440 m"),
+      analytics: true,
+    })
+  : undefined;
 
 export async function POST(request: Request) {
   // Rate Limiter Code
-  // if (ratelimit) {
-  //   const headersList = headers();
-  //   const ipIdentifier = headersList.get("x-real-ip");
+  if (ratelimit) {
+    const headersList = headers();
+    const ipIdentifier = headersList.get("x-real-ip");
+    console.log(ipIdentifier)
 
-  //   const result = await ratelimit.limit(ipIdentifier ?? "");
+    const result = await ratelimit.limit(ipIdentifier ?? "");
 
-  //   if (!result.success) {
-  //     return new Response(
-  //       "Too many uploads in 1 day. Please try again in a 24 hours.",
-  //       {
-  //         status: 429,
-  //         headers: {
-  //           "X-RateLimit-Limit": result.limit,
-  //           "X-RateLimit-Remaining": result.remaining,
-  //         } as any,
-  //       }
-  //     );
-  //   }
-  // }
+    if (!result.success) {
+      return new Response(
+        "Too many uploads in 1 day. Please try again in a 24 hours.",
+        {
+          status: 429,
+          headers: {
+            "X-RateLimit-Limit": result.limit,
+            "X-RateLimit-Remaining": result.remaining,
+          } as any,
+        }
+      );
+    }
+  }
 
   const { imageUrl, theme, room, location, season, material, houseStyle } =
     await request.json();
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
         "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
       input: {
         image: imageUrl,
-        prompt: `Editorial photo from Dwell of a ${houseStyle} house, the season is ${season}, the house's location is${location}, the main material of the house is ${material}, with sunlight reflecting off the surface, brilliant architecture, Set your professional camera to manual mode, f/16, ISO 200, and use a wide-angle lens to capture the grandeur of the surroundings`,
+        prompt: `A stunning visual of a ${houseStyle} ${material} house, the season is ${season}, the house's location is${location}, realistic sky, brilliant architecture, breathtaking, 8K, architecture photography,`,
         a_prompt: "ultrarealistic",
         n_prompt:
           "blurry, details are low, overlapping, grainy, multiple angles, deformed structures, weird colors, unnatural, unrealistic, humans, unrealistic sky, people, animals, cartoon, anime, painting, drawing, sketch",

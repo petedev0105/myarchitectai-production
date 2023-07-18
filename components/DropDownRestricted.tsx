@@ -16,6 +16,7 @@ import {
   lightingType,
   buildingType,
 } from "../utils/dropdownTypes";
+import Link from "next/link"
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -62,7 +63,7 @@ export default function DropDown({ theme, setTheme, themes }: DropDownProps) {
     <Menu as="div" className="relative block text-left">
       <div>
         <Menu.Button className="inline-flex w-full justify-between items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-black">
-          {theme} 
+          {theme}
           <ChevronUpIcon
             className="-mr-1 ml-2 h-5 w-5 ui-open:hidden"
             aria-hidden="true"
@@ -88,7 +89,7 @@ export default function DropDown({ theme, setTheme, themes }: DropDownProps) {
           key={theme}
         >
           <div className="max-h-[250px] overflow-auto">
-            {themes.map((themeItem) => (
+            {themes.map((themeItem, index) => (
               <Menu.Item key={themeItem}>
                 {({ active }) => (
                   <button
@@ -96,10 +97,23 @@ export default function DropDown({ theme, setTheme, themes }: DropDownProps) {
                     className={classNames(
                       active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                       themeItem === theme ? "bg-gray-200" : "",
-                      "px-4 py-2 text-sm w-full text-left flex items-center space-x-2 justify-between"
+                      "px-4 py-2 text-sm w-full text-left flex items-center space-x-2 justify-between",
+                      index >= 3 ? "disabled" : "" // Add 'disabled' class for options beyond the first three
                     )}
+                    disabled={index >= 3} // Disable options beyond the first three
                   >
-                    <span>{themeItem} </span>
+                    <div className="flex justify-between w-full">
+                      <div>
+                        <span>{themeItem}</span>
+                      </div>
+                      {index >= 3 ? (
+                        <div>
+                          <span role="img" aria-label="Locked" className="underline">
+                            🔒 <Link href={"https://myarchitectai.lemonsqueezy.com/checkout?cart=de43d7b9-8968-4200-8d07-0f8eed9b625b"} target="_blank">Upgrade</Link>
+                          </span>
+                        </div>
+                      ) : null}
+                    </div>
                     {themeItem === theme ? (
                       <CheckIcon className="w-4 h-4 text-bold" />
                     ) : null}

@@ -8,7 +8,8 @@ import { useSession, signIn } from "next-auth/react";
 import QnA from "../components/QnA";
 
 export default function HomePage() {
-  const { data: session } = useSession();
+  const {data:session} = useSession()
+  
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Header />
@@ -17,13 +18,13 @@ export default function HomePage() {
           <div className="lg:w-1/2 lg:text-left space-y-7">
             <div>
               <span className="font-bold text-4xl">
-                Visualize your architectural sketches in <span className="underline">seconds</span>
+                Visualize your architectural ideas in <span className="underline">seconds</span>
               </span>
             </div>
             <div>
               <span className="">
-                Take your hand-drawn sketches of buildings and instantly
-                transform them into breathtaking, photorealistic masterpieces.
+                Take your hand-drawn architecture and instantly
+                transform them into breathtaking, photorealistic masterpieces in seconds, not hours.
               </span>
             </div>
             <div>
@@ -32,19 +33,19 @@ export default function HomePage() {
                   className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
                   href={"/dream"}
                 >
-                  Build your dream home for free →
+                  Go to the MyArchitectAI app →
                 </Link>
               ) : (
                 <button
                   className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
                   onClick={() => signIn()}
                 >
-                  Build your dream home for free →
+                  Build your dream home →
                 </button>
               )}
             </div>
 
-            <div className="flex space-x-3 w-full items-center">
+            <div className="flex space-x-3 w-full items-center lg:justify-start justify-center">
               <div>
                 <img src="/img/star.png" width={70} />
               </div>
@@ -294,7 +295,7 @@ export default function HomePage() {
         </div>
 
         <div className="lg:flex items-center pt-12 lg:space-x-7 lg:space-y-0 space-y-10">
-          <div className="shadow-xl border rounded-xl p-12 space-y-10">
+          {/* <div className="shadow-xl border rounded-xl p-12 space-y-10">
             <div className="space-y-7">
               <div className="">
                 <span className=" font-bold">Hobby</span>
@@ -314,6 +315,14 @@ export default function HomePage() {
                   </div>
                   <div>
                     <span className="">3 images every month</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className=""><span className="underline">Limited</span> style options</span>
                   </div>
                 </div>
                 <div className="flex space-x-3 items-center">
@@ -375,11 +384,112 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
+          </div> */}
+                 <div className="shadow-xl border rounded-xl p-12 space-y-10">
+            <div className="space-y-7">
+              <div className="">
+                <span className="text-stone-500 font-bold">Hobby</span>
+              </div>
+              <div className="flex space-x-5 items-center justify-center">
+                <div>
+                  <span className="font-bold ">
+                    <span className="text-4xl">Free</span>
+                  </span>
+                  <span className=""></span>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-10 text-sm text-left">
+              <div className="space-y-3 ">
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">
+                      <span className="font-bold underline">10</span> images
+                      every month
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">
+                      <span className="font-bold underline">Limited</span>{" "}
+                      architectural styles and options
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Access to all future updates</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Request new features</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Customer support</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">
+                      Interior designs + Exterior designs
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Small watermark</span>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <Link
+                  href="https://myarchitectai.lemonsqueezy.com/checkout/buy/d7810a4c-988c-418b-838f-4a10ce0494ef"
+                  target="_blank"
+                >
+                  <button
+                    // onClick={() => {
+                    //   Paddle.Checkout.open({
+                    //     product: 47418,
+                    //   });
+                    // }}
+                    className="px-5 py-2 rounded-md  font-bold  text-center bg-black text-white"
+                  >
+                    Build your dream home →
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
           <div className="shadow-xl border rounded-xl p-12 space-y-10">
             <div className="space-y-7">
               <div className="">
-                <span className=" font-bold">Pro</span>
+                <span className="text-stone-500 font-bold">Pro</span>
               </div>
               <div className="flex space-x-5 items-center justify-center">
                 <div>
@@ -391,7 +501,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="space-y-10">
+            <div className="space-y-10 text-left text-sm">
               <div className="space-y-3 ">
                 <div className="flex space-x-3 items-center">
                   <div>
@@ -401,6 +511,17 @@ export default function HomePage() {
                     <span className="">
                       <span className="font-bold underline">200</span> images
                       every month
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">
+                      <span className="font-bold underline">100+</span>{" "}
+                      architectural styles and options
                     </span>
                   </div>
                 </div>
@@ -469,11 +590,11 @@ export default function HomePage() {
           <div className="shadow-xl border rounded-xl p-12 space-y-10">
             <div className="space-y-7">
               <div className="">
-                <span className=" font-bold">Business</span>
+                <span className="text-stone-500 font-bold">Business</span>
               </div>
               <div className="flex space-x-5 items-center justify-center">
                 <div>
-                  <span className="font-bold ">
+                  <span className="font-bold  ">
                     <span className="text-4xl">$29.99</span>
                   </span>
                   <span className="">/month</span>
@@ -481,7 +602,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="space-y-10">
+            <div className="space-y-10 text-left text-sm">
               <div className="space-y-3 ">
                 <div className="flex space-x-3 items-center">
                   <div>
@@ -491,6 +612,17 @@ export default function HomePage() {
                     <span className="">
                       <span className="font-bold underline">Unlimited</span>{" "}
                       images every month
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">
+                      <span className="font-bold underline">100+</span>{" "}
+                      architectural styles and options
                     </span>
                   </div>
                 </div>

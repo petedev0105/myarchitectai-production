@@ -1,6 +1,6 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState, useRef, ChangeEvent } from "react";
+import { useState, useRef, ChangeEvent, useEffect } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
 import { CompareSlider } from "../../components/CompareSlider";
@@ -12,9 +12,9 @@ import Toggle from "../../components/Toggle";
 import appendNewToName from "../../utils/appendNewToName";
 import downloadPhoto from "../../utils/downloadPhoto";
 import DropDown from "../../components/DropDown";
+import DropDownRestricted from "../../components/DropDownRestricted";
 import { Image } from "antd";
-import ImageUploading from "react-images-uploading";
-import axios from "axios";
+import {useRouter} from "next/router"
 import {
   roomType,
   rooms,
@@ -28,7 +28,10 @@ import {
   materialType,
   locationType,
   seasonType,
+  buildingType,
+  buildingTypes,
 } from "../../utils/dropdownTypes";
+import { useSession } from "next-auth/react";
 
 const uploader = Uploader({
   apiKey: !!process.env.NEXT_PUBLIC_UPLOAD_API_KEY
@@ -72,6 +75,8 @@ function page() {
   const [season, setSeason] = useState<seasonType>("Autumn");
   const [material, setMaterial] = useState<materialType>("Wooden");
   const [location, setLocation] = useState<locationType>("Cliff");
+  const [buildingType, setBuildingType] =
+    useState<buildingType>("Residential Home");
 
   const [edit, setEdit] = useState(true);
   const [uploaded, setUploaded] = useState(false);
@@ -193,7 +198,6 @@ function page() {
 
   async function generatePhoto(fileUrl: string) {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 200));
       setLoading(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -213,17 +217,13 @@ function page() {
         }),
       });
 
-      if (!response.ok) {
+      if (response.ok) {
+        const newPhoto = await response.json();
+        console.log(newPhoto);
+        setRestoredImage(newPhoto[1]);
+      } else {
         throw new Error("Failed to generate photo");
       }
-
-      const newPhoto = await response.json();
-      console.log(newPhoto);
-      setRestoredImage(newPhoto[1]);
-
-      setTimeout(() => {
-        setLoading(false);
-      }, 1300);
     } catch (error: any) {
       setError((error as Error).message);
     } finally {
@@ -236,7 +236,7 @@ function page() {
       <Header />
 
       <div className="border-t lg:flex">
-        <div className="lg:w-1/3 border-r p-7 space-y-5">
+        <div className="lg:w-1/3 lg:border-r p-7 space-y-5">
           <span className="font-bold text-2xl underline">
             Exterior Architecture Design Studio
           </span>
@@ -260,7 +260,7 @@ function page() {
           {/* Image uploader */}
 
           {originalPhoto ? (
-            <Image src={originalPhoto} />
+            <Image src={originalPhoto} className="rounded-md border" />
           ) : (
             <div
               // className={`flex justicy-center p-10 w-full border-2 border-dashed rounded-md text-center cursor-pointer `}
@@ -289,7 +289,22 @@ function page() {
           <div className="space-y-4 w-full ">
             <div className="flex mt-10 items-center space-x-3">
               <p className="text-left font-bold font-bold text-stone-600">
-                Choose your house style
+                Choose your building type ({buildingTypes.length})
+              </p>
+            </div>
+            <DropDown
+              theme={buildingType}
+              setTheme={(newBuildingType) =>
+                setBuildingType(newBuildingType as typeof buildingType)
+              }
+              themes={buildingTypes}
+            />
+          </div>
+
+          <div className="space-y-4 w-full ">
+            <div className="flex mt-10 items-center space-x-3">
+              <p className="text-left font-bold font-bold text-stone-600">
+                Choose your style ({houseStyles.length})
               </p>
             </div>
             <DropDown
@@ -303,7 +318,9 @@ function page() {
 
           <div className="space-y-4 w-full ">
             <div className="flex mt-10 items-center space-x-3 text-stone-600">
-              <p className="text-left font-bold">Choose your location</p>
+              <p className="text-left font-bold">
+                Choose your location ({locations.length})
+              </p>
             </div>
             <DropDown
               theme={location}
@@ -316,7 +333,9 @@ function page() {
 
           <div className="space-y-4 w-full ">
             <div className="flex mt-10 items-center space-x-3 text-stone-600">
-              <p className="text-left font-bold">Choose your house material</p>
+              <p className="text-left font-bold">
+                Choose your material ({materials.length})
+              </p>
             </div>
             <DropDown
               theme={material}
@@ -329,7 +348,9 @@ function page() {
 
           <div className="space-y-4 w-full">
             <div className="flex mt-10 items-center space-x-3 text-stone-600">
-              <p className="text-left font-bold">Choose the season</p>
+              <p className="text-left font-bold">
+                Choose the season ({seasons.length})
+              </p>
             </div>
             <DropDown
               theme={season}
@@ -345,12 +366,15 @@ function page() {
             }}
             className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition w-full"
           >
-            Generate my house
+            Build my idea
           </button>
         </div>
-        <div className="lg:w-2/3 p-7 space-y-5">
+        <div className="lg:w-2/3 p-7 space-y-3">
           <div>
             <span className="font-bold">Generated Image</span>
+          </div>
+          <div>
+            <span className="text-stone-600 text-sm">Your generated image will show up here.</span>
           </div>
           {loading && (
             <button
@@ -366,15 +390,22 @@ function page() {
             {restoredImage && originalPhoto && !sideBySide && !loading && (
               <div className="flex sm:space-x-4 sm:flex-row flex-col">
                 <div className="sm:mt-0 mt-8">
-                  <a>
+                  <div className="rounded-md border bg-slate-50">
+                    <div className="p-3  flex justify-between items-center rounded-md">
+                      <span className="text-sm">
+                        {houseStyle} {material} house, {location}, {season}
+                      </span>
+                      <span className="text-xs">Click image to expand</span>
+                    </div>
                     <Image
-                      //   alt="restored photo"
+                      alt="restored photo"
                       src={restoredImage}
                       //   className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in w-full "
-                      width={600}
-                      onLoad={() => setRestoredLoaded(true)}
+                      // width={600}
+                      className="rounded-md"
+                      // onLoad={() => setRestoredLoaded(true)}
                     />
-                  </a>
+                  </div>
                 </div>
               </div>
             )}

@@ -17,11 +17,45 @@ export type locationType = "Coastal" | "Cliff" | "Forest" | "Mountain";
 
 export type houseStyleType =
   | "Modern"
-  | "Farm House"
-  | "Cottage"
-  | "Mid-Century Modern"
   | "Contemporary"
-  | "Mediterranean";
+  | "Traditional"
+  | "Victorian"
+  | "Gothic"
+  | "Renaissance"
+  | "Baroque"
+  | "Art Deco"
+  | "Art Nouveau"
+  | "Mid-Century Modern"
+  | "Minimalist"
+  | "Brutalist"
+  | "Postmodern"
+  | "Neo-Classical"
+  | "Colonial"
+  | "Mediterranean"
+  | "Scandinavian"
+  | "Industrial"
+  | "Japanese"
+  | "Greek Revival"
+  | "Bauhaus"
+  | "Prairie"
+  | "Tudor"
+  | "Georgian"
+  | "Neoclassical"
+  | "International"
+  | "Spanish Colonial"
+  | "Ranch"
+  | "Post-Modernism"
+  | "Gothic Revival"
+  | "Shingle"
+  | "Beaux-Arts"
+  | "Italianate"
+  | "Mission Revival"
+  | "Egyptian Revival"
+  | "Chateauesque"
+  | "Craftsman"
+  | "Streamline Moderne"
+  | "Contemporary Farmhouse"
+  | "Deconstructivism";
 
 export type seasonType = "Spring" | "Summer" | "Autumn" | "Winter";
 
@@ -62,6 +96,52 @@ export type interiorStyleType =
 | "Techno Wonderland"
 | "Retro Futurism"
 | "Digital Zen";
+
+export type buildingType =
+  | "Residential Home"
+  | "Apartment/Condominium"
+  | "Office Building"
+  | "Retail Store/Shopping Center"
+  | "Hotel/Resort"
+  | "Restaurant/Cafe"
+  | "School/Educational Institution"
+  | "Hospital/Healthcare Facility"
+  | "Warehouse/Industrial Building"
+  | "Government Building"
+  | "Cultural/Entertainment Center"
+  | "Sports Facility"
+  | "Religious Building"
+  | "Transportation Hub"
+  | "Exhibition/Convention Center"
+  | "Recreation Center"
+  | "Research Laboratory"
+  | "Library"
+  | "Park/Outdoor Space"
+  | "Mixed-Use Development";
+
+  export const buildingTypes: buildingType[] = [
+    "Residential Home",
+    "Apartment/Condominium",
+    "Office Building",
+    "Retail Store/Shopping Center",
+    "Hotel/Resort",
+    "Restaurant/Cafe",
+    "School/Educational Institution",
+    "Hospital/Healthcare Facility",
+    "Warehouse/Industrial Building",
+    "Government Building",
+    "Cultural/Entertainment Center",
+    "Sports Facility",
+    "Religious Building",
+    "Transportation Hub",
+    "Exhibition/Convention Center",
+    "Recreation Center",
+    "Research Laboratory",
+    "Library",
+    "Park/Outdoor Space",
+    "Mixed-Use Development",
+  ];
+  
 
 export const interiorStyles: interiorStyleType[] = [
   "Minimalist Haven",
@@ -108,11 +188,45 @@ export const locations: locationType[] = [
 ];
 export const houseStyles: houseStyleType[] = [
   "Modern",
-  "Farm House",
-  "Cottage",
-  "Mid-Century Modern",
   "Contemporary",
+  "Traditional",
+  "Victorian",
+  "Gothic",
+  "Renaissance",
+  "Baroque",
+  "Art Deco",
+  "Art Nouveau",
+  "Mid-Century Modern",
+  "Minimalist",
+  "Brutalist",
+  "Postmodern",
+  "Neo-Classical",
+  "Colonial",
   "Mediterranean",
+  "Scandinavian",
+  "Industrial",
+  "Japanese",
+  "Greek Revival",
+  "Bauhaus",
+  "Prairie",
+  "Tudor",
+  "Georgian",
+  "Neoclassical",
+  "International",
+  "Spanish Colonial",
+  "Ranch",
+  "Post-Modernism",
+  "Gothic Revival",
+  "Shingle",
+  "Beaux-Arts",
+  "Italianate",
+  "Mission Revival",
+  "Egyptian Revival",
+  "Chateauesque",
+  "Craftsman",
+  "Streamline Moderne",
+  "Contemporary Farmhouse",
+  "Deconstructivism",
 ];
 export const seasons: seasonType[] = ["Spring", "Summer", "Autumn", "Winter"];
 export const materials: materialType[] = [

@@ -1,6 +1,6 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState, useRef, ChangeEvent } from "react";
+import { useState, useRef, ChangeEvent, useEffect } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
 import { CompareSlider } from "../../components/CompareSlider";
@@ -12,6 +12,10 @@ import Toggle from "../../components/Toggle";
 import appendNewToName from "../../utils/appendNewToName";
 import downloadPhoto from "../../utils/downloadPhoto";
 import DropDown from "../../components/DropDown";
+
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/dist/client/components/headers";
+
 import { Image } from "antd";
 import ImageUploading from "react-images-uploading";
 import {
@@ -86,6 +90,12 @@ function page() {
   const [imageURL, setImageURL] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const [user, setUser] = useState({});
+  const [userEmail, setUserEmail] = useState("");
+  const [packageName, setPackageName] = useState("");
+
+
 
   const handleImageUpload = () => {
     fileInputRef.current?.click();
@@ -170,7 +180,6 @@ function page() {
 
   async function generatePhoto(fileUrl: string) {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 200));
       setLoading(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -186,17 +195,13 @@ function page() {
         }),
       });
 
-      if (!response.ok) {
+      if (response.ok) {
+        const newPhoto = await response.json();
+        console.log(newPhoto);
+        setRestoredImage(newPhoto[1]);
+      } else {
         throw new Error("Failed to generate photo");
       }
-
-      const newPhoto = await response.json();
-      console.log(newPhoto);
-      setRestoredImage(newPhoto[1]);
-
-      setTimeout(() => {
-        setLoading(false);
-      }, 1300);
     } catch (error: any) {
       setError((error as Error).message);
     } finally {
@@ -208,7 +213,7 @@ function page() {
       <Header />
 
       <div className="border-t lg:flex">
-        <div className="lg:w-1/3 border-r p-7 space-y-5">
+        <div className="lg:w-1/3 lg:border-r p-7 space-y-5">
           <span className="font-bold text-2xl underline">
             Interior Architecture Design Studio
           </span>
@@ -229,7 +234,7 @@ function page() {
             )}
           </div>
           {originalPhoto ? (
-            <Image src={originalPhoto} />
+            <Image src={originalPhoto} className="rounded-md border" />
           ) : (
             <div
               className="flex justicy-center p-10 w-full border-2 border-dashed rounded-md text-center cursor-pointer"
@@ -250,7 +255,9 @@ function page() {
 
           <div className="space-y-4 w-full ">
             <div className="flex mt-10 items-center space-x-3 text-stone-600">
-              <p className="text-left font-bold">Choose your style</p>
+              <p className="text-left font-bold">
+                Choose your style ({interiorStyles.length})
+              </p>
             </div>
             <DropDown
               theme={interiorStyle}
@@ -263,7 +270,9 @@ function page() {
 
           <div className="space-y-4 w-full ">
             <div className="flex mt-10 items-center space-x-3 text-stone-600">
-              <p className="text-left font-bold">Choose your lighting</p>
+              <p className="text-left font-bold">
+                Choose your lighting ({lightings.length})
+              </p>
             </div>
             <DropDown
               theme={lighting}
@@ -303,15 +312,22 @@ function page() {
             {restoredImage && originalPhoto && !sideBySide && !loading && (
               <div className="flex sm:space-x-4 sm:flex-row flex-col">
                 <div className="sm:mt-0 mt-8">
-                  <a>
+                  <div className="rounded-md border p-2 bg-slate-50">
+                    <div className="p-3  flex justify-between items-center rounded-md">
+                      <span className="text-sm">
+                        {interiorStyle} interior, {lighting} lighting.
+                      </span>
+                      <span className="text-xs">Click image to expand</span>
+                    </div>
                     <Image
-                      //   alt="restored photo"
+                      alt="restored photo"
                       src={restoredImage}
                       //   className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in w-full "
-                      width={600}
-                      onLoad={() => setRestoredLoaded(true)}
+                      // width={600}
+                      className="rounded-md w-full"
+                      // onLoad={() => setRestoredLoaded(true)}
                     />
-                  </a>
+                  </div>
                 </div>
               </div>
             )}
