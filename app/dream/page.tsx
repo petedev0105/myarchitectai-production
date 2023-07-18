@@ -14,6 +14,7 @@ import downloadPhoto from "../../utils/downloadPhoto";
 import DropDown from "../../components/DropDown";
 import { Image } from "antd";
 import ImageUploading from "react-images-uploading";
+import axios from "axios"
 import {
   roomType,
   rooms,
@@ -155,43 +156,77 @@ function page() {
     />
   );
 
+  // async function generatePhoto(fileUrl: string) {
+  //   await new Promise((resolve) => setTimeout(resolve, 200));
+  //   // setEdit(false);
+  //   setLoading(true);
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  //   const res = await fetch("/generate", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       imageUrl: fileUrl,
+  //       theme,
+  //       room,
+  //       location,
+  //       season,
+  //       houseStyle,
+  //       material,
+  //     }),
+  //   });
+
+  //   let newPhoto = await res.json();
+
+  //   console.log(newPhoto);
+  //   if (res.status !== 200) {
+  //     setError(newPhoto);
+  //   } else {
+  //     setRestoredImage(newPhoto[1]);
+  //   }
+
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 1300);
+  // }
+
   async function generatePhoto(fileUrl: string) {
-    await new Promise((resolve) => setTimeout(resolve, 200));
-    // setEdit(false);
-    setLoading(true);
-    const res = await fetch("/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        imageUrl: fileUrl,
-        theme,
-        room,
-        location,
-        season,
-        houseStyle,
-        material,
-      }),
-    });
-
-    let newPhoto = await res.json();
-
-    // let responseText = await res.text();
-    // console.log(responseText);
-    // let newPhoto = JSON.parse(responseText);
-
-    console.log(newPhoto);
-    if (res.status !== 200) {
-      setError(newPhoto);
-    } else {
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      setLoading(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+  
+      const response = await fetch("/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          imageUrl: fileUrl,
+          theme,
+          room,
+          location,
+          season,
+          houseStyle,
+          material,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to generate photo");
+      }
+  
+      const newPhoto = await response.json();
+      console.log(newPhoto);
       setRestoredImage(newPhoto[1]);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    setTimeout(() => {
+    } catch (error: any) {
+      setError((error as Error).message);
+    } finally {
       setLoading(false);
-    }, 1300);
+    }
   }
+  
   return (
     <div className="px-10 m-auto">
       <Header />

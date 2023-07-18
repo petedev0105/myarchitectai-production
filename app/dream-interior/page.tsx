@@ -137,13 +137,44 @@ function page() {
     />
   );
 
+  // async function generatePhoto(fileUrl: string) {
+  //   await new Promise((resolve) => setTimeout(resolve, 200));
+  //   // setEdit(false);
+  //   setLoading(true);
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  //   try {
+  //     const res = await fetch("/generate-interior", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         imageUrl: fileUrl,
+  //         lighting,
+  //         interiorStyle,
+  //       }),
+  //     });
+  //     let newPhoto = await res.json();
+  //     if (res.status !== 200) {
+  //       setError(newPhoto);
+  //     } else {
+  //       setRestoredImage(newPhoto[1]);
+  //     }
+  //     setTimeout(() => {
+  //       setLoading(false);
+  //     }, 1300);
+  //   } catch (error) {
+  //     alert(error);
+  //   }
+  // }
+
   async function generatePhoto(fileUrl: string) {
-    await new Promise((resolve) => setTimeout(resolve, 200));
-    // setEdit(false);
-    setLoading(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
     try {
-      const res = await fetch("/generate-interior", {
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      setLoading(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+  
+      const response = await fetch("/generate-interior", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -154,17 +185,18 @@ function page() {
           interiorStyle,
         }),
       });
-      let newPhoto = await res.json();
-      if (res.status !== 200) {
-        setError(newPhoto);
-      } else {
-        setRestoredImage(newPhoto[1]);
+  
+      if (!response.ok) {
+        throw new Error("Failed to generate photo");
       }
-      setTimeout(() => {
-        setLoading(false);
-      }, 1300);
-    } catch (error) {
-      alert(error);
+  
+      const newPhoto = await response.json();
+      console.log(newPhoto);
+      setRestoredImage(newPhoto[1]);
+    } catch (error: any) {
+      setError((error as Error).message);
+    } finally {
+      setLoading(false);
     }
   }
   return (
