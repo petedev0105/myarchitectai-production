@@ -1,6 +1,6 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState, useRef, ChangeEvent, useEffect } from "react";
+import { useState, useRef, ChangeEvent, useEffect, useCallback } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
 import { CompareSlider } from "../../components/CompareSlider";
@@ -14,7 +14,8 @@ import downloadPhoto from "../../utils/downloadPhoto";
 import DropDown from "../../components/DropDown";
 import DropDownRestricted from "../../components/DropDownRestricted";
 import { Image } from "antd";
-import {useRouter} from "next/router"
+import { useRouter } from "next/router";
+import { useDropzone } from "react-dropzone";
 import {
   roomType,
   rooms,
@@ -161,40 +162,27 @@ function page() {
     />
   );
 
-  // async function generatePhoto(fileUrl: string) {
-  //   await new Promise((resolve) => setTimeout(resolve, 200));
-  //   // setEdit(false);
-  //   setLoading(true);
-  //   window.scrollTo({ top: 0, behavior: "smooth" });
-  //   const res = await fetch("/generate", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       imageUrl: fileUrl,
-  //       theme,
-  //       room,
-  //       location,
-  //       season,
-  //       houseStyle,
-  //       material,
-  //     }),
-  //   });
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    for (const file of acceptedFiles) {
+      const reader = new FileReader();
 
-  //   let newPhoto = await res.json();
+      reader.onloadstart = () => {
+        setIsLoading(true);
+      };
 
-  //   console.log(newPhoto);
-  //   if (res.status !== 200) {
-  //     setError(newPhoto);
-  //   } else {
-  //     setRestoredImage(newPhoto[1]);
-  //   }
+      reader.onload = () => {
+        setImageURL(reader.result as string);
+        setOriginalPhoto(reader.result as string);
+        setIsLoading(false);
+      };
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }
 
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 1300);
-  // }
+    console.log(acceptedFiles);
+  }, []);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   async function generatePhoto(fileUrl: string) {
     try {
@@ -263,26 +251,17 @@ function page() {
             <Image src={originalPhoto} className="rounded-md border" />
           ) : (
             <div
-              // className={`flex justicy-center p-10 w-full border-2 border-dashed rounded-md text-center cursor-pointer `}
-              className={`border-2 border-dashed p-10 cursor-pointer mt-4 ${
-                highlight ? "bg-blue-100" : ""
-              }`}
-              onClick={handleImageUpload}
-              onDragEnter={handleDragEnter}
-              onDragOver={handleDragOver}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
+              {...getRootProps()}
+              className={`${
+                isDragActive ? "bg-sky-200" : "bg-slate-50"
+              } p-10 rounded-md border-dashed border-2 `}
             >
-              <div className="text-center">
-                <span>Click or drag and drop to upload an image</span>
-              </div>
-              <input
-                type="file"
-                accept="image/jpeg, image/png"
-                ref={fileInputRef}
-                onChange={handleFileChange}
-                style={{ display: "none" }}
-              />
+              <input {...getInputProps()} />
+              {isDragActive ? (
+                <p>Drop the files here ...</p>
+              ) : (
+                <p>Drag 'n' drop some files here, or click to select files</p>
+              )}
             </div>
           )}
 
@@ -374,7 +353,9 @@ function page() {
             <span className="font-bold">Generated Image</span>
           </div>
           <div>
-            <span className="text-stone-600 text-sm">Your generated image will show up here.</span>
+            <span className="text-stone-600 text-sm">
+              Your generated image will show up here.
+            </span>
           </div>
           {loading && (
             <button

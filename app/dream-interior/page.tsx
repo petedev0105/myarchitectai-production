@@ -1,6 +1,6 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState, useRef, ChangeEvent, useEffect } from "react";
+import { useState, useRef, ChangeEvent, useEffect, useCallback } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
 import { CompareSlider } from "../../components/CompareSlider";
@@ -12,6 +12,7 @@ import Toggle from "../../components/Toggle";
 import appendNewToName from "../../utils/appendNewToName";
 import downloadPhoto from "../../utils/downloadPhoto";
 import DropDown from "../../components/DropDown";
+import { useDropzone } from "react-dropzone";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/dist/client/components/headers";
@@ -94,6 +95,28 @@ function page() {
   const [user, setUser] = useState({});
   const [userEmail, setUserEmail] = useState("");
   const [packageName, setPackageName] = useState("");
+
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    for (const file of acceptedFiles) {
+      const reader = new FileReader();
+
+      reader.onloadstart = () => {
+        setIsLoading(true);
+      };
+
+      reader.onload = () => {
+        setImageURL(reader.result as string);
+        setOriginalPhoto(reader.result as string);
+        setIsLoading(false);
+      };
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }
+
+    console.log(acceptedFiles);
+  }, []);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
 
 
@@ -237,20 +260,18 @@ function page() {
             <Image src={originalPhoto} className="rounded-md border" />
           ) : (
             <div
-              className="flex justicy-center p-10 w-full border-2 border-dashed rounded-md text-center cursor-pointer"
-              onClick={handleImageUpload}
-            >
-              <div className="text-center">
-                <span>Click or drag and drop to upload an image</span>
-              </div>
-              <input
-                type="file"
-                accept="image/jpeg, image/png"
-                ref={fileInputRef}
-                onChange={handleFileChange}
-                style={{ display: "none" }}
-              />
-            </div>
+            {...getRootProps()}
+            className={`${
+              isDragActive ? "bg-sky-200" : "bg-slate-50"
+            } p-10 rounded-md border-dashed border-2 `}
+          >
+            <input {...getInputProps()} />
+            {isDragActive ? (
+              <p>Drop the files here ...</p>
+            ) : (
+              <p>Drag 'n' drop some files here, or click to select files</p>
+            )}
+          </div>
           )}
 
           <div className="space-y-4 w-full ">
