@@ -1,11 +1,9 @@
-"use client";
 import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
 import "../styles/globals.css";
 import Providers from "../components/Providers";
 import { Inter_Tight } from "next/font/google";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { User, createClient } from "@supabase/supabase-js";
 import Link from "next/link";
@@ -52,7 +50,6 @@ export default function RootLayout({
     <html lang="en">
       <SupabaseProvider>
         <body className={inter.className}>
-          
           <Providers><Header />{children}</Providers>
           <Analytics />
         </body>
