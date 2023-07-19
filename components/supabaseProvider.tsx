@@ -26,7 +26,7 @@ const SupabaseProvider: React.FC<SupabaseProviderProps> = ({ children }) => {
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
+  ) as SupabaseClient;
 
   const [user, setUser] = useState<User | null>(null);
 
