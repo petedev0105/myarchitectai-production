@@ -11,12 +11,20 @@ export const CompareSlider = ({
   restored: string;
 }) => {
   return (
-    <ReactCompareSlider
-      itemOne={<ReactCompareSliderImage src={original} alt="original photo" />}
-      itemTwo={<ReactCompareSliderImage src={restored} alt="generated photo" />}
-      
-      className="flex mt-5"
-      style={{height: "auto", width: 850}}
-    />
+    <div>
+      <ReactCompareSlider
+        itemOne={
+          <ReactCompareSliderImage src={original} alt="original photo" />
+        }
+        itemTwo={
+          <ReactCompareSliderImage src={restored} alt="generated photo" />
+        }
+        className="flex mt-5 border rounded-md"
+        style={{ height: "auto", width: "full" }}
+      />
+      <span className="text-sm text-stone-600">
+        (Drag the slider left and right to see before and after MyArchitectureAI)
+      </span>
+    </div>
   );
 };

@@ -246,6 +246,8 @@ function page() {
         const newPhoto = await response.json();
         console.log(newPhoto);
         setRestoredImage(newPhoto[1]);
+      } else if(response.status === 504){
+        alert("We're experiencing a high amount of requests, so your request is queued and timed out because you're using the Free plan. Upgrade to the Pro plan to receive unlimited images and get your requests prioritized with zero down times and time outs.")
       } else {
         throw new Error("Failed to generate photo");
       }

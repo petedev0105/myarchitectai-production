@@ -6,10 +6,13 @@ import Header from "../components/Header";
 import SquigglyLines from "../components/SquigglyLines";
 import { useSession, signIn } from "next-auth/react";
 import QnA from "../components/QnA";
+import { useSupabase } from "../components/supabaseProvider";
+import { CompareSlider } from "../components/CompareSlider";
 
 export default function HomePage() {
-  const {data:session} = useSession()
-  
+  const { data: session } = useSession();
+  const { supabase, user, signInWithSupabase } = useSupabase();
+
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       {/* <Header /> */}
@@ -18,13 +21,15 @@ export default function HomePage() {
           <div className="lg:w-1/2 lg:text-left space-y-7">
             <div>
               <span className="font-bold lg:text-4xl text-3xl">
-                Visualize your architectural ideas in <span className="underline">seconds</span>
+                Visualize your architectural ideas in{" "}
+                <span className="underline">seconds</span>
               </span>
             </div>
             <div>
               <span className="">
-                Take your hand-drawn architecture and instantly
-                transform them into breathtaking, photorealistic masterpieces in seconds, not hours.
+                Take your hand-drawn architecture and instantly transform them
+                into breathtaking, photorealistic masterpieces in seconds, not
+                hours.
               </span>
             </div>
             <div>
@@ -38,7 +43,7 @@ export default function HomePage() {
               ) : (
                 <button
                   className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
-                  onClick={() => signIn()}
+                  onClick={() => signInWithSupabase()}
                 >
                   Build your dream home →
                 </button>
@@ -51,19 +56,23 @@ export default function HomePage() {
               </div>
 
               <div>
-                <span className="text-sm">Join 100+ happy home lovers</span>
+                <span className="text-sm">Join 100+ architecture lovers</span>
               </div>
             </div>
           </div>
           <div className="lg:w-1/2 lg:pt-0 pt-10">
-            <img src="/img/hero.webp" />
+            {/* <img src="/img/hero.webp" /> */}
+            <CompareSlider
+              original="/img/exterior-before.png"
+              restored="/img/exterior-after.png"
+            />
           </div>
         </div>
 
         <div className="flex justify-cetner items-center pt-48">
           <div className="space-y-5">
             <div>
-              <span className="font-bold text-3xl">
+              <span className="font-bold text-4xl">
                 10x your architecture design output
               </span>
             </div>
@@ -75,7 +84,7 @@ export default function HomePage() {
                 they become fully immersed in your vision.
               </span>
             </div>
-            <div>
+            <div className="pt-12">
               <img src="/img/mid.png" />
             </div>
             <div className="pt-12">
@@ -89,10 +98,31 @@ export default function HomePage() {
           </div>
         </div>
 
+        <div className="lg:flex justify-between items-center w-full space-x-24 pt-48">
+          <div className="lg:w-1/2 lg:text-left space-y-7">
+            <div>
+              <span className="font-bold lg:text-4xl text-3xl">
+                Pick from hundreds of styles to fit your preferences
+              </span>
+            </div>
+            <div>
+              <span className="">
+                From the timeless elegance of Neoclassical to the sleek lines of
+                Modernist, our curated selection offers hundreds of
+                architectural styles for you to choose from.
+              </span>
+            </div>
+          </div>
+          <div className="lg:w-1/2 lg:pt-0 pt-10">
+            <img src="/img/architecture-styles.png" />
+            {/* <CompareSlider original="/img/exterior-before.png" restored="/img/exterior-after.png" /> */}
+          </div>
+        </div>
+
         <div className="flex justify-center items-center pt-48 w-full">
           <div className="space-y-5">
             <div>
-              <span className="font-bold text-3xl">
+              <span className="font-bold text-4xl">
                 One platform for every need
               </span>
             </div>
@@ -125,14 +155,12 @@ export default function HomePage() {
                         </span>
                       </div>
                       <div className="flex space-x-3 items-center">
-                        <span className=" text-sm line-clamp-5 text-left">
-                          Design Exploration: MyArchitectureAI enables
-                          architects to visualize sketches in various styles,
-                          fostering quick iteration and experimentation for
-                          finding the ideal design solution. Time Efficiency:
-                          The platform automates remodeling, saving architects
-                          significant time while effortlessly generating
-                          multiple design options.
+                        <span className="  line-clamp-5 text-left">
+                          MyArchitectureAI enables architects to visualize
+                          sketches in various styles, fostering quick iteration
+                          and experimentation. The platform automates
+                          remodeling, saving architects significant time while
+                          effortlessly generating multiple design options.
                         </span>
                       </div>
                     </div>
@@ -158,13 +186,12 @@ export default function HomePage() {
                         </span>
                       </div>
                       <div className="flex space-x-3 items-center">
-                        <span className=" text-sm line-clamp-5 text-left">
-                          Style Exploration: By uploading images, designers can
-                          quickly explore different styles, facilitating
-                          creative exploration for unique and personalized
-                          designs. Client Presentation: AI-generated visuals
-                          enable designers to present multiple options to
-                          clients, aiding their decision-making process.
+                        <span className="  line-clamp-5 text-left">
+                          By uploading images, designers can quickly explore
+                          different styles, facilitating creative exploration
+                          for unique and personalized designs. AI-generated
+                          visuals enable designers to present multiple options
+                          to clients, aiding their decision-making process.
                         </span>
                       </div>
                     </div>
@@ -190,13 +217,12 @@ export default function HomePage() {
                         </span>
                       </div>
                       <div className="flex space-x-3 items-center">
-                        <span className=" text-sm line-clamp-5 text-left">
-                          Property Enhancement: MyArchitectureAI revitalizes
-                          property listings by remodeling scenes in various
-                          styles, attracting buyers with diverse preferences.
-                          Faster Sales: Visually appealing design options
-                          accelerate the sales process, allowing agents to
-                          present properties effectively and reduce physical
+                        <span className="  line-clamp-5 text-left">
+                          MyArchitectureAI revitalizes property listings by
+                          remodeling scenes in various styles, attracting buyers
+                          with diverse preferences. Visually appealing design
+                          options accelerate the sales process, allowing agents
+                          to present properties effectively and reduce physical
                           visits.
                         </span>
                       </div>
@@ -223,16 +249,12 @@ export default function HomePage() {
                         </span>
                       </div>
                       <div className="flex space-x-3 items-center">
-                        <span className=" text-sm line-clamp-5 text-left">
-                          Design Inspiration: MyArchitectureAI sparks
-                          inspiration by showcasing different styles, helping
-                          users discover new design directions for their spaces.
-                          Personalization: Users can visualize their spaces in
-                          various styles, creating a unique living environment
-                          that reflects their preferences. Cost Savings: By
-                          virtually remodeling spaces, MyArchitectureAI helps
-                          users avoid costly design mistakes, saving time and
-                          money in the renovation process.
+                        <span className="  line-clamp-5 text-left">
+                          MyArchitectureAI sparks inspiration by showcasing
+                          different styles, helping users discover new design
+                          directions for their spaces. Users can visualize their
+                          spaces in various styles, creating a unique living
+                          environment that reflects their preferences.
                         </span>
                       </div>
                     </div>
@@ -255,33 +277,7 @@ export default function HomePage() {
         <div className="flex justify-center items-center pt-48">
           <div className="space-y-5">
             <div>
-              <span className="font-bold text-3xl">
-                Explore what others have built
-              </span>
-            </div>
-            <div>
-              <span>
-                Find inspiration from buildings built by creative architects and
-                home lovers all across the globe using MyArchitectAI.
-              </span>
-            </div>
-            <div>
-              <img src="/img/others.webp" />
-            </div>
-          </div>
-        </div>
-        <div className="mt-12">
-          <Link
-            className="bg-black rounded-xl text-white font-medium px-4 py-3 hover:bg-blue-500 transition"
-            href={"/dream"}
-          >
-            Build your dream home for free →
-          </Link>
-        </div>
-        <div className="flex justify-center items-center pt-48">
-          <div className="space-y-5">
-            <div>
-              <span className="font-bold text-3xl">
+              <span className="font-bold text-4xl">
                 Unlimited designs, for your unlimited imagination
               </span>
             </div>
@@ -385,7 +381,7 @@ export default function HomePage() {
               </div>
             </div>
           </div> */}
-                 <div className="shadow-xl border rounded-xl p-12 space-y-10">
+          <div className="shadow-xl border rounded-xl p-12 space-y-10">
             <div className="space-y-7">
               <div className="">
                 <span className="text-stone-500 font-bold">Hobby</span>
@@ -415,11 +411,21 @@ export default function HomePage() {
                 </div>
                 <div className="flex space-x-3 items-center">
                   <div>
-                    <img src="/img/tick-tutor.png" style={{minWidth:"20px", minHeight:"20px", width: "20px"}} />
+                    <img
+                      src="/img/tick-tutor.png"
+                      style={{
+                        minWidth: "20px",
+                        minHeight: "20px",
+                        width: "20px",
+                      }}
+                    />
                   </div>
                   <div>
                     <span className="">
-                      Queued requests, occasional <span className="font-bold underline">downtime and timeouts</span>
+                      Queued requests, occasional{" "}
+                      <span className="font-bold underline">
+                        downtime and timeouts
+                      </span>
                     </span>
                   </div>
                 </div>
@@ -504,7 +510,7 @@ export default function HomePage() {
               <div className="flex space-x-5 items-center justify-center">
                 <div>
                   <span className="font-bold ">
-                    <span className="text-4xl">$19.99</span>
+                    <span className="text-4xl">$14.99</span>
                   </span>
                   <span className="">/month</span>
                 </div>
@@ -526,11 +532,19 @@ export default function HomePage() {
                 </div>
                 <div className="flex space-x-3 items-center">
                   <div>
-                    <img src="/img/tick-tutor.png" style={{minWidth:"20px", minHeight:"20px", width: "20px"}} />
+                    <img
+                      src="/img/tick-tutor.png"
+                      style={{
+                        minWidth: "20px",
+                        minHeight: "20px",
+                        width: "20px",
+                      }}
+                    />
                   </div>
                   <div>
                     <span className="">
-                    <span className="font-bold underline">Prioritized</span> responses, no downtime and timeout
+                      <span className="font-bold underline">Prioritized</span>{" "}
+                      responses, no downtime and timeout
                     </span>
                   </div>
                 </div>
@@ -615,7 +629,7 @@ export default function HomePage() {
               <div className="flex space-x-5 items-center justify-center">
                 <div>
                   <span className="font-bold  ">
-                    <span className="text-4xl">$29.99</span>
+                    <span className="text-4xl">$24.99</span>
                   </span>
                   <span className="">/month</span>
                 </div>
@@ -637,11 +651,19 @@ export default function HomePage() {
                 </div>
                 <div className="flex space-x-3 items-center">
                   <div>
-                    <img src="/img/tick-tutor.png" style={{minWidth:"20px", minHeight:"20px", width: "20px"}} />
+                    <img
+                      src="/img/tick-tutor.png"
+                      style={{
+                        minWidth: "20px",
+                        minHeight: "20px",
+                        width: "20px",
+                      }}
+                    />
                   </div>
                   <div>
                     <span className="">
-                    <span className="font-bold underline">Prioritized</span> responses, no downtime and timeout
+                      <span className="font-bold underline">Prioritized</span>{" "}
+                      responses, no downtime and timeout
                     </span>
                   </div>
                 </div>
@@ -718,6 +740,33 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="flex justify-center items-center pt-48">
+          <div className="space-y-5">
+            <div>
+              <span className="font-bold text-3xl">
+                Explore what others have built
+              </span>
+            </div>
+            <div>
+              <span>
+                Find inspiration from buildings built by creative architects and
+                home lovers all across the globe using MyArchitectAI.
+              </span>
+            </div>
+            <div>
+              <img src="/img/others.webp" />
+            </div>
+          </div>
+        </div>
+        <div className="mt-12">
+          <Link
+            className="bg-black rounded-xl text-white font-medium px-4 py-3 hover:bg-blue-500 transition"
+            href={"/dream"}
+          >
+            Build your dream home for free →
+          </Link>
         </div>
 
         <div className="lg:flex justify-between py-24 w-full lg:space-x-12 pt-48">
