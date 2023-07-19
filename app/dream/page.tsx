@@ -33,6 +33,8 @@ import {
   buildingTypes,
 } from "../../utils/dropdownTypes";
 import { useSession } from "next-auth/react";
+import { useSupabase } from "../../components/supabaseProvider";
+import { User } from "@supabase/supabase-js";
 
 const uploader = Uploader({
   apiKey: !!process.env.NEXT_PUBLIC_UPLOAD_API_KEY
@@ -86,6 +88,41 @@ function page() {
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [highlight, setHighlight] = useState(false);
+
+  // supaabse stuff
+  const [packageType, setPackageType] = useState("free");
+  const { supabase } = useSupabase();
+
+  async function checkUserPackage() {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (user) {
+      const { data, error } = await supabase
+        .from("myarchitectai_users")
+        .select("*")
+        .eq("email", user.email)
+        .single();
+
+      if (data) {
+        console.log(data);
+
+        switch (data.package) {
+          case "free":
+            break;
+          case "pro":
+            setPackageType("pro")
+            break;
+          default:
+            break;
+        }
+      }
+    }
+  }
+
+  useEffect(() => {
+    checkUserPackage();
+  }, []);
 
   const handleDragEnter = (event: any) => {
     event.preventDefault();
@@ -221,7 +258,7 @@ function page() {
 
   return (
     <div className="px-10 m-auto">
-      <Header />
+      {/* <Header /> */}
 
       <div className="border-t lg:flex">
         <div className="lg:w-1/3 lg:border-r p-7 space-y-5">
@@ -265,78 +302,162 @@ function page() {
             </div>
           )}
 
-          <div className="space-y-4 w-full ">
-            <div className="flex mt-10 items-center space-x-3">
-              <p className="text-left font-bold font-bold text-stone-600">
-                Choose your building type ({buildingTypes.length})
-              </p>
-            </div>
-            <DropDown
-              theme={buildingType}
-              setTheme={(newBuildingType) =>
-                setBuildingType(newBuildingType as typeof buildingType)
-              }
-              themes={buildingTypes}
-            />
-          </div>
+          {packageType == "free" ? (
+            <>
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3">
+                  <p className="text-left font-bold font-bold text-stone-600">
+                    Choose your building type ({buildingTypes.length})
+                  </p>
+                </div>
+                <DropDownRestricted
+                  theme={buildingType}
+                  setTheme={(newBuildingType) =>
+                    setBuildingType(newBuildingType as typeof buildingType)
+                  }
+                  themes={buildingTypes}
+                />
+              </div>
 
-          <div className="space-y-4 w-full ">
-            <div className="flex mt-10 items-center space-x-3">
-              <p className="text-left font-bold font-bold text-stone-600">
-                Choose your style ({houseStyles.length})
-              </p>
-            </div>
-            <DropDown
-              theme={houseStyle}
-              setTheme={(newHouseStyle) =>
-                setHouseStyle(newHouseStyle as typeof houseStyle)
-              }
-              themes={houseStyles}
-            />
-          </div>
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3">
+                  <p className="text-left font-bold font-bold text-stone-600">
+                    Choose your style ({houseStyles.length})
+                  </p>
+                </div>
+                <DropDownRestricted
+                  theme={houseStyle}
+                  setTheme={(newHouseStyle) =>
+                    setHouseStyle(newHouseStyle as typeof houseStyle)
+                  }
+                  themes={houseStyles}
+                />
+              </div>
 
-          <div className="space-y-4 w-full ">
-            <div className="flex mt-10 items-center space-x-3 text-stone-600">
-              <p className="text-left font-bold">
-                Choose your location ({locations.length})
-              </p>
-            </div>
-            <DropDown
-              theme={location}
-              setTheme={(newLocation) =>
-                setLocation(newLocation as typeof location)
-              }
-              themes={locations}
-            />
-          </div>
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose your location ({locations.length})
+                  </p>
+                </div>
+                <DropDownRestricted
+                  theme={location}
+                  setTheme={(newLocation) =>
+                    setLocation(newLocation as typeof location)
+                  }
+                  themes={locations}
+                />
+              </div>
 
-          <div className="space-y-4 w-full ">
-            <div className="flex mt-10 items-center space-x-3 text-stone-600">
-              <p className="text-left font-bold">
-                Choose your material ({materials.length})
-              </p>
-            </div>
-            <DropDown
-              theme={material}
-              setTheme={(newMaterial) =>
-                setMaterial(newMaterial as typeof material)
-              }
-              themes={materials}
-            />
-          </div>
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose your material ({materials.length})
+                  </p>
+                </div>
+                <DropDownRestricted
+                  theme={material}
+                  setTheme={(newMaterial) =>
+                    setMaterial(newMaterial as typeof material)
+                  }
+                  themes={materials}
+                />
+              </div>
 
-          <div className="space-y-4 w-full">
-            <div className="flex mt-10 items-center space-x-3 text-stone-600">
-              <p className="text-left font-bold">
-                Choose the season ({seasons.length})
-              </p>
-            </div>
-            <DropDown
-              theme={season}
-              setTheme={(newSeason) => setSeason(newSeason as typeof season)}
-              themes={seasons}
-            />
-          </div>
+              <div className="space-y-4 w-full">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose the season ({seasons.length})
+                  </p>
+                </div>
+                <DropDownRestricted
+                  theme={season}
+                  setTheme={(newSeason) =>
+                    setSeason(newSeason as typeof season)
+                  }
+                  themes={seasons}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3">
+                  <p className="text-left font-bold font-bold text-stone-600">
+                    Choose your building type ({buildingTypes.length})
+                  </p>
+                </div>
+                <DropDown
+                  theme={buildingType}
+                  setTheme={(newBuildingType) =>
+                    setBuildingType(newBuildingType as typeof buildingType)
+                  }
+                  themes={buildingTypes}
+                />
+              </div>
+
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3">
+                  <p className="text-left font-bold font-bold text-stone-600">
+                    Choose your style ({houseStyles.length})
+                  </p>
+                </div>
+                <DropDown
+                  theme={houseStyle}
+                  setTheme={(newHouseStyle) =>
+                    setHouseStyle(newHouseStyle as typeof houseStyle)
+                  }
+                  themes={houseStyles}
+                />
+              </div>
+
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose your location ({locations.length})
+                  </p>
+                </div>
+                <DropDown
+                  theme={location}
+                  setTheme={(newLocation) =>
+                    setLocation(newLocation as typeof location)
+                  }
+                  themes={locations}
+                />
+              </div>
+
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose your material ({materials.length})
+                  </p>
+                </div>
+                <DropDown
+                  theme={material}
+                  setTheme={(newMaterial) =>
+                    setMaterial(newMaterial as typeof material)
+                  }
+                  themes={materials}
+                />
+              </div>
+
+              <div className="space-y-4 w-full">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose the season ({seasons.length})
+                  </p>
+                </div>
+                <DropDown
+                  theme={season}
+                  setTheme={(newSeason) =>
+                    setSeason(newSeason as typeof season)
+                  }
+                  themes={seasons}
+                />
+              </div>
+            </>
+          )}
+
           <button
             onClick={() => {
               originalPhoto

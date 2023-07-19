@@ -13,6 +13,7 @@ import appendNewToName from "../../utils/appendNewToName";
 import downloadPhoto from "../../utils/downloadPhoto";
 import DropDown from "../../components/DropDown";
 import { useDropzone } from "react-dropzone";
+import DropDownRestricted from "../../components/DropDownRestricted";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/dist/client/components/headers";
@@ -37,6 +38,7 @@ import {
   interiorStyleType,
   interiorStyles,
 } from "../../utils/dropdownTypes";
+import { useSupabase } from "../../components/supabaseProvider";
 
 const uploader = Uploader({
   apiKey: !!process.env.NEXT_PUBLIC_UPLOAD_API_KEY
@@ -96,6 +98,41 @@ function page() {
   const [userEmail, setUserEmail] = useState("");
   const [packageName, setPackageName] = useState("");
 
+  // supaabse stuff
+  const [packageType, setPackageType] = useState("free");
+  const { supabase } = useSupabase();
+
+  async function checkUserPackage() {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (user) {
+      const { data, error } = await supabase
+        .from("myarchitectai_users")
+        .select("*")
+        .eq("email", user.email)
+        .single();
+
+      if (data) {
+        console.log(data);
+
+        switch (data.package) {
+          case "free":
+            break;
+          case "pro":
+            setPackageType("pro");
+            break;
+          default:
+            break;
+        }
+      }
+    }
+  }
+
+  useEffect(() => {
+    checkUserPackage();
+  }, []);
+
   const onDrop = useCallback((acceptedFiles: File[]) => {
     for (const file of acceptedFiles) {
       const reader = new FileReader();
@@ -117,8 +154,6 @@ function page() {
     console.log(acceptedFiles);
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
-
-
 
   const handleImageUpload = () => {
     fileInputRef.current?.click();
@@ -233,7 +268,7 @@ function page() {
   }
   return (
     <div className="px-10 m-auto">
-      <Header />
+      {/* <Header /> */}
 
       <div className="border-t lg:flex">
         <div className="lg:w-1/3 lg:border-r p-7 space-y-5">
@@ -260,49 +295,85 @@ function page() {
             <Image src={originalPhoto} className="rounded-md border" />
           ) : (
             <div
-            {...getRootProps()}
-            className={`${
-              isDragActive ? "bg-sky-200" : "bg-slate-50"
-            } p-10 rounded-md border-dashed border-2 `}
-          >
-            <input {...getInputProps()} />
-            {isDragActive ? (
-              <p>Drop the files here ...</p>
-            ) : (
-              <p>Drag 'n' drop some files here, or click to select files</p>
-            )}
-          </div>
+              {...getRootProps()}
+              className={`${
+                isDragActive ? "bg-sky-200" : "bg-slate-50"
+              } p-10 rounded-md border-dashed border-2 `}
+            >
+              <input {...getInputProps()} />
+              {isDragActive ? (
+                <p>Drop the files here ...</p>
+              ) : (
+                <p>Drag 'n' drop some files here, or click to select files</p>
+              )}
+            </div>
           )}
 
-          <div className="space-y-4 w-full ">
-            <div className="flex mt-10 items-center space-x-3 text-stone-600">
-              <p className="text-left font-bold">
-                Choose your style ({interiorStyles.length})
-              </p>
-            </div>
-            <DropDown
-              theme={interiorStyle}
-              setTheme={(newInteriorStyle) =>
-                setInteriorStyle(newInteriorStyle as typeof interiorStyle)
-              }
-              themes={interiorStyles}
-            />
-          </div>
+          {packageType == "free" ? (
+            <>
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose your style ({interiorStyles.length})
+                  </p>
+                </div>
+                <DropDownRestricted
+                  theme={interiorStyle}
+                  setTheme={(newInteriorStyle) =>
+                    setInteriorStyle(newInteriorStyle as typeof interiorStyle)
+                  }
+                  themes={interiorStyles}
+                />
+              </div>
 
-          <div className="space-y-4 w-full ">
-            <div className="flex mt-10 items-center space-x-3 text-stone-600">
-              <p className="text-left font-bold">
-                Choose your lighting ({lightings.length})
-              </p>
-            </div>
-            <DropDown
-              theme={lighting}
-              setTheme={(newLighting) =>
-                setLighting(newLighting as typeof lighting)
-              }
-              themes={lightings}
-            />
-          </div>
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose your lighting ({lightings.length})
+                  </p>
+                </div>
+                <DropDownRestricted
+                  theme={lighting}
+                  setTheme={(newLighting) =>
+                    setLighting(newLighting as typeof lighting)
+                  }
+                  themes={lightings}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose your style ({interiorStyles.length})
+                  </p>
+                </div>
+                <DropDown
+                  theme={interiorStyle}
+                  setTheme={(newInteriorStyle) =>
+                    setInteriorStyle(newInteriorStyle as typeof interiorStyle)
+                  }
+                  themes={interiorStyles}
+                />
+              </div>
+
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose your lighting ({lightings.length})
+                  </p>
+                </div>
+                <DropDown
+                  theme={lighting}
+                  setTheme={(newLighting) =>
+                    setLighting(newLighting as typeof lighting)
+                  }
+                  themes={lightings}
+                />
+              </div>
+            </>
+          )}
 
           <button
             onClick={() => {

@@ -4,36 +4,36 @@ import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 
 // Create a new ratelimiter, that allows 3 requests per 24 hours
-const ratelimit = redis
-  ? new Ratelimit({
-      redis: redis,
-      limiter: Ratelimit.fixedWindow(3, "1440 m"),
-      analytics: true,
-    })
-  : undefined;
+// const ratelimit = redis
+//   ? new Ratelimit({
+//       redis: redis,
+//       limiter: Ratelimit.fixedWindow(3, "1440 m"),
+//       analytics: true,
+//     })
+//   : undefined;
 
 export async function POST(request: Request) {
   // Rate Limiter Code
-  if (ratelimit) {
-    const headersList = headers();
-    const ipIdentifier = headersList.get("x-real-ip");
-    console.log(ipIdentifier)
+  // if (ratelimit) {
+  //   const headersList = headers();
+  //   const ipIdentifier = headersList.get("x-real-ip");
+  //   console.log(ipIdentifier)
 
-    const result = await ratelimit.limit(ipIdentifier ?? "");
+  //   const result = await ratelimit.limit(ipIdentifier ?? "");
 
-    if (!result.success) {
-      return new Response(
-        "Too many uploads in 1 day. Please try again in a 24 hours.",
-        {
-          status: 429,
-          headers: {
-            "X-RateLimit-Limit": result.limit,
-            "X-RateLimit-Remaining": result.remaining,
-          } as any,
-        }
-      );
-    }
-  }
+  //   if (!result.success) {
+  //     return new Response(
+  //       "Too many uploads in 1 day. Please try again in a 24 hours.",
+  //       {
+  //         status: 429,
+  //         headers: {
+  //           "X-RateLimit-Limit": result.limit,
+  //           "X-RateLimit-Remaining": result.remaining,
+  //         } as any,
+  //       }
+  //     );
+  //   }
+  // }
 
   const { imageUrl, theme, room, location, season, material, houseStyle } =
     await request.json();

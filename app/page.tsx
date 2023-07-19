@@ -12,7 +12,7 @@ export default function HomePage() {
   
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
-      <Header />
+      {/* <Header /> */}
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20">
         <div className="lg:flex justify-between items-center w-full space-x-24">
           <div className="lg:w-1/2 lg:text-left space-y-7">

@@ -5,44 +5,36 @@ import Link from "next/link";
 import { Menu } from "@headlessui/react";
 import { Dropdown } from "antd";
 import { useRouter } from "next/navigation";
-
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/dist/client/components/headers";
+import { useSupabase } from '../components/supabaseProvider';
 
 function SignInButton() {
-  const supabase = createClientComponentClient();
+  // const supabase = createClientComponentClient();
   const { data: session } = useSession();
+  const { supabase, user, signInWithSupabase } = useSupabase();
+  
 
-  async function updateSupabaseUser() {
-    try {
-      console.log('upserting...')
-      if (session && session.user != undefined) {
-        const { data, error } = await supabase
-          .from("myarchitectai_users")
-          .upsert({ email: session.user.email })
-          .select();
+  // async function signInwithSupabase(){
+  //   try {
+  //     const {data, error} = await supabase.auth.signInWithOAuth({
+  //     provider: 'google'
+  //   })
+  //   } catch(error){
+  //     console.log(error)
+  //   }
+    
+  // }
 
-        if(data){
-          console.log('success')
-        }
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
-  function test(){
-    console.log('test')
-  }
+  // useEffect(() => {
+  //   if(session && session.user){
+  //     updateSupabaseUser();
+  //     console.log(session)
+  //   }
+  // }, [])
 
-  useEffect(() => {
-    if(session && session.user){
-      updateSupabaseUser();
-      console.log(session)
-    }
-  }, [])
-
-  if (session && session.user) {
+  if (user) {
     return (
       <div className="space-x-5 flex items-center">
         <div>
@@ -55,14 +47,6 @@ function SignInButton() {
             <span className="font-bold text-stone-600">Exterior</span>
           </Link>
         </div>
-        {/* <button className="text-red-500" onClick={() => signOut()}>
-          Sign out
-        </button> */}
-        {/* <span>{session.user.name}</span> */}
-        {/* <img
-          src={session.user.image ?? ""}
-          className="rounded-full h-10 w-10"
-        /> */}
       </div>
     );
   }
@@ -70,7 +54,7 @@ function SignInButton() {
     <div className="space-x-5">
       <button
         className="text-white bg-black font-bold px-5 py-2 rounded-md"
-        onClick={() => signIn()}
+        onClick={signInWithSupabase}
       >
         Sign in
       </button>
