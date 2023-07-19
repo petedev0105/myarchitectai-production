@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @media (min-width: 400px) {
   .background-gradient::before {
     background: radial-gradient(

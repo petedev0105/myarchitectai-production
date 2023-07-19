@@ -111,7 +111,7 @@ function page() {
           case "free":
             break;
           case "pro":
-            setPackageType("pro")
+            setPackageType("pro");
             break;
           default:
             break;
@@ -291,13 +291,13 @@ function page() {
               {...getRootProps()}
               className={`${
                 isDragActive ? "bg-sky-200" : "bg-slate-50"
-              } p-10 rounded-md border-dashed border-2 `}
+              } cursor-pointer text-center p-10 rounded-md border-dashed border-2 `}
             >
               <input {...getInputProps()} />
               {isDragActive ? (
-                <p>Drop the files here ...</p>
+                <p>Drop the file here ...</p>
               ) : (
-                <p>Drag 'n' drop some files here, or click to select files</p>
+                <p>Drag and drop or click to upload image +</p>
               )}
             </div>
           )}
@@ -470,14 +470,15 @@ function page() {
           </button>
         </div>
         <div className="lg:w-2/3 p-7 space-y-3">
-          <div>
+          <div className="border-b pb-5">
             <span className="font-bold">Generated Image</span>
+            <div>
+              <span className="text-stone-600 text-sm">
+                Your generated image will show up here.
+              </span>
+            </div>
           </div>
-          <div>
-            <span className="text-stone-600 text-sm">
-              Your generated image will show up here.
-            </span>
-          </div>
+
           {loading && (
             <button
               disabled
@@ -490,14 +491,16 @@ function page() {
           )}
           <div>
             {restoredImage && originalPhoto && !sideBySide && !loading && (
-              <div className="flex sm:space-x-4 sm:flex-row flex-col">
-                <div className="sm:mt-0 mt-8">
-                  <div className="rounded-md border bg-slate-50">
-                    <div className="p-3  flex justify-between items-center rounded-md">
-                      <span className="text-sm">
+              <div className="">
+              <div className="sm:mt-0 mt-8">
+                <div className="rounded-md">
+                  <div className="p-3  rounded-md">
+                    <span className="text-sm font-bold">
                         {houseStyle} {material} house, {location}, {season}
                       </span>
-                      <span className="text-xs">Click image to expand</span>
+                      <div> <span className="text-xs">Click image to expand</span>
+                        </div>
+                     
                     </div>
                     <Image
                       alt="restored photo"
@@ -509,6 +512,19 @@ function page() {
                     />
                   </div>
                 </div>
+                <button
+                  onClick={() => {
+                    restoredImage
+                      ? downloadPhoto(
+                          restoredImage,
+                          `${houseStyle} ${material} house, ${location}, ${season}`
+                        )
+                      : console.log("no photo");
+                  }}
+                  className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition"
+                >
+                  Download Image
+                </button>
               </div>
             )}
           </div>

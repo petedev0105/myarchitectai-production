@@ -17,7 +17,7 @@ export default function HomePage() {
         <div className="lg:flex justify-between items-center w-full space-x-24">
           <div className="lg:w-1/2 lg:text-left space-y-7">
             <div>
-              <span className="font-bold text-4xl">
+              <span className="font-bold lg:text-4xl text-3xl">
                 Visualize your architectural ideas in <span className="underline">seconds</span>
               </span>
             </div>
@@ -415,6 +415,16 @@ export default function HomePage() {
                 </div>
                 <div className="flex space-x-3 items-center">
                   <div>
+                    <img src="/img/tick-tutor.png" style={{minWidth:"20px", minHeight:"20px", width: "20px"}} />
+                  </div>
+                  <div>
+                    <span className="">
+                      Queued requests, occasional <span className="font-bold underline">downtime and timeouts</span>
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
                     <img src="/img/tick-tutor.png" height={20} width={20} />
                   </div>
                   <div>
@@ -516,6 +526,16 @@ export default function HomePage() {
                 </div>
                 <div className="flex space-x-3 items-center">
                   <div>
+                    <img src="/img/tick-tutor.png" style={{minWidth:"20px", minHeight:"20px", width: "20px"}} />
+                  </div>
+                  <div>
+                    <span className="">
+                    <span className="font-bold underline">Prioritized</span> responses, no downtime and timeout
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
                     <img src="/img/tick-tutor.png" height={20} width={20} />
                   </div>
                   <div>
@@ -612,6 +632,16 @@ export default function HomePage() {
                     <span className="">
                       <span className="font-bold underline">Unlimited</span>{" "}
                       images every month
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" style={{minWidth:"20px", minHeight:"20px", width: "20px"}} />
+                  </div>
+                  <div>
+                    <span className="">
+                    <span className="font-bold underline">Prioritized</span> responses, no downtime and timeout
                     </span>
                   </div>
                 </div>
