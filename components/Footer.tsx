@@ -11,8 +11,8 @@ export default function Footer() {
     try {
       const { error } = await supabase.auth.signOut();
 
-      if(!error){
-        window.location.reload()
+      if (!error) {
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);
@@ -33,6 +33,16 @@ export default function Footer() {
           </button>
         </div>
       ) : null}
+
+      <div>
+        <Link
+          className="underline"
+          target="_blank"
+          href={"https://twitter.com/petr0105"}
+        >
+          Contact us on Twitter
+        </Link>
+      </div>
     </footer>
   );
 }

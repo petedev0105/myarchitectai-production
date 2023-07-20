@@ -8,7 +8,7 @@ export default function Header() {
   const { packageType, user } = useSupabase();
   return (
     <>
-      <header className=" lg:flex items-center w-full mt-5 pb-7  justify-between ">
+      <header className="lg:px-0 px-5 flex items-center w-full mt-5 pb-7  justify-between ">
         <div className="flex space-x-12 items-center">
           <Link href="/" className="flex space-x-2">
             <h1 className="text-xl font-bold ml-2 tracking-tight">

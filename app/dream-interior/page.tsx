@@ -100,39 +100,7 @@ function page() {
   const [packageName, setPackageName] = useState("");
 
   // supaabse stuff
-  const [packageType, setPackageType] = useState("free");
-  const { supabase } = useSupabase();
-
-  async function checkUserPackage() {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    if (user) {
-      const { data, error } = await supabase
-        .from("myarchitectai_users")
-        .select("*")
-        .eq("email", user.email)
-        .single();
-
-      if (data) {
-        console.log(data);
-
-        switch (data.package) {
-          case "free":
-            break;
-          case "pro":
-            setPackageType("pro");
-            break;
-          default:
-            break;
-        }
-      }
-    }
-  }
-
-  useEffect(() => {
-    checkUserPackage();
-  }, []);
+  const { supabase, packageType } = useSupabase();
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     for (const file of acceptedFiles) {
