@@ -50,7 +50,7 @@ export default function RootLayout({
     <html lang="en">
       <SupabaseProvider>
         <body className={inter.className}>
-          <Providers><Header />{children}</Providers>
+          <Providers>{children}</Providers>
           <Analytics />
         </body>
       </SupabaseProvider>

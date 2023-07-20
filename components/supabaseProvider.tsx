@@ -11,6 +11,7 @@ import { createClient, SupabaseClient, User } from "@supabase/supabase-js";
 interface SupabaseContextType {
   supabase: SupabaseClient;
   user: User | null;
+  packageType: string;
   signInWithSupabase: () => Promise<void>;
 }
 
@@ -29,6 +30,7 @@ const SupabaseProvider: React.FC<SupabaseProviderProps> = ({ children }) => {
   ) as SupabaseClient;
 
   const [user, setUser] = useState<User | null>(null);
+  const [packageType, setPackageType] = useState("free")
 
   async function fetchUser() {
     const {
@@ -58,12 +60,40 @@ const SupabaseProvider: React.FC<SupabaseProviderProps> = ({ children }) => {
     }
   }
 
+  async function checkUserPackage() {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (user) {
+      const { data, error } = await supabase
+        .from("myarchitectai_users")
+        .select("*")
+        .eq("email", user.email)
+        .single();
+
+      if (data) {
+        console.log(data);
+
+        switch (data.package) {
+          case "free":
+            break;
+          case "pro":
+            setPackageType("pro");
+            break;
+          default:
+            break;
+        }
+      }
+    }
+  }
+
   useEffect(() => {
     fetchUser();
+    checkUserPackage();
   }, []);
 
   return (
-    <SupabaseContext.Provider value={{ supabase, user, signInWithSupabase }}>
+    <SupabaseContext.Provider value={{ supabase, user, signInWithSupabase, packageType }}>
       {children}
     </SupabaseContext.Provider>
   );

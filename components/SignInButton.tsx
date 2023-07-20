@@ -34,22 +34,7 @@ function SignInButton() {
   //   }
   // }, [])
 
-  if (user) {
-    return (
-      <div className="space-x-5 flex items-center">
-        <div>
-          <Link href={"/dream-interior"}>
-            <span className="font-bold text-stone-600">Interior</span>
-          </Link>
-        </div>
-        <div>
-          <Link href={"/dream"}>
-            <span className="font-bold text-stone-600">Exterior</span>
-          </Link>
-        </div>
-      </div>
-    );
-  }
+  if(!user)
   return (
     <div className="space-x-5">
       <button
@@ -60,6 +45,10 @@ function SignInButton() {
       </button>
     </div>
   );
+
+  return (
+    <div></div>
+  )
 }
 
 export default SignInButton;

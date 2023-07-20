@@ -1,22 +1,40 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import SignInButton from "./SignInButton";
+import { useSupabase } from "./supabaseProvider";
 
 export default function Header() {
+  const { packageType, user } = useSupabase();
   return (
-    <header className=" xs:flex-row items-center w-full mt-5 pb-7 lg:px-10 px-5 gap-2 flex justify-between space-x-10">
-      <div>
-        <Link href="/" className="flex space-x-2">
-          <h1 className="text-xl font-bold ml-2 tracking-tight">
-          🏠 MyArchitectAI
-          </h1>
-        </Link>
-      </div>
+    <>
+      <header className=" lg:flex items-center w-full mt-5 pb-7  justify-between ">
+        <div className="flex space-x-12 items-center">
+          <Link href="/" className="flex space-x-2">
+            <h1 className="text-xl font-bold ml-2 tracking-tight">
+              🏠 MyArchitectAI
+            </h1>
+          </Link>
+          { user ? 
+      <div className="space-x-5 flex items-center">
+        <div>
+          <Link href={"/dream-interior"}>
+            <span className="font-bold text-stone-600">Interior</span>
+          </Link>
+        </div>
+        <div>
+          <Link href={"/dream"}>
+            <span className="font-bold text-stone-600">Exterior</span>
+          </Link>
+        </div>
+      </div> : null
+  }
 
-      <div className="flex items-center space-x-5">
+          <div className="flex items-center space-x-5"></div>
+        </div>{" "}
         <SignInButton />
-      </div>
-    </header>
+      </header>
+    </>
   );
 }
 

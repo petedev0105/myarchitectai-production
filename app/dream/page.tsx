@@ -16,6 +16,7 @@ import DropDownRestricted from "../../components/DropDownRestricted";
 import { Image } from "antd";
 import { useRouter } from "next/router";
 import { useDropzone } from "react-dropzone";
+import Link from "next/link";
 import {
   roomType,
   rooms,
@@ -90,39 +91,39 @@ function page() {
   const [highlight, setHighlight] = useState(false);
 
   // supaabse stuff
-  const [packageType, setPackageType] = useState("free");
-  const { supabase } = useSupabase();
+  // const [packageType, setPackageType] = useState("free");
+  const { supabase, packageType } = useSupabase();
 
-  async function checkUserPackage() {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    if (user) {
-      const { data, error } = await supabase
-        .from("myarchitectai_users")
-        .select("*")
-        .eq("email", user.email)
-        .single();
+  // async function checkUserPackage() {
+  //   const {
+  //     data: { user },
+  //   } = await supabase.auth.getUser();
+  //   if (user) {
+  //     const { data, error } = await supabase
+  //       .from("myarchitectai_users")
+  //       .select("*")
+  //       .eq("email", user.email)
+  //       .single();
 
-      if (data) {
-        console.log(data);
+  //     if (data) {
+  //       console.log(data);
 
-        switch (data.package) {
-          case "free":
-            break;
-          case "pro":
-            setPackageType("pro");
-            break;
-          default:
-            break;
-        }
-      }
-    }
-  }
+  //       switch (data.package) {
+  //         case "free":
+  //           break;
+  //         case "pro":
+  //           setPackageType("pro");
+  //           break;
+  //         default:
+  //           break;
+  //       }
+  //     }
+  //   }
+  // }
 
-  useEffect(() => {
-    checkUserPackage();
-  }, []);
+  // useEffect(() => {
+  //   checkUserPackage();
+  // }, []);
 
   const handleDragEnter = (event: any) => {
     event.preventDefault();
@@ -246,8 +247,10 @@ function page() {
         const newPhoto = await response.json();
         console.log(newPhoto);
         setRestoredImage(newPhoto[1]);
-      } else if(response.status === 504){
-        alert("We're experiencing a high amount of requests, so your request is queued and timed out because you're using the Free plan. Upgrade to the Pro plan to receive unlimited images and get your requests prioritized with zero down times and time outs.")
+      } else if (response.status === 504) {
+        alert(
+          "We're experiencing a high amount of requests, so your request is queued and timed out because you're using the Free plan. Upgrade to the Pro plan to receive unlimited images and get your requests prioritized with zero down times and time outs."
+        );
       } else {
         throw new Error("Failed to generate photo");
       }
@@ -259,11 +262,35 @@ function page() {
   }
 
   return (
-    <div className="px-10 m-auto">
+    <div className="m-auto">
       {/* <Header /> */}
+
+      {packageType !== "free" ? null : (
+        <div className="bg-blue-500 text-center text-white py-2">
+          <span>
+            You are currently on the limited Free Plan{" "}
+            <Link href={"/pricing"} className="underline font-bold">Upgrade to Pro for more features</Link>
+          </span>
+        </div>
+      )}
+
+      <Header />
 
       <div className="border-t lg:flex">
         <div className="lg:w-1/3 lg:border-r p-7 space-y-5">
+          {packageType !== "free" ? (
+            <div className="pb-5">
+              <button className="bg-sky-300 text-sky-700 border-sky-700 rounded-md border px-5 py-1 text-sm font-bold">
+                Pro Plan
+              </button>
+            </div>
+          ) : (
+            <div className="pb-5">
+              <button className="bg-yellow-300 text-yellow-700 border-yellow-700 rounded-md border px-5 py-1 text-sm font-bold">
+                Free Plan
+              </button>
+            </div>
+          )}
           <span className="font-bold text-2xl underline">
             Exterior Architecture Design Studio
           </span>
@@ -494,15 +521,16 @@ function page() {
           <div>
             {restoredImage && originalPhoto && !sideBySide && !loading && (
               <div className="">
-              <div className="sm:mt-0 mt-8">
-                <div className="rounded-md">
-                  <div className="p-3  rounded-md">
-                    <span className="text-sm font-bold">
+                <div className="sm:mt-0 mt-8">
+                  <div className="rounded-md">
+                    <div className="p-3  rounded-md">
+                      <span className="text-sm font-bold">
                         {houseStyle} {material} house, {location}, {season}
                       </span>
-                      <div> <span className="text-xs">Click image to expand</span>
-                        </div>
-                     
+                      <div>
+                        {" "}
+                        <span className="text-xs">Click image to expand</span>
+                      </div>
                     </div>
                     <Image
                       alt="restored photo"

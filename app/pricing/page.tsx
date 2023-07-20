@@ -1,280 +1,12 @@
-"use client";
-import img from "next/image";
-import Link from "next/link";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import SquigglyLines from "../components/SquigglyLines";
-import { useSession, signIn } from "next-auth/react";
-import QnA from "../components/QnA";
-import { useSupabase } from "../components/supabaseProvider";
-import { CompareSlider } from "../components/CompareSlider";
+import React from 'react'
+import Link from "next/link"
+import Header from '../../components/Header'
 
-export default function HomePage() {
-  const { data: session } = useSession();
-  const { supabase, user, signInWithSupabase } = useSupabase();
-
+function page() {
   return (
-    <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
-      <Header />
-      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20">
-        <div className="lg:flex justify-between items-center w-full lg:space-x-24">
-          <div className="lg:w-1/2 lg:text-left space-y-7">
-            <div>
-              <span className="font-bold lg:text-4xl text-3xl">
-                Visualize your architectural ideas in{" "}
-                <span className="underline">seconds</span>
-              </span>
-            </div>
-            <div>
-              <span className="">
-                Take your hand-drawn architecture and instantly transform them
-                into breathtaking, photorealistic masterpieces in seconds, not
-                hours.
-              </span>
-            </div>
-            <div>
-              {user ? (
-                <Link
-                  className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
-                  href={"/dream"}
-                >
-                  Go to the MyArchitectAI app →
-                </Link>
-              ) : (
-                <button
-                  className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
-                  onClick={() => signInWithSupabase()}
-                >
-                  Build your dream home →
-                </button>
-              )}
-            </div>
-
-            <div className="flex space-x-3 w-full items-center lg:justify-start justify-center">
-              <div>
-                <img src="/img/star.png" width={70} />
-              </div>
-
-              <div>
-                <span className="text-sm">Join 100+ architecture lovers</span>
-              </div>
-            </div>
-          </div>
-          <div className="lg:w-1/2 lg:pt-0 pt-10">
-            {/* <img src="/img/hero.webp" /> */}
-            <CompareSlider
-              original="/img/exterior-before.png"
-              restored="/img/exterior-after.png"
-            />
-          </div>
-        </div>
-
-        <div className="flex justify-cetner items-center pt-48">
-          <div className="space-y-5">
-            <div>
-              <span className="font-bold text-4xl">
-                10x your architecture design output
-              </span>
-            </div>
-            <div>
-              <span>
-                Our platform goes beyond mere visualization, breathing life into
-                your designs and eliciting powerful emotions. Present your
-                photorealistic visuals to clients and stakeholders, and watch as
-                they become fully immersed in your vision.
-              </span>
-            </div>
-            <div className="pt-12">
-              <img src="/img/mid.png" />
-            </div>
-            <div className="pt-12">
-              <Link
-                className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
-                href={"/dream"}
-              >
-                Build your dream home for free →
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48">
-          <div className="lg:w-1/2 lg:text-left space-y-7">
-            <div>
-              <span className="font-bold lg:text-4xl text-3xl">
-                Pick from hundreds of styles to fit your preferences
-              </span>
-            </div>
-            <div>
-              <span className="">
-                From the timeless elegance of Neoclassical to the sleek lines of
-                Modernist, our curated selection offers hundreds of
-                architectural styles for you to choose from.
-              </span>
-            </div>
-          </div>
-          <div className="lg:w-1/2 lg:pt-0 pt-10">
-            <img src="/img/architecture-styles.png" />
-            {/* <CompareSlider original="/img/exterior-before.png" restored="/img/exterior-after.png" /> */}
-          </div>
-        </div>
-
-        <div className="flex justify-center items-center pt-48 w-full">
-          <div className="space-y-5">
-            <div>
-              <span className="font-bold text-4xl">
-                One platform for every need
-              </span>
-            </div>
-            <div>
-              <span>
-                MyArchitectureAI is a versatile platform that benefits
-                architects, interior designers, real estate agents, and home
-                lovers alike.
-              </span>
-            </div>
-            <div className="w-full">
-              <div className="lg:grid grid-cols-2 gap-10">
-                <div className="rounded-xl space-y-3 ">
-                  <div className="">
-                    <img
-                      className="h-48 bg-indigo-700 cover rounded-xl w-full object-cover"
-                      src={"/img/architects.jpg"}
-                      height={300}
-                      width={400}
-                    />
-                  </div>
-                  <div className="rounded-b-xl">
-                    <div className="py-3 space-y-2">
-                      <div>
-                        <span className="text-sm"></span>
-                      </div>
-                      <div className="flex space-x-3 items-center">
-                        <span className="font-bold text-2xl line-clamp-2 hover:underline">
-                          Architects
-                        </span>
-                      </div>
-                      <div className="flex space-x-3 items-center">
-                        <span className="  line-clamp-5 text-left">
-                          MyArchitectureAI enables architects to visualize
-                          sketches in various styles, fostering quick iteration
-                          and experimentation. The platform automates
-                          remodeling, saving architects significant time while
-                          effortlessly generating multiple design options.
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>{" "}
-                <div className="rounded-xl space-y-3 ">
-                  <div className="">
-                    <img
-                      className="h-48 bg-indigo-700 cover rounded-xl w-full object-cover"
-                      src={"/img/interior-designers.jpg"}
-                      height={300}
-                      width={400}
-                    />
-                  </div>
-                  <div className="rounded-b-xl">
-                    <div className="py-3 space-y-2">
-                      <div>
-                        <span className="text-sm"></span>
-                      </div>
-                      <div className="flex space-x-3 items-center">
-                        <span className="font-bold text-2xl line-clamp-2 hover:underline">
-                          Interior Designers
-                        </span>
-                      </div>
-                      <div className="flex space-x-3 items-center">
-                        <span className="  line-clamp-5 text-left">
-                          By uploading images, designers can quickly explore
-                          different styles, facilitating creative exploration
-                          for unique and personalized designs. AI-generated
-                          visuals enable designers to present multiple options
-                          to clients, aiding their decision-making process.
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>{" "}
-                <div className="rounded-xl space-y-3 ">
-                  <div className="">
-                    <img
-                      className="h-48 bg-indigo-700 cover rounded-xl w-full object-cover"
-                      src={"/img/real-estate-agents.jpg"}
-                      height={300}
-                      width={400}
-                    />
-                  </div>
-                  <div className="rounded-b-xl">
-                    <div className="py-3 space-y-2">
-                      <div>
-                        <span className="text-sm"></span>
-                      </div>
-                      <div className="flex space-x-3 items-center">
-                        <span className="font-bold text-2xl line-clamp-2 hover:underline">
-                          Real Estate Agents
-                        </span>
-                      </div>
-                      <div className="flex space-x-3 items-center">
-                        <span className="  line-clamp-5 text-left">
-                          MyArchitectureAI revitalizes property listings by
-                          remodeling scenes in various styles, attracting buyers
-                          with diverse preferences. Visually appealing design
-                          options accelerate the sales process, allowing agents
-                          to present properties effectively and reduce physical
-                          visits.
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>{" "}
-                <div className="rounded-xl space-y-3 ">
-                  <div className="">
-                    <img
-                      className="h-48 bg-indigo-700 cover rounded-xl w-full object-cover"
-                      src={"/img/home-lovers.jpg"}
-                      height={300}
-                      width={400}
-                    />
-                  </div>
-                  <div className="rounded-b-xl">
-                    <div className="py-3 space-y-2">
-                      <div>
-                        <span className="text-sm"></span>
-                      </div>
-                      <div className="flex space-x-3 items-center">
-                        <span className="font-bold text-2xl line-clamp-2 hover:underline">
-                          Home Lovers
-                        </span>
-                      </div>
-                      <div className="flex space-x-3 items-center">
-                        <span className="  line-clamp-5 text-left">
-                          MyArchitectureAI sparks inspiration by showcasing
-                          different styles, helping users discover new design
-                          directions for their spaces. Users can visualize their
-                          spaces in various styles, creating a unique living
-                          environment that reflects their preferences.
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>{" "}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="pt-12">
-          <Link
-            className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
-            href={"/dream"}
-          >
-            Build your dream home for free →
-          </Link>
-        </div>
-
-        <div className="flex justify-center items-center pt-48">
+    <div className='m-auto max-w-6xl lg:p-0 p-5'>
+        <Header />
+        <div className="flex justify-center items-center pt-24">
           <div className="space-y-5">
             <div>
               <span className="font-bold text-4xl">
@@ -380,7 +112,7 @@ export default function HomePage() {
               </div>
             </div>
           </div> */}
-          <div className="shadow-xl border rounded-xl p-12 space-y-10">
+          <div className="shadow-xl border rounded-xl p-12 space-y-10  text-center">
             <div className="space-y-7">
               <div className="">
                 <span className="text-stone-500 font-bold">Hobby</span>
@@ -502,7 +234,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="shadow-xl border rounded-xl p-12 space-y-10">
+          <div className="shadow-xl border rounded-xl p-12 space-y-10 text-center">
             <div className="space-y-7">
               <div className="">
                 <span className="text-stone-500 font-bold">Pro</span>
@@ -621,7 +353,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="shadow-xl border rounded-xl p-12 space-y-10">
+          <div className="shadow-xl border rounded-xl p-12 space-y-10 text-center">
             <div className="space-y-7">
               <div className="">
                 <span className="text-stone-500 font-bold">Business</span>
@@ -742,53 +474,8 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
-        <div className="flex justify-center items-center pt-48">
-          <div className="space-y-5">
-            <div>
-              <span className="font-bold text-3xl">
-                Explore what others have built
-              </span>
-            </div>
-            <div>
-              <span>
-                Find inspiration from buildings built by creative architects and
-                home lovers all across the globe using MyArchitectAI.
-              </span>
-            </div>
-            <div>
-              <img src="/img/others.webp" />
-            </div>
-          </div>
-        </div>
-        <div className="mt-12">
-          <Link
-            className="bg-black rounded-xl text-white font-medium px-4 py-3 hover:bg-blue-500 transition"
-            href={"/dream"}
-          >
-            Build your dream home for free →
-          </Link>
-        </div>
-
-        <div className="lg:flex justify-between py-24 w-full lg:space-x-12 pt-48">
-          <div className="lg:w-1/2 space-y-5">
-            <div className="text-left">
-              <span className="text-3xl font-bold">
-                Frequently asked questions
-              </span>
-            </div>
-            <div className="text-left">
-              <span>
-                Answers to common questions about MyArchitectureAI's services
-                for architects, interior desginers, real estate agents and home
-                lovers.
-              </span>
-            </div>
-          </div>
-          <QnA />
-        </div>
-      </main>
-      <Footer />
     </div>
-  );
+  )
 }
+
+export default page
