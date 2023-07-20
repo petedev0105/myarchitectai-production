@@ -14,7 +14,7 @@ import downloadPhoto from "../../utils/downloadPhoto";
 import DropDown from "../../components/DropDown";
 import { useDropzone } from "react-dropzone";
 import DropDownRestricted from "../../components/DropDownRestricted";
-import Link from "next/link"
+import Link from "next/link";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/dist/client/components/headers";
@@ -226,6 +226,10 @@ function page() {
         const newPhoto = await response.json();
         console.log(newPhoto);
         setRestoredImage(newPhoto[1]);
+      } else if (response.status === 504) {
+        alert(
+          "We're experiencing a high amount of requests, so your request is queued and timed out because you're using the Free plan. Upgrade to the Pro plan to receive unlimited images and get your requests prioritized with zero down times and time outs."
+        );
       } else {
         throw new Error("Failed to generate photo");
       }
@@ -241,7 +245,9 @@ function page() {
         <div className="bg-blue-500 text-center text-white py-2">
           <span>
             You are currently on the limited Free Plan{" "}
-            <Link href={"/pricing"} className="underline font-bold">Upgrade to Pro for more features</Link>
+            <Link href={"/pricing"} className="underline font-bold">
+              Upgrade to Pro for more features
+            </Link>
           </span>
         </div>
       )}
