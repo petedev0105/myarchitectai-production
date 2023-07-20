@@ -15,20 +15,25 @@ export default function Header() {
               🏠 MyArchitectAI
             </h1>
           </Link>
-          { user ? 
-      <div className="space-x-5 flex items-center">
-        <div>
-          <Link href={"/dream-interior"}>
-            <span className="font-bold text-stone-600">Interior</span>
-          </Link>
-        </div>
-        <div>
-          <Link href={"/dream"}>
-            <span className="font-bold text-stone-600">Exterior</span>
-          </Link>
-        </div>
-      </div> : null
-  }
+          {user ? (
+            <div className="space-x-5 flex items-center">
+              <div>
+                <Link href={"/dream-interior"}>
+                  <span className="font-bold text-stone-600">Interior Studio</span>
+                </Link>
+              </div>
+              <div>
+                <Link href={"/dream"}>
+                  <span className="font-bold text-stone-600">Exterior Studio</span>
+                </Link>
+              </div>
+              <div>
+                <Link href={"/dream-floorplan"}>
+                  <span className="font-bold text-stone-600">Floorplan Studio</span>
+                </Link>
+              </div>
+            </div>
+          ) : null}
 
           <div className="flex items-center space-x-5"></div>
         </div>{" "}

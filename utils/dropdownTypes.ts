@@ -141,6 +141,50 @@ export type buildingType =
     "Park/Outdoor Space",
     "Mixed-Use Development",
   ];
+
+  export type flooringType =
+  | "Laminate flooring"
+  | "Vinyl flooring"
+  | "Hardwood flooring"
+  | "Bamboo floor"
+  | "Engineered wood"
+  | "Lumber"
+  | "Bamboo"
+  | "Polished concrete"
+  | "Brick"
+  | "Vinyl"
+  | "Ceramic"
+  | "Porcelain tile"
+  | "Tile flooring"
+  | "Marble"
+  | "Granite"
+  | "Cork"
+  | "Carpet"
+  | "Linoleum flooring"
+  | "Natural rubber";
+
+export const floorings: flooringType[] = [
+  "Laminate flooring",
+  "Vinyl flooring",
+  "Hardwood flooring",
+  "Bamboo floor",
+  "Engineered wood",
+  "Lumber",
+  "Bamboo",
+  "Polished concrete",
+  "Brick",
+  "Vinyl",
+  "Ceramic",
+  "Porcelain tile",
+  "Tile flooring",
+  "Marble",
+  "Granite",
+  "Cork",
+  "Carpet",
+  "Linoleum flooring",
+  "Natural rubber",
+];
+
   
 
 export const interiorStyles: interiorStyleType[] = [
