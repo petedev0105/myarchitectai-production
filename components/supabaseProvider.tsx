@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, {
   createContext,
   useState,
@@ -30,7 +30,7 @@ const SupabaseProvider: React.FC<SupabaseProviderProps> = ({ children }) => {
   ) as SupabaseClient;
 
   const [user, setUser] = useState<User | null>(null);
-  const [packageType, setPackageType] = useState("free")
+  const [packageType, setPackageType] = useState("free");
 
   async function fetchUser() {
     const {
@@ -50,10 +50,8 @@ const SupabaseProvider: React.FC<SupabaseProviderProps> = ({ children }) => {
 
       if (error) {
         throw new Error(error.message);
-      }
-
-      if (user) {
-        setUser(user);
+      } else {
+        
       }
     } catch (error) {
       console.log(error);
@@ -93,7 +91,9 @@ const SupabaseProvider: React.FC<SupabaseProviderProps> = ({ children }) => {
   }, []);
 
   return (
-    <SupabaseContext.Provider value={{ supabase, user, signInWithSupabase, packageType }}>
+    <SupabaseContext.Provider
+      value={{ supabase, user, signInWithSupabase, packageType }}
+    >
       {children}
     </SupabaseContext.Provider>
   );

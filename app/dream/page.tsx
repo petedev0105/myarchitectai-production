@@ -248,9 +248,7 @@ function page() {
         console.log(newPhoto);
         setRestoredImage(newPhoto[1]);
       } else if (response.status === 504) {
-        alert(
-          "We're experiencing a high amount of requests, so your request is queued and timed out because you're using the Free plan. Upgrade to the Pro plan to receive unlimited images and get your requests prioritized with zero down times and time outs."
-        );
+        alert("Experiencing timeouts? Upgrade to our Pro plan for unlimited images and priority access. Elevate your design process with MyArchitectAI's seamless performance.")
       } else {
         throw new Error("Failed to generate photo");
       }

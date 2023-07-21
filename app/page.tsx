@@ -27,22 +27,19 @@ export default function HomePage() {
             </div>
             <div>
               <span className="">
-                Take your hand-drawn architecture and instantly transform them
-                into breathtaking, photorealistic masterpieces in seconds, not
-                hours.
-              </span>
+              Turn your architectural sketches into photorealistic masterpieces in seconds with our advanced technology. Say goodbye to time-consuming manual rendering and embrace a new era of efficiency.              </span>
             </div>
             <div>
               {user ? (
                 <Link
-                  className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
+                  className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition font-bold"
                   href={"/dream"}
                 >
                   Go to the MyArchitectAI app →
                 </Link>
               ) : (
                 <button
-                  className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
+                  className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition font-bold"
                   onClick={() => signInWithSupabase()}
                 >
                   Build your dream home →
@@ -98,7 +95,10 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48">
+        <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48"><div className="lg:w-1/2 lg:pt-0 pt-10">
+            <img src="/img/architecture-styles.png" />
+            {/* <CompareSlider original="/img/exterior-before.png" restored="/img/exterior-after.png" /> */}
+          </div>
           <div className="lg:w-1/2 lg:text-left space-y-7">
             <div>
               <span className="font-bold lg:text-4xl text-3xl">
@@ -113,8 +113,25 @@ export default function HomePage() {
               </span>
             </div>
           </div>
-          <div className="lg:w-1/2 lg:pt-0 pt-10">
-            <img src="/img/architecture-styles.png" />
+          
+        </div>
+        <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48">
+          
+          <div className="lg:w-1/2 lg:text-left space-y-7">
+            <div>
+              <span className="font-bold lg:text-4xl text-3xl">
+                Floorplans, Interior, Exterior design made easy
+              </span>
+            </div>
+            <div>
+              <span className="">
+                We've revolutionized the way you approach architecture and
+                decor, making it accessible to everyone, regardless of
+                expertise.
+              </span>
+            </div>
+          </div><div className="lg:w-1/2 lg:pt-0 pt-10">
+            <img src="/img/all.png" />
             {/* <CompareSlider original="/img/exterior-before.png" restored="/img/exterior-after.png" /> */}
           </div>
         </div>
@@ -283,7 +300,8 @@ export default function HomePage() {
             </div>
             <div>
               <span>
-              Your Imagination, Our Canvas: Immerse yourself in a world of unlimited designs, where your imagination takes center stage.
+                Your Imagination, Our Canvas: Immerse yourself in a world of
+                unlimited designs, where your imagination takes center stage.
               </span>
             </div>
           </div>
@@ -382,12 +400,12 @@ export default function HomePage() {
           </div> */}
           <div className="shadow-xl border rounded-xl p-12 space-y-10">
             <div className="space-y-7">
-              <div className="">
+              <div className="text-left">
                 <span className="text-stone-500 font-bold">Hobby</span>
               </div>
-              <div className="flex space-x-5 items-center justify-center">
-                <div>
-                  <span className="font-bold ">
+              <div className="">
+                <div className="text-left">
+                  <span className="font-bold">
                     <span className="text-4xl">Free</span>
                   </span>
                   <span className=""></span>
@@ -396,7 +414,7 @@ export default function HomePage() {
             </div>
 
             <div className="space-y-10 text-sm text-left">
-              <div className="space-y-3 ">
+              <div className="space-y-3 h-[400px]">
                 <div className="flex space-x-3 items-center">
                   <div>
                     <img src="/img/tick-tutor.png" height={20} width={20} />
@@ -434,8 +452,10 @@ export default function HomePage() {
                   </div>
                   <div>
                     <span className="">
-                      <span className="font-bold underline">Limited selection</span>{" "}of
-                      architectural styles and options
+                      <span className="font-bold underline">
+                        Limited selection
+                      </span>{" "}
+                      of architectural styles and options
                     </span>
                   </div>
                 </div>
@@ -444,9 +464,7 @@ export default function HomePage() {
                     <img src="/img/tick-tutor.png" height={20} width={20} />
                   </div>
                   <div>
-                    <span className="">
-                      Interior designs + Exterior designs
-                    </span>
+                    <span className="">Interior design studio</span>
                   </div>
                 </div>
                 <div className="flex space-x-3 items-center">
@@ -473,7 +491,7 @@ export default function HomePage() {
                     <span className="">Customer support</span>
                   </div>
                 </div>
-                
+
                 <div className="flex space-x-3 items-center">
                   <div>
                     <img src="/img/tick-tutor.png" height={20} width={20} />
@@ -504,11 +522,11 @@ export default function HomePage() {
           </div>
           <div className="shadow-xl border rounded-xl p-12 space-y-10">
             <div className="space-y-7">
-              <div className="">
+              <div className="text-left">
                 <span className="text-stone-500 font-bold">Pro</span>
               </div>
-              <div className="flex space-x-5 items-center justify-center">
-                <div>
+              <div className="">
+                <div className="text-left">
                   <span className="font-bold ">
                     <span className="text-4xl">$14.99</span>
                   </span>
@@ -518,7 +536,7 @@ export default function HomePage() {
             </div>
 
             <div className="space-y-10 text-left text-sm">
-              <div className="space-y-3 ">
+              <div className="space-y-3 h-[400px]">
                 <div className="flex space-x-3 items-center">
                   <div>
                     <img src="/img/tick-tutor.png" height={20} width={20} />
@@ -564,9 +582,23 @@ export default function HomePage() {
                     <img src="/img/tick-tutor.png" height={20} width={20} />
                   </div>
                   <div>
-                    <span className="">
-                      Interior designs + Exterior designs
-                    </span>
+                    <span className="">Interior Design Studio</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Exterior Design Studio</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Floorplan Design Studio</span>
                   </div>
                 </div>
                 <div className="flex space-x-3 items-center">
@@ -623,11 +655,11 @@ export default function HomePage() {
           </div>
           <div className="shadow-xl border rounded-xl p-12 space-y-10">
             <div className="space-y-7">
-              <div className="">
+              <div className="text-left">
                 <span className="text-stone-500 font-bold">Business</span>
               </div>
-              <div className="flex space-x-5 items-center justify-center">
-                <div>
+              <div className="">
+                <div className="text-left">
                   <span className="font-bold  ">
                     <span className="text-4xl">$24.99</span>
                   </span>
@@ -637,7 +669,7 @@ export default function HomePage() {
             </div>
 
             <div className="space-y-10 text-left text-sm">
-              <div className="space-y-3 ">
+              <div className="space-y-3 h-[400px]">
                 <div className="flex space-x-3 items-center">
                   <div>
                     <img src="/img/tick-tutor.png" height={20} width={20} />
@@ -683,9 +715,23 @@ export default function HomePage() {
                     <img src="/img/tick-tutor.png" height={20} width={20} />
                   </div>
                   <div>
-                    <span className="">
-                      Interior designs + Exterior designs
-                    </span>
+                    <span className="">Interior Design Studio</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Exterior Design Studio</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Floorplan Design Studio</span>
                   </div>
                 </div>
                 <div className="flex space-x-3 items-center">
@@ -712,7 +758,7 @@ export default function HomePage() {
                     <span className="">Customer support</span>
                   </div>
                 </div>
-                
+
                 <div className="flex space-x-3 items-center">
                   <div>
                     <img src="/img/tick-tutor.png" height={20} width={20} />

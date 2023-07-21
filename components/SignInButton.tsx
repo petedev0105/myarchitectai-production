@@ -38,10 +38,10 @@ function SignInButton() {
   return (
     <div className="space-x-5">
       <button
-        className="text-white bg-black font-bold px-5 py-2 rounded-md"
+        className="text-white bg-black px-5 py-2 rounded-md"
         onClick={signInWithSupabase}
       >
-        Sign in
+        Get Started
       </button>
     </div>
   );
