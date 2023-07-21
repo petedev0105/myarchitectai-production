@@ -51,7 +51,7 @@ const SupabaseProvider: React.FC<SupabaseProviderProps> = ({ children }) => {
       if (error) {
         throw new Error(error.message);
       } else {
-        
+
       }
     } catch (error) {
       console.log(error);
@@ -70,7 +70,7 @@ const SupabaseProvider: React.FC<SupabaseProviderProps> = ({ children }) => {
         .single();
 
       if (data) {
-        console.log(data);
+        // console.log(data);
 
         switch (data.package) {
           case "free":

@@ -335,15 +335,15 @@ function page() {
               <div className="space-y-4 w-full ">
                 <div className="flex mt-10 items-center space-x-3">
                   <p className="text-left font-bold font-bold text-stone-600">
-                    Choose your style ({buildingTypes.length})
+                    Choose your style ({houseStyles.length})
                   </p>
                 </div>
                 <DropDownRestricted
-                  theme={buildingType}
-                  setTheme={(newBuildingType) =>
-                    setBuildingType(newBuildingType as typeof buildingType)
+                  theme={houseStyle}
+                  setTheme={(newHouseStyle) =>
+                    setHouseStyle(newHouseStyle as typeof houseStyle)
                   }
-                  themes={buildingTypes}
+                  themes={houseStyles}
                 />
               </div>
 
@@ -367,15 +367,15 @@ function page() {
               <div className="space-y-4 w-full ">
                 <div className="flex mt-10 items-center space-x-3">
                   <p className="text-left font-bold font-bold text-stone-600">
-                    Choose your style ({buildingTypes.length})
+                    Choose your style ({houseStyles.length})
                   </p>
                 </div>
                 <DropDown
-                  theme={buildingType}
-                  setTheme={(newBuildingType) =>
-                    setBuildingType(newBuildingType as typeof buildingType)
+                  theme={houseStyle}
+                  setTheme={(newHouseStyle) =>
+                    setHouseStyle(newHouseStyle as typeof houseStyle)
                   }
-                  themes={buildingTypes}
+                  themes={houseStyles}
                 />
               </div>
 

@@ -49,10 +49,10 @@ export async function POST(request: Request) {
         "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
       input: {
         image: imageUrl,
-        prompt: `A stunning visual of a floorplan, ${houseStyle}, flooring type is ${flooring}`,
+        prompt: `floorplan, top-down view, ${houseStyle}, cozy, elegant, ${flooring} flooring, Unreal Engine 5, 3d render, CGI, Floorplanner, furnitures`,
         a_prompt: "ultrarealistic",
         n_prompt:
-          "blurry, details are low, overlapping, grainy, multiple angles, deformed structures, weird colors, unnatural, unrealistic, humans, people, animals, cartoon, anime, painting, drawing, sketch",
+          "longbody, lowres, bad anatomy, bad hands, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, blurry, disfigured, deformed, overlapping, unidentified objects, disfigured furnitures",
       },
     }),
   });

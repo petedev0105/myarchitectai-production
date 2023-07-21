@@ -181,6 +181,7 @@ function page() {
 
   function newImage() {
     setOriginalPhoto("");
+    setRestoredImage("");
   }
 
   const UploadDropZone = () => (
