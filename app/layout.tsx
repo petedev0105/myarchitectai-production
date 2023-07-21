@@ -9,6 +9,8 @@ import { User, createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 import { SupabaseProvider } from "../components/supabaseProvider";
 import Header from "../components/Header";
+import Head from "next/head";
+import Script from "next/script";
 
 let title = "MyArchtectAI";
 let description = "MyArchtectAI";
@@ -41,9 +43,26 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   return (
     <html lang="en">
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-JQZ1BCDXW1"
+      ></Script>
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JQZ1BCDXW1', {
+            page_path: window.location.pathname,
+          });
+        `,
+        }}
+      />
       <SupabaseProvider>
         <body className={inter.className}>
           <Providers>{children}</Providers>

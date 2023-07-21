@@ -184,6 +184,7 @@ function page() {
 
   function newImage() {
     setOriginalPhoto("");
+    setRestoredImage("");
   }
 
   const UploadDropZone = () => (
@@ -456,7 +457,7 @@ function page() {
                     restoredImage
                       ? downloadPhoto(
                           restoredImage,
-                          `${houseStyle} ${material} house, ${location}, ${season}`
+                          `${houseStyle} style, ${flooring}`
                         )
                       : console.log("no photo");
                   }}
