@@ -1,10 +1,8 @@
 import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { useSupabase } from "./supabaseProvider";
 
 export default function Footer() {
-  const { data: session } = useSession();
   const { user, supabase } = useSupabase();
 
   async function handleSignOut() {

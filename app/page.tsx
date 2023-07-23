@@ -4,13 +4,11 @@ import Link from "next/link";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SquigglyLines from "../components/SquigglyLines";
-import { useSession, signIn } from "next-auth/react";
 import QnA from "../components/QnA";
 import { useSupabase } from "../components/supabaseProvider";
 import { CompareSlider } from "../components/CompareSlider";
 
 export default function HomePage() {
-  const { data: session } = useSession();
   const { supabase, user, signInWithSupabase } = useSupabase();
 
   return (
