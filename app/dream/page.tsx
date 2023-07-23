@@ -33,7 +33,6 @@ import {
   buildingType,
   buildingTypes,
 } from "../../utils/dropdownTypes";
-import { useSession } from "next-auth/react";
 import { useSupabase } from "../../components/supabaseProvider";
 import { User } from "@supabase/supabase-js";
 
@@ -241,6 +240,7 @@ function page() {
           season,
           houseStyle,
           material,
+          buildingType
         }),
       });
 

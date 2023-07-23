@@ -35,7 +35,7 @@ export async function POST(request: Request) {
   //   }
   // }
 
-  const { imageUrl, theme, room, location, season, material, houseStyle } =
+  const { imageUrl, theme, room, location, season, material, houseStyle, buildingType } =
     await request.json();
 
   // POST request to Replicate to start the image restoration generation process
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
         "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
       input: {
         image: imageUrl,
-        prompt: `A stunning visual of a ${houseStyle} ${material} house, the season is ${season}, the house's location is${location}, realistic sky, brilliant architecture, breathtaking, 8K, architecture photography,`,
+        prompt: `A stunning visual of a ${houseStyle} ${material} ${buildingType}, the season is ${season}, the house's location is${location}, realistic sky, brilliant architecture, breathtaking, 8K, architecture photography,`,
         a_prompt: "ultrarealistic",
         n_prompt:
           "blurry, details are low, overlapping, grainy, multiple angles, deformed structures, weird colors, unnatural, unrealistic, humans, unrealistic sky, people, animals, cartoon, anime, painting, drawing, sketch",
