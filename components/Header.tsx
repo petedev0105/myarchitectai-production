@@ -12,24 +12,31 @@ export default function Header() {
         <div className="flex space-x-12 items-center">
           <Link href="/" className="flex space-x-2">
             <h1 className="text-xl font-bold ml-2 tracking-tight">
-              🏠 MyArchitectAI <span className="text-xs text-blue-500">Beta</span>
+               MyArchitectAI{" "}
+              <span className="text-xs text-blue-500">Beta</span>
             </h1>
           </Link>
           {user ? (
             <div className="space-x-5 flex items-center">
               <div>
                 <Link href={"/dream-interior"}>
-                  <span className="font-bold text-stone-600">Interior Studio</span>
+                  <span className="font-bold text-stone-600">
+                    Interior Studio
+                  </span>
                 </Link>
               </div>
               <div>
                 <Link href={"/dream"}>
-                  <span className="font-bold text-stone-600">Exterior Studio</span>
+                  <span className="font-bold text-stone-600">
+                    Exterior Studio
+                  </span>
                 </Link>
               </div>
               <div>
                 <Link href={"/dream-floorplan"}>
-                  <span className="font-bold text-stone-600">Floorplan Studio</span>
+                  <span className="font-bold text-stone-600">
+                    Floorplan Studio
+                  </span>
                 </Link>
               </div>
             </div>

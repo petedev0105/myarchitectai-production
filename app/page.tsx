@@ -37,7 +37,7 @@ export default function HomePage() {
                 </Link>
               ) : (
                 <button
-                  className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition font-bold"
+                  className="bg-black rounded-xl text-white font-medium px-4 py-3 hover:bg-blue-500 transition"
                   onClick={() => signInWithSupabase()}
                 >
                   Build your dream home →
@@ -398,11 +398,11 @@ export default function HomePage() {
           </div> */}
           <div className="shadow-xl border rounded-xl p-12 space-y-10">
             <div className="space-y-7">
-              <div className="text-left">
-                <span className="text-stone-500 font-bold">Hobby</span>
+              <div className="text-center">
+                <span className=" font-bold px-5 py-1 rounded-full border border-black text-xs">Hobby</span>
               </div>
               <div className="">
-                <div className="text-left">
+                <div className="text-center">
                   <span className="font-bold">
                     <span className="text-4xl">Free</span>
                   </span>
@@ -499,26 +499,27 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-center">
+              <div className="flex justify-center font-bold">
+              {user ? (
                 <Link
-                  href="https://myarchitectai.lemonsqueezy.com/checkout/buy/d7810a4c-988c-418b-838f-4a10ce0494ef"
-                  target="_blank"
+                  className="bg-black rounded-xl text-white  px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition font-bold"
+                  href={"/dream"}
                 >
-                  <button
-                    // onClick={() => {
-                    //   Paddle.Checkout.open({
-                    //     product: 47418,
-                    //   });
-                    // }}
-                    className="px-5 py-2 rounded-md  font-bold  text-center bg-black text-white"
-                  >
-                    Build your dream home →
-                  </button>
+                  Go to the MyArchitectAI app →
                 </Link>
-              </div>
+              ) : (
+                <button
+                  className="bg-black rounded-xl text-white  px-4 py-3 hover:bg-blue-500 transition"
+                  onClick={() => signInWithSupabase()}
+                >
+                  Build your dream home →
+                </button>
+              )}
+            </div>
+              
             </div>
           </div>
-          <div className="shadow-xl border rounded-xl p-12 space-y-10">
+          {/* <div className="shadow-xl border rounded-xl p-12 space-y-10">
             <div className="space-y-7">
               <div className="text-left">
                 <span className="text-stone-500 font-bold">Pro</span>
@@ -650,16 +651,16 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="shadow-xl border rounded-xl p-12 space-y-10">
             <div className="space-y-7">
-              <div className="text-left">
-                <span className="text-stone-500 font-bold">Business</span>
+              <div className="text-center">
+                <span className="text-white bg-black font-bold px-5 py-1 rounded-full text-xs">Premium</span>
               </div>
               <div className="">
-                <div className="text-left">
+                <div className="text-center">
                   <span className="font-bold  ">
-                    <span className="text-4xl">$24.99</span>
+                    <span className="text-4xl ">$24.99</span>
                   </span>
                   <span className="">/month</span>
                 </div>
@@ -768,7 +769,7 @@ export default function HomePage() {
               </div>
               <div className="flex justify-center">
                 <Link
-                  href="https://myarchitectai.lemonsqueezy.com/checkout/buy/717a45d0-4fad-4990-a153-49bf6544683b"
+                  href="https://myarchitectai.lemonsqueezy.com/checkout/buy/875159c9-3c87-4ce1-8e2f-557191a03115"
                   target="_blank"
                 >
                   <button
@@ -777,7 +778,7 @@ export default function HomePage() {
                     //     product: 47418,
                     //   });
                     // }}
-                    className="px-5 py-2 rounded-md  font-bold  text-center bg-black text-white"
+                    className="bg-black rounded-xl text-white px-4 py-3 hover:bg-blue-500 transition font-bold"
                   >
                     Build your dream home →
                   </button>

@@ -266,8 +266,12 @@ function page() {
         <div className="bg-blue-500 text-center text-white py-2">
           <span>
             You are currently on the limited Free Plan{" "}
-            <Link href={"/pricing"} className="underline font-bold">
-              Upgrade to Pro for more features
+            <Link
+              href="https://myarchitectai.lemonsqueezy.com/checkout/buy/875159c9-3c87-4ce1-8e2f-557191a03115"
+              target="_blank"
+              className="underline font-bold"
+            >
+              Upgrade to Premium for more features
             </Link>
           </span>
         </div>

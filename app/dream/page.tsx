@@ -240,7 +240,7 @@ function page() {
           season,
           houseStyle,
           material,
-          buildingType
+          buildingType,
         }),
       });
 
@@ -249,7 +249,9 @@ function page() {
         console.log(newPhoto);
         setRestoredImage(newPhoto[1]);
       } else if (response.status === 504) {
-        alert("Experiencing timeouts? Upgrade to our Pro plan for unlimited images and priority access. Elevate your design process with MyArchitectAI's seamless performance.")
+        alert(
+          "Experiencing timeouts? Upgrade to our Pro plan for unlimited images and priority access. Elevate your design process with MyArchitectAI's seamless performance."
+        );
       } else {
         throw new Error("Failed to generate photo");
       }
@@ -268,7 +270,13 @@ function page() {
         <div className="bg-blue-500 text-center text-white py-2">
           <span>
             You are currently on the limited Free Plan{" "}
-            <Link href={"/pricing"} className="underline font-bold">Upgrade to Pro for more features</Link>
+            <Link
+              href="https://myarchitectai.lemonsqueezy.com/checkout/buy/875159c9-3c87-4ce1-8e2f-557191a03115"
+              target="_blank"
+              className="underline font-bold"
+            >
+              Upgrade to Premium for more features
+            </Link>
           </span>
         </div>
       )}
@@ -546,7 +554,7 @@ function page() {
                     restoredImage
                       ? downloadPhoto(
                           restoredImage,
-                          `${houseStyle} ${material} house, ${location}, ${season}`
+                          `${houseStyle} ${material} ${buildingType}, ${location}, ${season}`
                         )
                       : console.log("no photo");
                   }}

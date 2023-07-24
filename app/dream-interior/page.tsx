@@ -38,6 +38,8 @@ import {
   lightings,
   interiorStyleType,
   interiorStyles,
+  buildingTypes,
+  buildingType,
 } from "../../utils/dropdownTypes";
 import { useSupabase } from "../../components/supabaseProvider";
 
@@ -83,6 +85,8 @@ function page() {
   const [season, setSeason] = useState<seasonType>("Autumn");
   const [material, setMaterial] = useState<materialType>("Wooden");
   const [location, setLocation] = useState<locationType>("Cliff");
+  const [buildingType, setBuildingType] =
+    useState<buildingType>("Residential Home");
 
   const [interiorStyle, setInteriorStyle] =
     useState<interiorStyleType>("Minimalist Haven");
@@ -220,6 +224,7 @@ function page() {
           imageUrl: fileUrl,
           lighting,
           interiorStyle,
+          buildingType
         }),
       });
 
@@ -246,8 +251,12 @@ function page() {
         <div className="bg-blue-500 text-center text-white py-2">
           <span>
             You are currently on the limited Free Plan{" "}
-            <Link href={"/pricing"} className="underline font-bold">
-              Upgrade to Pro for more features
+            <Link
+              href="https://myarchitectai.lemonsqueezy.com/checkout/buy/875159c9-3c87-4ce1-8e2f-557191a03115"
+              target="_blank"
+              className="underline font-bold"
+            >
+              Upgrade to Premium for more features
             </Link>
           </span>
         </div>
@@ -311,6 +320,20 @@ function page() {
               <div className="space-y-4 w-full ">
                 <div className="flex mt-10 items-center space-x-3 text-stone-600">
                   <p className="text-left font-bold">
+                    Choose your building type ({buildingTypes.length})
+                  </p>
+                </div>
+                <DropDownRestricted
+                  theme={buildingType}
+                  setTheme={(newBuildingType) =>
+                    setBuildingType(newBuildingType as typeof buildingType)
+                  }
+                  themes={buildingTypes}
+                />
+              </div>
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
                     Choose your style ({interiorStyles.length})
                   </p>
                 </div>
@@ -340,6 +363,20 @@ function page() {
             </>
           ) : (
             <>
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose your building type ({buildingTypes.length})
+                  </p>
+                </div>
+                <DropDown
+                  theme={buildingType}
+                  setTheme={(newBuildingType) =>
+                    setBuildingType(newBuildingType as typeof buildingType)
+                  }
+                  themes={buildingTypes}
+                />
+              </div>
               <div className="space-y-4 w-full ">
                 <div className="flex mt-10 items-center space-x-3 text-stone-600">
                   <p className="text-left font-bold">

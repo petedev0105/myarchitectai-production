@@ -12,8 +12,8 @@ import Header from "../components/Header";
 import Head from "next/head";
 import Script from "next/script";
 
-let title = "MyArchtectAI";
-let description = "MyArchtectAI";
+let title = "MyArchitectAI | Visualize your ideas in seconds.";
+let description = "MyArchitectAI";
 let ogimage = "https://myarchitectai.vercel.app/og-image.png";
 
 const inter = Inter_Tight({ subsets: ["latin"] });
