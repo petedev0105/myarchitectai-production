@@ -106,25 +106,28 @@ function page() {
   // supaabse stuff
   const { supabase, packageType } = useSupabase();
 
+  const acceptedFileTypes = ["image/png", "image/jpeg"];
+
   const onDrop = useCallback((acceptedFiles: File[]) => {
     for (const file of acceptedFiles) {
-      const reader = new FileReader();
+      if (file && acceptedFileTypes.includes(file.type)) {
+        const reader = new FileReader();
 
-      reader.onloadstart = () => {
-        setIsLoading(true);
-      };
-
-      reader.onload = () => {
-        setImageURL(reader.result as string);
-        setOriginalPhoto(reader.result as string);
-        setIsLoading(false);
-      };
-      if (file) {
-        reader.readAsDataURL(file);
+        reader.onload = () => {
+          setImageURL(reader.result as string);
+          setOriginalPhoto(reader.result as string);
+          setIsLoading(false);
+        };
+        if (file) {
+          reader.readAsDataURL(file);
+        }
+      } else {
+        alert(
+          "We only accept PNG, JPG and JPEG files, please try uploading another image."
+        );
       }
     }
-
-    console.log(acceptedFiles);
+    // console.log(acceptedFiles);
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
@@ -224,7 +227,7 @@ function page() {
           imageUrl: fileUrl,
           lighting,
           interiorStyle,
-          buildingType
+          buildingType,
         }),
       });
 

@@ -13,7 +13,7 @@ import appendNewToName from "../../utils/appendNewToName";
 import downloadPhoto from "../../utils/downloadPhoto";
 import DropDown from "../../components/DropDown";
 import DropDownRestricted from "../../components/DropDownRestricted";
-import { Image } from "antd";
+import { Image, Alert } from "antd";
 import { useRouter } from "next/router";
 import { useDropzone } from "react-dropzone";
 import Link from "next/link";
@@ -200,27 +200,44 @@ function page() {
     />
   );
 
+  const acceptedFileTypes = ["image/png", "image/jpeg"];
+
   const onDrop = useCallback((acceptedFiles: File[]) => {
     for (const file of acceptedFiles) {
-      const reader = new FileReader();
+      if (file && acceptedFileTypes.includes(file.type)) {
+        const reader = new FileReader();
 
-      reader.onloadstart = () => {
-        setIsLoading(true);
-      };
-
-      reader.onload = () => {
-        setImageURL(reader.result as string);
-        setOriginalPhoto(reader.result as string);
-        setIsLoading(false);
-      };
-      if (file) {
-        reader.readAsDataURL(file);
+        reader.onload = () => {
+          setImageURL(reader.result as string);
+          setOriginalPhoto(reader.result as string);
+          setIsLoading(false);
+        };
+        if (file) {
+          reader.readAsDataURL(file);
+        }
+      } else {
+        alert(
+          "We only accept PNG, JPG and JPEG files, please try uploading another image."
+        );
       }
     }
-
-    console.log(acceptedFiles);
+    // console.log(acceptedFiles);
   }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  
+  const {
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    isDragReject,
+    fileRejections,
+    acceptedFiles,
+    isDragAccept,
+  } = useDropzone({
+    onDrop,
+    accept: {
+      "image/*": [".jpeg", ".png"],
+    },
+  });
 
   async function generatePhoto(fileUrl: string) {
     try {
@@ -329,14 +346,28 @@ function page() {
                 isDragActive ? "bg-sky-200" : "bg-slate-50"
               } cursor-pointer text-center p-10 rounded-md border-dashed border-2 `}
             >
-              <input {...getInputProps()} />
-              {isDragActive ? (
+              {!isDragReject && <input {...getInputProps()} />}
+              {/* {isDragActive  ? (
                 <p>Drop the file here ...</p>
               ) : (
                 <p>Drag and drop or click to upload image +</p>
-              )}
+              )} */}
+              {isDragAccept && <p>Drop the file here ...</p>}
+              {isDragReject && <p>We only accept png, jpg, and jpeg files!</p>}
+              {!isDragActive && <p>Drag and drop or click to upload image +</p>}
             </div>
           )}
+
+          <div>
+            {fileRejections.length > 0 && (
+              <Alert
+                message="Error Text"
+                description="Error Description Error Description Error Description Error Description Error Description Error Description"
+                type="error"
+                closable
+              />
+            )}
+          </div>
 
           {packageType == "free" ? (
             <>
