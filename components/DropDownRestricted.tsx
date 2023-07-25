@@ -113,7 +113,7 @@ export default function DropDown({ theme, setTheme, themes }: DropDownProps) {
                       {index >= 3 ? (
                         <div>
                           <span role="img" aria-label="Locked" className="underline">
-                            🔒 <Link href={"https://myarchitectai.lemonsqueezy.com/checkout?cart=de43d7b9-8968-4200-8d07-0f8eed9b625b"} target="_blank">Upgrade</Link>
+                            🔒 <Link href={"https://myarchitectai.lemonsqueezy.com/checkout/buy/875159c9-3c87-4ce1-8e2f-557191a03115"} target="_blank">Upgrade</Link>
                           </span>
                         </div>
                       ) : null}
