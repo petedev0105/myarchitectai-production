@@ -905,7 +905,7 @@ export default function HomePage() {
               </div>
               <div className="flex justify-center">
                 <Link
-                  href="https://myarchitectai.lemonsqueezy.com/checkout/buy/875159c9-3c87-4ce1-8e2f-557191a03115"
+                  href="https://myarchitectai.lemonsqueezy.com/checkout/buy/b598c7af-ed8f-478f-a294-e2da36e5f7b0"
                   target="_blank"
                   className="w-full"
                 >
