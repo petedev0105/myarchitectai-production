@@ -10,7 +10,7 @@ export default function QnA() {
             <>
               <Disclosure.Button className="flex w-full justify-between rounded-lg bg-slate-100 px-4 py-5 text-left text-sm font-medium text-slate-900 hover:bg-slate-200 focus:outline-none focus-visible:ring focus-visible:ring-slate-500 focus-visible:ring-opacity-75">
                 <span>
-                  Is MyArchitectureAI suitable for individuals without design
+                  Is MyArchitectAI suitable for individuals without design
                   expertise?
                 </span>
                 <ChevronUpIcon
@@ -20,7 +20,7 @@ export default function QnA() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500 text-left">
-                Yes, MyArchitectureAI is designed to be user-friendly and
+                Yes, MyArchitectAI is designed to be user-friendly and
                 accessible to individuals without extensive design knowledge.
                 Home lovers can use the platform to gain design inspiration,
                 visualize different styles in their spaces, and personalize
@@ -33,7 +33,7 @@ export default function QnA() {
           {({ open }) => (
             <>
               <Disclosure.Button className="flex w-full justify-between rounded-lg bg-slate-100 px-4 py-5 text-left text-sm font-medium text-slate-900 hover:bg-slate-200 focus:outline-none focus-visible:ring focus-visible:ring-slate-500 focus-visible:ring-opacity-75">
-                <span>Can I use MyArchitectureAI on mobile devices?</span>
+                <span>Can I use MyArchitectAI on mobile devices?</span>
                 <ChevronUpIcon
                   className={`${
                     open ? "rotate-180 transform" : ""
@@ -41,7 +41,7 @@ export default function QnA() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500 text-left">
-                Yes, MyArchitectureAI is available on mobile devices as well as
+                Yes, MyArchitectAI is available on mobile devices as well as
                 desktop platforms. You can conveniently access and use the
                 platform on your smartphone or tablet, making it easier to
                 upload pictures, explore design options, and collaborate on the
@@ -56,7 +56,7 @@ export default function QnA() {
               <Disclosure.Button className="flex w-full justify-between rounded-lg bg-slate-100 px-4 py-5 text-left text-sm font-medium text-slate-900 hover:bg-slate-200 focus:outline-none focus-visible:ring focus-visible:ring-slate-500 focus-visible:ring-opacity-75">
                 <span>
                   How can real estate agents benefit from using
-                  MyArchitectureAI?
+                  MyArchitectAI?
                 </span>
                 <ChevronUpIcon
                   className={`${
@@ -66,7 +66,7 @@ export default function QnA() {
               </Disclosure.Button>
               <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500 text-left">
                 Real estate agents can enhance their property listings by using
-                MyArchitectureAI to showcase different design styles and
+                MyArchitectAI to showcase different design styles and
                 preferences. By remodeling scenes, agents can attract a wider
                 range of potential buyers with diverse tastes and preferences,
                 ultimately speeding up the sales process.{" "}
@@ -80,7 +80,7 @@ export default function QnA() {
               <Disclosure.Button className="flex w-full justify-between rounded-lg bg-slate-100 px-4 py-5 text-left text-sm font-medium text-slate-900 hover:bg-slate-200 focus:outline-none focus-visible:ring focus-visible:ring-slate-500 focus-visible:ring-opacity-75">
                 <span>
                   What are the file formats supported for uploading sketches or
-                  photos to MyArchitectureAI?
+                  photos to MyArchitectAI?
                 </span>
                 <ChevronUpIcon
                   className={`${
@@ -89,7 +89,7 @@ export default function QnA() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500 text-left">
-                MyArchitectureAI supports various common file formats such as
+                MyArchitectAI supports various common file formats such as
                 JPEG, PNG, and GIF for uploading sketches or photos. It ensures
                 compatibility and ease of use for users.{" "}
               </Disclosure.Panel>

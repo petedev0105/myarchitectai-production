@@ -20,7 +20,7 @@ export default function HomePage() {
             <div>
               <span className="font-bold lg:text-4xl text-3xl">
                 Visualize your architectural ideas in{" "}
-                <span className="underline">seconds</span>
+                seconds.
               </span>
             </div>
             <div>
@@ -30,14 +30,14 @@ export default function HomePage() {
             <div>
               {user ? (
                 <Link
-                  className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition font-bold"
+                className="bg-black font-bold rounded-md text-white px-10 py-3 hover:bg-blue-500 transition"
                   href={"/dream"}
                 >
                   Go to the MyArchitectAI app →
                 </Link>
               ) : (
                 <button
-                  className="bg-black rounded-xl text-white font-medium px-4 py-3 hover:bg-blue-500 transition"
+                  className="bg-black font-bold rounded-md text-white px-10 py-3 hover:bg-blue-500 transition"
                   onClick={() => signInWithSupabase()}
                 >
                   Build your dream home →
@@ -64,11 +64,12 @@ export default function HomePage() {
           </div>
         </div>
 
+
         <div className="flex justify-cetner items-center pt-48">
           <div className="space-y-5">
             <div>
               <span className="font-bold text-4xl">
-                10x your architecture design output
+                <span className="text-black">10x</span> your architecture design output
               </span>
             </div>
             <div>
@@ -84,7 +85,7 @@ export default function HomePage() {
             </div>
             <div className="pt-12">
               <Link
-                className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
+                className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-black transition"
                 href={"/dream"}
               >
                 Build your dream home for free →
@@ -100,7 +101,7 @@ export default function HomePage() {
           <div className="lg:w-1/2 lg:text-left space-y-7">
             <div>
               <span className="font-bold lg:text-4xl text-3xl">
-                Pick from hundreds of styles to fit your preferences
+                Pick from <span className="text-black">hundreds</span> of styles to fit your preferences
               </span>
             </div>
             <div>
@@ -153,7 +154,7 @@ export default function HomePage() {
                 <div className="rounded-xl space-y-3 ">
                   <div className="">
                     <img
-                      className="h-48 bg-indigo-700 cover rounded-xl w-full object-cover"
+                      className="h-48 bg-black cover rounded-xl w-full object-cover"
                       src={"/img/architects.jpg"}
                       height={300}
                       width={400}
@@ -184,7 +185,7 @@ export default function HomePage() {
                 <div className="rounded-xl space-y-3 ">
                   <div className="">
                     <img
-                      className="h-48 bg-indigo-700 cover rounded-xl w-full object-cover"
+                      className="h-48 bg-black cover rounded-xl w-full object-cover"
                       src={"/img/interior-designers.jpg"}
                       height={300}
                       width={400}
@@ -215,7 +216,7 @@ export default function HomePage() {
                 <div className="rounded-xl space-y-3 ">
                   <div className="">
                     <img
-                      className="h-48 bg-indigo-700 cover rounded-xl w-full object-cover"
+                      className="h-48 bg-black cover rounded-xl w-full object-cover"
                       src={"/img/real-estate-agents.jpg"}
                       height={300}
                       width={400}
@@ -247,7 +248,7 @@ export default function HomePage() {
                 <div className="rounded-xl space-y-3 ">
                   <div className="">
                     <img
-                      className="h-48 bg-indigo-700 cover rounded-xl w-full object-cover"
+                      className="h-48 bg-black cover rounded-xl w-full object-cover"
                       src={"/img/home-lovers.jpg"}
                       height={300}
                       width={400}
@@ -282,7 +283,7 @@ export default function HomePage() {
 
         <div className="pt-12">
           <Link
-            className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition"
+            className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-black transition"
             href={"/dream"}
           >
             Build your dream home for free →
@@ -399,7 +400,7 @@ export default function HomePage() {
           <div className="shadow-xl border rounded-xl p-12 space-y-10">
             <div className="space-y-7">
               <div className="text-center">
-                <span className=" font-bold px-5 py-1 rounded-full border border-black text-xs">Hobby</span>
+                <span className=" font-bold px-5 py-1 rounded-full text-blue-500 text-xs">Hobby</span>
               </div>
               <div className="">
                 <div className="text-center">
@@ -502,14 +503,14 @@ export default function HomePage() {
               <div className="flex justify-center font-bold">
               {user ? (
                 <Link
-                  className="bg-black rounded-xl text-white  px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-blue-500 transition font-bold"
+                className="bg-blue-500 rounded-md w-full text-white px-4 py-3 hover:bg-black transition font-bold"
                   href={"/dream"}
                 >
                   Go to the MyArchitectAI app →
                 </Link>
               ) : (
                 <button
-                  className="bg-black rounded-xl text-white  px-4 py-3 hover:bg-blue-500 transition"
+                className="bg-blue-500 rounded-md w-full text-white px-4 py-3 hover:bg-black transition font-bold"
                   onClick={() => signInWithSupabase()}
                 >
                   Build your dream home →
@@ -655,12 +656,12 @@ export default function HomePage() {
           <div className="shadow-xl border rounded-xl p-12 space-y-10">
             <div className="space-y-7">
               <div className="text-center">
-                <span className="text-white bg-black font-bold px-5 py-1 rounded-full text-xs">Premium</span>
+                <span className="text-blue-500  font-bold px-5 py-1 rounded-full text-xs">Premium</span>
               </div>
               <div className="">
                 <div className="text-center">
                   <span className="font-bold  ">
-                    <span className="text-4xl ">$24.99</span>
+                    <span className="text-4xl ">$15.99</span>
                   </span>
                   <span className="">/month</span>
                 </div>
@@ -771,6 +772,7 @@ export default function HomePage() {
                 <Link
                   href="https://myarchitectai.lemonsqueezy.com/checkout/buy/875159c9-3c87-4ce1-8e2f-557191a03115"
                   target="_blank"
+                  className="w-full"
                 >
                   <button
                     // onClick={() => {
@@ -778,7 +780,142 @@ export default function HomePage() {
                     //     product: 47418,
                     //   });
                     // }}
-                    className="bg-black rounded-xl text-white px-4 py-3 hover:bg-blue-500 transition font-bold"
+                    className="bg-blue-500 rounded-md w-full text-white px-4 py-3 hover:bg-black transition font-bold"
+                  >
+                    Build your dream home →
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="shadow-xl border rounded-xl p-12 space-y-10">
+            <div className="space-y-7">
+              <div className="text-center">
+                <span className="text-blue-500 font-bold px-5 py-1 rounded-full text-xs">Premium Yearly</span>
+              </div>
+              <div className="">
+                <div className="text-center">
+                  <span className="font-bold  ">
+                    <span className="text-4xl ">$99.99</span>
+                  </span>
+                  <span className="">/year</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-10 text-left text-sm">
+              <div className="space-y-3 h-[400px]">
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">
+                      <span className="font-bold underline">Unlimited</span>{" "}
+                      images every month
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img
+                      src="/img/tick-tutor.png"
+                      style={{
+                        minWidth: "20px",
+                        minHeight: "20px",
+                        width: "20px",
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <span className="">
+                      <span className="font-bold underline">Prioritized</span>{" "}
+                      responses, no downtime and timeout
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">
+                      <span className="font-bold underline">100+</span>{" "}
+                      architectural styles and options
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Interior Design Studio</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Exterior Design Studio</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Floorplan Design Studio</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Access to all future updates</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Request new features</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">Customer support</span>
+                  </div>
+                </div>
+
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">No watermark</span>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <Link
+                  href="https://myarchitectai.lemonsqueezy.com/checkout/buy/875159c9-3c87-4ce1-8e2f-557191a03115"
+                  target="_blank"
+                  className="w-full"
+                >
+                  <button
+                    // onClick={() => {
+                    //   Paddle.Checkout.open({
+                    //     product: 47418,
+                    //   });
+                    // }}
+                    className="bg-blue-500 rounded-md w-full text-white px-4 py-3 hover:bg-black transition font-bold"
                   >
                     Build your dream home →
                   </button>
@@ -808,7 +945,7 @@ export default function HomePage() {
         </div>
         <div className="mt-12">
           <Link
-            className="bg-black rounded-xl text-white font-medium px-4 py-3 hover:bg-blue-500 transition"
+            className="bg-black rounded-xl text-white font-medium px-4 py-3 hover:bg-black transition"
             href={"/dream"}
           >
             Build your dream home for free →

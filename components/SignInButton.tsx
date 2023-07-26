@@ -16,7 +16,7 @@ function SignInButton() {
   return (
     <div className="space-x-5">
       <button
-        className="text-white bg-black px-5 py-2 rounded-md"
+        className="text-white font-bold bg-black px-5 py-2 rounded-md"
         onClick={signInWithSupabase}
       >
         Get Started

@@ -13,7 +13,7 @@ export default function Header() {
           <Link href="/" className="flex space-x-2">
             <h1 className="text-xl font-bold ml-2 tracking-tight">
                MyArchitectAI{" "}
-              <span className="text-xs text-blue-500">Beta</span>
+              {/* <span className="text-xs text-stone-500">Beta</span> */}
             </h1>
           </Link>
           {user ? (
