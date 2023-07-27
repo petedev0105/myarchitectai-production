@@ -64,6 +64,28 @@ export default function HomePage() {
           </div>
         </div>
 
+        <div className="flex justify-center items-center pt-48">
+          <div className="space-y-7">
+            <div>
+              <span className="font-bold text-2xl text-stone-700">
+                Featured & trusted by
+              </span>
+            </div>
+            {/* <div>
+              <span>
+                Our platform goes beyond mere visualization, breathing life into
+                your designs and eliciting powerful emotions. Present your
+                photorealistic visuals to clients and stakeholders, and watch as
+                they become fully immersed in your vision.
+              </span>
+            </div> */}
+            <div className=" flex space-x-10 justify-center">
+              <img src="/img/saashub.webp" width={200} className="" />
+              <img src="/img/saasbaba.png" className="rounded-xl" />
+            </div>
+          </div>
+        </div>
+
 
         <div className="flex justify-cetner items-center pt-48">
           <div className="space-y-5">
