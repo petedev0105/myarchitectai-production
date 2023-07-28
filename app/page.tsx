@@ -84,10 +84,10 @@ export default function HomePage() {
                 <img src="/img/saashub.webp" className="" />
               </div>
               <div style={{width: 200}}>
-                <img src="/img/whattheai.png" className="" />
+                <img src="/img/whattheai.PNG" className="" />
               </div>
               <div style={{width: 200}}>
-                <img src="/img/saasaitools.png" className="rounded-md" />
+                <img src="/img/saasaitools.PNG" className="rounded-md" />
               </div>
               <div style={{width: 200}}>
                 <img src="/img/saasbaba.png" className="rounded-md" />

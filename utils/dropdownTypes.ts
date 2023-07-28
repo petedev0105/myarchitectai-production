@@ -18,6 +18,7 @@ export type locationType = "Coastal" | "Cliff" | "Forest" | "Mountain";
 export type houseStyleType =
   | "Modern"
   | "Contemporary"
+  | "MineCraft"
   | "Traditional"
   | "Victorian"
   | "Gothic"
@@ -74,6 +75,7 @@ export type lightingType =
 export type interiorStyleType =
 | "Minimalist Haven"
 | "Modern Fusion"
+| "MineCraft"
 | "Industrial Loft"
 | "Bohemian Oasis"
 | "Coastal Breeze"
