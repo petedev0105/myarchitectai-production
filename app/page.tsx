@@ -79,9 +79,19 @@ export default function HomePage() {
                 they become fully immersed in your vision.
               </span>
             </div> */}
-            <div className=" flex space-x-10 justify-center">
-              <img src="/img/saashub.webp" width={200} className="" />
-              <img src="/img/saasbaba.png" className="rounded-xl" />
+            <div className=" lg:flex lg:space-x-10 justify-center lg:space-y-0 space-y-7">
+              <div style={{width: 200}}>
+                <img src="/img/saashub.webp" className="" />
+              </div>
+              <div style={{width: 200}}>
+                <img src="/img/whattheai.png" className="" />
+              </div>
+              <div style={{width: 200}}>
+                <img src="/img/saasaitools.png" className="rounded-md" />
+              </div>
+              <div style={{width: 200}}>
+                <img src="/img/saasbaba.png" className="rounded-md" />
+              </div>
             </div>
           </div>
         </div>

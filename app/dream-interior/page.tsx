@@ -239,6 +239,8 @@ function page() {
         alert(
           "Experiencing timeouts? Upgrade to our Pro plan for unlimited images and priority access. Elevate your design process with MyArchitectAI's seamless performance."
         );
+      } else if (response.status === 413) {
+        alert("Try uploading another picture, file size is too large.");
       } else {
         throw new Error("Failed to generate photo");
       }
