@@ -20,9 +20,10 @@ export default function HomePage() {
           <div className="lg:flex justify-between items-center w-full lg:space-x-24">
             <div className="lg:w-1/2 lg:text-left space-y-7">
               <div>
-                <span className="font-bold lg:text-5xl text-3xl">
+                <span className="font-bold lg:text-5xl text-3xl text-stone-700">
                   {/* Visualize your architectural ideas in seconds. */}
-                  Photorealistic renders for your ideas in <span className="text-yellow-500 underline">seconds.</span>
+                  Photorealistic renders in seconds, not hours.{" "}
+                  {/* <span className="text-blue-500 ">seconds.</span> */}
                 </span>
               </div>
               <div>
@@ -34,6 +35,17 @@ export default function HomePage() {
               </div>
 
               <div className="space-y-3 text-stone-600">
+                <div className="flex space-x-3 items-center">
+                  <div>
+                    <img src="/img/tick-tutor.png" height={20} width={20} />
+                  </div>
+                  <div>
+                    <span className="">
+                      {" "}
+                      15x more affordable than existing solutions
+                    </span>
+                  </div>
+                </div>
                 <div className="flex space-x-3 items-center">
                   <div>
                     <img src="/img/tick-tutor.png" height={20} width={20} />
@@ -64,7 +76,8 @@ export default function HomePage() {
                   <div>
                     <span className="">
                       {" "}
-                      Present clients with stunning renders in seconds, not hours
+                      Present clients with stunning renders in seconds, not
+                      hours
                     </span>
                   </div>
                 </div>
@@ -150,8 +163,7 @@ export default function HomePage() {
             </div>
           </div>
 
-
-          <div className="flex justify-center items-center pt-48">
+          {/* <div className="flex justify-center items-center pt-48">
             <div className="space-y-5">
               <div>
                 <span className="font-bold text-4xl">
@@ -179,9 +191,9 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48">
+          <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48 items-center">
             <div className="lg:w-1/2 lg:pt-0 pt-10">
               <img src="/img/architecture-styles.png" />
               {/* <CompareSlider original="/img/exterior-before.png" restored="/img/exterior-after.png" /> */}
@@ -200,6 +212,23 @@ export default function HomePage() {
                   architectural styles for you to choose from.
                 </span>
               </div>
+              <div>
+                {user ? (
+                  <Link
+                    className="bg-black font-bold rounded-md text-white px-10 py-3 hover:bg-blue-500 transition"
+                    href={"/dream"}
+                  >
+                    Go to the MyArchitectAI app →
+                  </Link>
+                ) : (
+                  <button
+                    className="bg-black font-bold rounded-md text-white px-10 py-3 hover:bg-blue-500 transition"
+                    onClick={() => signInWithSupabase()}
+                  >
+                    Build your dream home →
+                  </button>
+                )}
+              </div>
             </div>
           </div>
           <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48">
@@ -216,10 +245,54 @@ export default function HomePage() {
                   expertise.
                 </span>
               </div>
+              <div>
+                {user ? (
+                  <Link
+                    className="bg-black font-bold rounded-md text-white px-10 py-3 hover:bg-blue-500 transition"
+                    href={"/dream"}
+                  >
+                    Go to the MyArchitectAI app →
+                  </Link>
+                ) : (
+                  <button
+                    className="bg-black font-bold rounded-md text-white px-10 py-3 hover:bg-blue-500 transition"
+                    onClick={() => signInWithSupabase()}
+                  >
+                    Build your dream home →
+                  </button>
+                )}
+              </div>
             </div>
             <div className="lg:w-1/2 lg:pt-0 pt-10">
               <img src="/img/all.png" />
               {/* <CompareSlider original="/img/exterior-before.png" restored="/img/exterior-after.png" /> */}
+            </div>
+          </div>
+
+          <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48">
+            <div className=" lg:text-left space-y-7 p-10 border rounded-md">
+              <div>
+                <span className="font-bold lg:text-4xl text-3xl">
+                  Don't want to spend time rendering? We can do it for you.
+                </span>
+              </div>
+              <div>
+                <span className="">
+                  Our team is dedicated to providing high-quality rendering
+                  services for projects that involve a high quantity of images,
+                  tailored to meet your specific requirements and preferences.
+                  We offer each render at a competitive rate of $1 per image. If
+                  your business demands exceptional visualizations and
+                  personalized attention, we encourage you to get in touch with
+                  us. Our experts are eager to learn more about your unique
+                  needs and how we can best assist you.
+                </span>
+              </div>
+              <div>
+                <span className="underline">
+                  Send us an email at kiettran255@gmail.com
+                </span>
+              </div>
             </div>
           </div>
 
@@ -237,9 +310,9 @@ export default function HomePage() {
                   lovers alike.
                 </span>
               </div>
-              <div className="w-full">
+              <div className="w-full pt-10">
                 <div className="lg:grid grid-cols-2 gap-10">
-                  <div className="rounded-xl space-y-3 ">
+                  <div className="rounded-xl space-y-3">
                     <div className="">
                       <img
                         className="h-48 bg-black cover rounded-xl w-full object-cover"
@@ -383,13 +456,14 @@ export default function HomePage() {
             <div className="space-y-5">
               <div>
                 <span className="font-bold text-4xl">
-                  Unlimited designs, for your unlimited imagination
+                  15x cheaper than what you're currently paying.
                 </span>
               </div>
               <div>
                 <span>
-                  Your Imagination, Our Canvas: Immerse yourself in a world of
-                  unlimited designs, where your imagination takes center stage.
+                  We help you save on time and costs compared to traditional
+                  rendering softwares and services, to give you back more
+                  freedom on the things that truly matter.
                 </span>
               </div>
             </div>
@@ -1019,6 +1093,21 @@ export default function HomePage() {
             </div>
           </div>
 
+          <div className="pt-12">
+            <span>
+              Cancel at any time, 100% refunds, no questions asked.{" "}
+              <Link
+                className="underline"
+                target="_blank"
+                href={"https://twitter.com/petr0105"}
+              >
+                Message us
+              </Link>{" "}
+              for custom requirements. <br></br>Don't want to do the rendering
+              yourself? We can do it for you as well.{" "}
+            </span>
+          </div>
+
           <div className="flex justify-center items-center pt-48">
             <div className="space-y-5">
               <div>
@@ -1037,6 +1126,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+
           <div className="mt-12">
             <Link
               className="bg-black rounded-xl text-white font-medium px-4 py-3 hover:bg-black transition"
