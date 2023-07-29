@@ -538,7 +538,7 @@ function page() {
             Build my idea
           </button>
         </div>
-        <div className="lg:w-2/3 p-7 space-y-3">
+        <div className="lg:w-2/3 p-7 space-y-3 bg-white">
           <div className="border-b pb-5">
             <span className="font-bold">Generated Image</span>
             <div>

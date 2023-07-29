@@ -64,7 +64,8 @@ export default function RootLayout({
         }}
       />
       <SupabaseProvider>
-        <body className={inter.className}>
+        <body style={{ zIndex: 2 }} className={inter.className}>
+          
           <Providers>{children}</Providers>
           <Analytics />
         </body>
