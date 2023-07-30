@@ -183,6 +183,65 @@ export default function HomePage() {
             </div>
           </div> */}
 
+          <div className="pt-48 space-y-10">
+            <div className="flex justify-center">
+              <div className="font-bold text-3xl">How it works</div>
+            </div>
+
+            <div className="lg:grid grid-cols-3 gap-10 text-stone-700">
+              <div className="p-7 rounded-md text-left border">
+                <div className="space-y-5">
+                  <div>
+                    <span className="text-2xl font-bold">
+                      Upload your designs
+                    </span>
+                  </div>
+                  <div>
+                    <span>
+                      Upload your idea to the web editor and watch the magic
+                      happen. Whether it's a rough sketch, a 3d render, or a
+                      photo of a real property, MyArchitectAI will revisualize
+                      it into beautiful photorealistic renders in a matter of
+                      seconds.{" "}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="p-7 rounded-md text-left border">
+                <div className="space-y-5">
+                  <div>
+                    <span className="text-2xl font-bold">
+                      Customize the options
+                    </span>
+                  </div>
+                  <div>
+                    <span>
+                      With over 100+ architectural styles, made to fulfill every
+                      need, freely pick the styles and lighting options that
+                      best match your designs and watch your imagination fly. Whether it's the interior,exterior or even floorplans, we've got you covered from top to toe.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="p-7 rounded-md text-left border">
+                <div className="space-y-5">
+                  <div>
+                    <span className="text-2xl font-bold">Download & share</span>
+                  </div>
+                  <div>
+                    <span>
+                      After a few seconds, your photorealistic renders will be
+                      ready to be downloaded. This allows you to decrease the
+                      time it takes to go through iterations with your clients,
+                      optimizing your workflow and saving you both time and
+                      money in the long run.{" "}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48 items-center">
             <div className="lg:w-1/2 lg:pt-0 pt-10">
               <img src="/img/architecture-styles.png" />
