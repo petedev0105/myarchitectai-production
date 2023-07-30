@@ -34,7 +34,7 @@ export default function HomePage() {
                 </span>
               </div>
 
-              <div className="space-y-3 text-stone-600">
+              <div className="space-y-2 text-stone-600 lg:text-sm sm:text-xs">
                 <div className="flex space-x-3 items-center">
                   <div>
                     <img src="/img/tick-tutor.png" height={20} width={20} />
@@ -42,7 +42,8 @@ export default function HomePage() {
                   <div>
                     <span className="">
                       {" "}
-                      15x more affordable than existing solutions
+                      <span className="font-bold underline">15x</span> more
+                      affordable than existing solutions
                     </span>
                   </div>
                 </div>
@@ -76,19 +77,8 @@ export default function HomePage() {
                   <div>
                     <span className="">
                       {" "}
-                      Present clients with stunning renders in seconds, not
-                      hours
-                    </span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">
-                      {" "}
-                      10x your design workflow, do more in less time
+                      Iterate through designs faster, present clients with
+                      stunning renders in seconds
                     </span>
                   </div>
                 </div>
