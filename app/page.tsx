@@ -34,7 +34,7 @@ export default function HomePage() {
                 </span>
               </div>
 
-              <div className="space-y-2 text-stone-600 lg:text-sm sm:text-xs">
+              <div className="space-y-2 text-stone-600 lg:text-sm sm:text-xs text-left">
                 <div className="flex space-x-3 items-center">
                   <div>
                     <img src="/img/tick-tutor.png" height={20} width={20} />
@@ -70,7 +70,7 @@ export default function HomePage() {
                     </span>
                   </div>
                 </div>
-                <div className="flex space-x-3 items-center">
+                <div className="flex space-x-3 items-center ">
                   <div>
                     <img src="/img/tick-tutor.png" height={20} width={20} />
                   </div>
