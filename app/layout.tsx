@@ -11,6 +11,7 @@ import { SupabaseProvider } from "../components/supabaseProvider";
 import Header from "../components/Header";
 import Head from "next/head";
 import Script from "next/script";
+import { Crisp } from "crisp-sdk-web";
 
 let title = "MyArchitectAI | Visualize your ideas in seconds.";
 let description = "MyArchitectAI";
@@ -65,7 +66,6 @@ export default function RootLayout({
       />
       <SupabaseProvider>
         <body style={{ zIndex: 2 }} className={inter.className}>
-          
           <Providers>{children}</Providers>
           <Analytics />
         </body>

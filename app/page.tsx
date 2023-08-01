@@ -183,21 +183,27 @@ export default function HomePage() {
             </div>
           </div> */}
 
-          <div className="pt-48 space-y-10">
+          <div className="pt-48 space-y-5">
             <div className="flex justify-center">
-              <div className="font-bold text-3xl">How it works</div>
+              <div className="font-bold text-4xl">How it works</div>
+            </div>
+            <div className="flex justify-center">
+              <div className=" text-stone-700">Visualize your ideas photorealistically in seconds. (It's easy as one two three)</div>
             </div>
 
-            <div className="lg:grid grid-cols-3 gap-10 text-stone-700">
-              <div className="p-7 rounded-md text-left border">
+            <div className="lg:grid grid-cols-3 gap-5 text-stone-700">
+              <div className="p-5 rounded-md text-left">
                 <div className="space-y-5">
+                  <div className="">
+                    <img className="border rounded-md shadow-md h-48 w-full object-cover" src="/img/interior-before.png" />
+                  </div>
                   <div>
                     <span className="text-2xl font-bold">
                       Upload your designs
                     </span>
                   </div>
                   <div>
-                    <span>
+                    <span className="text-stone-600">
                       Upload your idea to the web editor and watch the magic
                       happen. Whether it's a rough sketch, a 3d render, or a
                       photo of a real property, MyArchitectAI will revisualize
@@ -207,29 +213,37 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="p-7 rounded-md text-left border">
+              <div className="p-5 rounded-md text-left">
                 <div className="space-y-5">
+                  <div>
+                    <img className="border rounded-md shadow-md h-48 w-full object-cover" src="/img/options.png" />
+                  </div>
                   <div>
                     <span className="text-2xl font-bold">
                       Customize the options
                     </span>
                   </div>
                   <div>
-                    <span>
+                    <span className="text-stone-600">
                       With over 100+ architectural styles, made to fulfill every
                       need, freely pick the styles and lighting options that
-                      best match your designs and watch your imagination fly. Whether it's the interior,exterior or even floorplans, we've got you covered from top to toe.
+                      best match your designs and watch your imagination fly.
+                      Whether it's the interior,exterior or even floorplans,
+                      we've got you covered from top to toe.
                     </span>
                   </div>
                 </div>
               </div>
-              <div className="p-7 rounded-md text-left border">
+              <div className="p-5 rounded-md text-left ">
                 <div className="space-y-5">
+                  <div>
+                    <img className="border rounded-md shadow-md h-48 w-full object-cover" src="/img/interior-after.png" />
+                  </div>
                   <div>
                     <span className="text-2xl font-bold">Download & share</span>
                   </div>
                   <div>
-                    <span>
+                    <span className="text-stone-600">
                       After a few seconds, your photorealistic renders will be
                       ready to be downloaded. This allows you to decrease the
                       time it takes to go through iterations with your clients,
