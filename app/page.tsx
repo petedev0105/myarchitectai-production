@@ -216,7 +216,7 @@ export default function HomePage() {
               <div className="p-5 rounded-md text-left">
                 <div className="space-y-5">
                   <div>
-                    <img className="border rounded-md shadow-md h-48 w-full object-cover" src="/img/options.png" />
+                    <img className="border rounded-md shadow-md h-48 w-full object-cover" src="/img/options.PNG" />
                   </div>
                   <div>
                     <span className="text-2xl font-bold">
