@@ -15,7 +15,9 @@ import {
   interiorStyleType,
   lightingType,
   buildingType,
-  flooringType
+  flooringType,
+  floorsType,
+  colorType,
 } from "../utils/dropdownTypes";
 
 function classNames(...classes: string[]) {
@@ -25,6 +27,8 @@ function classNames(...classes: string[]) {
 interface DropDownProps {
   theme:
     | themeType
+    | colorType
+    | floorsType
     | roomType
     | houseStyleType
     | materialType
@@ -38,19 +42,23 @@ interface DropDownProps {
     theme:
       | themeType
       | roomType
+      | colorType
+      | floorsType
       | houseStyleType
       | materialType
       | seasonType
       | interiorStyleType
-      | lightingType
+      | locationType
       | buildingType
       | flooringType
-      | locationType
+      | lightingType
   ) => void;
   themes:
     | themeType[]
     | flooringType[]
     | roomType[]
+    | colorType[]
+    | floorsType[]
     | houseStyleType[]
     | materialType[]
     | seasonType[]

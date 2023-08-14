@@ -890,7 +890,7 @@ export default function HomePage() {
                 <div className="">
                   <div className="text-center">
                     <span className="font-bold  ">
-                      <span className="text-4xl ">$15.99</span>
+                      <span className="text-4xl ">$29.99</span>
                     </span>
                     <span className="">/month</span>
                   </div>

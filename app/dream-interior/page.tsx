@@ -266,7 +266,9 @@ function page() {
           </span>
         </div>
       )}
-      <Header />
+      <div className="px-5">
+          <Header />
+        </div>
 
       <div className="border-t lg:flex">
         <div className="lg:w-1/3 lg:border-r p-7 space-y-5">

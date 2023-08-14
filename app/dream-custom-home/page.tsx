@@ -13,7 +13,7 @@ import appendNewToName from "../../utils/appendNewToName";
 import downloadPhoto from "../../utils/downloadPhoto";
 import DropDown from "../../components/DropDown";
 import DropDownRestricted from "../../components/DropDownRestricted";
-import { Image } from "antd";
+import { Image, Alert } from "antd";
 import { useRouter } from "next/router";
 import { useDropzone } from "react-dropzone";
 import Link from "next/link";
@@ -32,8 +32,10 @@ import {
   seasonType,
   buildingType,
   buildingTypes,
-  flooringType,
-  floorings,
+  floors,
+  floorsType,
+  colors,
+  colorType,
 } from "../../utils/dropdownTypes";
 import { useSupabase } from "../../components/supabaseProvider";
 import { User } from "@supabase/supabase-js";
@@ -80,9 +82,10 @@ function page() {
   const [season, setSeason] = useState<seasonType>("Autumn");
   const [material, setMaterial] = useState<materialType>("Wooden");
   const [location, setLocation] = useState<locationType>("Cliff");
-  const [flooring, setFlooring] = useState<flooringType>("Laminate flooring");
   const [buildingType, setBuildingType] =
     useState<buildingType>("Residential Home");
+  const [floor, setFloor] = useState<floorsType>("Single Level");
+  const [color, setColor] = useState<colorType>("Black");
 
   const [edit, setEdit] = useState(true);
   const [uploaded, setUploaded] = useState(false);
@@ -91,6 +94,8 @@ function page() {
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [highlight, setHighlight] = useState(false);
+
+  const [userPrompt, setUserPrompt] = useState("");
 
   // supaabse stuff
   // const [packageType, setPackageType] = useState("free");
@@ -226,22 +231,36 @@ function page() {
     }
     // console.log(acceptedFiles);
   }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
-  async function generatePhoto(fileUrl: string) {
+  const {
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    isDragReject,
+    fileRejections,
+    acceptedFiles,
+    isDragAccept,
+  } = useDropzone({
+    onDrop,
+    accept: {
+      "image/*": [".jpeg", ".png"],
+    },
+  });
+
+  async function generatePhoto() {
     try {
       setLoading(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
 
-      const response = await fetch("/generate-floorplan", {
+      const response = await fetch("/generate-custom-home", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          imageUrl: fileUrl,
-          houseStyle,
-          flooring,
+          floor,
+          color,
+          location,
         }),
       });
 
@@ -284,9 +303,9 @@ function page() {
         </div>
       )}
 
-<div className="px-5">
-          <Header />
-        </div>
+      <div className="px-5">
+        <Header />
+      </div>
 
       <div className="border-t lg:flex">
         <div className="lg:w-1/3 lg:border-r p-7 space-y-5">
@@ -304,74 +323,72 @@ function page() {
             </div>
           )}
           <span className="font-bold text-2xl underline">
-            Floorplan Design Studio
+            Custom Modular Home Design Studio
           </span>
           <div>
             <span className="text-stone-600 text-sm">
-              Our AI-powered app automates the process of remodeling and
-              revisualizing scenes. Simply upload your sketches or photos, and
+              Our AI-powered app automates the process of modeling and
+              visualizing scenes. Simply input your preffered parameters, and
               watch as the app transforms them into stunning designs in various
               styles and preferences.
             </span>
           </div>
-          <div className="flex justify-between w-full pb-5">
-            <span className="font-bold text-stone-600">Upload Image</span>
-            {!originalPhoto ? null : (
-              <div className="cursor-pointer" onClick={() => newImage()}>
-                <span className="underline">New image</span>
-              </div>
+
+          <div>
+            {fileRejections.length > 0 && (
+              <Alert
+                message="Error Text"
+                description="Error Description Error Description Error Description Error Description Error Description Error Description"
+                type="error"
+                closable
+              />
             )}
           </div>
-          {/* {!originalPhoto && <UploadDropZone />} */}
-          {/* Image uploader */}
-
-          {originalPhoto ? (
-            <Image src={originalPhoto} className="rounded-md border" />
-          ) : (
-            <div
-              {...getRootProps()}
-              className={`${
-                isDragActive ? "bg-sky-200" : "bg-slate-50"
-              } cursor-pointer text-center p-10 rounded-md border-dashed border-2 `}
-            >
-              <input {...getInputProps()} />
-              {isDragActive ? (
-                <p>Drop the file here ...</p>
-              ) : (
-                <p>Drag and drop or click to upload image +</p>
-              )}
-            </div>
-          )}
 
           {packageType == "free" ? (
             <>
               <div className="space-y-4 w-full ">
                 <div className="flex mt-10 items-center space-x-3">
                   <p className="text-left font-bold font-bold text-stone-600">
-                    Choose your style ({houseStyles.length})
+                    Choose the number of floors ({floors.length})
                   </p>
                 </div>
                 <DropDownRestricted
-                  theme={houseStyle}
-                  setTheme={(newHouseStyle) =>
-                    setHouseStyle(newHouseStyle as typeof houseStyle)
+                  theme={floor}
+                  setTheme={(newFloorType) =>
+                    setFloor(newFloorType as typeof floor)
                   }
-                  themes={houseStyles}
+                  themes={floors}
                 />
               </div>
 
               <div className="space-y-4 w-full ">
                 <div className="flex mt-10 items-center space-x-3">
                   <p className="text-left font-bold font-bold text-stone-600">
-                    Choose your flooring material ({floorings.length})
+                    Choose the color ({colors.length})
                   </p>
                 </div>
                 <DropDownRestricted
-                  theme={flooring}
-                  setTheme={(newFlooring) =>
-                    setFlooring(newFlooring as typeof flooring)
+                  theme={color}
+                  setTheme={(newColor) =>
+                    setColor(newColor as typeof color)
                   }
-                  themes={floorings}
+                  themes={colors}
+                />
+              </div>
+
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose your location ({locations.length})
+                  </p>
+                </div>
+                <DropDownRestricted
+                  theme={location}
+                  setTheme={(newLocation) =>
+                    setLocation(newLocation as typeof location)
+                  }
+                  themes={locations}
                 />
               </div>
             </>
@@ -380,6 +397,21 @@ function page() {
               <div className="space-y-4 w-full ">
                 <div className="flex mt-10 items-center space-x-3">
                   <p className="text-left font-bold font-bold text-stone-600">
+                    Choose your building type ({buildingTypes.length})
+                  </p>
+                </div>
+                <DropDown
+                  theme={buildingType}
+                  setTheme={(newBuildingType) =>
+                    setBuildingType(newBuildingType as typeof buildingType)
+                  }
+                  themes={buildingTypes}
+                />
+              </div>
+
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3">
+                  <p className="text-left font-bold font-bold text-stone-600">
                     Choose your style ({houseStyles.length})
                   </p>
                 </div>
@@ -393,17 +425,47 @@ function page() {
               </div>
 
               <div className="space-y-4 w-full ">
-                <div className="flex mt-10 items-center space-x-3">
-                  <p className="text-left font-bold font-bold text-stone-600">
-                    Choose your flooring material ({floorings.length})
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose your location ({locations.length})
                   </p>
                 </div>
                 <DropDown
-                  theme={flooring}
-                  setTheme={(newFlooring) =>
-                    setFlooring(newFlooring as typeof flooring)
+                  theme={location}
+                  setTheme={(newLocation) =>
+                    setLocation(newLocation as typeof location)
                   }
-                  themes={floorings}
+                  themes={locations}
+                />
+              </div>
+
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose your material ({materials.length})
+                  </p>
+                </div>
+                <DropDown
+                  theme={material}
+                  setTheme={(newMaterial) =>
+                    setMaterial(newMaterial as typeof material)
+                  }
+                  themes={materials}
+                />
+              </div>
+
+              <div className="space-y-4 w-full">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose the season ({seasons.length})
+                  </p>
+                </div>
+                <DropDown
+                  theme={season}
+                  setTheme={(newSeason) =>
+                    setSeason(newSeason as typeof season)
+                  }
+                  themes={seasons}
                 />
               </div>
             </>
@@ -411,16 +473,14 @@ function page() {
 
           <button
             onClick={() => {
-              originalPhoto
-                ? generatePhoto(originalPhoto)
-                : console.log("no photo");
+              generatePhoto();
             }}
             className="bg-blue-500 rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-blue-500/80 transition w-full"
           >
             Build my idea
           </button>
         </div>
-        <div className="lg:w-2/3 p-7 space-y-3">
+        <div className="lg:w-2/3 p-7 space-y-3 bg-white">
           <div className="border-b pb-5">
             <span className="font-bold">Generated Image</span>
             <div>
@@ -441,7 +501,7 @@ function page() {
             </button>
           )}
           <div>
-            {restoredImage && originalPhoto && !sideBySide && !loading && (
+            {restoredImage && !loading && (
               <div className="">
                 <div className="sm:mt-0 mt-8">
                   <div className="rounded-md">
@@ -469,7 +529,7 @@ function page() {
                     restoredImage
                       ? downloadPhoto(
                           restoredImage,
-                          `${houseStyle} style, ${flooring}`
+                          `${houseStyle} ${material} ${buildingType}, ${location}, ${season}`
                         )
                       : console.log("no photo");
                   }}

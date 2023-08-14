@@ -71,33 +71,32 @@ export type lightingType =
   | "Cozy"
   | "Futuristic";
 
-  
 export type interiorStyleType =
-| "Minimalist Haven"
-| "Modern Fusion"
-| "MineCraft"
-| "Industrial Loft"
-| "Bohemian Oasis"
-| "Coastal Breeze"
-| "Desert Retreat"
-| "Mountain Escape"
-| "Victorian Elegance"
-| "Art Deco Glamour"
-| "Mid-Century Modern"
-| "French Country Charm"
-| "Colonial Classic"
-| "Scandinavian Sanctuary"
-| "Japanese Zen"
-| "Moroccan Mystique"
-| "Mediterranean Retreat"
-| "Indian Exuberance"
-| "Traveler's Trove"
-| "Contemporary Elegance"
-| "Cyber Eclectic Fusion"
-| "Neon Noir"
-| "Techno Wonderland"
-| "Retro Futurism"
-| "Digital Zen";
+  | "Minimalist Haven"
+  | "Modern Fusion"
+  | "MineCraft"
+  | "Industrial Loft"
+  | "Bohemian Oasis"
+  | "Coastal Breeze"
+  | "Desert Retreat"
+  | "Mountain Escape"
+  | "Victorian Elegance"
+  | "Art Deco Glamour"
+  | "Mid-Century Modern"
+  | "French Country Charm"
+  | "Colonial Classic"
+  | "Scandinavian Sanctuary"
+  | "Japanese Zen"
+  | "Moroccan Mystique"
+  | "Mediterranean Retreat"
+  | "Indian Exuberance"
+  | "Traveler's Trove"
+  | "Contemporary Elegance"
+  | "Cyber Eclectic Fusion"
+  | "Neon Noir"
+  | "Techno Wonderland"
+  | "Retro Futurism"
+  | "Digital Zen";
 
 export type buildingType =
   | "Residential Home"
@@ -121,30 +120,30 @@ export type buildingType =
   | "Park/Outdoor Space"
   | "Mixed-Use Development";
 
-  export const buildingTypes: buildingType[] = [
-    "Residential Home",
-    "Apartment/Condominium",
-    "Office Building",
-    "Retail Store/Shopping Center",
-    "Hotel/Resort",
-    "Restaurant/Cafe",
-    "School/Educational Institution",
-    "Hospital/Healthcare Facility",
-    "Warehouse/Industrial Building",
-    "Government Building",
-    "Cultural/Entertainment Center",
-    "Sports Facility",
-    "Religious Building",
-    "Transportation Hub",
-    "Exhibition/Convention Center",
-    "Recreation Center",
-    "Research Laboratory",
-    "Library",
-    "Park/Outdoor Space",
-    "Mixed-Use Development",
-  ];
+export const buildingTypes: buildingType[] = [
+  "Residential Home",
+  "Apartment/Condominium",
+  "Office Building",
+  "Retail Store/Shopping Center",
+  "Hotel/Resort",
+  "Restaurant/Cafe",
+  "School/Educational Institution",
+  "Hospital/Healthcare Facility",
+  "Warehouse/Industrial Building",
+  "Government Building",
+  "Cultural/Entertainment Center",
+  "Sports Facility",
+  "Religious Building",
+  "Transportation Hub",
+  "Exhibition/Convention Center",
+  "Recreation Center",
+  "Research Laboratory",
+  "Library",
+  "Park/Outdoor Space",
+  "Mixed-Use Development",
+];
 
-  export type flooringType =
+export type flooringType =
   | "Laminate flooring"
   | "Vinyl flooring"
   | "Hardwood flooring"
@@ -164,6 +163,42 @@ export type buildingType =
   | "Carpet"
   | "Linoleum flooring"
   | "Natural rubber";
+
+export type colorType =
+  | "White"
+  | "Gray"
+  | "Beige"
+  | "Brown"
+  | "Black"
+  | "Blue"
+  | "Green"
+  | "Red"
+  | "Yellow"
+  | "Orange";
+export const colors: colorType[] = [
+  "White",
+  "Gray",
+  "Beige",
+  "Brown",
+  "Black",
+  "Blue",
+  "Green",
+  "Red",
+  "Yellow",
+  "Orange",
+];
+
+export type floorsType =
+  | "Single Level"
+  | "Two Floors"
+  | "Loft Space"
+  | "Multi-Level";
+export const floors: floorsType[] = [
+  "Single Level",
+  "Two Floors",
+  "Loft Space",
+  "Multi-Level",
+];
 
 export const floorings: flooringType[] = [
   "Laminate flooring",
@@ -186,8 +221,6 @@ export const floorings: flooringType[] = [
   "Linoleum flooring",
   "Natural rubber",
 ];
-
-  
 
 export const interiorStyles: interiorStyleType[] = [
   "Minimalist Haven",
@@ -214,7 +247,7 @@ export const interiorStyles: interiorStyleType[] = [
   "Techno Wonderland",
   "Retro Futurism",
   "Digital Zen",
-  ];
+];
 
 export const lightings: lightingType[] = [
   "Ambient",

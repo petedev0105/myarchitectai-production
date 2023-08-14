@@ -15,9 +15,11 @@ import {
   interiorStyleType,
   lightingType,
   buildingType,
-  flooringType
+  flooringType,
+  floorsType,
+  colorType,
 } from "../utils/dropdownTypes";
-import Link from "next/link"
+import Link from "next/link";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -25,19 +27,9 @@ function classNames(...classes: string[]) {
 
 interface DropDownProps {
   theme:
-  | themeType
-  | roomType
-  | houseStyleType
-  | materialType
-  | seasonType
-  | interiorStyleType
-  | locationType
-  | buildingType
-  | flooringType
-  | lightingType;
-  setTheme: (
-    theme:
     | themeType
+    | colorType
+    | floorsType
     | roomType
     | houseStyleType
     | materialType
@@ -46,12 +38,28 @@ interface DropDownProps {
     | locationType
     | buildingType
     | flooringType
-    | lightingType
+    | lightingType;
+  setTheme: (
+    theme:
+      | themeType
+      | roomType
+      | colorType
+    | floorsType
+      | houseStyleType
+      | materialType
+      | seasonType
+      | interiorStyleType
+      | locationType
+      | buildingType
+      | flooringType
+      | lightingType
   ) => void;
   themes:
     | themeType[]
     | flooringType[]
     | roomType[]
+    | colorType[]
+    | floorsType[]
     | houseStyleType[]
     | materialType[]
     | seasonType[]
@@ -112,8 +120,20 @@ export default function DropDown({ theme, setTheme, themes }: DropDownProps) {
                       </div>
                       {index >= 3 ? (
                         <div>
-                          <span role="img" aria-label="Locked" className="underline">
-                            🔒 <Link href={"https://myarchitectai.lemonsqueezy.com/checkout/buy/875159c9-3c87-4ce1-8e2f-557191a03115"} target="_blank">Upgrade</Link>
+                          <span
+                            role="img"
+                            aria-label="Locked"
+                            className="underline"
+                          >
+                            🔒{" "}
+                            <Link
+                              href={
+                                "https://myarchitectai.lemonsqueezy.com/checkout/buy/875159c9-3c87-4ce1-8e2f-557191a03115"
+                              }
+                              target="_blank"
+                            >
+                              Upgrade
+                            </Link>
                           </span>
                         </div>
                       ) : null}
