@@ -267,7 +267,7 @@ function page() {
       if (response.ok) {
         const newPhoto = await response.json();
         console.log(newPhoto);
-        setRestoredImage(newPhoto[1]);
+        setRestoredImage(newPhoto[0]);
       } else if (response.status === 504) {
         alert(
           "Experiencing timeouts? Upgrade to our Pro plan for unlimited images and priority access. Elevate your design process with MyArchitectAI's seamless performance."
@@ -353,7 +353,7 @@ function page() {
                     Choose the number of floors ({floors.length})
                   </p>
                 </div>
-                <DropDownRestricted
+                <DropDown
                   theme={floor}
                   setTheme={(newFloorType) =>
                     setFloor(newFloorType as typeof floor)
@@ -368,7 +368,7 @@ function page() {
                     Choose the color ({colors.length})
                   </p>
                 </div>
-                <DropDownRestricted
+                <DropDown
                   theme={color}
                   setTheme={(newColor) =>
                     setColor(newColor as typeof color)
@@ -383,7 +383,7 @@ function page() {
                     Choose your location ({locations.length})
                   </p>
                 </div>
-                <DropDownRestricted
+                <DropDown
                   theme={location}
                   setTheme={(newLocation) =>
                     setLocation(newLocation as typeof location)
@@ -397,30 +397,30 @@ function page() {
               <div className="space-y-4 w-full ">
                 <div className="flex mt-10 items-center space-x-3">
                   <p className="text-left font-bold font-bold text-stone-600">
-                    Choose your building type ({buildingTypes.length})
+                    Choose the number of floors ({floors.length})
                   </p>
                 </div>
                 <DropDown
-                  theme={buildingType}
-                  setTheme={(newBuildingType) =>
-                    setBuildingType(newBuildingType as typeof buildingType)
+                  theme={floor}
+                  setTheme={(newFloorType) =>
+                    setFloor(newFloorType as typeof floor)
                   }
-                  themes={buildingTypes}
+                  themes={floors}
                 />
               </div>
 
               <div className="space-y-4 w-full ">
                 <div className="flex mt-10 items-center space-x-3">
                   <p className="text-left font-bold font-bold text-stone-600">
-                    Choose your style ({houseStyles.length})
+                    Choose the color ({colors.length})
                   </p>
                 </div>
                 <DropDown
-                  theme={houseStyle}
-                  setTheme={(newHouseStyle) =>
-                    setHouseStyle(newHouseStyle as typeof houseStyle)
+                  theme={color}
+                  setTheme={(newColor) =>
+                    setColor(newColor as typeof color)
                   }
-                  themes={houseStyles}
+                  themes={colors}
                 />
               </div>
 
@@ -436,36 +436,6 @@ function page() {
                     setLocation(newLocation as typeof location)
                   }
                   themes={locations}
-                />
-              </div>
-
-              <div className="space-y-4 w-full ">
-                <div className="flex mt-10 items-center space-x-3 text-stone-600">
-                  <p className="text-left font-bold">
-                    Choose your material ({materials.length})
-                  </p>
-                </div>
-                <DropDown
-                  theme={material}
-                  setTheme={(newMaterial) =>
-                    setMaterial(newMaterial as typeof material)
-                  }
-                  themes={materials}
-                />
-              </div>
-
-              <div className="space-y-4 w-full">
-                <div className="flex mt-10 items-center space-x-3 text-stone-600">
-                  <p className="text-left font-bold">
-                    Choose the season ({seasons.length})
-                  </p>
-                </div>
-                <DropDown
-                  theme={season}
-                  setTheme={(newSeason) =>
-                    setSeason(newSeason as typeof season)
-                  }
-                  themes={seasons}
                 />
               </div>
             </>
