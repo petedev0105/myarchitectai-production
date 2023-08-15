@@ -86,6 +86,7 @@ function page() {
     useState<buildingType>("Residential Home");
   const [floor, setFloor] = useState<floorsType>("Single Level");
   const [color, setColor] = useState<colorType>("Black");
+  const [extraPrompt, setExtraPrompt] = useState("");
 
   const [edit, setEdit] = useState(true);
   const [uploaded, setUploaded] = useState(false);
@@ -261,6 +262,7 @@ function page() {
           floor,
           color,
           location,
+          extraPrompt,
         }),
       });
 
@@ -370,9 +372,7 @@ function page() {
                 </div>
                 <DropDown
                   theme={color}
-                  setTheme={(newColor) =>
-                    setColor(newColor as typeof color)
-                  }
+                  setTheme={(newColor) => setColor(newColor as typeof color)}
                   themes={colors}
                 />
               </div>
@@ -389,6 +389,17 @@ function page() {
                     setLocation(newLocation as typeof location)
                   }
                   themes={locations}
+                />
+              </div>
+
+              <div className="space-y-4 w-full">
+                <div className="items-center text-stone-600 mt-10">
+                  <span className="text-left font-bold">Custom Preferences</span>
+                </div>
+                <textarea
+                  onChange={(e) => setExtraPrompt(e.target.value)}
+                  className="rounded-md border border-stone-300 px-3 py-2 w-full h-24"
+                  placeholder="Night time, Cozy, Scandinavian, Swimming Pool, Backyard,..."
                 />
               </div>
             </>
@@ -417,9 +428,7 @@ function page() {
                 </div>
                 <DropDown
                   theme={color}
-                  setTheme={(newColor) =>
-                    setColor(newColor as typeof color)
-                  }
+                  setTheme={(newColor) => setColor(newColor as typeof color)}
                   themes={colors}
                 />
               </div>
