@@ -17,30 +17,48 @@ export default function Footer() {
     }
   }
   return (
-    <footer className="text-center h-16 sm:h-20 w-full sm:pt-2 pt-4 border-t mt-5 flex sm:flex-row flex-col justify-between items-center px-3 space-y-3 sm:mb-0 mb-3 border-gray-500">
-      <div className="text-left">
-        <span className="font-bold text-stone-500">MyArchitectAI</span>
-        <div>
-          <span>Empowering architects in the digital age.</span>
-        </div>
+    <div className="w-full border-t py-10 space-y-10 lg:px-0 px-5">
+      <div className="space-y-2 ">
+        <div className="underline">
+          <Link href="https://tally.so/r/nWEyaR" target="_blank">
+            <span>Contact us</span>
+          </Link>
+        </div>{" "}
+        {/* <div className="hover:underline">
+          <Link href="/" target="_blank">
+            <span>Terms & Conditions</span>
+          </Link>
+        </div> */}
       </div>
-      {user ? (
-        <div>
-          <button className="text-red-500" onClick={handleSignOut}>
-            Sign out
-          </button>
+      <footer className="lg:flex w-full items-center justify-between lg:space-y-0 space-y-5">
+        <div className="text-left">
+          <div>
+            <span className="text-sm">
+              © 2023 MyArchitectAI | All Rights Reserved
+            </span>
+          </div>
         </div>
-      ) : null}
+        {user ? (
+          <div>
+            <button
+              className="text-white bg-red-500 px-5 py-2 rounded-md font-bold"
+              onClick={handleSignOut}
+            >
+              Sign out
+            </button>
+          </div>
+        ) : null}
 
-      <div>
-        <Link
-          className="underline"
-          target="_blank"
-          href={"https://twitter.com/petr0105"}
-        >
-          Contact us on Twitter
-        </Link>
-      </div>
-    </footer>
+        <div>
+          <Link
+            className="bg-blue-500 px-5 py-2 rounded-md text-white underline"
+            target="_blank"
+            href={"https://twitter.com/petr0105"}
+          >
+            Contact us on Twitter
+          </Link>
+        </div>
+      </footer>
+    </div>
   );
 }

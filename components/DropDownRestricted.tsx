@@ -44,7 +44,7 @@ interface DropDownProps {
       | themeType
       | roomType
       | colorType
-    | floorsType
+      | floorsType
       | houseStyleType
       | materialType
       | seasonType

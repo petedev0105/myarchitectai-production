@@ -48,7 +48,7 @@ export async function POST(request: Request) {
       version:
         "a00d0b7dcbb9c3fbb34ba87d2d5b46c56969c84a628bf778a7fdaec30b1b99c5",
       input: {
-        prompt: `a small ${floor} ${color} container modular prefab home, ${location}, photorealistic, 8k, full view, ${extraPrompt}`,
+        prompt: `a ${floor} ${color} home, ${location}, photorealistic, 8k, full view, ray tracing, rtx 2080, ${extraPrompt}`,
         negative_prompt: `blurry, details are low, overlapping, grainy, multiple angles, deformed structures, unrealistic, humans, people, animals, cartoon, anime, painting, drawing, sketch, words, logo, home isn't ${floor}`,
         width: 1024,
         height: 720,

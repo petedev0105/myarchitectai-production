@@ -20,7 +20,7 @@ export default function HomePage() {
           <div className="lg:flex justify-between items-center w-full lg:space-x-24">
             <div className="lg:w-1/2 lg:text-left space-y-7">
               <div>
-                <span className="font-bold lg:text-5xl text-3xl text-stone-700">
+                <span className="font-bold lg:text-5xl text-3xl text-stone-800">
                   {/* Visualize your architectural ideas in seconds. */}
                   Photorealistic renders in seconds, not hours.{" "}
                   {/* <span className="text-blue-500 ">seconds.</span> */}
@@ -188,14 +188,20 @@ export default function HomePage() {
               <div className="font-bold text-4xl">How it works</div>
             </div>
             <div className="flex justify-center">
-              <div className=" text-stone-700">Visualize your ideas photorealistically in seconds. (It's easy as one two three)</div>
+              <div className=" text-stone-700">
+                Visualize your ideas photorealistically in seconds. (It's easy
+                as one two three)
+              </div>
             </div>
 
             <div className="lg:grid grid-cols-3 gap-5 text-stone-700">
               <div className="p-5 rounded-md text-left">
                 <div className="space-y-5">
                   <div className="">
-                    <img className="border rounded-md shadow-md h-48 w-full object-cover" src="/img/interior-before.png" />
+                    <img
+                      className="border rounded-md shadow-md h-48 w-full object-cover"
+                      src="/img/interior-before.png"
+                    />
                   </div>
                   <div>
                     <span className="text-2xl font-bold">
@@ -216,7 +222,10 @@ export default function HomePage() {
               <div className="p-5 rounded-md text-left">
                 <div className="space-y-5">
                   <div>
-                    <img className="border rounded-md shadow-md h-48 w-full object-cover" src="/img/options.PNG" />
+                    <img
+                      className="border rounded-md shadow-md h-48 w-full object-cover"
+                      src="/img/options.PNG"
+                    />
                   </div>
                   <div>
                     <span className="text-2xl font-bold">
@@ -237,7 +246,10 @@ export default function HomePage() {
               <div className="p-5 rounded-md text-left ">
                 <div className="space-y-5">
                   <div>
-                    <img className="border rounded-md shadow-md h-48 w-full object-cover" src="/img/interior-after.png" />
+                    <img
+                      className="border rounded-md shadow-md h-48 w-full object-cover"
+                      src="/img/interior-after.png"
+                    />
                   </div>
                   <div>
                     <span className="text-2xl font-bold">Download & share</span>
@@ -331,7 +343,7 @@ export default function HomePage() {
               {/* <CompareSlider original="/img/exterior-before.png" restored="/img/exterior-after.png" /> */}
             </div>
           </div>
-
+          {/* 
           <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48">
             <div className=" lg:text-left space-y-7 p-10 border rounded-md">
               <div>
@@ -357,7 +369,7 @@ export default function HomePage() {
                 </span>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="flex justify-center items-center pt-48 w-full">
             <div className="space-y-5">
@@ -533,96 +545,6 @@ export default function HomePage() {
           </div>
 
           <div className="lg:flex items-center pt-12 lg:space-x-7 lg:space-y-0 space-y-10">
-            {/* <div className="shadow-xl border rounded-xl p-12 space-y-10">
-            <div className="space-y-7">
-              <div className="">
-                <span className=" font-bold">Hobby</span>
-              </div>
-              <div className="flex space-x-5 items-center justify-center">
-                <div>
-                  <span className="text-4xl font-bold ">Free</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-10">
-              <div className="space-y-3 ">
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">3 images every month</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className=""><span className="underline">Limited</span> style options</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">Access to all future updates</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">Request new features</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">Customer support</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">Interior designs only</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">Watermarked</span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <Link
-                  href="https://myarchitectai.lemonsqueezy.com/checkout/buy/d7810a4c-988c-418b-838f-4a10ce0494ef"
-                  target="_blank"
-                >
-                  <button
-                    // onClick={() => {
-                    //   Paddle.Checkout.open({
-                    //     product: 47418,
-                    //   });
-                    // }}
-                    className="px-5 py-2 rounded-md  font-bold  text-center bg-black text-white"
-                  >
-                    Start for free →
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div> */}
             <div className="shadow-xl border rounded-xl p-12 space-y-10">
               <div className="space-y-7">
                 <div className="text-center">
@@ -747,139 +669,6 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            {/* <div className="shadow-xl border rounded-xl p-12 space-y-10">
-            <div className="space-y-7">
-              <div className="text-left">
-                <span className="text-stone-500 font-bold">Pro</span>
-              </div>
-              <div className="">
-                <div className="text-left">
-                  <span className="font-bold ">
-                    <span className="text-4xl">$14.99</span>
-                  </span>
-                  <span className="">/month</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-10 text-left text-sm">
-              <div className="space-y-3 h-[400px]">
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">
-                      <span className="font-bold underline">200</span> images
-                      every month
-                    </span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img
-                      src="/img/tick-tutor.png"
-                      style={{
-                        minWidth: "20px",
-                        minHeight: "20px",
-                        width: "20px",
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <span className="">
-                      <span className="font-bold underline">Prioritized</span>{" "}
-                      responses, no downtime and timeout
-                    </span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">
-                      <span className="font-bold underline">100+</span>{" "}
-                      architectural styles and options
-                    </span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">Interior Design Studio</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">Exterior Design Studio</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">Floorplan Design Studio</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">Access to all future updates</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">Request new features</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">Customer support</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">No watermark</span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <Link
-                  href="https://myarchitectai.lemonsqueezy.com/checkout/buy/d7810a4c-988c-418b-838f-4a10ce0494ef"
-                  target="_blank"
-                >
-                  <button
-                    // onClick={() => {
-                    //   Paddle.Checkout.open({
-                    //     product: 47418,
-                    //   });
-                    // }}
-                    className="px-5 py-2 rounded-md  font-bold  text-center bg-black text-white"
-                  >
-                    Build your dream home →
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div> */}
             <div className="shadow-xl border rounded-xl p-12 space-y-10">
               <div className="space-y-7">
                 <div className="text-center">
@@ -890,7 +679,7 @@ export default function HomePage() {
                 <div className="">
                   <div className="text-center">
                     <span className="font-bold  ">
-                      <span className="text-4xl ">$29.99</span>
+                      <span className="text-4xl ">$15.99</span>
                     </span>
                     <span className="">/month</span>
                   </div>
@@ -1004,11 +793,6 @@ export default function HomePage() {
                     className="w-full"
                   >
                     <button
-                      // onClick={() => {
-                      //   Paddle.Checkout.open({
-                      //     product: 47418,
-                      //   });
-                      // }}
                       className="bg-blue-500 rounded-md w-full text-white px-4 py-3 hover:bg-black transition font-bold"
                     >
                       Build your dream home →
@@ -1027,7 +811,7 @@ export default function HomePage() {
                 <div className="">
                   <div className="text-center">
                     <span className="font-bold  ">
-                      <span className="text-4xl ">$99.99</span>
+                      <span className="text-4xl ">$179.99</span>
                     </span>
                     <span className="">/year</span>
                   </div>
@@ -1162,12 +946,12 @@ export default function HomePage() {
               <Link
                 className="underline"
                 target="_blank"
-                href={"https://twitter.com/petr0105"}
+                href={"https://tally.so/r/nWEyaR"}
               >
                 Message us
               </Link>{" "}
-              for custom requirements. <br></br>Don't want to do the rendering
-              yourself? We can do it for you as well.{" "}
+              {/* for custom requirements. <br></br>Don't want to do the rendering
+              yourself? We can do it for you as well.{" "} */}
             </span>
           </div>
 

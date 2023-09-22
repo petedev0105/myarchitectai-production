@@ -39,6 +39,13 @@ export default function Header() {
                   </span>
                 </Link>
               </div>
+              <div>
+                <Link href={"/dream-custom-architecture"}>
+                  <span className="font-bold text-stone-600">
+                    Dream Home Generator
+                  </span>
+                </Link>
+              </div>
             </div>
           ) : null}
 
