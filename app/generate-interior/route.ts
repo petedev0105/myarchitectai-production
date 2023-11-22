@@ -46,13 +46,13 @@ export async function POST(request: Request) {
     },
     body: JSON.stringify({
       version:
-        "854e8727697a057c525cdb45ab037f64ecca770a1769cc52287c2e56472a247b",
+        "aff48af9c68d162388d230a2ab003f68d2638d88307bdaf1c2f1ac95079c9613",
       input: {
         image: imageUrl,
-        prompt: `${interiorStyle} ${buildingType} interior design, ${lighting} lighting, beautiful, breathtaking, 8K, ultrarealistic`,
-        a_prompt: "ultrarealistic",
+        prompt: `Breathtaking interior design in the style of ${interiorStyle}, with ${lighting} lighting`,
+        a_prompt: "Photorealistic, 4K resolution, Realistic Lighting, Unreal Engine, Clean lines, Ray tracing",
         n_prompt:
-          "blurry, details are low, overlapping, grainy, multiple angles, deformed structures, unnatural, unrealistic, humans, people, animals, cartoon, anime, painting, drawing, sketch, text, logo",
+          "blurry, details are low, overlapping, grainy, text, logo, anime, animation",
       },
     }),
   });

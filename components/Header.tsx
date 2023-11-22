@@ -8,46 +8,13 @@ export default function Header() {
   const { packageType, user } = useSupabase();
   return (
     <>
-      <header className="lg:px-0 px-5 flex items-center w-full mt-5 pb-7  justify-between ">
+      <header className="lg:px-0 px-5 flex items-center w-full mt-5 pb-7 justify-between ">
         <div className="flex space-x-12 items-center">
           <Link href="/" className="flex space-x-2">
-            <h1 className="text-xl font-bold ml-2 tracking-tight">
-               MyArchitectAI{" "}
-              {/* <span className="text-xs text-stone-500">Beta</span> */}
+            <h1 className="text-2xl ml-2 tracking-tight">
+              <img src="/img/logo.png" className="h-7" />
             </h1>
           </Link>
-          {user ? (
-            <div className="space-x-5 flex items-center">
-              <div>
-                <Link href={"/dream-interior"}>
-                  <span className="font-bold text-stone-600">
-                    Interior Studio
-                  </span>
-                </Link>
-              </div>
-              <div>
-                <Link href={"/dream"}>
-                  <span className="font-bold text-stone-600">
-                    Exterior Studio
-                  </span>
-                </Link>
-              </div>
-              <div>
-                <Link href={"/dream-floorplan"}>
-                  <span className="font-bold text-stone-600">
-                    Floorplan Studio
-                  </span>
-                </Link>
-              </div>
-              <div>
-                <Link href={"/dream-custom-architecture"}>
-                  <span className="font-bold text-stone-600">
-                    Dream Home Generator
-                  </span>
-                </Link>
-              </div>
-            </div>
-          ) : null}
 
           <div className="flex items-center space-x-5"></div>
         </div>{" "}

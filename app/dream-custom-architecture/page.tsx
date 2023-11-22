@@ -295,7 +295,7 @@ function page() {
           <span>
             You are currently on the limited Free Plan{" "}
             <Link
-              href="https://myarchitectai.lemonsqueezy.com/checkout/buy/875159c9-3c87-4ce1-8e2f-557191a03115"
+              href="/link-to-premium"
               target="_blank"
               className="underline font-bold"
             >
@@ -394,7 +394,9 @@ function page() {
 
               <div className="space-y-4 w-full">
                 <div className="items-center text-stone-600 mt-10">
-                  <span className="text-left font-bold">Custom Preferences</span>
+                  <span className="text-left font-bold">
+                    Custom Preferences
+                  </span>
                 </div>
                 <textarea
                   onChange={(e) => setExtraPrompt(e.target.value)}

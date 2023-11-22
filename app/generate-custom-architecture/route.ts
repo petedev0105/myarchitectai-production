@@ -35,7 +35,7 @@ export async function POST(request: Request) {
   //   }
   // }
 
-  const { floor, color, location, extraPrompt } = await request.json();
+  const { floor, color, location, buildingType, extraPrompt } = await request.json();
 
   // POST request to Replicate to start the image restoration generation process
   let startResponse = await fetch("https://api.replicate.com/v1/predictions", {
@@ -48,8 +48,8 @@ export async function POST(request: Request) {
       version:
         "a00d0b7dcbb9c3fbb34ba87d2d5b46c56969c84a628bf778a7fdaec30b1b99c5",
       input: {
-        prompt: `a ${floor} ${color} home, ${location}, photorealistic, 8k, full view, ray tracing, rtx 2080, ${extraPrompt}`,
-        negative_prompt: `blurry, details are low, overlapping, grainy, multiple angles, deformed structures, unrealistic, humans, people, animals, cartoon, anime, painting, drawing, sketch, words, logo, home isn't ${floor}`,
+        prompt: `full exterior view of a ${floor} ${color} ${buildingType} in the style of Bohemian Oasis, ${location}, photorealistic, 8k, full view, ray tracing, rtx 2080, ${extraPrompt}`,
+        negative_prompt: `blurry, details are low, overlapping, grainy, multiple angles, deformed structures, unrealistic, humans, people, animals, cartoon, anime, painting, drawing, sketch, words, logo, home isn't ${floor}, cropped, not full view of home`,
         width: 1024,
         height: 720,
         lora_scale: 0.5,

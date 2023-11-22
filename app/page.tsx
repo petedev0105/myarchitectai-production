@@ -13,20 +13,27 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="background "></div>
+      {/* <div className="background "></div> */}
       <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen z-10">
         <Header />
         <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20">
-          <div className="lg:flex justify-between items-center w-full lg:space-x-24">
-            <div className="lg:w-1/2 lg:text-left space-y-7">
-              <div>
-                <span className="font-bold lg:text-5xl text-3xl text-stone-800">
-                  {/* Visualize your architectural ideas in seconds. */}
-                  Photorealistic renders in seconds, not hours.{" "}
-                  {/* <span className="text-blue-500 ">seconds.</span> */}
-                </span>
+          <div className="">
+            <div className="lg:max-w-3xl mx-auto space-y-7">
+              <div className="flex justify-center pt-5 space-y-10">
+                <div>
+                  <div className="flex justify-center pb-5">
+                    <span className="text-green-600 font-semibold">
+                      INTUITIVE HOME DESIGN TOOL
+                    </span>
+                  </div>
+                  <div>
+                    <span className="font-bold lg:text-6xl text-3xl text-stone-800">
+                      Your dream home, built in seconds.{" "}
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div>
+              <div className="flex justify-center">
                 <span className="text-xl">
                   {" "}
                   Say goodbye to time-consuming manual rendering and embrace a
@@ -34,75 +41,30 @@ export default function HomePage() {
                 </span>
               </div>
 
-              <div className="space-y-2 text-stone-600 lg:text-sm sm:text-xs text-left">
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">
-                      {" "}
-                      <span className="font-bold underline">15x</span> more
-                      affordable than existing solutions
-                    </span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">
-                      <span className="font-bold underline">100+</span>{" "}
-                      architectural styles and options
-                    </span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">
-                      {" "}
-                      Built for architects, interior designers, real estate
-                      agents
-                    </span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 items-center ">
-                  <div>
-                    <img src="/img/tick-tutor.png" height={20} width={20} />
-                  </div>
-                  <div>
-                    <span className="">
-                      {" "}
-                      Iterate through designs faster, present clients with
-                      stunning renders in seconds
-                    </span>
+              <div className="flex justify-center">
+                <div>
+                  {user ? (
+                    <Link
+                      className="bg-green-600 font-bold rounded-full text-white px-10 py-3 hover:bg-green-600 transition"
+                      href={"/build"}
+                    >
+                      Go to dashboard →
+                    </Link>
+                  ) : (
+                    <button
+                      className="bg-green-600 font-bold rounded-full text-white px-10 py-3 hover:bg-green-600 transition"
+                      onClick={() => signInWithSupabase()}
+                    >
+                      Start Designing For Free →
+                    </button>
+                  )}
+                  <div className="pt-5">
+                    <span className="text-stone-700">No credit card required</span>
                   </div>
                 </div>
               </div>
 
-              <div>
-                {user ? (
-                  <Link
-                    className="bg-black font-bold rounded-md text-white px-10 py-3 hover:bg-blue-500 transition"
-                    href={"/dream"}
-                  >
-                    Go to the MyArchitectAI app →
-                  </Link>
-                ) : (
-                  <button
-                    className="bg-black font-bold rounded-md text-white px-10 py-3 hover:bg-blue-500 transition"
-                    onClick={() => signInWithSupabase()}
-                  >
-                    Build your dream home →
-                  </button>
-                )}
-              </div>
-
-              <div className="flex space-x-3 w-full items-center lg:justify-start justify-center">
+              {/* <div className="flex space-x-3 w-full items-center lg:justify-start justify-center">
                 <div>
                   <img src="/img/star.png" width={70} />
                 </div>
@@ -110,46 +72,10 @@ export default function HomePage() {
                 <div>
                   <span className="text-sm">Join 100+ architecture lovers</span>
                 </div>
-              </div>
+              </div> */}
             </div>
-            <div className="lg:w-1/2 lg:pt-0 pt-10">
-              {/* <img src="/img/hero.webp" /> */}
-              <CompareSlider
-                original="/img/exterior-before.png"
-                restored="/img/exterior-after.png"
-              />
-            </div>
-          </div>
-
-          <div className="flex justify-center items-center pt-48">
-            <div className="space-y-7">
-              <div>
-                <span className="font-bold text-2xl text-stone-700">
-                  Featured & trusted by
-                </span>
-              </div>
-              {/* <div>
-              <span>
-                Our platform goes beyond mere visualization, breathing life into
-                your designs and eliciting powerful emotions. Present your
-                photorealistic visuals to clients and stakeholders, and watch as
-                they become fully immersed in your vision.
-              </span>
-            </div> */}
-              <div className=" lg:flex lg:space-x-10 justify-center lg:space-y-0 space-y-7">
-                <div style={{ width: 200 }}>
-                  <img src="/img/saashub.webp" className="" />
-                </div>
-                <div style={{ width: 200 }}>
-                  <img src="/img/whattheai.PNG" className="" />
-                </div>
-                <div style={{ width: 200 }}>
-                  <img src="/img/saasaitools.PNG" className="rounded-md" />
-                </div>
-                <div style={{ width: 200 }}>
-                  <img src="/img/saasbaba.png" className="rounded-md" />
-                </div>
-              </div>
+            <div className="pt-32 flex justify-center">
+              <img src="/img/landing.png" />
             </div>
           </div>
 
@@ -174,7 +100,7 @@ export default function HomePage() {
               </div>
               <div className="pt-12">
                 <Link
-                  className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-black transition"
+                  className="bg-green-600 rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-green-600 transition"
                   href={"/dream"}
                 >
                   Build your dream home for free →
@@ -183,7 +109,7 @@ export default function HomePage() {
             </div>
           </div> */}
 
-          <div className="pt-48 space-y-5">
+          {/* <div className="pt-48 space-y-5">
             <div className="flex justify-center">
               <div className="font-bold text-4xl">How it works</div>
             </div>
@@ -195,11 +121,11 @@ export default function HomePage() {
             </div>
 
             <div className="lg:grid grid-cols-3 gap-5 text-stone-700">
-              <div className="p-5 rounded-md text-left">
+              <div className="p-5 rounded-full text-left">
                 <div className="space-y-5">
                   <div className="">
                     <img
-                      className="border rounded-md shadow-md h-48 w-full object-cover"
+                      className="border rounded-full shadow-md h-48 w-full object-cover"
                       src="/img/interior-before.png"
                     />
                   </div>
@@ -219,11 +145,11 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="p-5 rounded-md text-left">
+              <div className="p-5 rounded-full text-left">
                 <div className="space-y-5">
                   <div>
                     <img
-                      className="border rounded-md shadow-md h-48 w-full object-cover"
+                      className="border rounded-full shadow-md h-48 w-full object-cover"
                       src="/img/options.PNG"
                     />
                   </div>
@@ -243,11 +169,11 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="p-5 rounded-md text-left ">
+              <div className="p-5 rounded-full text-left ">
                 <div className="space-y-5">
                   <div>
                     <img
-                      className="border rounded-md shadow-md h-48 w-full object-cover"
+                      className="border rounded-full shadow-md h-48 w-full object-cover"
                       src="/img/interior-after.png"
                     />
                   </div>
@@ -266,7 +192,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48 items-center">
             <div className="lg:w-1/2 lg:pt-0 pt-10">
@@ -276,8 +202,7 @@ export default function HomePage() {
             <div className="lg:w-1/2 lg:text-left space-y-7">
               <div>
                 <span className="font-bold lg:text-4xl text-3xl">
-                  Pick from <span className="text-black">hundreds</span> of
-                  styles to fit your preferences
+                  Revisualize your space in 100+ styles and options
                 </span>
               </div>
               <div>
@@ -290,14 +215,14 @@ export default function HomePage() {
               <div>
                 {user ? (
                   <Link
-                    className="bg-black font-bold rounded-md text-white px-10 py-3 hover:bg-blue-500 transition"
+                    className="bg-green-600 font-bold rounded-full text-white px-10 py-3 hover:bg-green-600 transition"
                     href={"/dream"}
                   >
                     Go to the MyArchitectAI app →
                   </Link>
                 ) : (
                   <button
-                    className="bg-black font-bold rounded-md text-white px-10 py-3 hover:bg-blue-500 transition"
+                    className="bg-green-600 font-bold rounded-full text-white px-10 py-3 hover:bg-green-600 transition"
                     onClick={() => signInWithSupabase()}
                   >
                     Build your dream home →
@@ -310,7 +235,7 @@ export default function HomePage() {
             <div className="lg:w-1/2 lg:text-left space-y-7">
               <div>
                 <span className="font-bold lg:text-4xl text-3xl">
-                  Floorplans, Interior, Exterior design made easy
+                  Upscale and export your designs in high resolution
                 </span>
               </div>
               <div>
@@ -323,14 +248,14 @@ export default function HomePage() {
               <div>
                 {user ? (
                   <Link
-                    className="bg-black font-bold rounded-md text-white px-10 py-3 hover:bg-blue-500 transition"
+                    className="bg-green-600 font-bold rounded-full text-white px-10 py-3 hover:bg-green-600 transition"
                     href={"/dream"}
                   >
                     Go to the MyArchitectAI app →
                   </Link>
                 ) : (
                   <button
-                    className="bg-black font-bold rounded-md text-white px-10 py-3 hover:bg-blue-500 transition"
+                    className="bg-green-600 font-bold rounded-full text-white px-10 py-3 hover:bg-green-600 transition"
                     onClick={() => signInWithSupabase()}
                   >
                     Build your dream home →
@@ -343,9 +268,47 @@ export default function HomePage() {
               {/* <CompareSlider original="/img/exterior-before.png" restored="/img/exterior-after.png" /> */}
             </div>
           </div>
+
+          <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48 items-center">
+            <div className="lg:w-1/2 lg:pt-0 pt-10">
+              <img src="/img/architecture-styles.png" />
+              {/* <CompareSlider original="/img/exterior-before.png" restored="/img/exterior-after.png" /> */}
+            </div>
+            <div className="lg:w-1/2 lg:text-left space-y-7">
+              <div>
+                <span className="font-bold lg:text-4xl text-3xl">
+                  Generate unlimited architectural design ideas
+                </span>
+              </div>
+              <div>
+                <span className="">
+                  From the timeless elegance of Neoclassical to the sleek lines
+                  of Modernist, our curated selection offers hundreds of
+                  architectural styles for you to choose from.
+                </span>
+              </div>
+              <div>
+                {user ? (
+                  <Link
+                    className="bg-green-600 font-bold rounded-full text-white px-10 py-3 hover:bg-green-600 transition"
+                    href={"/dream"}
+                  >
+                    Go to the MyArchitectAI app →
+                  </Link>
+                ) : (
+                  <button
+                    className="bg-green-600 font-bold rounded-full text-white px-10 py-3 hover:bg-green-600 transition"
+                    onClick={() => signInWithSupabase()}
+                  >
+                    Build your dream home →
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
           {/* 
           <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48">
-            <div className=" lg:text-left space-y-7 p-10 border rounded-md">
+            <div className=" lg:text-left space-y-7 p-10 border rounded-full">
               <div>
                 <span className="font-bold lg:text-4xl text-3xl">
                   Don't want to spend time rendering? We can do it for you.
@@ -371,7 +334,7 @@ export default function HomePage() {
             </div>
           </div> */}
 
-          <div className="flex justify-center items-center pt-48 w-full">
+          {/* <div className="flex justify-center items-center pt-48 w-full">
             <div className="space-y-5">
               <div>
                 <span className="font-bold text-4xl">
@@ -390,7 +353,7 @@ export default function HomePage() {
                   <div className="rounded-xl space-y-3">
                     <div className="">
                       <img
-                        className="h-48 bg-black cover rounded-xl w-full object-cover"
+                        className="h-48 bg-green-600 cover rounded-xl w-full object-cover"
                         src={"/img/architects.jpg"}
                         height={300}
                         width={400}
@@ -422,7 +385,7 @@ export default function HomePage() {
                   <div className="rounded-xl space-y-3 ">
                     <div className="">
                       <img
-                        className="h-48 bg-black cover rounded-xl w-full object-cover"
+                        className="h-48 bg-green-600 cover rounded-xl w-full object-cover"
                         src={"/img/interior-designers.jpg"}
                         height={300}
                         width={400}
@@ -453,7 +416,7 @@ export default function HomePage() {
                   <div className="rounded-xl space-y-3 ">
                     <div className="">
                       <img
-                        className="h-48 bg-black cover rounded-xl w-full object-cover"
+                        className="h-48 bg-green-600 cover rounded-xl w-full object-cover"
                         src={"/img/real-estate-agents.jpg"}
                         height={300}
                         width={400}
@@ -485,7 +448,7 @@ export default function HomePage() {
                   <div className="rounded-xl space-y-3 ">
                     <div className="">
                       <img
-                        className="h-48 bg-black cover rounded-xl w-full object-cover"
+                        className="h-48 bg-green-600 cover rounded-xl w-full object-cover"
                         src={"/img/home-lovers.jpg"}
                         height={300}
                         width={400}
@@ -516,22 +479,22 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <div className="pt-12">
+          {/* <div className="pt-12">
             <Link
-              className="bg-black rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-black transition"
+              className="bg-green-600 rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-green-600 transition"
               href={"/dream"}
             >
               Build your dream home for free →
             </Link>
-          </div>
+          </div> */}
 
           <div className="flex justify-center items-center pt-48">
             <div className="space-y-5">
               <div>
                 <span className="font-bold text-4xl">
-                  15x cheaper than what you're currently paying.
+                  Save money and time with us
                 </span>
               </div>
               <div>
@@ -548,7 +511,7 @@ export default function HomePage() {
             <div className="shadow-xl border rounded-xl p-12 space-y-10">
               <div className="space-y-7">
                 <div className="text-center">
-                  <span className=" font-bold px-5 py-1 rounded-full text-blue-500 text-xs">
+                  <span className=" font-bold px-5 py-1 rounded-full text-green-500 text-xs">
                     Hobby
                   </span>
                 </div>
@@ -653,14 +616,14 @@ export default function HomePage() {
                 <div className="flex justify-center font-bold">
                   {user ? (
                     <Link
-                      className="bg-blue-500 rounded-md w-full text-white px-4 py-3 hover:bg-black transition font-bold"
+                      className="bg-green-600 rounded-full w-full text-white px-4 py-3 hover:bg-green-600 transition font-bold text-center"
                       href={"/dream"}
                     >
                       Go to the MyArchitectAI app →
                     </Link>
                   ) : (
                     <button
-                      className="bg-blue-500 rounded-md w-full text-white px-4 py-3 hover:bg-black transition font-bold"
+                      className="bg-green-600 rounded-full w-full text-white px-4 py-3 hover:bg-green-600 transition font-bold"
                       onClick={() => signInWithSupabase()}
                     >
                       Build your dream home →
@@ -672,14 +635,14 @@ export default function HomePage() {
             <div className="shadow-xl border rounded-xl p-12 space-y-10">
               <div className="space-y-7">
                 <div className="text-center">
-                  <span className="text-blue-500  font-bold px-5 py-1 rounded-full text-xs">
+                  <span className="text-green-500  font-bold px-5 py-1 rounded-full text-xs">
                     Premium
                   </span>
                 </div>
                 <div className="">
                   <div className="text-center">
                     <span className="font-bold  ">
-                      <span className="text-4xl ">$15.99</span>
+                      <span className="text-4xl ">$19</span>
                     </span>
                     <span className="">/month</span>
                   </div>
@@ -788,13 +751,11 @@ export default function HomePage() {
                 </div>
                 <div className="flex justify-center">
                   <Link
-                    href="https://myarchitectai.lemonsqueezy.com/checkout/buy/875159c9-3c87-4ce1-8e2f-557191a03115"
+                    href="/link-to-premium-subscription"
                     target="_blank"
                     className="w-full"
                   >
-                    <button
-                      className="bg-blue-500 rounded-md w-full text-white px-4 py-3 hover:bg-black transition font-bold"
-                    >
+                    <button className="bg-green-600 rounded-full w-full text-white px-4 py-3 hover:bg-green-600 transition font-bold">
                       Build your dream home →
                     </button>
                   </Link>
@@ -804,14 +765,14 @@ export default function HomePage() {
             <div className="shadow-xl border rounded-xl p-12 space-y-10">
               <div className="space-y-7">
                 <div className="text-center">
-                  <span className="text-blue-500 font-bold px-5 py-1 rounded-full text-xs">
+                  <span className="text-green-500 font-bold px-5 py-1 rounded-full text-xs">
                     Premium Yearly
                   </span>
                 </div>
                 <div className="">
                   <div className="text-center">
                     <span className="font-bold  ">
-                      <span className="text-4xl ">$179.99</span>
+                      <span className="text-4xl ">$199</span>
                     </span>
                     <span className="">/year</span>
                   </div>
@@ -920,7 +881,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex justify-center">
                   <Link
-                    href="https://myarchitectai.lemonsqueezy.com/checkout/buy/b598c7af-ed8f-478f-a294-e2da36e5f7b0"
+                    href="/link-to-premium-yearly-subscription"
                     target="_blank"
                     className="w-full"
                   >
@@ -930,7 +891,7 @@ export default function HomePage() {
                       //     product: 47418,
                       //   });
                       // }}
-                      className="bg-blue-500 rounded-md w-full text-white px-4 py-3 hover:bg-black transition font-bold"
+                      className="bg-green-600 rounded-full w-full text-white px-4 py-3 hover:bg-green-600 transition font-bold"
                     >
                       Build your dream home →
                     </button>
@@ -946,7 +907,7 @@ export default function HomePage() {
               <Link
                 className="underline"
                 target="_blank"
-                href={"https://tally.so/r/nWEyaR"}
+                href={"/link-to-support-here"}
               >
                 Message us
               </Link>{" "}
@@ -959,7 +920,7 @@ export default function HomePage() {
             <div className="space-y-5">
               <div>
                 <span className="font-bold text-3xl">
-                  Explore what others have built
+                  See what&apos;s possible
                 </span>
               </div>
               <div>
@@ -969,14 +930,14 @@ export default function HomePage() {
                 </span>
               </div>
               <div>
-                <img src="/img/others.webp" />
+                <img src="/img/landing-2.png" />
               </div>
             </div>
           </div>
 
           <div className="mt-12">
             <Link
-              className="bg-black rounded-xl text-white font-medium px-4 py-3 hover:bg-black transition"
+              className="bg-green-600 rounded-full text-white font-bold px-7 py-3 hover:bg-green-600 transition"
               href={"/dream"}
             >
               Build your dream home for free →

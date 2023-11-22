@@ -21,6 +21,7 @@
     "crisp-sdk-web": "^1.0.20",
     "express-rate-limit": "^6.7.1",
     "framer-motion": "^8.2.4",
+    "ldrs": "^1.0.1",
     "next": "^13.4.4",
     "next-auth": "^4.22.1",
     "react": "^18.2.0",
