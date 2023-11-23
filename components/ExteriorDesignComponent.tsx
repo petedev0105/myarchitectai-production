@@ -15,6 +15,7 @@ import DropDown from "../components/DropDown";
 import { useDropzone } from "react-dropzone";
 import DropDownRestricted from "../components/DropDownRestricted";
 import Link from "next/link";
+import React from "react";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/dist/client/components/headers";
@@ -22,24 +23,24 @@ import { cookies } from "next/dist/client/components/headers";
 import { Image } from "antd";
 import ImageUploading from "react-images-uploading";
 import {
-    roomType,
-    rooms,
-    themeType,
-    themes,
-    locations,
-    houseStyles,
-    materials,
-    seasons,
-    houseStyleType,
-    materialType,
-    locationType,
-    seasonType,
-    buildingType,
-    buildingTypes,
-    floors,
-    floorsType,
-    colors,
-    colorType,
+  roomType,
+  rooms,
+  themeType,
+  themes,
+  locations,
+  houseStyles,
+  materials,
+  seasons,
+  houseStyleType,
+  materialType,
+  locationType,
+  seasonType,
+  lightingType,
+  lightings,
+  interiorStyleType,
+  interiorStyles,
+  buildingTypes,
+  buildingType,
 } from "../utils/dropdownTypes";
 import { useSupabase } from "../components/supabaseProvider";
 
@@ -70,26 +71,29 @@ const options = {
   // },
 };
 
-function ArchitectureIdeaComponent() {
-    const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
-    const [restoredImage, setRestoredImage] = useState<string | null>(null);
-    const [loading, setLoading] = useState<boolean>(false);
-    const [restoredLoaded, setRestoredLoaded] = useState<boolean>(false);
-    const [sideBySide, setSideBySide] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>(null);
-    const [photoName, setPhotoName] = useState<string | null>(null);
-    const [theme, setTheme] = useState<themeType>("Modern");
-    const [room, setRoom] = useState<roomType>("Living Room");
-  
-    const [houseStyle, setHouseStyle] = useState<houseStyleType>("Modern");
-    const [season, setSeason] = useState<seasonType>("Autumn");
-    const [material, setMaterial] = useState<materialType>("Wooden");
-    const [location, setLocation] = useState<locationType>("Cliff");
-    const [buildingType, setBuildingType] =
-      useState<buildingType>("Residential Home");
-    const [floor, setFloor] = useState<floorsType>("Single Level");
-    const [color, setColor] = useState<colorType>("Black");
-    const [extraPrompt, setExtraPrompt] = useState("");
+function ExteriorDesignComponent() {
+  const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
+  const [restoredImage, setRestoredImage] = useState<string | null>(null);
+  const [upscaledImage, setUpscaledImage] = useState<string | null>(null);
+
+  const [loading, setLoading] = useState<boolean>(false);
+  const [restoredLoaded, setRestoredLoaded] = useState<boolean>(false);
+  const [sideBySide, setSideBySide] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [photoName, setPhotoName] = useState<string | null>(null);
+  const [theme, setTheme] = useState<themeType>("Modern");
+  const [room, setRoom] = useState<roomType>("Living Room");
+
+  const [houseStyle, setHouseStyle] = useState<houseStyleType>("Modern");
+  const [season, setSeason] = useState<seasonType>("Autumn");
+  const [material, setMaterial] = useState<materialType>("Wooden");
+  const [location, setLocation] = useState<locationType>("Cliff");
+  const [buildingType, setBuildingType] =
+    useState<buildingType>("Residential Home");
+
+  const [interiorStyle, setInteriorStyle] =
+    useState<interiorStyleType>("Minimalist Haven");
+  const [lighting, setLighting] = useState<lightingType>("Ambient");
 
   const [edit, setEdit] = useState(true);
   const [uploaded, setUploaded] = useState(false);
@@ -167,22 +171,22 @@ function ArchitectureIdeaComponent() {
     setRestoredImage("");
   }
 
-  const UploadDropZone = () => (
-    <UploadDropzone
-      uploader={uploader}
-      options={options}
-      onUpdate={(file) => {
-        if (file.length !== 0) {
-          setPhotoName(file[0].originalFile.originalFileName);
-          setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
+//   const UploadDropZone = () => (
+//     <UploadDropzone
+//       uploader={uploader}
+//       options={options}
+//       onUpdate={(file) => {
+//         if (file.length !== 0) {
+//           setPhotoName(file[0].originalFile.originalFileName);
+//           setOriginalPhoto(file[0].fileUrl.replace("raw", "thumbnail"));
 
-          // generatePhoto(file[0].fileUrl.replace("raw", "thumbnail"));
-        }
-      }}
-      width="700px"
-      height="250px"
-    />
-  );
+//           // generatePhoto(file[0].fileUrl.replace("raw", "thumbnail"));
+//         }
+//       }}
+//       width="700px"
+//       height="250px"
+//     />
+//   );
 
   async function generateUpscale(fileUrl: string) {
     try {
@@ -219,29 +223,28 @@ function ArchitectureIdeaComponent() {
     }
   }
 
-  async function generatePhoto() {
+  async function generatePhoto(fileUrl: string) {
     try {
       setLoading(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
 
-      const response = await fetch("/generate-custom-architecture", {
+      const response = await fetch("/generate-interior", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          floor,
-          color,
-          location,
+          imageUrl: fileUrl,
+          lighting,
+          interiorStyle,
           buildingType,
-          extraPrompt,
         }),
       });
 
       if (response.ok) {
         const newPhoto = await response.json();
         console.log(newPhoto);
-        setRestoredImage(newPhoto[0]);
+        setRestoredImage(newPhoto[1]);
       } else if (response.status === 504) {
         alert(
           "Experiencing timeouts? Upgrade to our Pro plan for unlimited images and priority access. Elevate your design process with MyArchitectAI's seamless performance."
@@ -262,10 +265,38 @@ function ArchitectureIdeaComponent() {
       <div className="p-7 lg:flex space-x-5">
         <div className="lg:w-1/4 ">
           <div className="p-7 space-y-3  rounded-xl shadow-xl border-2 shadow-sm">
-            {packageType == "free" ? (
-               <>
-               <div className="space-y-4 w-full ">
-                <div className="flex items-center space-x-3">
+            <div className="flex justify-between w-full">
+              <span className="font-bold text-stone-600">Upload Image</span>
+              {!originalPhoto ? null : (
+                <div className="cursor-pointer" onClick={() => newImage()}>
+                  <span className="underline">New image</span>
+                </div>
+              )}
+            </div>
+            {originalPhoto ? (
+              <Image src={originalPhoto} className="rounded-md border" />
+            ) : (
+              <div
+                {...getRootProps()}
+                className={`${
+                  isDragActive ? "bg-sky-200" : "bg-white"
+                } cursor-pointer text-center p-10 rounded-md border-dashed border-2 bg-slate-50`}
+              >
+                <input {...getInputProps()} />
+                {isDragActive ? (
+                  <p>Drop the file here ...</p>
+                ) : (
+                  <p>
+                    Drag and drop or click to upload image of your interior +
+                  </p>
+                )}
+              </div>
+            )}
+
+{packageType == "free" ? (
+            <>
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3">
                   <p className="text-left font-bold font-bold text-stone-600">
                     Choose your building type ({buildingTypes.length})
                   </p>
@@ -278,72 +309,14 @@ function ArchitectureIdeaComponent() {
                   themes={buildingTypes}
                 />
               </div>
-               {/* <div className="space-y-4 w-full ">
-                 <div className="flex items-center space-x-3">
-                   <p className="text-left font-bold font-bold text-stone-600">
-                     Choose the number of floors ({floors.length})
-                   </p>
-                 </div>
-                 <DropDown
-                   theme={floor}
-                   setTheme={(newFloorType) =>
-                     setFloor(newFloorType as typeof floor)
-                   }
-                   themes={floors}
-                 />
-               </div> */}
- 
-               {/* <div className="space-y-4 w-full ">
-                 <div className="flex mt-10 items-center space-x-3">
-                   <p className="text-left font-bold font-bold text-stone-600">
-                     Choose the color ({colors.length})
-                   </p>
-                 </div>
-                 <DropDown
-                   theme={color}
-                   setTheme={(newColor) => setColor(newColor as typeof color)}
-                   themes={colors}
-                 />
-               </div> */}
- 
-               <div className="space-y-4 w-full ">
-                 <div className="flex mt-10 items-center space-x-3 text-stone-600">
-                   <p className="text-left font-bold">
-                     Choose your location ({locations.length})
-                   </p>
-                 </div>
-                 <DropDown
-                   theme={location}
-                   setTheme={(newLocation) =>
-                     setLocation(newLocation as typeof location)
-                   }
-                   themes={locations}
-                 />
-               </div>
- 
-               <div className="space-y-4 w-full">
-                 <div className="items-center text-stone-600 mt-10">
-                   <span className="text-left font-bold">
-                     Custom Preferences
-                   </span>
-                 </div>
-                 <textarea
-                 disabled
-                   onChange={(e) => setExtraPrompt(e.target.value)}
-                   className="rounded-md border border-stone-300 px-3 py-2 w-full h-24"
-                   placeholder="This is a Pro feature, please upgrade 🔒"
-                 />
-               </div>
-             </>
-            ) : (
-              <>
-              <div className="space-y-4 w-full">
-                <div className="flex items-center space-x-3">
+
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3">
                   <p className="text-left font-bold font-bold text-stone-600">
-                    Choose your architecture style ({houseStyles.length})
+                    Choose your style ({houseStyles.length})
                   </p>
                 </div>
-                <DropDown
+                <DropDownRestricted
                   theme={houseStyle}
                   setTheme={(newHouseStyle) =>
                     setHouseStyle(newHouseStyle as typeof houseStyle)
@@ -351,7 +324,55 @@ function ArchitectureIdeaComponent() {
                   themes={houseStyles}
                 />
               </div>
+
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose your location ({locations.length})
+                  </p>
+                </div>
+                <DropDownRestricted
+                  theme={location}
+                  setTheme={(newLocation) =>
+                    setLocation(newLocation as typeof location)
+                  }
+                  themes={locations}
+                />
+              </div>
+
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose your material ({materials.length})
+                  </p>
+                </div>
+                <DropDownRestricted
+                  theme={material}
+                  setTheme={(newMaterial) =>
+                    setMaterial(newMaterial as typeof material)
+                  }
+                  themes={materials}
+                />
+              </div>
+
               <div className="space-y-4 w-full">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose the season ({seasons.length})
+                  </p>
+                </div>
+                <DropDownRestricted
+                  theme={season}
+                  setTheme={(newSeason) =>
+                    setSeason(newSeason as typeof season)
+                  }
+                  themes={seasons}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="space-y-4 w-full ">
                 <div className="flex mt-10 items-center space-x-3">
                   <p className="text-left font-bold font-bold text-stone-600">
                     Choose your building type ({buildingTypes.length})
@@ -365,33 +386,21 @@ function ArchitectureIdeaComponent() {
                   themes={buildingTypes}
                 />
               </div>
-              {/* <div className="space-y-4 w-full ">
-                <div className="flex mt-10 items-center space-x-3">
-                  <p className="text-left font-bold font-bold text-stone-600">
-                    Choose the number of floors ({floors.length})
-                  </p>
-                </div>
-                <DropDown
-                  theme={floor}
-                  setTheme={(newFloorType) =>
-                    setFloor(newFloorType as typeof floor)
-                  }
-                  themes={floors}
-                />
-              </div> */}
 
-              {/* <div className="space-y-4 w-full ">
+              <div className="space-y-4 w-full ">
                 <div className="flex mt-10 items-center space-x-3">
                   <p className="text-left font-bold font-bold text-stone-600">
-                    Choose the color ({colors.length})
+                    Choose your style ({houseStyles.length})
                   </p>
                 </div>
                 <DropDown
-                  theme={color}
-                  setTheme={(newColor) => setColor(newColor as typeof color)}
-                  themes={colors}
+                  theme={houseStyle}
+                  setTheme={(newHouseStyle) =>
+                    setHouseStyle(newHouseStyle as typeof houseStyle)
+                  }
+                  themes={houseStyles}
                 />
-              </div> */}
+              </div>
 
               <div className="space-y-4 w-full ">
                 <div className="flex mt-10 items-center space-x-3 text-stone-600">
@@ -408,25 +417,44 @@ function ArchitectureIdeaComponent() {
                 />
               </div>
 
+              <div className="space-y-4 w-full ">
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose your material ({materials.length})
+                  </p>
+                </div>
+                <DropDown
+                  theme={material}
+                  setTheme={(newMaterial) =>
+                    setMaterial(newMaterial as typeof material)
+                  }
+                  themes={materials}
+                />
+              </div>
+
               <div className="space-y-4 w-full">
-                 <div className="items-center text-stone-600 mt-10">
-                   <span className="text-left font-bold">
-                     Custom Preferences
-                   </span>
-                 </div>
-                 <textarea
-                   onChange={(e) => setExtraPrompt(e.target.value)}
-                   className="rounded-md border border-stone-300 px-3 py-2 w-full h-24"
-                   placeholder="Night time, Wooden, Cozy, Swimming Pool, Backyard,..."
-                 />
-               </div>
+                <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                  <p className="text-left font-bold">
+                    Choose the season ({seasons.length})
+                  </p>
+                </div>
+                <DropDown
+                  theme={season}
+                  setTheme={(newSeason) =>
+                    setSeason(newSeason as typeof season)
+                  }
+                  themes={seasons}
+                />
+              </div>
             </>
-            )}
+          )}
 
             <div className="z z">
               <button
                 onClick={() => {
-                  generatePhoto();
+                  originalPhoto
+                    ? generatePhoto(originalPhoto)
+                    : console.log("no photo");
                 }}
                 className="flex space-x-3 items-center justify-center bg-black rounded-md text-white font-bold px-4 py-3 mt-8 hover:bg-stone-700 transition w-full"
               >
@@ -460,7 +488,7 @@ function ArchitectureIdeaComponent() {
             </button>
           )}
           <div>
-            {restoredImage && !loading && (
+            {restoredImage && originalPhoto && !sideBySide && !loading && (
               <div className="">
                 <div className="sm:mt-0">
                   <div className="rounded-md">
@@ -501,9 +529,13 @@ function ArchitectureIdeaComponent() {
               <div className="flex items-center justify-between pt-5">
                 <div className="flex items-center space-x-3">
                   <button
-                    onClick={packageType == "free" ? () => alert("This is a Pro feature, please upgrade.") : () => {
-                      restoredImage && generateUpscale(restoredImage);
-                    }}
+                    onClick={
+                      packageType == "free"
+                        ? () => alert("This is a Pro feature, please upgrade.")
+                        : () => {
+                            restoredImage && generateUpscale(restoredImage);
+                          }
+                    }
                     className="space-x-2 flex px-5 py-3 border-2 rounded-md text-sm font-semibold text-stone-800 hover:bg-slate-50"
                   >
                     <img src="/img/upscale.png" className="h-5 w-5" />
@@ -514,7 +546,7 @@ function ArchitectureIdeaComponent() {
                       restoredImage
                         ? downloadPhoto(
                             restoredImage,
-                            `${houseStyle} ${material} ${buildingType}, ${location}, ${season}`
+                            `${interiorStyle} interior, ${lighting} lighting.`
                           )
                         : console.log("no photo");
                     }}
@@ -527,7 +559,9 @@ function ArchitectureIdeaComponent() {
                 <div>
                   <button
                     onClick={() => {
-                        generatePhoto()
+                      originalPhoto
+                        ? generatePhoto(originalPhoto)
+                        : console.log("no photo");
                     }}
                     className="space-x-2 flex px-5 py-3  rounded-md text-sm font-semibold text-white bg-black hover:bg-stone-700"
                   >
@@ -559,4 +593,4 @@ function ArchitectureIdeaComponent() {
   );
 }
 
-export default ArchitectureIdeaComponent;
+export default ExteriorDesignComponent;

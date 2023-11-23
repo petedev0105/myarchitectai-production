@@ -465,8 +465,8 @@ function InteriorDesignComponent() {
             {restoredImage && !loading && (
               <div className="flex items-center justify-between pt-5">
                 <div className="flex items-center space-x-3">
-                  <button
-                    onClick={() => {
+                <button
+                    onClick={packageType == "free" ? () => alert("This is a Pro feature, please upgrade.") : () => {
                       restoredImage && generateUpscale(restoredImage);
                     }}
                     className="space-x-2 flex px-5 py-3 border-2 rounded-md text-sm font-semibold text-stone-800 hover:bg-slate-50"

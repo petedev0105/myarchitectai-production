@@ -7,6 +7,8 @@ import SquigglyLines from "../components/SquigglyLines";
 import QnA from "../components/QnA";
 import { useSupabase } from "../components/supabaseProvider";
 import { CompareSlider } from "../components/CompareSlider";
+import Pricing from "../components/Pricing";
+import Alert from "../components/Alert";
 
 export default function HomePage() {
   const { supabase, user, signInWithSupabase } = useSupabase();
@@ -15,10 +17,11 @@ export default function HomePage() {
     <>
       {/* <div className="background "></div> */}
       <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen z-10">
+        {/* <Alert /> */}
         <Header />
         <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20">
           <div className="">
-            <div className="lg:max-w-3xl mx-auto space-y-7">
+            <div className="lg:max-w-3xl mx-auto space-y-10">
               <div className="flex justify-center pt-5 space-y-10">
                 <div>
                   <div className="flex justify-center pb-5">
@@ -26,8 +29,8 @@ export default function HomePage() {
                       INTUITIVE HOME DESIGN TOOL
                     </span>
                   </div>
-                  <div>
-                    <span className="font-bold lg:text-6xl text-3xl text-stone-800">
+                  <div className="max-w-[600px]">
+                    <span className="font-semibold leading-tight lg:text-6xl text-3xl">
                       Your dream home, built in seconds.{" "}
                     </span>
                   </div>
@@ -35,31 +38,31 @@ export default function HomePage() {
               </div>
               <div className="flex justify-center">
                 <span className="text-xl">
-                  {" "}
-                  Say goodbye to time-consuming manual rendering and embrace a
-                  new era of efficiency.{" "}
+                  The all-in-one platform to satisfy all your home design needs.
                 </span>
               </div>
 
-              <div className="flex justify-center">
+              <div className="flex justify-center text-xl">
                 <div>
                   {user ? (
                     <Link
-                      className="bg-green-600 font-bold rounded-full text-white px-10 py-3 hover:bg-green-600 transition"
+                      className="bg-green-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-green-700 transition"
                       href={"/build"}
                     >
                       Go to dashboard →
                     </Link>
                   ) : (
                     <button
-                      className="bg-green-600 font-bold rounded-full text-white px-10 py-3 hover:bg-green-600 transition"
+                      className="bg-green-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-green-700 transition"
                       onClick={() => signInWithSupabase()}
                     >
                       Start Designing For Free →
                     </button>
                   )}
                   <div className="pt-5">
-                    <span className="text-stone-700">No credit card required</span>
+                    <span className="text-stone-700 text-sm">
+                      No credit card required
+                    </span>
                   </div>
                 </div>
               </div>
@@ -74,15 +77,20 @@ export default function HomePage() {
                 </div>
               </div> */}
             </div>
+
             <div className="pt-32 flex justify-center">
               <img src="/img/landing.png" />
+            </div>
+
+            <div className="flex justify-center py-24">
+              <img src="/img/numbers.png" className="" style={{ width: 700 }} />
             </div>
           </div>
 
           {/* <div className="flex justify-center items-center pt-48">
             <div className="space-y-5">
               <div>
-                <span className="font-bold text-4xl">
+                <span className="font-semibold text-4xl">
                   <span className="text-black">10x</span> your architecture
                   design output
                 </span>
@@ -100,7 +108,7 @@ export default function HomePage() {
               </div>
               <div className="pt-12">
                 <Link
-                  className="bg-green-600 rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-green-600 transition"
+                  className="bg-green-600 rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-green-700 transition"
                   href={"/dream"}
                 >
                   Build your dream home for free →
@@ -111,7 +119,7 @@ export default function HomePage() {
 
           {/* <div className="pt-48 space-y-5">
             <div className="flex justify-center">
-              <div className="font-bold text-4xl">How it works</div>
+              <div className="font-semibold text-4xl">How it works</div>
             </div>
             <div className="flex justify-center">
               <div className=" text-stone-700">
@@ -130,7 +138,7 @@ export default function HomePage() {
                     />
                   </div>
                   <div>
-                    <span className="text-2xl font-bold">
+                    <span className="text-2xl font-semibold">
                       Upload your designs
                     </span>
                   </div>
@@ -138,7 +146,7 @@ export default function HomePage() {
                     <span className="text-stone-600">
                       Upload your idea to the web editor and watch the magic
                       happen. Whether it's a rough sketch, a 3d render, or a
-                      photo of a real property, MyArchitectAI will revisualize
+                      photo of a real property, AIHomeRender will revisualize
                       it into beautiful photorealistic renders in a matter of
                       seconds.{" "}
                     </span>
@@ -154,7 +162,7 @@ export default function HomePage() {
                     />
                   </div>
                   <div>
-                    <span className="text-2xl font-bold">
+                    <span className="text-2xl font-semibold">
                       Customize the options
                     </span>
                   </div>
@@ -178,7 +186,7 @@ export default function HomePage() {
                     />
                   </div>
                   <div>
-                    <span className="text-2xl font-bold">Download & share</span>
+                    <span className="text-2xl font-semibold">Download & share</span>
                   </div>
                   <div>
                     <span className="text-stone-600">
@@ -194,19 +202,21 @@ export default function HomePage() {
             </div>
           </div> */}
 
-          <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48 items-center">
+          <div className="lg:flex justify-between items-center w-full lg:space-x-24 items-center ">
             <div className="lg:w-1/2 lg:pt-0 pt-10">
-              <img src="/img/architecture-styles.png" />
+              <img src="/img/styles.png" />
               {/* <CompareSlider original="/img/exterior-before.png" restored="/img/exterior-after.png" /> */}
             </div>
             <div className="lg:w-1/2 lg:text-left space-y-7">
               <div>
-                <span className="font-bold lg:text-4xl text-3xl">
-                  Revisualize your space in 100+ styles and options
+                <span className="font-semibold lg:text-4xl text-3xl">
+                  Revisualize your space in{" "}
+                  <span className="text-green-600">100+</span> styles and
+                  options
                 </span>
               </div>
               <div>
-                <span className="">
+                <span className="text-lg text-stone-600">
                   From the timeless elegance of Neoclassical to the sleek lines
                   of Modernist, our curated selection offers hundreds of
                   architectural styles for you to choose from.
@@ -215,14 +225,14 @@ export default function HomePage() {
               <div>
                 {user ? (
                   <Link
-                    className="bg-green-600 font-bold rounded-full text-white px-10 py-3 hover:bg-green-600 transition"
+                    className="bg-green-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-green-700 transition"
                     href={"/dream"}
                   >
-                    Go to the MyArchitectAI app →
+                    Go to the AIHomeRender app →
                   </Link>
                 ) : (
                   <button
-                    className="bg-green-600 font-bold rounded-full text-white px-10 py-3 hover:bg-green-600 transition"
+                    className="bg-green-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-green-700 transition"
                     onClick={() => signInWithSupabase()}
                   >
                     Build your dream home →
@@ -231,15 +241,16 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48">
+          <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-24">
             <div className="lg:w-1/2 lg:text-left space-y-7">
               <div>
-                <span className="font-bold lg:text-4xl text-3xl">
-                  Upscale and export your designs in high resolution
+                <span className="font-semibold lg:text-4xl text-3xl">
+                  <span className="text-green-600">Upscale</span> and export
+                  your designs in high resolution
                 </span>
               </div>
               <div>
-                <span className="">
+                <span className="text-lg text-stone-600">
                   We've revolutionized the way you approach architecture and
                   decor, making it accessible to everyone, regardless of
                   expertise.
@@ -248,14 +259,14 @@ export default function HomePage() {
               <div>
                 {user ? (
                   <Link
-                    className="bg-green-600 font-bold rounded-full text-white px-10 py-3 hover:bg-green-600 transition"
+                    className="bg-green-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-green-700 transition"
                     href={"/dream"}
                   >
-                    Go to the MyArchitectAI app →
+                    Go to the AIHomeRender app →
                   </Link>
                 ) : (
                   <button
-                    className="bg-green-600 font-bold rounded-full text-white px-10 py-3 hover:bg-green-600 transition"
+                    className="bg-green-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-green-700 transition"
                     onClick={() => signInWithSupabase()}
                   >
                     Build your dream home →
@@ -264,53 +275,16 @@ export default function HomePage() {
               </div>
             </div>
             <div className="lg:w-1/2 lg:pt-0 pt-10">
-              <img src="/img/all.png" />
+              <img src="/img/sizes.png" />
               {/* <CompareSlider original="/img/exterior-before.png" restored="/img/exterior-after.png" /> */}
             </div>
           </div>
 
-          <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48 items-center">
-            <div className="lg:w-1/2 lg:pt-0 pt-10">
-              <img src="/img/architecture-styles.png" />
-              {/* <CompareSlider original="/img/exterior-before.png" restored="/img/exterior-after.png" /> */}
-            </div>
-            <div className="lg:w-1/2 lg:text-left space-y-7">
-              <div>
-                <span className="font-bold lg:text-4xl text-3xl">
-                  Generate unlimited architectural design ideas
-                </span>
-              </div>
-              <div>
-                <span className="">
-                  From the timeless elegance of Neoclassical to the sleek lines
-                  of Modernist, our curated selection offers hundreds of
-                  architectural styles for you to choose from.
-                </span>
-              </div>
-              <div>
-                {user ? (
-                  <Link
-                    className="bg-green-600 font-bold rounded-full text-white px-10 py-3 hover:bg-green-600 transition"
-                    href={"/dream"}
-                  >
-                    Go to the MyArchitectAI app →
-                  </Link>
-                ) : (
-                  <button
-                    className="bg-green-600 font-bold rounded-full text-white px-10 py-3 hover:bg-green-600 transition"
-                    onClick={() => signInWithSupabase()}
-                  >
-                    Build your dream home →
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
           {/* 
           <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48">
             <div className=" lg:text-left space-y-7 p-10 border rounded-full">
               <div>
-                <span className="font-bold lg:text-4xl text-3xl">
+                <span className="font-semibold lg:text-4xl text-3xl">
                   Don't want to spend time rendering? We can do it for you.
                 </span>
               </div>
@@ -337,7 +311,7 @@ export default function HomePage() {
           {/* <div className="flex justify-center items-center pt-48 w-full">
             <div className="space-y-5">
               <div>
-                <span className="font-bold text-4xl">
+                <span className="font-semibold text-4xl">
                   One platform for every need
                 </span>
               </div>
@@ -365,7 +339,7 @@ export default function HomePage() {
                           <span className="text-sm"></span>
                         </div>
                         <div className="flex space-x-3 items-center">
-                          <span className="font-bold text-2xl line-clamp-2 hover:underline">
+                          <span className="font-semibold text-2xl line-clamp-2 hover:underline">
                             Architects
                           </span>
                         </div>
@@ -397,7 +371,7 @@ export default function HomePage() {
                           <span className="text-sm"></span>
                         </div>
                         <div className="flex space-x-3 items-center">
-                          <span className="font-bold text-2xl line-clamp-2 hover:underline">
+                          <span className="font-semibold text-2xl line-clamp-2 hover:underline">
                             Interior Designers
                           </span>
                         </div>
@@ -428,7 +402,7 @@ export default function HomePage() {
                           <span className="text-sm"></span>
                         </div>
                         <div className="flex space-x-3 items-center">
-                          <span className="font-bold text-2xl line-clamp-2 hover:underline">
+                          <span className="font-semibold text-2xl line-clamp-2 hover:underline">
                             Real Estate Agents
                           </span>
                         </div>
@@ -460,7 +434,7 @@ export default function HomePage() {
                           <span className="text-sm"></span>
                         </div>
                         <div className="flex space-x-3 items-center">
-                          <span className="font-bold text-2xl line-clamp-2 hover:underline">
+                          <span className="font-semibold text-2xl line-clamp-2 hover:underline">
                             Home Lovers
                           </span>
                         </div>
@@ -483,450 +457,24 @@ export default function HomePage() {
 
           {/* <div className="pt-12">
             <Link
-              className="bg-green-600 rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-green-600 transition"
+              className="bg-green-600 rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-green-700 transition"
               href={"/dream"}
             >
               Build your dream home for free →
             </Link>
           </div> */}
 
-          <div className="flex justify-center items-center pt-48">
+          <div className="flex justify-center items-center pt-24">
             <div className="space-y-5">
               <div>
-                <span className="font-bold text-4xl">
-                  Save money and time with us
-                </span>
-              </div>
-              <div>
-                <span>
-                  We help you save on time and costs compared to traditional
-                  rendering softwares and services, to give you back more
-                  freedom on the things that truly matter.
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:flex items-center pt-12 lg:space-x-7 lg:space-y-0 space-y-10">
-            <div className="shadow-xl border rounded-xl p-12 space-y-10">
-              <div className="space-y-7">
-                <div className="text-center">
-                  <span className=" font-bold px-5 py-1 rounded-full text-green-500 text-xs">
-                    Hobby
-                  </span>
-                </div>
-                <div className="">
-                  <div className="text-center">
-                    <span className="font-bold">
-                      <span className="text-4xl">Free</span>
-                    </span>
-                    <span className=""></span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-10 text-sm text-left">
-                <div className="space-y-3 h-[400px]">
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">
-                        <span className="font-bold underline">10</span> images
-                        every month
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img
-                        src="/img/tick-tutor.png"
-                        style={{
-                          minWidth: "20px",
-                          minHeight: "20px",
-                          width: "20px",
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <span className="">
-                        Queued requests, occasional{" "}
-                        <span className="font-bold underline">
-                          downtime and timeouts
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">
-                        <span className="font-bold underline">
-                          Limited selection
-                        </span>{" "}
-                        of architectural styles and options
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Interior design studio</span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Access to all future updates</span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Request new features</span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Customer support</span>
-                    </div>
-                  </div>
-
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Small watermark</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-center font-bold">
-                  {user ? (
-                    <Link
-                      className="bg-green-600 rounded-full w-full text-white px-4 py-3 hover:bg-green-600 transition font-bold text-center"
-                      href={"/dream"}
-                    >
-                      Go to the MyArchitectAI app →
-                    </Link>
-                  ) : (
-                    <button
-                      className="bg-green-600 rounded-full w-full text-white px-4 py-3 hover:bg-green-600 transition font-bold"
-                      onClick={() => signInWithSupabase()}
-                    >
-                      Build your dream home →
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
-            <div className="shadow-xl border rounded-xl p-12 space-y-10">
-              <div className="space-y-7">
-                <div className="text-center">
-                  <span className="text-green-500  font-bold px-5 py-1 rounded-full text-xs">
-                    Premium
-                  </span>
-                </div>
-                <div className="">
-                  <div className="text-center">
-                    <span className="font-bold  ">
-                      <span className="text-4xl ">$19</span>
-                    </span>
-                    <span className="">/month</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-10 text-left text-sm">
-                <div className="space-y-3 h-[400px]">
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">
-                        <span className="font-bold underline">Unlimited</span>{" "}
-                        images every month
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img
-                        src="/img/tick-tutor.png"
-                        style={{
-                          minWidth: "20px",
-                          minHeight: "20px",
-                          width: "20px",
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <span className="">
-                        <span className="font-bold underline">Prioritized</span>{" "}
-                        responses, no downtime and timeout
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">
-                        <span className="font-bold underline">100+</span>{" "}
-                        architectural styles and options
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Interior Design Studio</span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Exterior Design Studio</span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Floorplan Design Studio</span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Access to all future updates</span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Request new features</span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Customer support</span>
-                    </div>
-                  </div>
-
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">No watermark</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-center">
-                  <Link
-                    href="/link-to-premium-subscription"
-                    target="_blank"
-                    className="w-full"
-                  >
-                    <button className="bg-green-600 rounded-full w-full text-white px-4 py-3 hover:bg-green-600 transition font-bold">
-                      Build your dream home →
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="shadow-xl border rounded-xl p-12 space-y-10">
-              <div className="space-y-7">
-                <div className="text-center">
-                  <span className="text-green-500 font-bold px-5 py-1 rounded-full text-xs">
-                    Premium Yearly
-                  </span>
-                </div>
-                <div className="">
-                  <div className="text-center">
-                    <span className="font-bold  ">
-                      <span className="text-4xl ">$199</span>
-                    </span>
-                    <span className="">/year</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-10 text-left text-sm">
-                <div className="space-y-3 h-[400px]">
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">
-                        <span className="font-bold underline">Unlimited</span>{" "}
-                        images every month
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img
-                        src="/img/tick-tutor.png"
-                        style={{
-                          minWidth: "20px",
-                          minHeight: "20px",
-                          width: "20px",
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <span className="">
-                        <span className="font-bold underline">Prioritized</span>{" "}
-                        responses, no downtime and timeout
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">
-                        <span className="font-bold underline">100+</span>{" "}
-                        architectural styles and options
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Interior Design Studio</span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Exterior Design Studio</span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Floorplan Design Studio</span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Access to all future updates</span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Request new features</span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">Customer support</span>
-                    </div>
-                  </div>
-
-                  <div className="flex space-x-3 items-center">
-                    <div>
-                      <img src="/img/tick-tutor.png" height={20} width={20} />
-                    </div>
-                    <div>
-                      <span className="">No watermark</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-center">
-                  <Link
-                    href="/link-to-premium-yearly-subscription"
-                    target="_blank"
-                    className="w-full"
-                  >
-                    <button
-                      // onClick={() => {
-                      //   Paddle.Checkout.open({
-                      //     product: 47418,
-                      //   });
-                      // }}
-                      className="bg-green-600 rounded-full w-full text-white px-4 py-3 hover:bg-green-600 transition font-bold"
-                    >
-                      Build your dream home →
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="pt-12">
-            <span>
-              Cancel at any time, 100% refunds, no questions asked.{" "}
-              <Link
-                className="underline"
-                target="_blank"
-                href={"/link-to-support-here"}
-              >
-                Message us
-              </Link>{" "}
-              {/* for custom requirements. <br></br>Don't want to do the rendering
-              yourself? We can do it for you as well.{" "} */}
-            </span>
-          </div>
-
-          <div className="flex justify-center items-center pt-48">
-            <div className="space-y-5">
-              <div>
-                <span className="font-bold text-3xl">
+                <span className="font-semibold text-4xl">
                   See what&apos;s possible
                 </span>
               </div>
-              <div>
-                <span>
+              <div className="max-w-3xl mx-auto text-stone-700">
+                <span className="text-xl">
                   Find inspiration from buildings built by creative architects
-                  and home lovers all across the globe using MyArchitectAI.
+                  and home lovers all across the globe using AIHomeRender.
                 </span>
               </div>
               <div>
@@ -935,19 +483,12 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mt-12">
-            <Link
-              className="bg-green-600 rounded-full text-white font-bold px-7 py-3 hover:bg-green-600 transition"
-              href={"/dream"}
-            >
-              Build your dream home for free →
-            </Link>
-          </div>
+          <Pricing />
 
-          <div className="lg:flex justify-between py-24 w-full lg:space-x-12 pt-48">
+          {/* <div className="lg:flex justify-between py-24 w-full lg:space-x-12 pt-48">
             <div className="lg:w-1/2 space-y-5">
               <div className="text-left">
-                <span className="text-3xl font-bold">
+                <span className="text-3xl font-semibold">
                   Frequently asked questions
                 </span>
               </div>
@@ -960,6 +501,25 @@ export default function HomePage() {
               </div>
             </div>
             <QnA />
+          </div> */}
+
+          <div>
+            <div className="py-48 flex justify-center ">
+              <div className="space-y-10">
+                <span className="text-4xl font-semibold">
+                  A better way to design your home,{" "}
+                  <span className="text-green-600">you ready?</span>
+                </span>
+                <div>
+                  <button
+                    className="bg-green-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-green-700 transition"
+                    onClick={() => signInWithSupabase()}
+                  >
+                    Start Designing For Free →
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </main>
         <Footer />

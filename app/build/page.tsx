@@ -18,6 +18,7 @@ import Link from "next/link";
 
 import InteriorDesignComponent from "../../components/InteriorDesignComponent";
 import ArchitectureIdeaComponent from "../../components/ArchitectureIdeaComponent";
+import ExteriorDesignComponent from "../../components/ExteriorDesignComponent";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/dist/client/components/headers";
@@ -265,15 +266,15 @@ function page() {
   return (
     <div className="m-auto">
       {packageType !== "free" ? null : (
-        <div className="bg-blue-500 text-center text-white py-2">
+        <div className="bg-green-600 text-center text-white py-3">
           <span>
-            You are currently on the limited Free Plan{" "}
+            You are currently on the Free Plan.{" "}
             <Link
-              href="/link-to-premium"
+              href="/pricing"
               target="_blank"
-              className="underline font-bold"
+              className="underline font-semibold"
             >
-              Upgrade to Premium for more features
+              Use code HR50 at checkout to get 50% OFF all orders
             </Link>
           </span>
         </div>
@@ -291,7 +292,7 @@ function page() {
               : "pb-2 px-5 cursor-pointer text-stone-500"
           }
         >
-          <span>Interior Design</span>
+          <span>Home Interior Designer</span>
         </div>
         <div
           onClick={() => setSelectedArchitectureType("exterior")}
@@ -301,7 +302,7 @@ function page() {
               : "pb-2 px-5 cursor-pointer text-stone-500"
           }
         >
-          <span>Exterior Design</span>
+          <span>Home Exterior Designer</span>
         </div>
         <div
           onClick={() => setSelectedArchitectureType("idea-generator")}
@@ -311,17 +312,17 @@ function page() {
               : "pb-2 px-5 cursor-pointer text-stone-500"
           }
         >
-          <span>Architecture Idea Generator</span>
+          <span>Architecture Idea Visualizer</span>
         </div>
       </div>
 
-      {
-        selectedArchitectureType == "interior" && <InteriorDesignComponent />
-      }
+      {selectedArchitectureType == "interior" && <InteriorDesignComponent />}
 
-{
-        selectedArchitectureType == "idea-generator" && <ArchitectureIdeaComponent />
-      }
+      {selectedArchitectureType == "exterior" && <ExteriorDesignComponent />}
+
+      {selectedArchitectureType == "idea-generator" && (
+        <ArchitectureIdeaComponent />
+      )}
     </div>
   );
 }
