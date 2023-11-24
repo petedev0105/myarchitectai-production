@@ -7,7 +7,7 @@ import Footer from "../../components/Footer";
 import Pricing from "../../components/Pricing";
 
 function page() {
-  const { supabase, user, signInWithSupabase } = useSupabase();
+  // const { supabase, user, signInWithSupabase } = useSupabase();
   return (
     <div className=" max-w-6xl mx-auto">
       <Header />

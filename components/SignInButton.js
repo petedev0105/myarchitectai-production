@@ -61,10 +61,10 @@ function SignInButton() {
     );
 
   return (
-    <div>
-      {/* <button className="text-red-500" onClick={handleSignOut}>
-        Sign out
-      </button> */}
+    <div className="space-x-10 flex items-center">
+      <div>
+          <Link className="font-semibold" href={"/pricing"}>Pricing</Link>
+        </div>
       {user && (
         <Dropdown menu={{ items }}>
           <div className="cursor-pointer flex space-x-2 items-center">

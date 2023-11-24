@@ -15,7 +15,7 @@ import DropDown from "../components/DropDown";
 import { useDropzone } from "react-dropzone";
 import DropDownRestricted from "../components/DropDownRestricted";
 import Link from "next/link";
-import { grid } from "ldrs";
+// import { grid } from "ldrs";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/dist/client/components/headers";
@@ -111,7 +111,7 @@ function ArchitectureIdeaComponent() {
 
   const acceptedFileTypes = ["image/png", "image/jpeg"];
 
-  grid.register();
+  // grid.register();
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     for (const file of acceptedFiles) {
@@ -459,8 +459,8 @@ function ArchitectureIdeaComponent() {
               className=" px-4 pt-2 pb-3 mt-8 w-40"
             >
               <span className="pt-4">
-                {/* <LoadingDots color="white" style="large" /> */}
-                <l-grid size="60" speed="1.5" color="black"></l-grid>
+                <LoadingDots color="black" style="large" />
+                {/* <l-grid size="60" speed="1.5" color="black"></l-grid> */}
               </span>
             </button>
           )}

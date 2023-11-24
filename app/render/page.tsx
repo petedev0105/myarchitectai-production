@@ -1,30 +1,13 @@
 "use client";
-import { AnimatePresence, motion } from "framer-motion";
 import { useState, useRef, ChangeEvent, useEffect, useCallback } from "react";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
-import { CompareSlider } from "../../components/CompareSlider";
-import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import LoadingDots from "../../components/LoadingDots";
-import ResizablePanel from "../../components/ResizablePanel";
-import Toggle from "../../components/Toggle";
-import appendNewToName from "../../utils/appendNewToName";
-import downloadPhoto from "../../utils/downloadPhoto";
-import DropDown from "../../components/DropDown";
 import { useDropzone } from "react-dropzone";
-import DropDownRestricted from "../../components/DropDownRestricted";
 import Link from "next/link";
-
 import InteriorDesignComponent from "../../components/InteriorDesignComponent";
 import ArchitectureIdeaComponent from "../../components/ArchitectureIdeaComponent";
 import ExteriorDesignComponent from "../../components/ExteriorDesignComponent";
-
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/dist/client/components/headers";
-
-import { Image } from "antd";
-import ImageUploading from "react-images-uploading";
 import {
   roomType,
   rooms,
@@ -57,21 +40,6 @@ const options = {
   maxFileCount: 1,
   mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
   editor: { images: { crop: false } },
-  // styles: {
-  //   colors: {
-  //     primary: "#2563EB", // Primary buttons & links
-  //     error: "#d23f4d", // Error messages
-  //     shade100: "#fff", // Standard text
-  //     shade200: "#fffe", // Secondary button text
-  //     shade300: "#fffd", // Secondary button text (hover)
-  //     shade400: "#fffc", // Welcome text
-  //     shade500: "#fff9", // Modal close button
-  //     shade600: "#fff7", // Border
-  //     shade700: "#fff2", // Progress indicator background
-  //     shade800: "#fff1", // File item background
-  //     shade900: "#ffff", // Various (draggable crop buttons, etc.)
-  //   },
-  // },
 };
 
 function page() {
@@ -266,7 +234,7 @@ function page() {
   return (
     <div className="m-auto">
       {packageType !== "free" ? null : (
-        <div className="bg-green-600 text-center text-white py-3">
+        <div className="bg-yellow-600 text-center text-white py-3">
           <span>
             You are currently on the Free Plan.{" "}
             <Link
@@ -288,30 +256,33 @@ function page() {
           onClick={() => setSelectedArchitectureType("interior")}
           className={
             selectedArchitectureType == "interior"
-              ? "pb-2 px-5 border-b-2 border-black cursor-pointer"
-              : "pb-2 px-5 cursor-pointer text-stone-500"
+              ? "pb-2 px-5 border-b-2 border-black cursor-pointer flex items-center space-x-2"
+              : "pb-2 px-5 cursor-pointer text-stone-500 flex items-center space-x-2"
           }
         >
+          <img src="/img/interior.png" className="h-7" />
           <span>Home Interior Designer</span>
         </div>
         <div
           onClick={() => setSelectedArchitectureType("exterior")}
           className={
             selectedArchitectureType == "exterior"
-              ? "pb-2 px-5 border-b-2 border-black cursor-pointer"
-              : "pb-2 px-5 cursor-pointer text-stone-500"
+              ? "pb-2 px-5 border-b-2 border-black cursor-pointer flex items-center space-x-2"
+              : "pb-2 px-5 cursor-pointer text-stone-500 flex items-center space-x-2"
           }
         >
+          <img src="/img/exterior.png" className="h-7" />
           <span>Home Exterior Designer</span>
         </div>
         <div
           onClick={() => setSelectedArchitectureType("idea-generator")}
           className={
             selectedArchitectureType == "idea-generator"
-              ? "pb-2 px-5 border-b-2 border-black cursor-pointer"
-              : "pb-2 px-5 cursor-pointer text-stone-500"
+              ? "pb-2 px-5 border-b-2 border-black cursor-pointer flex items-center space-x-2"
+              : "pb-2 px-5 cursor-pointer text-stone-500 flex items-center space-x-2"
           }
         >
+          <img src="/img/idea.png" className="h-7" />
           <span>Architecture Idea Visualizer</span>
         </div>
       </div>
