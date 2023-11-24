@@ -106,7 +106,7 @@ function Pricing() {
             </div>
           </div>
         </div> */}
-        
+
         <div className="">
           <div className="shadow-xl border rounded-xl p-10 space-y-10">
             <div className="space-y-7">
@@ -213,28 +213,21 @@ function Pricing() {
 
             <div className="text-left">
               <span className="text-yellow-600 font-bold text-sm">
-                BLACK FRIDAY OFFER -{" "}
-                <span className="underline">50% OFF</span>
+                BLACK FRIDAY OFFER - <span className="underline">50% OFF</span>
               </span>
             </div>
           </div>
 
           <div className="flex justify-center font-semibold">
-            {user ? (
-              <Link
-                className="bg-yellow-600 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold text-center"
-                href={"/dream"}
-              >
-                Go to the AIHomeRender app →
-              </Link>
-            ) : (
-              <button
-                className="bg-yellow-600 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold text-center"
-                onClick={() => signInWithSupabase()}
-              >
-                Build your dream home →
-              </button>
-            )}
+            <Link
+              className="bg-yellow-600 hover:bg-yellow-500 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold text-center"
+              href={
+                "https://aihomerender.lemonsqueezy.com/checkout/buy/855a6c62-21fa-49a0-85f3-5109385a9369"
+              }
+              target="_blank"
+            >
+              Get Started Now →
+            </Link>
           </div>
 
           <div className="space-y-10 text-left">
@@ -291,7 +284,7 @@ function Pricing() {
           </div>
         </div>
 
-        <div className="shadow-xl border-2 border-yellow-600 rounded-xl p-10 space-y-10">
+        <div className="shadow-xl border-2  rounded-xl p-10 space-y-10">
           <div className="space-y-7">
             <div className="text-left">
               <span className=" py-1 rounded-full text-xl">
@@ -314,28 +307,21 @@ function Pricing() {
 
             <div className="text-left">
               <span className="text-yellow-600 font-bold text-sm">
-                BLACK FRIDAY OFFER -{" "}
-                <span className="underline">50% OFF</span>
+                BLACK FRIDAY OFFER - <span className="underline">60% OFF</span>
               </span>
             </div>
           </div>
 
           <div className="flex justify-center font-semibold">
-            {user ? (
-              <Link
-                className="bg-yellow-600 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold text-center"
-                href={"/dream"}
-              >
-                Go to the AIHomeRender app →
-              </Link>
-            ) : (
-              <button
-                className="bg-yellow-600 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold text-center"
-                onClick={() => signInWithSupabase()}
-              >
-                Build your dream home →
-              </button>
-            )}
+          <Link
+              className="bg-yellow-600 hover:bg-yellow-500 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold text-center"
+              href={
+                "https://aihomerender.lemonsqueezy.com/checkout/buy/1e120fa6-7313-4de8-8b22-42f13b72bebc"
+              }
+              target="_blank"
+            >
+              Get Started Now →
+            </Link>
           </div>
 
           <div className="space-y-10 text-left">
@@ -391,9 +377,7 @@ function Pricing() {
             </div>
           </div>
         </div>
-        
       </div>
-      
     </div>
   );
 }
