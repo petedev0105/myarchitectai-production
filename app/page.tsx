@@ -9,6 +9,7 @@ import { useSupabase } from "../components/supabaseProvider";
 import { CompareSlider } from "../components/CompareSlider";
 import Pricing from "../components/Pricing";
 import Alert from "../components/Alert";
+import CrispChat from "../components/CrispChat";
 
 export default function HomePage() {
   const { supabase, user, signInWithSupabase } = useSupabase();
@@ -19,6 +20,7 @@ export default function HomePage() {
       <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen z-10">
         {/* <Alert /> */}
         <Header />
+        
         <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20">
           <div className="">
             <div className="lg:max-w-3xl mx-auto space-y-10">
@@ -26,7 +28,7 @@ export default function HomePage() {
                 <div>
                   <div className="flex justify-center pb-5">
                     <span className="text-yellow-600 font-semibold">
-                      INTUITIVE HOME DESIGN TOOL
+                      AI-POWERED HOME DESIGN TOOL
                     </span>
                   </div>
                   <div className="max-w-[600px]">

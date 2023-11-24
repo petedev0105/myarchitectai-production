@@ -12,6 +12,7 @@ import Header from "../components/Header";
 import Head from "next/head";
 import Script from "next/script";
 import { Crisp } from "crisp-sdk-web";
+import CrispChat from "../components/CrispChat";
 
 let title = "AIHomeRenders | Build your home in seconds.";
 let description = "AIHomeRenders";
@@ -62,6 +63,7 @@ export default function RootLayout({
       <SupabaseProvider>
         <body style={{ zIndex: 2 }} className={inter.className}>
           <Providers>{children}</Providers>
+          <CrispChat />
           <Analytics />
         </body>
       </SupabaseProvider>
