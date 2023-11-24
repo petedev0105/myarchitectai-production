@@ -15,6 +15,7 @@ import DropDown from "../components/DropDown";
 import { useDropzone } from "react-dropzone";
 import DropDownRestricted from "../components/DropDownRestricted";
 import Link from "next/link";
+import { grid } from "ldrs";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/dist/client/components/headers";
@@ -22,24 +23,24 @@ import { cookies } from "next/dist/client/components/headers";
 import { Image } from "antd";
 import ImageUploading from "react-images-uploading";
 import {
-    roomType,
-    rooms,
-    themeType,
-    themes,
-    locations,
-    houseStyles,
-    materials,
-    seasons,
-    houseStyleType,
-    materialType,
-    locationType,
-    seasonType,
-    buildingType,
-    buildingTypes,
-    floors,
-    floorsType,
-    colors,
-    colorType,
+  roomType,
+  rooms,
+  themeType,
+  themes,
+  locations,
+  houseStyles,
+  materials,
+  seasons,
+  houseStyleType,
+  materialType,
+  locationType,
+  seasonType,
+  buildingType,
+  buildingTypes,
+  floors,
+  floorsType,
+  colors,
+  colorType,
 } from "../utils/dropdownTypes";
 import { useSupabase } from "../components/supabaseProvider";
 
@@ -71,25 +72,25 @@ const options = {
 };
 
 function ArchitectureIdeaComponent() {
-    const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
-    const [restoredImage, setRestoredImage] = useState<string | null>(null);
-    const [loading, setLoading] = useState<boolean>(false);
-    const [restoredLoaded, setRestoredLoaded] = useState<boolean>(false);
-    const [sideBySide, setSideBySide] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>(null);
-    const [photoName, setPhotoName] = useState<string | null>(null);
-    const [theme, setTheme] = useState<themeType>("Modern");
-    const [room, setRoom] = useState<roomType>("Living Room");
-  
-    const [houseStyle, setHouseStyle] = useState<houseStyleType>("Modern");
-    const [season, setSeason] = useState<seasonType>("Autumn");
-    const [material, setMaterial] = useState<materialType>("Wooden");
-    const [location, setLocation] = useState<locationType>("Cliff");
-    const [buildingType, setBuildingType] =
-      useState<buildingType>("Residential Home");
-    const [floor, setFloor] = useState<floorsType>("Single Level");
-    const [color, setColor] = useState<colorType>("Black");
-    const [extraPrompt, setExtraPrompt] = useState("");
+  const [originalPhoto, setOriginalPhoto] = useState<string | null>(null);
+  const [restoredImage, setRestoredImage] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [restoredLoaded, setRestoredLoaded] = useState<boolean>(false);
+  const [sideBySide, setSideBySide] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [photoName, setPhotoName] = useState<string | null>(null);
+  const [theme, setTheme] = useState<themeType>("Modern");
+  const [room, setRoom] = useState<roomType>("Living Room");
+
+  const [houseStyle, setHouseStyle] = useState<houseStyleType>("Modern");
+  const [season, setSeason] = useState<seasonType>("Autumn");
+  const [material, setMaterial] = useState<materialType>("Wooden");
+  const [location, setLocation] = useState<locationType>("Cliff");
+  const [buildingType, setBuildingType] =
+    useState<buildingType>("Residential Home");
+  const [floor, setFloor] = useState<floorsType>("Single Level");
+  const [color, setColor] = useState<colorType>("Black");
+  const [extraPrompt, setExtraPrompt] = useState("");
 
   const [edit, setEdit] = useState(true);
   const [uploaded, setUploaded] = useState(false);
@@ -109,6 +110,8 @@ function ArchitectureIdeaComponent() {
   const { supabase, packageType } = useSupabase();
 
   const acceptedFileTypes = ["image/png", "image/jpeg"];
+
+  grid.register();
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     for (const file of acceptedFiles) {
@@ -234,6 +237,7 @@ function ArchitectureIdeaComponent() {
           color,
           location,
           buildingType,
+          houseStyle,
           extraPrompt,
         }),
       });
@@ -263,22 +267,22 @@ function ArchitectureIdeaComponent() {
         <div className="lg:w-1/4 ">
           <div className="p-7 space-y-3  rounded-xl shadow-xl border-2 shadow-sm">
             {packageType == "free" ? (
-               <>
-               <div className="space-y-4 w-full ">
-                <div className="flex items-center space-x-3">
-                  <p className="text-left font-bold font-bold text-stone-600">
-                    Choose your building type ({buildingTypes.length})
-                  </p>
+              <>
+                <div className="space-y-4 w-full ">
+                  <div className="flex items-center space-x-3">
+                    <p className="text-left font-bold font-bold text-stone-600">
+                      Choose your building type ({buildingTypes.length})
+                    </p>
+                  </div>
+                  <DropDownRestricted
+                    theme={buildingType}
+                    setTheme={(newBuildingType) =>
+                      setBuildingType(newBuildingType as typeof buildingType)
+                    }
+                    themes={buildingTypes}
+                  />
                 </div>
-                <DropDownRestricted
-                  theme={buildingType}
-                  setTheme={(newBuildingType) =>
-                    setBuildingType(newBuildingType as typeof buildingType)
-                  }
-                  themes={buildingTypes}
-                />
-              </div>
-               {/* <div className="space-y-4 w-full ">
+                {/* <div className="space-y-4 w-full ">
                  <div className="flex items-center space-x-3">
                    <p className="text-left font-bold font-bold text-stone-600">
                      Choose the number of floors ({floors.length})
@@ -292,8 +296,8 @@ function ArchitectureIdeaComponent() {
                    themes={floors}
                  />
                </div> */}
- 
-               {/* <div className="space-y-4 w-full ">
+
+                {/* <div className="space-y-4 w-full ">
                  <div className="flex mt-10 items-center space-x-3">
                    <p className="text-left font-bold font-bold text-stone-600">
                      Choose the color ({colors.length})
@@ -305,67 +309,67 @@ function ArchitectureIdeaComponent() {
                    themes={colors}
                  />
                </div> */}
- 
-               <div className="space-y-4 w-full ">
-                 <div className="flex mt-10 items-center space-x-3 text-stone-600">
-                   <p className="text-left font-bold">
-                     Choose your location ({locations.length})
-                   </p>
-                 </div>
-                 <DropDown
-                   theme={location}
-                   setTheme={(newLocation) =>
-                     setLocation(newLocation as typeof location)
-                   }
-                   themes={locations}
-                 />
-               </div>
- 
-               <div className="space-y-4 w-full">
-                 <div className="items-center text-stone-600 mt-10">
-                   <span className="text-left font-bold">
-                     Custom Preferences
-                   </span>
-                 </div>
-                 <textarea
-                 disabled
-                   onChange={(e) => setExtraPrompt(e.target.value)}
-                   className="rounded-md border border-stone-300 px-3 py-2 w-full h-24"
-                   placeholder="This is a Pro feature, please upgrade 🔒"
-                 />
-               </div>
-             </>
+
+                <div className="space-y-4 w-full ">
+                  <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                    <p className="text-left font-bold">
+                      Choose your location ({locations.length})
+                    </p>
+                  </div>
+                  <DropDown
+                    theme={location}
+                    setTheme={(newLocation) =>
+                      setLocation(newLocation as typeof location)
+                    }
+                    themes={locations}
+                  />
+                </div>
+
+                <div className="space-y-4 w-full">
+                  <div className="items-center text-stone-600 mt-10">
+                    <span className="text-left font-bold">
+                      Custom Preferences
+                    </span>
+                  </div>
+                  <textarea
+                    disabled
+                    onChange={(e) => setExtraPrompt(e.target.value)}
+                    className="rounded-md border border-stone-300 px-3 py-2 w-full h-24"
+                    placeholder="This is a Pro feature, please upgrade 🔒"
+                  />
+                </div>
+              </>
             ) : (
               <>
-              <div className="space-y-4 w-full">
-                <div className="flex items-center space-x-3">
-                  <p className="text-left font-bold font-bold text-stone-600">
-                    Choose your architecture style ({houseStyles.length})
-                  </p>
+                <div className="space-y-4 w-full">
+                  <div className="flex items-center space-x-3">
+                    <p className="text-left font-bold font-bold text-stone-600">
+                      Choose your architecture style ({houseStyles.length})
+                    </p>
+                  </div>
+                  <DropDown
+                    theme={houseStyle}
+                    setTheme={(newHouseStyle) =>
+                      setHouseStyle(newHouseStyle as typeof houseStyle)
+                    }
+                    themes={houseStyles}
+                  />
                 </div>
-                <DropDown
-                  theme={houseStyle}
-                  setTheme={(newHouseStyle) =>
-                    setHouseStyle(newHouseStyle as typeof houseStyle)
-                  }
-                  themes={houseStyles}
-                />
-              </div>
-              <div className="space-y-4 w-full">
-                <div className="flex mt-10 items-center space-x-3">
-                  <p className="text-left font-bold font-bold text-stone-600">
-                    Choose your building type ({buildingTypes.length})
-                  </p>
+                <div className="space-y-4 w-full">
+                  <div className="flex mt-10 items-center space-x-3">
+                    <p className="text-left font-bold font-bold text-stone-600">
+                      Choose your building type ({buildingTypes.length})
+                    </p>
+                  </div>
+                  <DropDown
+                    theme={buildingType}
+                    setTheme={(newBuildingType) =>
+                      setBuildingType(newBuildingType as typeof buildingType)
+                    }
+                    themes={buildingTypes}
+                  />
                 </div>
-                <DropDown
-                  theme={buildingType}
-                  setTheme={(newBuildingType) =>
-                    setBuildingType(newBuildingType as typeof buildingType)
-                  }
-                  themes={buildingTypes}
-                />
-              </div>
-              {/* <div className="space-y-4 w-full ">
+                {/* <div className="space-y-4 w-full ">
                 <div className="flex mt-10 items-center space-x-3">
                   <p className="text-left font-bold font-bold text-stone-600">
                     Choose the number of floors ({floors.length})
@@ -380,7 +384,7 @@ function ArchitectureIdeaComponent() {
                 />
               </div> */}
 
-              {/* <div className="space-y-4 w-full ">
+                {/* <div className="space-y-4 w-full ">
                 <div className="flex mt-10 items-center space-x-3">
                   <p className="text-left font-bold font-bold text-stone-600">
                     Choose the color ({colors.length})
@@ -393,34 +397,34 @@ function ArchitectureIdeaComponent() {
                 />
               </div> */}
 
-              <div className="space-y-4 w-full ">
-                <div className="flex mt-10 items-center space-x-3 text-stone-600">
-                  <p className="text-left font-bold">
-                    Choose your location ({locations.length})
-                  </p>
+                <div className="space-y-4 w-full ">
+                  <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                    <p className="text-left font-bold">
+                      Choose your location ({locations.length})
+                    </p>
+                  </div>
+                  <DropDown
+                    theme={location}
+                    setTheme={(newLocation) =>
+                      setLocation(newLocation as typeof location)
+                    }
+                    themes={locations}
+                  />
                 </div>
-                <DropDown
-                  theme={location}
-                  setTheme={(newLocation) =>
-                    setLocation(newLocation as typeof location)
-                  }
-                  themes={locations}
-                />
-              </div>
 
-              <div className="space-y-4 w-full">
-                 <div className="items-center text-stone-600 mt-10">
-                   <span className="text-left font-bold">
-                     Custom Preferences
-                   </span>
-                 </div>
-                 <textarea
-                   onChange={(e) => setExtraPrompt(e.target.value)}
-                   className="rounded-md border border-stone-300 px-3 py-2 w-full h-24"
-                   placeholder="Night time, Wooden, Cozy, Swimming Pool, Backyard,..."
-                 />
-               </div>
-            </>
+                <div className="space-y-4 w-full">
+                  <div className="items-center text-stone-600 mt-10">
+                    <span className="text-left font-bold">
+                      Custom Preferences
+                    </span>
+                  </div>
+                  <textarea
+                    onChange={(e) => setExtraPrompt(e.target.value)}
+                    className="rounded-md border border-stone-300 px-3 py-2 w-full h-24"
+                    placeholder="Night time, Wooden, Cozy, Swimming Pool, Backyard,..."
+                  />
+                </div>
+              </>
             )}
 
             <div className="z z">
@@ -452,10 +456,11 @@ function ArchitectureIdeaComponent() {
           {loading && (
             <button
               disabled
-              className="bg-blue-500 rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 w-40"
+              className=" px-4 pt-2 pb-3 mt-8 w-40"
             >
               <span className="pt-4">
-                <LoadingDots color="white" style="large" />
+                {/* <LoadingDots color="white" style="large" /> */}
+                <l-grid size="60" speed="1.5" color="black"></l-grid>
               </span>
             </button>
           )}
@@ -501,9 +506,13 @@ function ArchitectureIdeaComponent() {
               <div className="flex items-center justify-between pt-5">
                 <div className="flex items-center space-x-3">
                   <button
-                    onClick={packageType == "free" ? () => alert("This is a Pro feature, please upgrade.") : () => {
-                      restoredImage && generateUpscale(restoredImage);
-                    }}
+                    onClick={
+                      packageType == "free"
+                        ? () => alert("This is a Pro feature, please upgrade.")
+                        : () => {
+                            restoredImage && generateUpscale(restoredImage);
+                          }
+                    }
                     className="space-x-2 flex px-5 py-3 border-2 rounded-md text-sm font-semibold text-stone-800 hover:bg-slate-50"
                   >
                     <img src="/img/upscale.png" className="h-5 w-5" />
@@ -527,7 +536,7 @@ function ArchitectureIdeaComponent() {
                 <div>
                   <button
                     onClick={() => {
-                        generatePhoto()
+                      generatePhoto();
                     }}
                     className="space-x-2 flex px-5 py-3  rounded-md text-sm font-semibold text-white bg-black hover:bg-stone-700"
                   >

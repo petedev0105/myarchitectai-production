@@ -33,6 +33,9 @@ export default function Footer() {
             </span>
           </div>
         </div>
+        <div>
+          <Link href={"https://tally.so/r/3jlLR4"} className="px-5 py-2 hover:bg-stone-800 rounded-md text-white bg-black font-semibold" target="_blank">Get in touch</Link>
+        </div>
       </footer>
     </div>
   );

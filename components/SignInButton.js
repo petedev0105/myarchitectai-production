@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/dist/client/components/headers";
 import { useSupabase } from "./supabaseProvider";
+import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 
 function SignInButton() {
   const { supabase, user, signInWithSupabase } = useSupabase();
@@ -17,7 +18,7 @@ function SignInButton() {
     {
       key: '1',
       label: (
-        <Link href="/build" className="" >
+        <Link href="/render" className="" >
           Dashboard
         </Link>
       ),
@@ -51,7 +52,7 @@ function SignInButton() {
           <Link className="font-semibold" href={"/pricing"}>Pricing</Link>
         </div>
         <button
-          className="text-white font-bold bg-green-600 px-5 py-2 rounded-full hover:bg-green-500"
+          className="text-white font-bold bg-yellow-600 px-5 py-2 rounded-full hover:bg-yellow-500"
           onClick={signInWithSupabase}
         >
           Build My Home
@@ -66,8 +67,9 @@ function SignInButton() {
       </button> */}
       {user && (
         <Dropdown menu={{ items }}>
-          <div className="cursor-pointer">
-            <img className="rounded-full h-10 w-10" src={user.identities[0].identity_data.picture} />
+          <div className="cursor-pointer flex space-x-2 items-center">
+            <span>{user.email}</span>
+            <DownOutlined />
           </div>
         </Dropdown>
       )}

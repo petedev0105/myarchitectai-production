@@ -8,7 +8,7 @@ function Pricing() {
   const { supabase, user, signInWithSupabase } = useSupabase();
   return (
     <div>
-      <div className="flex justify-center items-center pt-48 pb-10">
+      <div className="flex justify-center items-center pt-24">
         <div className="space-y-5">
           <div>
             <span className="font-semibold text-4xl">
@@ -24,13 +24,13 @@ function Pricing() {
         </div>
       </div>
 
-      <Alert />
+      {/* <Alert /> */}
 
       <div className="lg:grid grid-cols-2 gap-5 pt-12 lg:space-y-0 space-y-10">
         {/* <div className="shadow-xl border rounded-xl p-10 space-y-10">
           <div className="space-y-7">
             <div className="text-left">
-              <span className="font-semibold py-1 rounded-full text-green-500 text-sm">
+              <span className="font-semibold py-1 rounded-full text-yellow-500 text-sm">
                 Hobby
               </span>
             </div>
@@ -90,14 +90,14 @@ function Pricing() {
             <div className="flex justify-center font-semibold">
               {user ? (
                 <Link
-                  className="bg-green-600 rounded-full w-full text-white px-4 py-3 hover:bg-green-600 transition font-semibold text-left"
+                  className="bg-yellow-600 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold text-left"
                   href={"/dream"}
                 >
                   Go to the AIHomeRender app →
                 </Link>
               ) : (
                 <button
-                  className="bg-green-600 rounded-full w-full text-white px-4 py-3 hover:bg-green-600 transition font-semibold"
+                  className="bg-yellow-600 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold"
                   onClick={() => signInWithSupabase()}
                 >
                   Build your dream home →
@@ -106,86 +106,89 @@ function Pricing() {
             </div>
           </div>
         </div> */}
-        <div className="shadow-xl border rounded-xl p-10 space-y-10">
-          <div className="space-y-7">
-            <div className="text-left">
-              <span className=" py-1 rounded-full text-xl">
-                AIHomeRender Free
-              </span>
-            </div>
-            <div className="">
+        <div className="">
+          <div className="shadow-xl border rounded-xl p-10 space-y-10">
+            <div className="space-y-7">
               <div className="text-left">
-                <span className="font-semibold">
-                  <span className="text-5xl">$0</span>
+                <span className=" py-1 rounded-full text-xl">
+                  AIHomeRender Free
                 </span>
-                <span className="">/month</span>
+              </div>
+              <div className="">
+                <div className="text-left">
+                  <span className="font-semibold">
+                    <span className="text-5xl">$0</span>
+                  </span>
+                  <span className="">/month</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="space-y-10 text-left">
-            <div className="space-y-3 text-lg">
-              <FeatureItem
-                icon="/img/tick-tutor.png"
-                text="10 Inspiring Designs Monthly"
-              />
-              <FeatureItem
-                icon="/img/tick-tutor.png"
-                text="Explore Standard AI Capabilities"
-              />
-              <FeatureItem
-                icon="/img/tick-tutor.png"
-                text="Design Finesse with Quality Renders"
-              />
-              <FeatureItem
-                icon="/img/tick-tutor.png"
-                text="AI Furniture Removal - No More Unwanted Items"
-              />
-              <FeatureItem
-                icon="/img/tick-tutor.png"
-                text="Choose from 10 Architecture Styles"
-              />
-              <FeatureItem
-                icon="/img/tick-tutor.png"
-                text="Explore 12 Simple Interior Styles"
-              />
-              <FeatureItem
-                icon="/img/tick-tutor.png"
-                text="Experiment with 8 Building Types"
-              />
-              <FeatureItem
-                icon="/img/tick-tutor.png"
-                text="Illuminate Designs with 3 Lighting Styles"
-              />
-              <FeatureItem
-                icon="/img/tick-tutor.png"
-                text="Download and Cherish in Standard Quality"
-              />
-              <FeatureItem
-                icon="/img/tick-tutor.png"
-                text="24/7 Support - Assistance When You Need It"
-              />
-            </div>
             <div className="flex justify-center font-semibold">
               {user ? (
                 <Link
-                  className="bg-green-600 rounded-full w-full text-white px-4 py-3 hover:bg-green-600 transition font-semibold text-center"
+                  className="bg-yellow-600 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold text-center"
                   href={"/dream"}
                 >
                   Go to the AIHomeRender app →
                 </Link>
               ) : (
                 <button
-                  className="bg-green-600 rounded-full w-full text-white px-4 py-3 hover:bg-green-600 transition font-semibold"
+                  className="bg-yellow-600 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold"
                   onClick={() => signInWithSupabase()}
                 >
                   Build your dream home →
                 </button>
               )}
             </div>
+
+            <div className="space-y-10 text-left">
+              <div className="space-y-3 text-lg">
+                <FeatureItem
+                  icon="/img/tick-tutor.png"
+                  text="10 Inspiring Designs Monthly"
+                />
+                <FeatureItem
+                  icon="/img/tick-tutor.png"
+                  text="Explore Standard AI Capabilities"
+                />
+                <FeatureItem
+                  icon="/img/tick-tutor.png"
+                  text="Design Finesse with Quality Renders"
+                />
+                {/* <FeatureItem
+                  icon="/img/tick-tutor.png"
+                  text="AI Furniture Removal - No More Unwanted Items"
+                /> */}
+                <FeatureItem
+                  icon="/img/tick-tutor.png"
+                  text="Choose from 10 Architecture Styles"
+                />
+                <FeatureItem
+                  icon="/img/tick-tutor.png"
+                  text="Explore 12 Simple Interior Styles"
+                />
+                <FeatureItem
+                  icon="/img/tick-tutor.png"
+                  text="Experiment with 8 Building Types"
+                />
+                <FeatureItem
+                  icon="/img/tick-tutor.png"
+                  text="Illuminate Designs with 3 Lighting Styles"
+                />
+                <FeatureItem
+                  icon="/img/tick-tutor.png"
+                  text="Download and Cherish in Standard Quality"
+                />
+                <FeatureItem
+                  icon="/img/tick-tutor.png"
+                  text="24/7 Support - Assistance When You Need It"
+                />
+              </div>
+            </div>
           </div>
         </div>
-        <div className="shadow-xl border-2 border-green-600 rounded-xl p-10 space-y-10">
+        <div className="shadow-xl border-2 border-yellow-600 rounded-xl p-10 space-y-10">
           <div className="space-y-7">
             <div className="text-left">
               <span className=" py-1 rounded-full text-xl">
@@ -203,6 +206,24 @@ function Pricing() {
                 <span>Use code </span>
               </div> */}
             </div>
+          </div>
+
+          <div className="flex justify-center font-semibold">
+            {user ? (
+              <Link
+                className="bg-yellow-600 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold text-center"
+                href={"/dream"}
+              >
+                Go to the AIHomeRender app →
+              </Link>
+            ) : (
+              <button
+                className="bg-yellow-600 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold text-center"
+                onClick={() => signInWithSupabase()}
+              >
+                Build your dream home →
+              </button>
+            )}
           </div>
 
           <div className="space-y-10 text-left">
@@ -223,10 +244,10 @@ function Pricing() {
                 icon="/img/tick-tutor.png"
                 text="Immerse Yourself in Higher Quality Renders"
               />
-              <FeatureItem
+              {/* <FeatureItem
                 icon="/img/tick-tutor.png"
                 text="Bid Farewell to Unwanted Furniture with AI Furniture Removal"
-              />
+              /> */}
               <FeatureItem
                 icon="/img/tick-tutor.png"
                 text="Choose from 40+ Architecture Styles"
@@ -255,23 +276,6 @@ function Pricing() {
                 icon="/img/tick-tutor.png"
                 text="No Watermark - Your Designs, Pure and Unblemished"
               />
-            </div>
-            <div className="flex justify-center font-semibold">
-              {user ? (
-                <Link
-                  className="bg-green-600 rounded-full w-full text-white px-4 py-3 hover:bg-green-600 transition font-semibold text-center"
-                  href={"/dream"}
-                >
-                  Go to the AIHomeRender app →
-                </Link>
-              ) : (
-                <button
-                  className="bg-green-600 rounded-full w-full text-white px-4 py-3 hover:bg-green-600 transition font-semibold text-center"
-                  onClick={() => signInWithSupabase()}
-                >
-                  Build your dream home →
-                </button>
-              )}
             </div>
           </div>
         </div>

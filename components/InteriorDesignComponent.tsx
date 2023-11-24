@@ -15,6 +15,7 @@ import DropDown from "../components/DropDown";
 import { useDropzone } from "react-dropzone";
 import DropDownRestricted from "../components/DropDownRestricted";
 import Link from "next/link";
+import { grid } from "ldrs";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/dist/client/components/headers";
@@ -420,7 +421,8 @@ function InteriorDesignComponent() {
               className="bg-blue-500 rounded-full text-white font-medium px-4 pt-2 pb-3 mt-8 w-40"
             >
               <span className="pt-4">
-                <LoadingDots color="white" style="large" />
+                {/* <LoadingDots color="white" style="large" /> */}
+                <l-grid size="60" speed="1.5" color="black"></l-grid>
               </span>
             </button>
           )}
@@ -465,10 +467,14 @@ function InteriorDesignComponent() {
             {restoredImage && !loading && (
               <div className="flex items-center justify-between pt-5">
                 <div className="flex items-center space-x-3">
-                <button
-                    onClick={packageType == "free" ? () => alert("This is a Pro feature, please upgrade.") : () => {
-                      restoredImage && generateUpscale(restoredImage);
-                    }}
+                  <button
+                    onClick={
+                      packageType == "free"
+                        ? () => alert("This is a Pro feature, please upgrade.")
+                        : () => {
+                            restoredImage && generateUpscale(restoredImage);
+                          }
+                    }
                     className="space-x-2 flex px-5 py-3 border-2 rounded-md text-sm font-semibold text-stone-800 hover:bg-slate-50"
                   >
                     <img src="/img/upscale.png" className="h-5 w-5" />
