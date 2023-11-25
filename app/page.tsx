@@ -20,7 +20,7 @@ export default function HomePage() {
       <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen z-10">
         {/* <Alert /> */}
         <Header />
-        
+
         <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20">
           <div className="">
             <div className="lg:max-w-3xl mx-auto space-y-10">
@@ -84,8 +84,8 @@ export default function HomePage() {
               <img src="/img/landing.png" />
             </div>
 
-            <div className="flex justify-center py-24">
-              <img src="/img/numbers.png" className="" style={{ width: 700 }} />
+            <div className="flex justify-center py-48">
+              <img src="/img/numbers.png" className="" style={{ width: 800 }} />
             </div>
           </div>
 
@@ -219,9 +219,11 @@ export default function HomePage() {
               </div>
               <div>
                 <span className="text-lg text-stone-600">
-                  From the timeless elegance of Neoclassical to the sleek lines
-                  of Modernist, our curated selection offers hundreds of
-                  architectural styles for you to choose from.
+                  Explore a diverse range of architectural styles, from the
+                  enduring elegance of Neoclassical to the contemporary
+                  sleekness of Modernist. Our carefully curated selection
+                  presents a myriad of options for you to discover and choose
+                  from.
                 </span>
               </div>
               <div>
@@ -243,7 +245,8 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-24">
+
+          <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48">
             <div className="lg:w-1/2 lg:text-left space-y-7">
               <div>
                 <span className="font-semibold lg:text-4xl text-3xl">
@@ -253,9 +256,9 @@ export default function HomePage() {
               </div>
               <div>
                 <span className="text-lg text-stone-600">
-                  We've revolutionized the way you approach architecture and
-                  decor, making it accessible to everyone, regardless of
-                  expertise.
+                  Elevate your designs with high-resolution precision. Upscale
+                  and export your creations to showcase every detail in
+                  crystal-clear clarity.
                 </span>
               </div>
               <div>
@@ -279,6 +282,42 @@ export default function HomePage() {
             <div className="lg:w-1/2 lg:pt-0 pt-10">
               <img src="/img/sizes.png" />
               {/* <CompareSlider original="/img/exterior-before.png" restored="/img/exterior-after.png" /> */}
+            </div>
+          </div>
+
+          <div className="lg:flex justify-between items-center w-full lg:space-x-24 items-center pt-48">
+            <div className="lg:w-1/2 lg:pt-0 pt-10">
+              <img src="/img/cases.png" />
+              {/* <CompareSlider original="/img/exterior-before.png" restored="/img/exterior-after.png" /> */}
+            </div>
+            <div className="lg:w-1/2 lg:text-left space-y-7">
+              <div>
+                <span className="font-semibold lg:text-4xl text-3xl">
+                  Multiple use cases, win more clients
+                </span>
+              </div>
+              <div>
+                <span className="text-lg text-stone-600">
+                Our AI-powered platform adapts to diverse scenarios, helping you win more clients effortlessly. Explore limitless possibilities and elevate your design game with AiHomeRenders.
+                </span>
+              </div>
+              <div>
+                {user ? (
+                  <Link
+                    className="bg-yellow-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-yellow-700 transition"
+                    href={"/render"}
+                  >
+                    Go to the AIHomeRender app →
+                  </Link>
+                ) : (
+                  <button
+                    className="bg-yellow-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-yellow-700 transition"
+                    onClick={() => signInWithSupabase()}
+                  >
+                    Build your dream home →
+                  </button>
+                )}
+              </div>
             </div>
           </div>
 
@@ -466,7 +505,9 @@ export default function HomePage() {
             </Link>
           </div> */}
 
-          <div className="flex justify-center items-center pt-24">
+         
+
+          <div className="flex justify-center items-center pt-48 pb-12">
             <div className="space-y-7">
               <div>
                 <span className="font-semibold text-4xl">
@@ -504,6 +545,8 @@ export default function HomePage() {
             </div>
             <QnA />
           </div> */}
+
+          <QnA />
 
           <div>
             <div className="py-48 flex justify-center ">

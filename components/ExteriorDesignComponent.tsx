@@ -229,15 +229,19 @@ function ExteriorDesignComponent() {
       setLoading(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
 
-      const response = await fetch("/generate-interior", {
+      const response = await fetch("/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           imageUrl: fileUrl,
-          lighting,
-          interiorStyle,
+          theme,
+          room,
+          location,
+          season,
+          houseStyle,
+          material,
           buildingType,
         }),
       });
