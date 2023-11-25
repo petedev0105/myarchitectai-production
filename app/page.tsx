@@ -69,6 +69,11 @@ export default function HomePage() {
                 </div>
               </div>
 
+              <div className="flex justify-center">
+{/* <a href='https://affordhunt.com' ><img src='https://svgshare.com/i/xM0.svg' title='Spotlight By AffordHunt' height={100}/></a> */}
+              </div>
+              
+
               {/* <div className="flex space-x-3 w-full items-center lg:justify-start justify-center">
                 <div>
                   <img src="/img/star.png" width={70} />

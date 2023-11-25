@@ -209,7 +209,7 @@ function InteriorDesignComponent() {
         setRestoredImage(upscaledPhoto);
       } else if (response.status === 504) {
         alert(
-          "Experiencing timeouts? Upgrade to our Pro plan for unlimited images and priority access. Elevate your design process with MyArchitectAI's seamless performance."
+          "Experiencing timeouts? Upgrade to our Pro plan for unlimited images and priority access. Elevate your design process with AIHomeRenders's seamless performance."
         );
       } else if (response.status === 413) {
         alert("Try uploading another picture, file size is too large.");
@@ -247,7 +247,7 @@ function InteriorDesignComponent() {
         setRestoredImage(newPhoto[1]);
       } else if (response.status === 504) {
         alert(
-          "Experiencing timeouts? Upgrade to our Pro plan for unlimited images and priority access. Elevate your design process with MyArchitectAI's seamless performance."
+          "Experiencing timeouts? Upgrade to our Pro plan for unlimited images and priority access. Elevate your design process with AIHomeRenders's seamless performance."
         );
       } else if (response.status === 413) {
         alert("Try uploading another picture, file size is too large.");
