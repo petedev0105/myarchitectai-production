@@ -27,7 +27,7 @@ export default function HomePage() {
               <div className="flex justify-center pt-5 space-y-10">
                 <div>
                   <div className="flex justify-center pb-5">
-                    <span className="text-yellow-600 font-semibold">
+                    <span className="text-[#f22e61] font-semibold">
                       AI-POWERED HOME DESIGN TOOL
                     </span>
                   </div>
@@ -48,14 +48,14 @@ export default function HomePage() {
                 <div>
                   {user ? (
                     <Link
-                      className="bg-yellow-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-yellow-700 transition"
+                      className="bg-[#f22e61] font-semibold rounded-full text-white px-10 py-3 hover:bg-purple-700 transition"
                       href={"/render"}
                     >
                       Go to dashboard →
                     </Link>
                   ) : (
                     <button
-                      className="bg-yellow-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-yellow-700 transition"
+                      className="bg-[#f22e61] font-semibold rounded-full text-white px-10 py-3 hover:bg-purple-700 transition"
                       onClick={() => signInWithSupabase()}
                     >
                       Start Designing For Free →
@@ -70,9 +70,8 @@ export default function HomePage() {
               </div>
 
               <div className="flex justify-center">
-{/* <a href='https://affordhunt.com' ><img src='https://svgshare.com/i/xM0.svg' title='Spotlight By AffordHunt' height={100}/></a> */}
+                {/* <a href='https://affordhunt.com' ><img src='https://svgshare.com/i/xM0.svg' title='Spotlight By AffordHunt' height={100}/></a> */}
               </div>
-              
 
               {/* <div className="flex space-x-3 w-full items-center lg:justify-start justify-center">
                 <div>
@@ -115,7 +114,7 @@ export default function HomePage() {
               </div>
               <div className="pt-12">
                 <Link
-                  className="bg-yellow-600 rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-yellow-700 transition"
+                  className="bg-[#f22e61] rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-purple-700 transition"
                   href={"/render"}
                 >
                   Build your dream home for free →
@@ -218,7 +217,7 @@ export default function HomePage() {
               <div>
                 <span className="font-semibold lg:text-4xl text-3xl">
                   Revisualize your space in{" "}
-                  <span className="text-yellow-600">100+</span> styles and
+                  <span className="text-[#f22e61]">100+</span> styles and
                   options
                 </span>
               </div>
@@ -234,14 +233,14 @@ export default function HomePage() {
               <div>
                 {user ? (
                   <Link
-                    className="bg-yellow-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-yellow-700 transition"
+                    className="bg-[#f22e61] font-semibold rounded-full text-white px-10 py-3 hover:bg-purple-700 transition"
                     href={"/render"}
                   >
                     Go to the AIHomeRender app →
                   </Link>
                 ) : (
                   <button
-                    className="bg-yellow-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-yellow-700 transition"
+                    className="bg-[#f22e61] font-semibold rounded-full text-white px-10 py-3 hover:bg-purple-700 transition"
                     onClick={() => signInWithSupabase()}
                   >
                     Build your dream home →
@@ -255,7 +254,7 @@ export default function HomePage() {
             <div className="lg:w-1/2 lg:text-left space-y-7">
               <div>
                 <span className="font-semibold lg:text-4xl text-3xl">
-                  <span className="text-yellow-600">Upscale</span> and export
+                  <span className="text-[#f22e61]">Upscale</span> and export
                   your designs in high resolution
                 </span>
               </div>
@@ -269,14 +268,14 @@ export default function HomePage() {
               <div>
                 {user ? (
                   <Link
-                    className="bg-yellow-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-yellow-700 transition"
+                    className="bg-[#f22e61] font-semibold rounded-full text-white px-10 py-3 hover:bg-purple-700 transition"
                     href={"/render"}
                   >
                     Go to the AIHomeRender app →
                   </Link>
                 ) : (
                   <button
-                    className="bg-yellow-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-yellow-700 transition"
+                    className="bg-[#f22e61] font-semibold rounded-full text-white px-10 py-3 hover:bg-purple-700 transition"
                     onClick={() => signInWithSupabase()}
                   >
                     Build your dream home →
@@ -303,20 +302,22 @@ export default function HomePage() {
               </div>
               <div>
                 <span className="text-lg text-stone-600">
-                Our AI-powered platform adapts to diverse scenarios, helping you win more clients effortlessly. Explore limitless possibilities and elevate your design game with AiHomeRenders.
+                  Our AI-powered platform adapts to diverse scenarios, helping
+                  you win more clients effortlessly. Explore limitless
+                  possibilities and elevate your design game with AiHomeRenders.
                 </span>
               </div>
               <div>
                 {user ? (
                   <Link
-                    className="bg-yellow-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-yellow-700 transition"
+                    className="bg-[#f22e61] font-semibold rounded-full text-white px-10 py-3 hover:bg-purple-700 transition"
                     href={"/render"}
                   >
                     Go to the AIHomeRender app →
                   </Link>
                 ) : (
                   <button
-                    className="bg-yellow-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-yellow-700 transition"
+                    className="bg-[#f22e61] font-semibold rounded-full text-white px-10 py-3 hover:bg-purple-700 transition"
                     onClick={() => signInWithSupabase()}
                   >
                     Build your dream home →
@@ -373,7 +374,7 @@ export default function HomePage() {
                   <div className="rounded-xl space-y-3">
                     <div className="">
                       <img
-                        className="h-48 bg-yellow-600 cover rounded-xl w-full object-cover"
+                        className="h-48 bg-[#f22e61] cover rounded-xl w-full object-cover"
                         src={"/img/architects.jpg"}
                         height={300}
                         width={400}
@@ -405,7 +406,7 @@ export default function HomePage() {
                   <div className="rounded-xl space-y-3 ">
                     <div className="">
                       <img
-                        className="h-48 bg-yellow-600 cover rounded-xl w-full object-cover"
+                        className="h-48 bg-[#f22e61] cover rounded-xl w-full object-cover"
                         src={"/img/interior-designers.jpg"}
                         height={300}
                         width={400}
@@ -436,7 +437,7 @@ export default function HomePage() {
                   <div className="rounded-xl space-y-3 ">
                     <div className="">
                       <img
-                        className="h-48 bg-yellow-600 cover rounded-xl w-full object-cover"
+                        className="h-48 bg-[#f22e61] cover rounded-xl w-full object-cover"
                         src={"/img/real-estate-agents.jpg"}
                         height={300}
                         width={400}
@@ -468,7 +469,7 @@ export default function HomePage() {
                   <div className="rounded-xl space-y-3 ">
                     <div className="">
                       <img
-                        className="h-48 bg-yellow-600 cover rounded-xl w-full object-cover"
+                        className="h-48 bg-[#f22e61] cover rounded-xl w-full object-cover"
                         src={"/img/home-lovers.jpg"}
                         height={300}
                         width={400}
@@ -503,14 +504,12 @@ export default function HomePage() {
 
           {/* <div className="pt-12">
             <Link
-              className="bg-yellow-600 rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-yellow-700 transition"
+              className="bg-[#f22e61] rounded-xl text-white font-medium px-4 py-3 lg:mt-0 sm:mt-10  hover:bg-purple-700 transition"
               href={"/render"}
             >
               Build your dream home for free →
             </Link>
           </div> */}
-
-         
 
           <div className="flex justify-center items-center pt-48 pb-12">
             <div className="space-y-7">
@@ -558,11 +557,11 @@ export default function HomePage() {
               <div className="space-y-10">
                 <span className="text-4xl font-semibold">
                   A better way to design your home,{" "}
-                  <span className="text-yellow-600">you ready?</span>
+                  <span className="text-[#f22e61]">you ready?</span>
                 </span>
                 <div>
                   <button
-                    className="bg-yellow-600 font-semibold rounded-full text-white px-10 py-3 hover:bg-yellow-700 transition"
+                    className="bg-[#f22e61] font-semibold rounded-full text-white px-10 py-3 hover:bg-purple-700 transition"
                     onClick={() => signInWithSupabase()}
                   >
                     Start Designing For Free →

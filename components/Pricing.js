@@ -30,7 +30,7 @@ function Pricing() {
         {/* <div className="shadow-xl border rounded-xl p-10 space-y-10">
           <div className="space-y-7">
             <div className="text-left">
-              <span className="font-semibold py-1 rounded-full text-yellow-500 text-sm">
+              <span className="font-semibold py-1 rounded-full text-pink-500 text-sm">
                 Hobby
               </span>
             </div>
@@ -90,14 +90,14 @@ function Pricing() {
             <div className="flex justify-center font-semibold">
               {user ? (
                 <Link
-                  className="bg-yellow-600 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold text-left"
+                  className="bg-[#f22e61] rounded-full w-full text-white px-4 py-3 hover:bg-[#f22e61] transition font-semibold text-left"
                   href={"/dream"}
                 >
                   Go to the AIHomeRender app →
                 </Link>
               ) : (
                 <button
-                  className="bg-yellow-600 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold"
+                  className="bg-[#f22e61] rounded-full w-full text-white px-4 py-3 hover:bg-[#f22e61] transition font-semibold"
                   onClick={() => signInWithSupabase()}
                 >
                   Build your dream home →
@@ -128,14 +128,14 @@ function Pricing() {
             <div className="flex justify-center font-semibold">
               {user ? (
                 <Link
-                  className="bg-yellow-600 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold text-center"
+                  className="bg-[#f22e61] rounded-full w-full text-white px-4 py-3 hover:bg-[#f22e61] transition font-semibold text-center"
                   href={"/dream"}
                 >
                   Go to the AIHomeRender app →
                 </Link>
               ) : (
                 <button
-                  className="bg-yellow-600 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold"
+                  className="bg-[#f22e61] rounded-full w-full text-white px-4 py-3 hover:bg-[#f22e61] transition font-semibold"
                   onClick={() => signInWithSupabase()}
                 >
                   Build your dream home →
@@ -190,7 +190,7 @@ function Pricing() {
           </div>
         </div>
 
-        <div className="shadow-xl border-2 border-yellow-600 rounded-xl p-10 space-y-10">
+        <div className="shadow-xl border-2 border-[#f22e61] rounded-xl p-10 space-y-10">
           <div className="space-y-7">
             <div className="text-left">
               <span className=" py-1 rounded-full text-xl">
@@ -212,7 +212,7 @@ function Pricing() {
             </div>
 
             <div className="text-left">
-              <span className="text-yellow-600 font-bold text-sm">
+              <span className="text-[#f22e61] font-bold text-sm">
                 BLACK FRIDAY OFFER - <span className="underline">50% OFF</span>
               </span>
             </div>
@@ -220,7 +220,7 @@ function Pricing() {
 
           <div className="flex justify-center font-semibold">
             <Link
-              className="bg-yellow-600 hover:bg-yellow-500 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold text-center"
+              className="bg-[#f22e61] hover:bg-pink-500 rounded-full w-full text-white px-4 py-3 hover:bg-[#f22e61] transition font-semibold text-center"
               href={
                 "https://aihomerender.lemonsqueezy.com/checkout/buy/855a6c62-21fa-49a0-85f3-5109385a9369"
               }
@@ -306,7 +306,7 @@ function Pricing() {
             </div>
 
             <div className="text-left">
-              <span className="text-yellow-600 font-bold text-sm">
+              <span className="text-[#f22e61] font-bold text-sm">
                 BLACK FRIDAY OFFER - <span className="underline">60% OFF</span>
               </span>
             </div>
@@ -314,7 +314,7 @@ function Pricing() {
 
           <div className="flex justify-center font-semibold">
           <Link
-              className="bg-yellow-600 hover:bg-yellow-500 rounded-full w-full text-white px-4 py-3 hover:bg-yellow-600 transition font-semibold text-center"
+              className="bg-[#f22e61] hover:bg-pink-500 rounded-full w-full text-white px-4 py-3 hover:bg-[#f22e61] transition font-semibold text-center"
               href={
                 "https://aihomerender.lemonsqueezy.com/checkout/buy/1e120fa6-7313-4de8-8b22-42f13b72bebc"
               }

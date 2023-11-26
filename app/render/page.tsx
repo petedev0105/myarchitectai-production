@@ -234,7 +234,7 @@ function page() {
   return (
     <div className="m-auto">
       {packageType !== "free" ? null : (
-        <div className="bg-yellow-600 text-center text-white py-3">
+        <div className="bg-[#f22e61] text-center text-white py-3">
           <span>
             You are currently on the Free Plan.{" "}
             <Link
