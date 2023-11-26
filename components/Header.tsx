@@ -12,21 +12,25 @@ export default function Header() {
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
-  
   return (
-    <header className="absolute inset-x-0 top-0 lg:z-10 max-w-6xl mx-auto lg:px-0 px-5 z-50">
-      <div className="mx-auto">
-        <div className="flex justify-between items-center h-16 lg:h-20">
-          <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
-              <div>
-                <img src="/img/logo.png" className="h-7" alt="Logo" />
-              </div>
-            </Link>
-          </div>
+    <>
+      <header className="lg:px-0 lg:px-5 flex items-center w-full mt-5 pb-7 justify-between ">
+        <div className="flex space-x-12 items-center">
+          <Link href="/" className="flex space-x-2">
+            <h1 className="text-2xl ml-2 tracking-tight">
+              <img src="/img/logo.png" className="h-7" />
+            </h1>
+          </Link>
 
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden">
+          <div className="flex items-center space-x-5"></div>
+        </div>{" "}
+
+        <div className="hidden lg:flex">
+          <SignInButton />
+        </div>
+
+         {/* Mobile Menu Button */}
+         <div className="lg:hidden">
             <button
               onClick={toggleMobileMenu}
               className="text-black p-2 rounded-md outline-none hover:bg-gray-200"
@@ -47,21 +51,16 @@ export default function Header() {
               </svg>
             </button>
           </div>
+        
 
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex lg:space-x-10 items-center font-semibold text-stone-700">
-            <SignInButton />
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Dropdown Menu */}
+        {/* Mobile Dropdown Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden mt-4 p-5 shadow-xl rounded-xl bg-white">
+        <div className="lg:hidden p-5 shadow-xl rounded-xl bg-white absolute w-full top-24 border-t">
           <SignInButton />
         </div>
       )}
-    </header>
+      </header>
+    </>
   );
 }
 

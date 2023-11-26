@@ -21,7 +21,7 @@ export default function HomePage() {
         {/* <Alert /> */}
         <Header />
 
-        <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20 pt-12">
+        <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-20 mt-20">
           <div className="">
             <div className="lg:max-w-3xl mx-auto space-y-10">
               <div className="flex justify-center pt-5 space-y-10">
