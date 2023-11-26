@@ -34,7 +34,7 @@ export async function POST(request: Request) {
   //   }
   // }
 
-  const { imageUrl, lighting, interiorStyle, buildingType } =
+  const { imageUrl, lighting, interiorStyle, buildingType, extraPrompt } =
     await request.json();
 
   // POST request to Replicate to start the image restoration generation process
@@ -49,7 +49,7 @@ export async function POST(request: Request) {
         "aff48af9c68d162388d230a2ab003f68d2638d88307bdaf1c2f1ac95079c9613",
       input: {
         image: imageUrl,
-        prompt: `Breathtaking interior design in the style of ${interiorStyle}, with ${lighting} lighting`,
+        prompt: `Breathtaking interior design in the style of ${interiorStyle}, with ${lighting} lighting, ${extraPrompt}`,
         a_prompt: "Photorealistic, 4K resolution, Realistic Lighting, Unreal Engine, Clean lines, Ray tracing",
         n_prompt:
           "blurry, details are low, overlapping, grainy, text, logo, anime, animation",
