@@ -41,6 +41,10 @@ import {
   floorsType,
   colors,
   colorType,
+  interiorStyles,
+  interiorStyleType,
+  lightings,
+  lightingType
 } from "../utils/dropdownTypes";
 import { useSupabase } from "../components/supabaseProvider";
 
@@ -105,6 +109,10 @@ function ArchitectureIdeaComponent() {
 
   const [selectedArchitectureType, setSelectedArchitectureType] =
     useState("interior");
+
+    const [interiorStyle, setInteriorStyle] =
+    useState<interiorStyleType>("Minimalist Haven");
+  const [lighting, setLighting] = useState<lightingType>("Ambient");
 
   // supaabse stuff
   const { supabase, packageType } = useSupabase();
@@ -239,6 +247,9 @@ function ArchitectureIdeaComponent() {
           buildingType,
           houseStyle,
           extraPrompt,
+          lighting, 
+          interiorStyle,
+          selectedArchitectureType
         }),
       });
 
@@ -266,7 +277,124 @@ function ArchitectureIdeaComponent() {
       <div className="p-7 lg:flex space-x-5">
         <div className="lg:w-1/4 ">
           <div className="p-7 space-y-3  rounded-xl shadow-xl border-2 shadow-sm">
-            {packageType == "free" ? (
+            <div className="flex items-center space-x-3 pb-5">
+              <div
+                onClick={() => setSelectedArchitectureType("interior")}
+                className={
+                  selectedArchitectureType == "interior"
+                    ? "pb-2 px-5 border-b-2 border-black cursor-pointer flex items-center space-x-2"
+                    : "pb-2 px-5 cursor-pointer text-stone-500 flex items-center space-x-2"
+                }
+              >
+                <span>Interior</span>
+              </div>
+              <div
+                onClick={() => setSelectedArchitectureType("exterior")}
+                className={
+                  selectedArchitectureType == "exterior"
+                    ? "pb-2 px-5 border-b-2 border-black cursor-pointer flex items-center space-x-2"
+                    : "pb-2 px-5 cursor-pointer text-stone-500 flex items-center space-x-2"
+                }
+              >
+                <span>Exterior</span>
+              </div>
+            </div>
+
+            {/* render interior and exterior conditionally */}
+            {selectedArchitectureType == "interior" ? (
+              packageType == "free" ? (
+                <>
+                  <div className="space-y-4 w-full ">
+                  <div className="flex items-center space-x-3 text-stone-600">
+                    <p className="text-left font-bold">
+                      Interior Styles ({interiorStyles.length})
+                    </p>
+                  </div>
+                  <DropDownRestricted
+                    theme={interiorStyle}
+                    setTheme={(newInteriorStyle) =>
+                      setInteriorStyle(newInteriorStyle as typeof interiorStyle)
+                    }
+                    themes={interiorStyles}
+                  />
+                </div>
+
+                <div className="space-y-4 w-full ">
+                  <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                    <p className="text-left font-bold">
+                      Lighting Options ({lightings.length})
+                    </p>
+                  </div>
+                  <DropDownRestricted
+                    theme={lighting}
+                    setTheme={(newLighting) =>
+                      setLighting(newLighting as typeof lighting)
+                    }
+                    themes={lightings}
+                  />
+                </div>
+
+                  <div className="space-y-4 w-full">
+                    <div className="items-center text-stone-600 mt-10">
+                      <span className="text-left font-bold">
+                        Custom Preferences
+                      </span>
+                    </div>
+                    <textarea
+                      disabled
+                      onChange={(e) => setExtraPrompt(e.target.value)}
+                      className="rounded-md border border-stone-300 px-3 py-2 w-full h-24"
+                      placeholder="This is a Pro feature, please upgrade 🔒"
+                    />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="space-y-4 w-full ">
+                  <div className="flex items-center space-x-3 text-stone-600">
+                    <p className="text-left font-bold">
+                      Interior Styles ({interiorStyles.length})
+                    </p>
+                  </div>
+                  <DropDown
+                    theme={interiorStyle}
+                    setTheme={(newInteriorStyle) =>
+                      setInteriorStyle(newInteriorStyle as typeof interiorStyle)
+                    }
+                    themes={interiorStyles}
+                  />
+                </div>
+
+                <div className="space-y-4 w-full ">
+                  <div className="flex mt-10 items-center space-x-3 text-stone-600">
+                    <p className="text-left font-bold">
+                      Lighting Options ({lightings.length})
+                    </p>
+                  </div>
+                  <DropDown
+                    theme={lighting}
+                    setTheme={(newLighting) =>
+                      setLighting(newLighting as typeof lighting)
+                    }
+                    themes={lightings}
+                  />
+                </div>
+
+                  <div className="space-y-4 w-full">
+                    <div className="items-center text-stone-600 mt-10">
+                      <span className="text-left font-bold">
+                        Custom Preferences
+                      </span>
+                    </div>
+                    <textarea
+                      onChange={(e) => setExtraPrompt(e.target.value)}
+                      className="rounded-md border border-stone-300 px-3 py-2 w-full h-24"
+                      placeholder="Night time, Wooden, Cozy, Swimming Pool, Backyard,..."
+                    />
+                  </div>
+                </>
+              )
+            ) : packageType == "free" ? (
               <>
                 <div className="space-y-4 w-full ">
                   <div className="flex items-center space-x-3">
@@ -454,10 +582,7 @@ function ArchitectureIdeaComponent() {
           )}
 
           {loading && (
-            <button
-              disabled
-              className=" px-4 pt-2 pb-3 mt-8 w-40"
-            >
+            <button disabled className=" px-4 pt-2 pb-3 mt-8 w-40">
               <span className="pt-4">
                 <LoadingDots color="black" style="large" />
                 {/* <l-grid size="60" speed="1.5" color="black"></l-grid> */}
