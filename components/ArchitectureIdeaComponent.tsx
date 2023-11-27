@@ -235,7 +235,7 @@ function ArchitectureIdeaComponent() {
       setLoading(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
 
-      const response = await fetch("/generate-custom-architecture", {
+      const response = await fetch("/api/generate-custom-architecture", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

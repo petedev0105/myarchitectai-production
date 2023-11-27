@@ -195,7 +195,7 @@ function ExteriorDesignComponent() {
       setLoading(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
 
-      const response = await fetch("/generate-upscale", {
+      const response = await fetch("api/generate-upscale", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -230,7 +230,7 @@ function ExteriorDesignComponent() {
       setLoading(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
 
-      const response = await fetch("/generate", {
+      const response = await fetch("api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -194,7 +194,7 @@ function InteriorDesignComponent() {
       setLoading(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
 
-      const response = await fetch("/generate-upscale", {
+      const response = await fetch("/api/generate-upscale", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -229,7 +229,7 @@ function InteriorDesignComponent() {
       setLoading(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
 
-      const response = await fetch("/generate-interior", {
+      const response = await fetch("/api/generate-interior", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
