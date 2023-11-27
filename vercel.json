@@ -1,0 +1,13 @@
+{
+    "functions": {
+      "api/test.js": {
+        "maxDuration": 30
+      },
+      "api/*.js": {
+        "maxDuration": 15 
+      },
+      "generate/*.js": {
+        "maxDuration": 90
+      }
+    }
+  }
