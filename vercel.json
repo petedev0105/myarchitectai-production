@@ -1,15 +1,15 @@
 {
     "functions": {
-      "api/generate.js": {
+      "api/generate.ts": {
         "maxDuration": 90
       },
-      "api/generate-interior.js": {
+      "api/generate-interior.ts": {
         "maxDuration": 90
       },
-      "api/generate-custom-architecture.js": {
+      "api/generate-custom-architecture.ts": {
         "maxDuration": 90
       },
-      "api/generate-upscale.js": {
+      "api/generate-upscale.ts": {
         "maxDuration": 90
       }
     }
