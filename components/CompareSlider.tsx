@@ -19,12 +19,9 @@ export const CompareSlider = ({
         itemTwo={
           <ReactCompareSliderImage src={restored} alt="generated photo" />
         }
-        className="flex mt-5 border rounded-md"
+        className="flex border rounded-md"
         style={{ height: "auto", width: "full" }}
       />
-      <span className="text-sm text-stone-600">
-        (Drag the slider left and right to see before and after MyArchitectureAI)
-      </span>
     </div>
   );
 };

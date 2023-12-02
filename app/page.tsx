@@ -16,7 +16,8 @@ export default function HomePage() {
 
   return (
     <>
-      {/* <div className="background "></div> */}
+      <div className="background"></div>
+      {/* <div className="w-full absolute h-24 bg-black" style={}></div> */}
       <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen z-10">
         {/* <Alert /> */}
         <Header />
@@ -28,19 +29,19 @@ export default function HomePage() {
                 <div>
                   <div className="flex justify-center pb-5">
                     <span className="text-[#f22e61] font-semibold">
-                      AI-POWERED HOME DESIGN TOOL
+                      AI-POWERED DESIGN TOOL FOR CONSTRUCTION
                     </span>
                   </div>
                   <div className="max-w-[600px]">
-                    <span className="font-semibold leading-tight lg:text-6xl text-3xl">
-                      Your dream home, built in seconds.{" "}
+                    <span className="font-semibold leading-tight lg:text-5xl text-3xl">
+                    Instant Home Designs To Close 10x More Deals
                     </span>
                   </div>
                 </div>
               </div>
               <div className="flex justify-center">
                 <span className="text-xl">
-                  The all-in-one platform to satisfy all your home design needs.
+                Elevate your projects, win more contracts, and streamline your design process with our cutting-edge platform.
                 </span>
               </div>
 
@@ -69,6 +70,19 @@ export default function HomePage() {
                 </div>
               </div>
 
+              {/* <div className="flex justify-center pt-10">
+                <a
+                  href="https://www.toolpilot.ai/products/aihomerenders"
+                  target="_blank"
+                >
+                  <img
+                    src="https://www.toolpilot.ai/cdn/shop/files/toolpilot-badge-w.png"
+                    alt="AIHomeRenders Is Featured On ToolPilot.ai"
+                    width={150}
+                  />
+                </a>
+              </div> */}
+
               <div className="flex justify-center">
                 {/* <a href='https://affordhunt.com' ><img src='https://svgshare.com/i/xM0.svg' title='Spotlight By AffordHunt' height={100}/></a> */}
               </div>
@@ -84,11 +98,89 @@ export default function HomePage() {
               </div> */}
             </div>
 
-            <div className="pt-32 flex justify-center">
+            {/* <div className="pt-32 flex justify-center">
               <img src="/img/landing.png" />
+            </div> */}
+
+            <div className="lg:grid grid-cols-2 gap-10 pb-24">
+              <div className="p-3 border rounded-xl bg-white">
+                <CompareSlider
+                  original="/img/interior1.png"
+                  restored="/img/interior2.png"
+                />
+                <div className="text-left pt-5">
+                  <div>
+                    <span className="font-semibold text-xl">
+                      Interior Redesigning
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-sm">
+                    Transform spaces effortlessly! Harness the power of AI to generate stunning interior redesigns in seconds. Elevate your projects with precision and style. Your vision, redefined.
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-3 border rounded-xl bg-white">
+                <CompareSlider
+                  original="/img/exterior1.png"
+                  restored="/img/exterior2.png"
+                />
+                <div className="text-left pt-5">
+                  <div>
+                    <span className="font-semibold text-xl">
+                      Exterior Redesigning
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-sm">
+                    Reimagine exteriors with ease! Utilize AI to swiftly generate exterior redesigns in seconds. From curb appeal to architectural brilliance, let your designs speak volumes. Unlock a new realm of possibilities.
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-3 border rounded-xl bg-white">
+                <CompareSlider
+                  original="/img/sketch1.png"
+                  restored="/img/sketch2.png"
+                />
+                <div className="text-left pt-5">
+                  <div>
+                    <span className="font-semibold text-xl">
+                      Render Sketches
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-sm">
+                    Bring ideas to life instantly! With AI at your fingertips, render sketches in seconds. Capture the essence of your vision with impeccable detail. Sketch, refine, and impress effortlessly.
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-3 border rounded-xl bg-white">
+                <CompareSlider
+                  original="/img/ideas1.png"
+                  restored="/img/ideas2.png"
+                />
+                <div className="text-left pt-5">
+                  <div>
+                    <span className="font-semibold text-xl">
+                      Generate Ideas from text
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-sm">
+                    Turn words into reality! AI empowers you to generate interior redesigns from text in mere seconds. Describe your vision, and watch it come to life visually. Creativity unleashed, ideas transformed.
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="flex justify-center py-48">
+            <div className="flex justify-center pT-12 pb-24">
               <img src="/img/numbers.png" className="" style={{ width: 800 }} />
             </div>
           </div>
@@ -208,6 +300,84 @@ export default function HomePage() {
             </div>
           </div> */}
 
+          {/* <div className="lg:grid grid-cols-2 gap-10 pb-24">
+            <div className="p-3 border rounded-xl">
+              <CompareSlider
+                original="/img/interior1.png"
+                restored="/img/interior2.png"
+              />
+              <div className="text-left pt-5">
+                <div>
+                  <span className="font-semibold text-xl">
+                    Interior Redesigning
+                  </span>
+                </div>
+                <div>
+                  <span className="">
+                    Quickly generate interior redesigns in seconds with AI
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-3 border rounded-xl">
+              <CompareSlider
+                original="/img/exterior1.png"
+                restored="/img/exterior2.png"
+              />
+              <div className="text-left pt-5">
+                <div>
+                  <span className="font-semibold text-xl">
+                    Exterior Redesigning
+                  </span>
+                </div>
+                <div>
+                  <span className="">
+                    Quickly generate interior redesigns in seconds with AI
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-3 border rounded-xl">
+              <CompareSlider
+                original="/img/sketch1.png"
+                restored="/img/sketch2.png"
+              />
+              <div className="text-left pt-5">
+                <div>
+                  <span className="font-semibold text-xl">
+                    Render Sketches
+                  </span>
+                </div>
+                <div>
+                  <span className="">
+                    Quickly generate interior redesigns in seconds with AI
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-3 border rounded-xl">
+              <CompareSlider
+                original="/img/ideas1.png"
+                restored="/img/ideas2.png"
+              />
+              <div className="text-left pt-5">
+                <div>
+                  <span className="font-semibold text-xl">
+                    Generate Ideas from text
+                  </span>
+                </div>
+                <div>
+                  <span className="">
+                    Quickly generate interior redesigns in seconds with AI
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div> */}
+
           <div className="lg:flex justify-between items-center w-full lg:space-x-24 items-center ">
             <div className="lg:w-1/2 lg:pt-0 pt-10">
               <img src="/img/styles.png" />
@@ -289,11 +459,43 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="lg:flex justify-between items-center w-full lg:space-x-24 items-center pt-48">
+          <div className="lg:flex justify-between items-center w-full lg:space-x-24 pt-48">
             <div className="lg:w-1/2 lg:pt-0 pt-10">
-              <img src="/img/cases.png" />
+              <img src="/img/ideas1.png" />
               {/* <CompareSlider original="/img/exterior-before.png" restored="/img/exterior-after.png" /> */}
             </div>
+            <div className="lg:w-1/2 lg:text-left space-y-7">
+              <div>
+                <span className="font-semibold lg:text-4xl text-3xl">
+                  Generate stunning designs from text
+                </span>
+              </div>
+              <div>
+                <span className="text-lg text-stone-600">
+                Turn words into reality! AI empowers you to generate interior redesigns from text in mere seconds. Describe your vision, and watch it come to life visually. Creativity unleashed, ideas transformed.
+                </span>
+              </div>
+              <div>
+                {user ? (
+                  <Link
+                    className="bg-[#f22e61] font-semibold rounded-full text-white px-10 py-3 hover:bg-purple-700 transition"
+                    href={"/render"}
+                  >
+                    Go to the AIHomeRender app →
+                  </Link>
+                ) : (
+                  <button
+                    className="bg-[#f22e61] font-semibold rounded-full text-white px-10 py-3 hover:bg-purple-700 transition"
+                    onClick={() => signInWithSupabase()}
+                  >
+                    Build your dream home →
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:flex justify-between items-center w-full lg:space-x-24 items-center pt-48">
             <div className="lg:w-1/2 lg:text-left space-y-7">
               <div>
                 <span className="font-semibold lg:text-4xl text-3xl">
@@ -324,6 +526,9 @@ export default function HomePage() {
                   </button>
                 )}
               </div>
+            </div>
+            <div className="lg:w-1/2 lg:pt-0 pt-10">
+              <img src="/img/cases.png" />
             </div>
           </div>
 
