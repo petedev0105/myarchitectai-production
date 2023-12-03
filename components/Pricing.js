@@ -45,7 +45,7 @@ function Pricing() {
           </div>
 
           <div className="space-y-10 text-left">
-            <div className="space-y-3 text-lg">
+            <div className=" text-lg">
               <FeatureItem
                 icon="/img/tick-tutor.png"
                 text="10 Inspiring Designs Monthly"
@@ -91,7 +91,7 @@ function Pricing() {
               {user ? (
                 <Link
                   className="bg-[#f22e61] rounded-full w-full text-white px-4 py-3 hover:bg-[#f22e61] transition font-semibold text-left"
-                  href={"/dream"}
+                  href={"/render"}
                 >
                   Go to the AIHomeRender app →
                 </Link>
@@ -129,7 +129,7 @@ function Pricing() {
               {user ? (
                 <Link
                   className="bg-[#f22e61] rounded-full w-full text-white px-4 py-3 hover:bg-[#f22e61] transition font-semibold text-center"
-                  href={"/dream"}
+                  href={"/render"}
                 >
                   Go to the AIHomeRender app →
                 </Link>
@@ -144,7 +144,7 @@ function Pricing() {
             </div>
 
             <div className="space-y-10 text-left">
-              <div className="space-y-3 text-lg">
+              <div className=" text-lg">
                 <FeatureItem
                   icon="/img/tick-tutor.png"
                   text="10 Inspiring Designs Monthly"
@@ -211,11 +211,11 @@ function Pricing() {
               </div> */}
             </div>
 
-            <div className="text-left">
+            {/* <div className="text-left">
               <span className="text-[#f22e61] font-bold text-sm">
                 BLACK FRIDAY OFFER - <span className="underline">50% OFF</span>
               </span>
-            </div>
+            </div> */}
           </div>
 
           <div className="flex justify-center font-semibold">
@@ -231,7 +231,7 @@ function Pricing() {
           </div>
 
           <div className="space-y-10 text-left">
-            <div className="space-y-3 text-lg">
+            <div className=" text-lg">
               <FeatureItem
                 icon="/img/tick-tutor.png"
                 text="Unlimited Monthly Designs - An Endless Canvas"
@@ -305,11 +305,11 @@ function Pricing() {
               </div> */}
             </div>
 
-            <div className="text-left">
+            {/* <div className="text-left">
               <span className="text-[#f22e61] font-bold text-sm">
                 BLACK FRIDAY OFFER - <span className="underline">60% OFF</span>
               </span>
-            </div>
+            </div> */}
           </div>
 
           <div className="flex justify-center font-semibold">
@@ -325,7 +325,7 @@ function Pricing() {
           </div>
 
           <div className="space-y-10 text-left">
-            <div className="space-y-3 text-lg">
+            <div className=" text-lg">
               <FeatureItem
                 icon="/img/tick-tutor.png"
                 text="Unlimited Monthly Designs - An Endless Canvas"

@@ -46,12 +46,14 @@ const SupabaseProvider: React.FC<SupabaseProviderProps> = ({ children }) => {
     try {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: "google",
+        options: {
+          redirectTo: "https://www.aihomerenders.com/render",
+        },
       });
 
       if (error) {
         throw new Error(error.message);
       } else {
-
       }
     } catch (error) {
       console.log(error);

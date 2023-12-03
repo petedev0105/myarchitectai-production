@@ -6,7 +6,7 @@ const FeatureItem = ({ icon, text }) => (
         <img src={icon} height={20} width={20} style={{ minWidth: "20px", minHeight: "20px", width: "20px" }} />
       </div>
       <div>
-        <span className="">
+        <span className="text-sm">
           {text}
         </span>
       </div>
