@@ -26,9 +26,9 @@ function SignInButton() {
     {
       key: "2",
       label: (
-        <button className="text-red-500" onClick={() => handleSignOut()}>
+        <span className="text-red-500" onClick={() => handleSignOut()}>
           Log out
-        </button>
+        </span>
       ),
     },
   ];
@@ -54,7 +54,7 @@ function SignInButton() {
           </Link>
         </div>
         <button
-          className="text-white font-bold bg-[#f22e61] px-5 py-2 rounded-full hover:bg-purple-500"
+          className="text-white font-bold bg-blue-500 px-5 py-2 rounded-full hover:bg-purple-500"
           onClick={signInWithSupabase}
         >
           Build My Home

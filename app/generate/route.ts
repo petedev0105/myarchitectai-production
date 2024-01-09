@@ -64,6 +64,7 @@ export async function POST(request: Request) {
         n_prompt:
           "blurry, details are low, overlapping, grainy, multiple angles, deformed structures, weird colors, unnatural, unrealistic, humans, unrealistic sky, people, animals, cartoon, anime, painting, drawing, sketch",
       },
+      
     }),
   });
 

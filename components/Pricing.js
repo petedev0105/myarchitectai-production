@@ -30,7 +30,7 @@ function Pricing() {
         {/* <div className="shadow-xl border rounded-xl p-10 space-y-10">
           <div className="space-y-7">
             <div className="text-left">
-              <span className="font-semibold py-1 rounded-full text-pink-500 text-sm">
+              <span className="font-semibold py-1 rounded-md text-pink-500 text-sm">
                 Hobby
               </span>
             </div>
@@ -90,14 +90,14 @@ function Pricing() {
             <div className="flex justify-center font-semibold">
               {user ? (
                 <Link
-                  className="bg-[#f22e61] rounded-full w-full text-white px-4 py-3 hover:bg-[#f22e61] transition font-semibold text-left"
+                  className="bg-blue-500 rounded-md w-full text-white px-4 py-3 hover:bg-blue-500 transition font-semibold text-left"
                   href={"/render"}
                 >
                   Go to the AIHomeRender app →
                 </Link>
               ) : (
                 <button
-                  className="bg-[#f22e61] rounded-full w-full text-white px-4 py-3 hover:bg-[#f22e61] transition font-semibold"
+                  className="bg-blue-500 rounded-md w-full text-white px-4 py-3 hover:bg-blue-500 transition font-semibold"
                   onClick={() => signInWithSupabase()}
                 >
                   Build your dream home →
@@ -111,7 +111,7 @@ function Pricing() {
           <div className="shadow-xl border rounded-xl p-10 space-y-10">
             <div className="space-y-7">
               <div className="text-left">
-                <span className=" py-1 rounded-full text-xl">
+                <span className=" py-1 rounded-md text-xl">
                   AIHomeRender Free
                 </span>
               </div>
@@ -128,14 +128,14 @@ function Pricing() {
             <div className="flex justify-center font-semibold">
               {user ? (
                 <Link
-                  className="bg-[#f22e61] rounded-full w-full text-white px-4 py-3 hover:bg-[#f22e61] transition font-semibold text-center"
+                  className="bg-blue-500 rounded-md w-full text-white px-4 py-3 hover:bg-blue-500 transition font-semibold text-center"
                   href={"/render"}
                 >
                   Go to the AIHomeRender app →
                 </Link>
               ) : (
                 <button
-                  className="bg-[#f22e61] rounded-full w-full text-white px-4 py-3 hover:bg-[#f22e61] transition font-semibold"
+                  className="border-2 rounded-md w-full px-4 py-3 hover:bg-slate-50 transition font-semibold"
                   onClick={() => signInWithSupabase()}
                 >
                   Build your dream home →
@@ -190,10 +190,10 @@ function Pricing() {
           </div>
         </div>
 
-        <div className="shadow-xl border-2 border-[#f22e61] rounded-xl p-10 space-y-10">
+        <div className="shadow-xl border-2 shadow-blue-50 rounded-xl p-10 space-y-10">
           <div className="space-y-7">
             <div className="text-left">
-              <span className=" py-1 rounded-full text-xl">
+              <span className=" py-1 rounded-md text-xl">
                 AIHomeRender <span className="font-bold">Pro</span>
               </span>
             </div>
@@ -201,8 +201,8 @@ function Pricing() {
             <div className="">
               <div className="text-left">
                 <span className="font-semibold">
-                  <s className="text-5xl text-stone-400">$39</s>
-                  <span className="text-5xl">$19</span>
+                  {/* <s className="text-5xl text-stone-400">$39</s> */}
+                  <span className="text-5xl">$15</span>
                 </span>
                 <span className="">/month</span>
               </div>
@@ -220,7 +220,7 @@ function Pricing() {
 
           <div className="flex justify-center font-semibold">
             <Link
-              className="bg-[#f22e61] hover:bg-pink-500 rounded-full w-full text-white px-4 py-3 hover:bg-[#f22e61] transition font-semibold text-center"
+              className="bg-blue-500 hover:bg-pink-500 rounded-md w-full text-white px-4 py-3 hover:bg-blue-500 transition font-semibold text-center"
               href={
                 "https://aihomerender.lemonsqueezy.com/checkout/buy/855a6c62-21fa-49a0-85f3-5109385a9369"
               }
@@ -287,7 +287,7 @@ function Pricing() {
         <div className="shadow-xl border-2  rounded-xl p-10 space-y-10">
           <div className="space-y-7">
             <div className="text-left">
-              <span className=" py-1 rounded-full text-xl">
+              <span className=" py-1 rounded-md text-xl">
                 AIHomeRender <span className="font-bold">Pro Yearly</span>
               </span>
             </div>
@@ -295,8 +295,8 @@ function Pricing() {
             <div className="">
               <div className="text-left">
                 <span className="font-semibold">
-                  <s className="text-5xl text-stone-400">$468</s>
-                  <span className="text-5xl">$199</span>
+                  {/* <s className="text-5xl text-stone-400">$468</s> */}
+                  <span className="text-5xl">$99</span>
                 </span>
                 <span className="">/year</span>
               </div>
@@ -314,7 +314,7 @@ function Pricing() {
 
           <div className="flex justify-center font-semibold">
           <Link
-              className="bg-[#f22e61] hover:bg-pink-500 rounded-full w-full text-white px-4 py-3 hover:bg-[#f22e61] transition font-semibold text-center"
+              className="border-2 rounded-md w-full px-4 py-3 hover:bg-slate-50 transition font-semibold"
               href={
                 "https://aihomerender.lemonsqueezy.com/checkout/buy/1e120fa6-7313-4de8-8b22-42f13b72bebc"
               }

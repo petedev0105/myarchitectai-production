@@ -66,7 +66,7 @@ export default function RootLayout({
       <SupabaseProvider>
         <body style={{ zIndex: 2 }} className={inter.className}>
           <Providers>{children}</Providers>
-          <CrispChat />
+          {/* <CrispChat /> */}
           <Analytics />
         </body>
       </SupabaseProvider>
